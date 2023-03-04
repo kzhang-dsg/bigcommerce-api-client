@@ -269,6 +269,30 @@ export interface ProductVariantOptionValue {
     option_id?: number;
 }
 
+export interface ProductComplexRule {
+    id?: number;
+    product_id?: number;
+    sort_order?: number;
+    enabled?: boolean;
+    stop?: boolean;
+    purchasing_disabled?: boolean;
+    purchasing_disabled_message?: string;
+    purchasing_hidden?: boolean;
+    image_url?: string;
+    price_adjuster?: Adjuster;
+    weight_adjuster?: Adjuster;
+    conditions?: ProductComplexRuleCondition[];
+}
+
+export interface ProductComplexRuleCondition {
+    id?: number;
+    rule_id?: number;
+    modifier_id?: number;
+    modifier_value_id?: number;
+    variant_id?: number;
+    combination_id?: number;
+}
+
 export interface ProductsQueryParams
     extends FieldAwareQueryParams,
         IdAwareQueryParams {

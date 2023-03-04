@@ -5,6 +5,8 @@ import { BrandApi } from "./brand-api";
 import { CategoryApi } from "./category-api";
 import { CategoryBatchApi } from "./category-batch-api";
 import { ProductApi } from "./product-api";
+import { ProductBuckPricingRuleApi } from "./product-buck-pricing-rule-api";
+import { ProductComplexRuleApi } from "./product-complex-rule-api";
 
 export class CatalogApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -26,4 +28,8 @@ export class CatalogApi {
         "/v3/catalog/categories"
     );
     readonly products = new ProductApi(this.apiClient);
+    readonly productBuckPricingRules = new ProductBuckPricingRuleApi(
+        this.apiClient
+    );
+    readonly productComplexRules = new ProductComplexRuleApi(this.apiClient);
 }
