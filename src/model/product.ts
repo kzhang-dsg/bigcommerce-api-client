@@ -5,6 +5,50 @@ export enum ProductBuckPricingRuleType {
     PERCENT = "percent",
     FIXED = "fixed",
 }
+
+export enum ProductModifierType {
+    DATE = "date",
+    CHECKBOX = "checkbox",
+    FILE = "file",
+    TEXT = "text",
+    MULTI_LINE_TEXT = "multi_line_text",
+    NUMBERS_ONLY_TEXT = "numbers_only_text",
+    RADIO_BUTTONS = "radio_buttons",
+    RECTANGLES = "rectangles",
+    DROPDOWN = "dropdown",
+    PRODUCT_LIST = "product_list",
+    PRODUCT_LIST_WITH_IMAGES = "product_list_with_images",
+    SWATCH = "swatch",
+}
+
+export enum DateLimitMode {
+    EARLIEST = "earliest",
+    RANGE = "range",
+    LATEST = "latest",
+}
+
+export enum FileTypesMode {
+    SPECIFIC = "specific",
+    ALL = "all",
+}
+
+export enum NumberLimitMode {
+    LOWEST = "lowest",
+    RANGE = "range",
+    HIGHEST = "highest",
+}
+
+export enum ProductListShippingCalc {
+    NONE = "none",
+    WEIGHT = "weight",
+    PACKAGE = "package",
+}
+
+export enum ProductReviewStatus {
+    PENDING = 0,
+    APPROVED = 1,
+}
+
 export interface Product {
     id?: number;
     name?: string;
@@ -169,7 +213,7 @@ export interface ProductOptionOptionValue {
 }
 
 export interface ProductModifier {
-    type?: string;
+    type?: ProductModifierType;
     required?: boolean;
     sort_order?: number;
     config?: Config;
@@ -185,10 +229,10 @@ export interface Config {
     checked_by_default?: boolean;
     checkbox_label?: string;
     date_limited?: boolean;
-    date_limit_mode?: string;
+    date_limit_mode?: DateLimitMode;
     date_earliest_value?: string;
     date_latest_value?: string;
-    file_types_mode?: string;
+    file_types_mode?: FileTypesMode;
     file_types_supported?: string[];
     file_types_other?: string[];
     file_max_size?: number;
@@ -198,13 +242,13 @@ export interface Config {
     text_lines_limited?: boolean;
     text_max_lines?: number;
     number_limited?: boolean;
-    number_limit_mode?: string;
+    number_limit_mode?: NumberLimitMode;
     number_lowest_value?: number;
     number_highest_value?: number;
     number_integers_only?: boolean;
     product_list_adjusts_inventory?: boolean;
     product_list_adjusts_pricing?: boolean;
-    product_list_shipping_calc?: string;
+    product_list_shipping_calc?: ProductListShippingCalc;
 }
 
 export interface ProductModifierOptionValue {
@@ -293,6 +337,20 @@ export interface ProductComplexRuleCondition {
     combination_id?: number;
 }
 
+export interface ProductReview {
+    title?: string;
+    text?: string;
+    status?: string;
+    rating?: number;
+    email?: string;
+    name?: string;
+    date_reviewed?: string;
+    id?: number;
+    product_id?: number;
+    date_created?: string;
+    date_modified?: string;
+}
+
 export interface ProductsQueryParams
     extends FieldAwareQueryParams,
         IdAwareQueryParams {
@@ -360,4 +418,8 @@ export interface DeleteProductsQueryParams {
 
 export interface GetProductQueryParams extends FieldAwareQueryParams {
     include?: string;
+}
+
+export interface ProductReviewsQueryParams extends FieldAwareQueryParams {
+    status?: ProductReviewStatus;
 }

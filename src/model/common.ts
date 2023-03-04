@@ -87,7 +87,7 @@ export interface CustomUrl {
 }
 
 export interface Image {
-    image_file: string;
+    image_url: string;
 }
 
 export interface ProductSortOrder {

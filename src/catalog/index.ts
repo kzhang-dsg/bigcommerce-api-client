@@ -8,6 +8,9 @@ import { ProductApi } from "./product-api";
 import { ProductBuckPricingRuleApi } from "./product-buck-pricing-rule-api";
 import { ProductComplexRuleApi } from "./product-complex-rule-api";
 import { ProductCustomFieldApi } from "./product-custom-field-api";
+import { ProductModifierApi } from "./product-modifier-api";
+import { ProductModifierImageApi } from "./product-modifier-image-api";
+import { ProductReviewApi } from "./product-review-api";
 
 export class CatalogApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -38,4 +41,9 @@ export class CatalogApi {
         this.apiClient,
         "/v3/catalog/products"
     );
+    readonly productModifiers = new ProductModifierApi(this.apiClient);
+    readonly ProductModifierImages = new ProductModifierImageApi(
+        this.apiClient
+    );
+    readonly productReviews = new ProductReviewApi(this.apiClient);
 }

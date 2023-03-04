@@ -1,21 +1,20 @@
-import FormData from "form-data";
 import { ApiClient } from "../api-client";
 import { Data, Image } from "../model/common";
+import FormData from "form-data";
 
-export class ImageApi {
-    constructor(
-        private readonly apiClient: ApiClient,
-        private readonly baseUrl: string
-    ) {}
+export class ProductModifierImageApi {
+    constructor(private readonly apiClient: ApiClient) {}
 
     async createImage<T extends Image>(
-        parentId: number,
+        productId: number,
+        modifierId: number,
+        valueId: number,
         image: T
     ): Promise<Data<T>> {
         const formData = new FormData();
         formData.append("image_file", image);
         const response = await this.apiClient.post(
-            `${this.baseUrl}/${parentId}/image`,
+            `/v3/catalog/products/${productId}/modifiers/${modifierId}/values/${valueId}/image`,
             formData,
             {
                 headers: {
@@ -24,9 +23,5 @@ export class ImageApi {
             }
         );
         return response.data;
-    }
-
-    async deleteImage(parentId: number): Promise<void> {
-        await this.apiClient.delete(`${this.baseUrl}/${parentId}/image`);
     }
 }
