@@ -16,10 +16,10 @@ export enum ResourceType {
 
 export interface Metafield {
     id?: number;
-    key: string;
-    value: string;
-    namespace: string;
-    permission_set: PermissionSet;
+    key?: string;
+    value?: string;
+    namespace?: string;
+    permission_set?: PermissionSet;
     description?: string;
     resource_type?: ResourceType;
     resource_id?: number;

@@ -6,7 +6,7 @@ import {
     Product,
     ProductsQueryParams,
 } from "../model/product";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import { Data, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
 export class ProductApi {

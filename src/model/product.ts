@@ -1,18 +1,17 @@
-import {
-    CustomUrl,
-    FieldAwareQueryParams,
-    IdAwareQueryParams,
-    Sort,
-    Url,
-} from "./common";
+import { CustomUrl, FieldAwareQueryParams, IdAwareQueryParams } from "./common";
 
+export enum ProductBuckPricingRuleType {
+    PRICE = "price",
+    PERCENT = "percent",
+    FIXED = "fixed",
+}
 export interface Product {
     id?: number;
-    name: string;
-    type: string;
+    name?: string;
+    type?: string;
     sku?: string;
     description?: string;
-    weight: number;
+    weight?: number;
     width?: number;
     depth?: number;
     height?: number;
@@ -86,16 +85,16 @@ export interface Product {
 
 export interface ProductCustomField {
     id?: number;
-    name: string;
-    value: string;
+    name?: string;
+    value?: string;
 }
 
 export interface ProductBuckPricingRule {
     id?: number;
-    quantity_min: number;
-    quantity_max: number;
-    type: string;
-    amount: number;
+    quantity_min?: number;
+    quantity_max?: number;
+    type?: ProductBuckPricingRuleType;
+    amount?: number;
 }
 
 export interface ProductImage {

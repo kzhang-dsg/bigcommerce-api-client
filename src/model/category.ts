@@ -9,8 +9,8 @@ import {
 export interface Category {
     id?: number;
     tree_id?: number;
-    parent_id: number;
-    name: string;
+    parent_id?: number;
+    name?: string;
     description?: string;
     views?: number;
     sort_order?: number;
