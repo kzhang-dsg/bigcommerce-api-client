@@ -48,7 +48,7 @@ export class ApiClient {
                         null,
                         config
                     );
-                    result.data.concat(response.data.data);
+                    result.data?.concat(response.data.data);
                     result.meta = response.data.meta;
                 }
                 response.data = result;
