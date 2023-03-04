@@ -1,5 +1,5 @@
 import { ApiClient } from "./api-client";
-import { CatalogApiClient } from "./catalog";
+import { CatalogApi } from "./catalog";
 import { Config } from "./model/common";
 
 const DEFAULT_MAX_RETRIES = 5;
@@ -17,6 +17,6 @@ export class BigCommerceApiClient {
         this.config.retryOnReadTimeout = this.config.retryOnReadTimeout || true;
 
         this.apiClient = new ApiClient(this.config);
-        this.catalog = new CatalogApiClient(this.apiClient);
+        this.catalog = new CatalogApi(this.apiClient);
     }
 }

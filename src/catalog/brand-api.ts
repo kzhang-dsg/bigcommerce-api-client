@@ -7,7 +7,7 @@ import {
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
-export class BrandApiClient {
+export class BrandApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllBrands<Params extends BrandsQueryParams, T extends Brand>(

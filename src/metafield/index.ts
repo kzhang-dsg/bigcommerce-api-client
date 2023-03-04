@@ -3,7 +3,7 @@ import { Metafield, GetAllMetafieldsParams } from "../model/metafield";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
-export class MetafieldApiClient {
+export class MetafieldApi {
     constructor(
         private readonly apiClient: ApiClient,
         private readonly baseUrl: string

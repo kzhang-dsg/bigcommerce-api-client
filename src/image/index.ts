@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
 import { Data, Image } from "../model/common";
 
-export class ImageApiClient {
+export class ImageApi {
     constructor(
         private readonly apiClient: ApiClient,
         private readonly baseUrl: string

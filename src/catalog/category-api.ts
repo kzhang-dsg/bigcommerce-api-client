@@ -3,7 +3,7 @@ import { Category, CategoriesQueryParams } from "../model/category";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
-export class CategoryApiClient {
+export class CategoryApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllCategories<

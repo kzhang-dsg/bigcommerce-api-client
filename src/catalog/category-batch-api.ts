@@ -4,10 +4,10 @@ import {
     CategoriesQueryParams,
     DeleteCategoriesBatchQueryParams,
 } from "../model/category";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
-export class CategoryBatchApiClient {
+export class CategoryBatchApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllCategories<

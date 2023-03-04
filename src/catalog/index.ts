@@ -1,29 +1,29 @@
 import { ApiClient } from "../api-client";
-import { ImageApiClient } from "../image";
-import { MetafieldApiClient } from "../metafield";
-import { BrandApiClient } from "./brand-api-client";
-import { CategoryApiClient } from "./category-api-client";
-import { CategoryBatchApiClient } from "./category-batch-api-client";
+import { ImageApi } from "../image";
+import { MetafieldApi } from "../metafield";
+import { BrandApi } from "./brand-api";
+import { CategoryApi } from "./category-api";
+import { CategoryBatchApi } from "./category-batch-api";
 
-export class CatalogApiClient {
+export class CatalogApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    readonly brands = new BrandApiClient(this.apiClient);
-    readonly brandImages = new ImageApiClient(
+    readonly brands = new BrandApi(this.apiClient);
+    readonly brandImages = new ImageApi(
         this.apiClient,
         "/v3/catalog/brands"
     );
-    readonly brandMetafields = new MetafieldApiClient(
+    readonly brandMetafields = new MetafieldApi(
         this.apiClient,
         "/v3/catalog/brands"
     );
-    readonly category = new CategoryApiClient(this.apiClient);
-    readonly categoriesBatch = new CategoryBatchApiClient(this.apiClient);
-    readonly categoryMetafields = new MetafieldApiClient(
+    readonly category = new CategoryApi(this.apiClient);
+    readonly categoriesBatch = new CategoryBatchApi(this.apiClient);
+    readonly categoryMetafields = new MetafieldApi(
         this.apiClient,
         "/v3/catalog/categories"
     );
-    readonly categoryImages = new ImageApiClient(
+    readonly categoryImages = new ImageApi(
         this.apiClient,
         "/v3/catalog/categories"
     );

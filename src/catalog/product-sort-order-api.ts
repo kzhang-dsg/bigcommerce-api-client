@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
 import { PaginatedData, ProductSortOrder } from "../model/common";
 
-export class ProductSortOrderApiClient {
+export class ProductSortOrderApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getProductSortOrder<T extends ProductSortOrder>(
