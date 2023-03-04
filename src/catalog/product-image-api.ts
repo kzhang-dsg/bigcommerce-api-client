@@ -2,7 +2,6 @@ import { ApiClient } from "../api-client";
 import { ProductImage } from "../model/product";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
-import { File } from "buffer";
 import FormData from "form-data";
 import { ReadStream } from "fs";
 

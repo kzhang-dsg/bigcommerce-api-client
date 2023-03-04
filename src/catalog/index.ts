@@ -34,4 +34,8 @@ export class CatalogApi {
     );
     readonly productComplexRules = new ProductComplexRuleApi(this.apiClient);
     readonly productCustomFields = new ProductCustomFieldApi(this.apiClient);
+    readonly productMetafields = new MetafieldApi(
+        this.apiClient,
+        "/v3/catalog/products"
+    );
 }
