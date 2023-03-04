@@ -1,0 +1,15 @@
+{
+    "include": ["src"],
+    "compilerOptions": {
+        "target": "es2016",
+        "lib": ["es2022"],
+        "module": "commonjs",
+        "outDir": "lib",
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "typeRoots": ["node_modules/@types"]
+    }
+}
