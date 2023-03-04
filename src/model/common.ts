@@ -22,6 +22,7 @@ export interface Config {
     maxRetries?: number;
     retryDelay?: number;
     retryOnReadTimeout?: boolean;
+    failOn404?: boolean;
 }
 
 export interface PaginatedData<Type> {
