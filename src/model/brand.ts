@@ -18,7 +18,7 @@ export interface BrandsQueryParams
     page_title?: string;
 }
 
-export interface DeleteAllBrandsQueryParams {
+export interface DeleteBrandsQueryParams {
     name?: string;
     page_title?: string;
 }

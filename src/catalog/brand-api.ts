@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
 import {
     Brand,
-    DeleteAllBrandsQueryParams,
+    DeleteBrandsQueryParams,
     BrandsQueryParams,
 } from "../model/brand";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
@@ -28,7 +28,7 @@ export class BrandApi {
         return response.data;
     }
 
-    async deleteAllBrands<Params extends DeleteAllBrandsQueryParams>(
+    async deleteBrands<Params extends DeleteBrandsQueryParams>(
         params?: Params
     ): Promise<void> {
         await this.apiClient.delete(

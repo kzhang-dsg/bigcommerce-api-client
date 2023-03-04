@@ -30,7 +30,7 @@ export class CategoryApi {
         return response.data;
     }
 
-    async deleteAllCategories<Params extends CategoriesQueryParams>(
+    async deleteCategories<Params extends CategoriesQueryParams>(
         params?: Params
     ): Promise<void> {
         await this.apiClient.delete(
