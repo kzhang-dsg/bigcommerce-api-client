@@ -11,6 +11,7 @@ import { ProductCustomFieldApi } from "./product-custom-field-api";
 import { ProductModifierApi } from "./product-modifier-api";
 import { ProductModifierImageApi } from "./product-modifier-image-api";
 import { ProductReviewApi } from "./product-review-api";
+import { ProductVariantApi } from "./product-variant-api";
 export declare class CatalogApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
@@ -29,4 +30,5 @@ export declare class CatalogApi {
     readonly productModifiers: ProductModifierApi;
     readonly ProductModifierImages: ProductModifierImageApi;
     readonly productReviews: ProductReviewApi;
+    readonly productRVariants: ProductVariantApi;
 }
