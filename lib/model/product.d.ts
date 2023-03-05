@@ -324,6 +324,10 @@ export interface ProductReview {
     date_created?: string;
     date_modified?: string;
 }
+export interface ProductChannelAssignment {
+    product_id?: number;
+    channel_id?: number;
+}
 export interface ProductsQueryParams extends FieldAwareQueryParams, IdAwareQueryParams {
     availability?: string;
     brand_id?: number;
@@ -389,4 +393,8 @@ export interface GetProductQueryParams extends FieldAwareQueryParams {
 }
 export interface ProductReviewsQueryParams extends FieldAwareQueryParams {
     status?: ProductReviewStatus;
+}
+export interface ProductChannelAssignmentsQueryParams {
+    "channel_id:in"?: string;
+    "product_id:in"?: string;
 }

@@ -6,6 +6,7 @@ import { CategoryApi } from "./category-api";
 import { CategoryBatchApi } from "./category-batch-api";
 import { ProductApi } from "./product-api";
 import { ProductBuckPricingRuleApi } from "./product-buck-pricing-rule-api";
+import { ProductChannelAssignmentApi } from "./product-channel-assignment-api";
 import { ProductComplexRuleApi } from "./product-complex-rule-api";
 import { ProductCustomFieldApi } from "./product-custom-field-api";
 import { ProductModifierApi } from "./product-modifier-api";
@@ -15,6 +16,7 @@ import { ProductVariantApi } from "./product-variant-api";
 import { ProductVariantMetafieldApi } from "./product-variant-metafield-api";
 import { ProductVariantOptionApi } from "./product-variant-option-api";
 import { ProductVariantOptionValueApi } from "./product-variant-option-api copy";
+import { ProductVideoApi } from "./product-video-api";
 export declare class CatalogApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
@@ -37,4 +39,6 @@ export declare class CatalogApi {
     readonly productVariantMetafields: ProductVariantMetafieldApi;
     readonly productVariantOptions: ProductVariantOptionApi;
     readonly productVariantOptionValues: ProductVariantOptionValueApi;
+    readonly productVideos: ProductVideoApi;
+    readonly productChannelAssignments: ProductChannelAssignmentApi;
 }
