@@ -328,6 +328,10 @@ export interface ProductChannelAssignment {
     product_id?: number;
     channel_id?: number;
 }
+export interface ProductCategoryAssignment {
+    product_id?: number;
+    category_id?: number;
+}
 export interface ProductsQueryParams extends FieldAwareQueryParams, IdAwareQueryParams {
     availability?: string;
     brand_id?: number;
@@ -396,5 +400,9 @@ export interface ProductReviewsQueryParams extends FieldAwareQueryParams {
 }
 export interface ProductChannelAssignmentsQueryParams {
     "channel_id:in"?: string;
+    "product_id:in"?: string;
+}
+export interface ProductCategoryAssignmentsQueryParams {
+    "category_id:in"?: string;
     "product_id:in"?: string;
 }
