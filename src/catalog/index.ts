@@ -13,6 +13,7 @@ import { ProductModifierImageApi } from "./product-modifier-image-api";
 import { ProductReviewApi } from "./product-review-api";
 import { ProductVariantApi } from "./product-variant-api";
 import { ProductVariantMetafieldApi } from "./product-variant-metafield-api";
+import { ProductVariantOptionApi } from "./product-variant-option-api";
 
 export class CatalogApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -50,6 +51,9 @@ export class CatalogApi {
     readonly productReviews = new ProductReviewApi(this.apiClient);
     readonly productVariants = new ProductVariantApi(this.apiClient);
     readonly productVariantMetafields = new ProductVariantMetafieldApi(
+        this.apiClient
+    );
+    readonly productVariantOptions = new ProductVariantOptionApi(
         this.apiClient
     );
 }
