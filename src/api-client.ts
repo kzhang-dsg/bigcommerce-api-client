@@ -135,6 +135,7 @@ export class ApiClient {
                 );
             } catch (error: any) {
                 if (
+                    !this.config.failOn404 &&
                     (method === "get" || method === "delete") &&
                     error.response?.status === 404
                 ) {
