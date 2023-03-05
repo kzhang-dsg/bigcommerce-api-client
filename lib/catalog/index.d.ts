@@ -17,6 +17,7 @@ import { ProductVariantMetafieldApi } from "./product-variant-metafield-api";
 import { ProductVariantOptionApi } from "./product-variant-option-api";
 import { ProductVariantOptionValueApi } from "./product-variant-option-api copy";
 import { ProductVideoApi } from "./product-video-api";
+import { VariantApi } from "./variant-api";
 export declare class CatalogApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
@@ -41,4 +42,5 @@ export declare class CatalogApi {
     readonly productVariantOptionValues: ProductVariantOptionValueApi;
     readonly productVideos: ProductVideoApi;
     readonly productChannelAssignments: ProductChannelAssignmentApi;
+    readonly variants: VariantApi;
 }

@@ -456,3 +456,9 @@ export interface ProductCategoryAssignmentsQueryParams {
     "category_id:in"?: string;
     "product_id:in"?: string;
 }
+
+export interface VariantsQueryParams extends FieldAwareQueryParams {
+    id?: number;
+    product_id?: string;
+    sku?: string;
+}
