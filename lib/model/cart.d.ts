@@ -175,6 +175,26 @@ export interface OptionSelection {
     nameId?: number;
     valueId?: number;
 }
-export interface CartLineItemsQueryParam {
+export interface CarRedirectUrl {
+    cart_url?: string;
+    checkout_url?: string;
+    embedded_checkout_url?: string;
+}
+export interface CartSettings {
+    allow_purchasing?: boolean;
+}
+export interface CreateCartRequest {
+    customer_id?: number;
+    line_items?: LineItemWithVariant[] | LineItemWithModifier[];
+    gift_certificates?: GiftCertificate[];
+    custom_items?: CustomLineItem[];
+    channel_id?: number;
+    currency?: Currency;
+    locale?: string;
+}
+export interface UpdateCustomerIdRequest {
+    customer_id?: number;
+}
+export interface CartsQueryParam {
     include?: string;
 }

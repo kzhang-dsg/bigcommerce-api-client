@@ -2,7 +2,7 @@ import { ApiClient } from "../api-client";
 import {
     Cart,
     CartLineItemsRequest,
-    CartLineItemsQueryParam,
+    CartsQueryParam,
 } from "../model/cart";
 import { appendQueryString } from "../util";
 
@@ -10,7 +10,7 @@ export class CartItemApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async addCartLineItems<
-        Params extends CartLineItemsQueryParam,
+        Params extends CartsQueryParam,
         T extends CartLineItemsRequest,
         R extends Cart
     >(cartId: number, cartLineItems: T, params?: Params): Promise<R> {
@@ -22,7 +22,7 @@ export class CartItemApi {
     }
 
     async updateCartLineItem<
-        Params extends CartLineItemsQueryParam,
+        Params extends CartsQueryParam,
         T extends CartLineItemsRequest,
         R extends Cart
     >(
@@ -42,7 +42,7 @@ export class CartItemApi {
     }
 
     async deleteCartLineItem<
-        Params extends CartLineItemsQueryParam,
+        Params extends CartsQueryParam,
         R extends Cart
     >(cartId: number, cartLineItemId: number, params?: Params): Promise<R> {
         const response = await this.apiClient.delete(
