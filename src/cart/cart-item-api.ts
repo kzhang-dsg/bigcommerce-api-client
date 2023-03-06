@@ -4,7 +4,6 @@ import {
     CartLineItemsRequest,
     CartLineItemsQueryParam,
 } from "../model/cart";
-import { Data, FieldAwareQueryParams } from "../model/common";
 import { appendQueryString } from "../util";
 
 export class CartItemApi {
