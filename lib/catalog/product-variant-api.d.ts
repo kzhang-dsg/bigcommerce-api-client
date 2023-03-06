@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import { ApiClient } from "../api-client";
-import { ProductVariant } from "../model/product";
+import { ProductVariant } from "../model/catalog";
 import { Data, FieldAwareQueryParams, Image, PaginatedData } from "../model/common";
 import { ReadStream } from "fs";
 export declare class ProductVariantApi {

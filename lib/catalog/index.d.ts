@@ -4,6 +4,7 @@ import { MetafieldApi } from "../metafield";
 import { BrandApi } from "./brand-api";
 import { CategoryApi } from "./category-api";
 import { CategoryBatchApi } from "./category-batch-api";
+import { CategoryTreeApi } from "./category-tree-api";
 import { ProductApi } from "./product-api";
 import { ProductBuckPricingRuleApi } from "./product-buck-pricing-rule-api";
 import { ProductChannelAssignmentApi } from "./product-channel-assignment-api";
@@ -43,4 +44,5 @@ export declare class CatalogApi {
     readonly productVideos: ProductVideoApi;
     readonly productChannelAssignments: ProductChannelAssignmentApi;
     readonly variants: VariantApi;
+    readonly categoryTrees: CategoryTreeApi;
 }

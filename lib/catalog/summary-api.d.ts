@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { CatalogSummary } from "../model/product";
+import { CatalogSummary } from "../model/catalog";
 import { Data } from "../model/common";
 export declare class SummaryApi {
     private readonly apiClient;

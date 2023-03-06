@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ProductOption } from "../model/product";
+import { ProductOption } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 

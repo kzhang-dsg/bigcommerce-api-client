@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ProductModifier } from "../model/product";
+import { ProductModifier } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 export declare class ProductModifierApi {
     private readonly apiClient;

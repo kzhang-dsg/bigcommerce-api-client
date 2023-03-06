@@ -4,6 +4,7 @@ import { MetafieldApi } from "../metafield";
 import { BrandApi } from "./brand-api";
 import { CategoryApi } from "./category-api";
 import { CategoryBatchApi } from "./category-batch-api";
+import { CategoryTreeApi } from "./category-tree-api";
 import { ProductApi } from "./product-api";
 import { ProductBuckPricingRuleApi } from "./product-buck-pricing-rule-api";
 import { ProductChannelAssignmentApi } from "./product-channel-assignment-api";
@@ -68,4 +69,5 @@ export class CatalogApi {
         this.apiClient
     );
     readonly variants = new VariantApi(this.apiClient);
+    readonly categoryTrees = new CategoryTreeApi(this.apiClient);
 }

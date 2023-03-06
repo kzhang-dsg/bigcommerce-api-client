@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ProductReview, ProductReviewsQueryParams } from "../model/product";
+import { ProductReview, ProductReviewsQueryParams } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 

@@ -3,7 +3,7 @@ import {
     Category,
     CategoriesQueryParams,
     DeleteCategoriesBatchQueryParams,
-} from "../model/category";
+} from "../model/catalog";
 import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 

@@ -1,4 +1,4 @@
-import { CustomUrl, FieldAwareQueryParams, IdAwareQueryParams } from "./common";
+import { CustomUrl, FieldAwareQueryParams, IdAwareQueryParams, Sort, Url } from "./common";
 export declare enum ProductBuckPricingRuleType {
     PRICE = "price",
     PERCENT = "percent",
@@ -40,6 +40,35 @@ export declare enum ProductListShippingCalc {
 export declare enum ProductReviewStatus {
     PENDING = 0,
     APPROVED = 1
+}
+export interface Brand {
+    id?: number;
+    name: string;
+    page_title?: string;
+    meta_keywords?: string[];
+    meta_description?: string;
+    image_url?: string;
+    search_keywords?: string;
+    custom_url?: CustomUrl;
+}
+export interface Category {
+    id?: number;
+    tree_id?: number;
+    parent_id?: number;
+    name?: string;
+    description?: string;
+    views?: number;
+    sort_order?: number;
+    page_title?: string;
+    meta_keywords?: string[];
+    meta_description?: string;
+    layout_file?: string;
+    image_url?: string;
+    is_visible?: boolean;
+    search_keywords?: string;
+    default_product_sort?: Sort;
+    custom_url?: CustomUrl;
+    url?: Url;
 }
 export interface Product {
     id?: number;
@@ -344,6 +373,64 @@ export interface CatalogSummary {
     oldest_variant_date?: string;
     newest_variant_date?: string;
 }
+export interface SimpleCategoryTree {
+    id?: number;
+    name?: string;
+    channels?: number[];
+}
+export interface NestedCategoryTree {
+    id?: number;
+    parent_id?: number;
+    depth?: number;
+    path?: number[];
+    name?: string;
+    is_visible?: boolean;
+    children?: NestedCategoryTree[];
+}
+export interface BrandsQueryParams extends FieldAwareQueryParams, IdAwareQueryParams {
+    name?: string;
+    page_title?: string;
+}
+export interface DeleteBrandsQueryParams {
+    name?: string;
+    page_title?: string;
+}
+export interface CategoriesQueryParams extends FieldAwareQueryParams, IdAwareQueryParams {
+    is_visible?: boolean;
+    keyword?: string;
+    name?: string;
+    "name:like"?: string[];
+    page_title?: string;
+    "page_title:like"?: string;
+    parent_id?: number;
+    "parent_id:greater"?: number[];
+    "parent_id:in"?: number[];
+    "parent_id:less"?: number[];
+    "parent_id:max"?: number[];
+    "parent_id:min"?: number[];
+}
+export interface CategoriesBatchQueryParams extends FieldAwareQueryParams {
+    "category_id:in"?: string;
+    "category_id:not_in"?: string;
+    "category_uuid:in"?: string;
+    "category_uuid:not_in"?: string;
+    is_visible?: boolean;
+    keyword?: string;
+    name?: string;
+    "name:like"?: string;
+    page_title?: string;
+    "page_title:like"?: string;
+    "parent_id:in"?: string;
+    "parent_id:not_in"?: string;
+    "tree_id:in"?: string;
+    "tree_id:not_in"?: string;
+}
+export interface DeleteCategoriesBatchQueryParams {
+    "category_id:in"?: string;
+    "category_uuid:in"?: string;
+    "parent_id:in"?: string;
+    "tree_id:in"?: string;
+}
 export interface ProductsQueryParams extends FieldAwareQueryParams, IdAwareQueryParams {
     availability?: string;
     brand_id?: number;
@@ -422,4 +509,14 @@ export interface VariantsQueryParams extends FieldAwareQueryParams {
     id?: number;
     product_id?: string;
     sku?: string;
+}
+export interface CategoryTreesQueryParams {
+    "channel_id:in"?: string;
+    "id:in"?: string;
+}
+export interface DeleteCategoryTreesQueryParams {
+    "id:in"?: string;
+}
+export interface GetCategoryTreeQueryParams {
+    depth?: number;
 }

@@ -3,7 +3,7 @@ import {
     Brand,
     DeleteBrandsQueryParams,
     BrandsQueryParams,
-} from "../model/brand";
+} from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 

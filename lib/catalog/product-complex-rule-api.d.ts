@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ProductComplexRule } from "../model/product";
+import { ProductComplexRule } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 export declare class ProductComplexRuleApi {
     private readonly apiClient;

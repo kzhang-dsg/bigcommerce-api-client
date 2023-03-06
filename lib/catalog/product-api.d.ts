@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { UpdateProductsQueryParams, DeleteProductsQueryParams, GetProductQueryParams, Product, ProductsQueryParams } from "../model/product";
+import { UpdateProductsQueryParams, DeleteProductsQueryParams, GetProductQueryParams, Product, ProductsQueryParams } from "../model/catalog";
 import { Data, PaginatedData } from "../model/common";
 export declare class ProductApi {
     private readonly apiClient;

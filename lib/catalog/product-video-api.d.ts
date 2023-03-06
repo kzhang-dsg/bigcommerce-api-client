@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ProductVideo } from "../model/product";
+import { ProductVideo } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 export declare class ProductVideoApi {
     private readonly apiClient;

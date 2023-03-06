@@ -5,7 +5,7 @@ import {
     GetProductQueryParams,
     Product,
     ProductsQueryParams,
-} from "../model/product";
+} from "../model/catalog";
 import { Data, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 

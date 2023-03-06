@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ProductVariant } from "../model/product";
+import { ProductVariant } from "../model/catalog";
 import {
     Data,
     FieldAwareQueryParams,

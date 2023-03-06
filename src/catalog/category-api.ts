@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Category, CategoriesQueryParams } from "../model/category";
+import { Category, CategoriesQueryParams } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 

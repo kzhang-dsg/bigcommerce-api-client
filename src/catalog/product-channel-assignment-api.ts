@@ -2,7 +2,7 @@ import { ApiClient } from "../api-client";
 import {
     ProductChannelAssignment,
     ProductChannelAssignmentsQueryParams,
-} from "../model/product";
+} from "../model/catalog";
 import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
@@ -28,7 +28,7 @@ export class ProductChannelAssignmentApi {
         return response.data;
     }
 
-    async createChannelAssignment<T extends ProductChannelAssignment>(
+    async createChannelAssignments<T extends ProductChannelAssignment>(
         channelAssignments: T[]
     ): Promise<void> {
         await this.apiClient.post(
@@ -37,7 +37,7 @@ export class ProductChannelAssignmentApi {
         );
     }
 
-    async deleteChannelAssignment<
+    async deleteChannelAssignments<
         Params extends ProductChannelAssignmentsQueryParams
     >(params: Params): Promise<void> {
         await this.apiClient.delete(

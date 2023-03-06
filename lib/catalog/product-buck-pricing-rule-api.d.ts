@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ProductBuckPricingRule } from "../model/product";
+import { ProductBuckPricingRule } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 export declare class ProductBuckPricingRuleApi {
     private readonly apiClient;
