@@ -1,13 +1,8 @@
 import { ApiClient } from "../api-client";
-import {
-    Cart,
-    CartsQueryParam,
-    CreateCartRequest,
-    UpdateCustomerIdRequest,
-} from "../model/cart";
+import { Cart, CartsQueryParam, CreateCartRequest } from "../model/cart";
 import { appendQueryString } from "../util";
 
-export class CartApi {
+export class CartSingleApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async createCart<
@@ -32,14 +27,16 @@ export class CartApi {
         return response.data;
     }
 
-    async updateCustomerId<
-        Params extends CartsQueryParam,
-        T extends UpdateCustomerIdRequest,
-        R extends Cart
-    >(cartId: number, updateCustomerIdRequest: T, params?: Params): Promise<R> {
+    async updateCustomerId<Params extends CartsQueryParam, T extends Cart>(
+        cartId: number,
+        customerId: number,
+        params?: Params
+    ): Promise<T> {
         const response = await this.apiClient.put(
             appendQueryString(`/v3/carts/${cartId}`, params),
-            updateCustomerIdRequest
+            {
+                customer_id: customerId,
+            }
         );
         return response.data;
     }

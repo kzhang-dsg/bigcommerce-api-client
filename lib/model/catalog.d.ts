@@ -190,7 +190,7 @@ export interface ProductOption {
     type?: string;
     config?: ProductOptionConfig;
     sort_order?: number;
-    option_values?: ProductOptionOptionValue;
+    option_values?: ProductOptionValue;
 }
 export interface ProductOptionConfig {
     default_value?: string;
@@ -218,7 +218,7 @@ export interface ProductOptionConfig {
     product_list_adjusts_pricing?: boolean;
     product_list_shipping_calc?: string;
 }
-export interface ProductOptionOptionValue {
+export interface ProductOptionValue {
     is_default?: boolean;
     label?: string;
     sort_order?: number;
@@ -234,7 +234,7 @@ export interface ProductModifier {
     id?: number;
     product_id?: number;
     name?: string;
-    option_values?: ProductModifierOptionValue[];
+    option_values?: ProductModifierValue[];
 }
 export interface Config {
     default_value?: string;
@@ -262,7 +262,7 @@ export interface Config {
     product_list_adjusts_pricing?: boolean;
     product_list_shipping_calc?: ProductListShippingCalc;
 }
-export interface ProductModifierOptionValue {
+export interface ProductModifierValue {
     is_default?: boolean;
     label?: string;
     sort_order?: number;

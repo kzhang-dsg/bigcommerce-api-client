@@ -1,24 +1,24 @@
 import { ApiClient } from "../api-client";
-import { ProductOptionValue } from "../model/catalog";
+import { ProductModifierValue } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
-export class ProductVariantOptionValueApi {
+export class ProductModifierValueApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getAllVariantOptionValues<
+    async getAllModifierValues<
         Params extends FieldAwareQueryParams,
-        T extends ProductOptionValue
+        T extends ProductModifierValue
     >(
         productId: number,
-        optionId: number,
+        modifierId: number,
         params?: Params,
         page?: number,
         limit?: number
     ): Promise<PaginatedData<T>> {
         const response = await this.apiClient.get(
             appendQueryString(
-                `/v3/catalog/products/${productId}/option/${optionId}/values`,
+                `/v3/catalog/products/${productId}/modifiers/${modifierId}/values`,
                 params
             ),
             page,
@@ -27,55 +27,55 @@ export class ProductVariantOptionValueApi {
         return response.data;
     }
 
-    async createVariantOptionValue<T extends ProductOptionValue>(
+    async createModifierValue<T extends ProductModifierValue>(
         productId: number,
-        optionId: number,
-        optionValue: T
+        modifierId: number,
+        modifierValue: T
     ): Promise<Data<T>> {
         const response = await this.apiClient.post(
-            `/v3/catalog/products/${productId}/option/${optionId}/values`,
-            optionValue
+            `/v3/catalog/products/${productId}/modifiers/${modifierId}/values`,
+            modifierValue
         );
         return response.data;
     }
 
-    async getVariantOptionValue<
-        T extends ProductOptionValue,
+    async getModifierValue<
+        T extends ProductModifierValue,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
-        optionId: number,
+        modifierId: number,
         valueId: number,
         params?: Params
     ): Promise<Data<T>> {
         const response = await this.apiClient.get(
             appendQueryString(
-                `/v3/catalog/products/${productId}/option/${optionId}/values/${valueId}`,
+                `/v3/catalog/products/${productId}/modifiers/${modifierId}/values/${valueId}`,
                 params
             )
         );
         return response.data;
     }
 
-    async updateVariantOptionValue<T extends ProductOptionValue>(
+    async updateModifierValue<T extends ProductModifierValue>(
         productId: number,
-        optionId: number,
-        optionValue: T
+        modifierId: number,
+        modifierValue: T
     ): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/option/${optionId}/values/${optionValue.id}`,
-            optionValue
+            `/v3/catalog/products/${productId}/modifiers/${modifierId}/values/${modifierValue.id}`,
+            modifierValue
         );
         return response.data;
     }
 
-    async deleteVariantOptionValue(
+    async deleteModifierValue(
         productId: number,
-        optionId: number,
+        modifierId: number,
         valueId: number
     ): Promise<void> {
         await this.apiClient.delete(
-            `/v3/catalog/products/${productId}/option/${optionId}/values/${valueId}`
+            `/v3/catalog/products/${productId}/modifiers/${modifierId}/values/${valueId}`
         );
     }
 }

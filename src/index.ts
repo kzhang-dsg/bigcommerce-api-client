@@ -16,16 +16,16 @@ const DEFAULT_CONFIG: Config = {
 
 export class BigCommerceApiClient {
     readonly apiClient: ApiClient;
-    readonly catalog: CatalogApi;
     readonly carts: CartsApi;
+    readonly catalog: CatalogApi;
     readonly customersV2: CustomersV2Api;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
 
         this.apiClient = new ApiClient(this.config);
-        this.catalog = new CatalogApi(this.apiClient);
         this.carts = new CartsApi(this.apiClient);
+        this.catalog = new CatalogApi(this.apiClient);
         this.customersV2 = new CustomersV2Api(this.apiClient);
     }
 }

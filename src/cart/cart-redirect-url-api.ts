@@ -5,7 +5,7 @@ import { Data } from "../model/common";
 export class CartRedirectUrlApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async createCartLineRedirectUrls<T extends CarRedirectUrl>(
+    async createCartLineRedirectUrl<T extends CarRedirectUrl>(
         cartId: number
     ): Promise<Data<T>> {
         const response = await this.apiClient.post(

@@ -27,6 +27,48 @@ export interface Authentication {
     password_confirmation?: string;
 }
 
+export interface CustomerGroup {
+    id?: number;
+    name?: string;
+    is_default?: boolean;
+    category_access?: CategoryAccessLevel;
+    discount_rules?: DiscountRule[];
+    is_group_for_guests?: boolean;
+}
+
+export interface CategoryAccessLevel {
+    type?: string;
+    categories?: number[];
+}
+
+export interface DiscountRule {
+    type?: string;
+    method?: string;
+    amount?: string;
+    price_list_id?: number;
+}
+
+export interface CustomerAddress {
+    id?: number;
+    country_iso2?: string;
+    customer_id?: number;
+    first_name?: string;
+    last_name?: string;
+    company?: string;
+    street_1?: string;
+    street_2?: string;
+    city?: string;
+    state?: string;
+    zip?: string;
+    country?: string;
+    phone?: string;
+    address_type?: string;
+}
+
+export interface ValidatePasswordResponse {
+    success: boolean;
+}
+
 export interface CustomersQueryParams {
     company?: string;
     customer_group_id?: number;
@@ -42,4 +84,10 @@ export interface CustomersQueryParams {
     phone?: string;
     store_credit?: string;
     tax_exempt_category?: string;
+}
+
+export interface CustomerGroupsQueryParams {
+    is_default?: boolean;
+    is_group_for_guests?: boolean;
+    name?: string;
 }

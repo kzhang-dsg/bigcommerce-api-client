@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { Cart, CartLineItemsRequest, CartsQueryParam } from "../model/cart";
-export declare class CartItemApi {
+export declare class CartLineItemApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
     addCartLineItems<Params extends CartsQueryParam, T extends CartLineItemsRequest, R extends Cart>(cartId: number, cartLineItems: T, params?: Params): Promise<R>;

@@ -6,8 +6,8 @@ import { Config } from "./model/common";
 export declare class BigCommerceApiClient {
     private readonly config;
     readonly apiClient: ApiClient;
-    readonly catalog: CatalogApi;
     readonly carts: CartsApi;
+    readonly catalog: CatalogApi;
     readonly customersV2: CustomersV2Api;
     constructor(config: Config);
 }

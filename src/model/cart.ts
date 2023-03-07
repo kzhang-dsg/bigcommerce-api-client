@@ -217,10 +217,6 @@ export interface CreateCartRequest {
     locale?: string;
 }
 
-export interface UpdateCustomerIdRequest {
-    customer_id?: number;
-}
-
 export interface CartsQueryParam {
     include?: string;
 }

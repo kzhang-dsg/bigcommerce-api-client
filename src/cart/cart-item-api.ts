@@ -6,7 +6,7 @@ import {
 } from "../model/cart";
 import { appendQueryString } from "../util";
 
-export class CartItemApi {
+export class CartLineItemApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async addCartLineItems<
