@@ -81,3 +81,14 @@ export interface ProductSortOrder {
     product_id: number;
     sort_order: number;
 }
+export interface Resource {
+    url?: string;
+    resource?: string;
+}
+export interface FormField {
+    name?: string;
+    value?: string;
+}
+export interface Count {
+    count: number;
+}
