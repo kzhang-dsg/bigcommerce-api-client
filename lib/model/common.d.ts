@@ -16,6 +16,7 @@ export declare enum Sort {
 export interface Config {
     storeHash: string;
     accessToken: string;
+    defaultLimit?: number;
     timeout?: number;
     maxRetries?: number;
     retryDelay?: number;

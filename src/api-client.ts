@@ -76,6 +76,7 @@ export class ApiClient {
 
             return Promise.resolve(response) as R;
         } else {
+            limit = limit || this.config.defaultLimit;
             return this.callWithRetries(
                 "get",
                 appendQueryString(url, {

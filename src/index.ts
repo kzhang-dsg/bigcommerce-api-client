@@ -7,6 +7,7 @@ import { Config } from "./model/common";
 const DEFAULT_CONFIG: Config = {
     storeHash: "",
     accessToken: "",
+    defaultLimit: 250,
     timeout: 60000,
     maxRetries: 5,
     retryDelay: 5000,
