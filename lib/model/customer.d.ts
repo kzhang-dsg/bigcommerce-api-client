@@ -1,4 +1,12 @@
 import { FormField, Resource } from "./common";
+export declare enum CustomerSort {
+    DATE_CREATED_ASC = "date_created:asc",
+    DATE_CREATED_DESC = "date_created:desc",
+    LAST_NAME_ASC = "last_name:asc",
+    LAST_NAME_DESC = "last_name:desc",
+    DATE_MODIFIED_ASC = "date_modified:asc",
+    DATE_MODIFIED_DESC = "date_modified:desc"
+}
 export interface Customer {
     id?: number;
     date_created?: string;
@@ -61,7 +69,7 @@ export interface CustomerAddress {
 export interface ValidatePasswordResponse {
     success: boolean;
 }
-export interface CustomersQueryParams {
+export interface CustomersV2QueryParams {
     company?: string;
     customer_group_id?: number;
     email?: string;
@@ -77,8 +85,25 @@ export interface CustomersQueryParams {
     store_credit?: string;
     tax_exempt_category?: string;
 }
-export interface CustomerGroupsQueryParams {
+export interface CustomerV2GroupsQueryParams {
     is_default?: boolean;
     is_group_for_guests?: boolean;
     name?: string;
+}
+export interface CustomersV3QueryParams {
+    "id:in"?: number[];
+    "company:in"?: number[];
+    "customer_group_id:in"?: number[];
+    date_created?: string;
+    "date_created:max"?: string;
+    "date_created:min"?: string;
+    date_modified?: string;
+    "date_modified:min"?: string;
+    "date_modified:max"?: string;
+    "email:in"?: string;
+    "name:in"?: string[];
+    "name:like"?: string[];
+    "registration_ip_address:in"?: string[];
+    include?: string[];
+    sort?: CustomerSort;
 }

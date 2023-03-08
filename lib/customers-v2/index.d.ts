@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { Count } from "../model/common";
-import { CustomersQueryParams, Customer } from "../model/customer";
+import { CustomersV2QueryParams, Customer } from "../model/customer";
 import { CustomerAddressApi } from "./customer-address-api";
 import { CustomerGroupApi } from "./customer-group-api";
 import { CustomerPasswordApi } from "./customer-password-api";
@@ -10,7 +10,7 @@ export declare class CustomersV2Api {
     readonly customerAddresses: CustomerAddressApi;
     readonly customerGroups: CustomerGroupApi;
     readonly customerPasswords: CustomerPasswordApi;
-    getAllCustomers<Params extends CustomersQueryParams, T extends Customer>(params?: Params, page?: number, limit?: number): Promise<T[]>;
+    getAllCustomers<Params extends CustomersV2QueryParams, T extends Customer>(params?: Params, page?: number, limit?: number): Promise<T[]>;
     createCustomer<T extends Customer>(customer: T): Promise<T>;
     deleteCustomers(): Promise<void>;
     getCustomer<T extends Customer>(customerId: number): Promise<T>;

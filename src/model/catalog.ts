@@ -456,27 +456,27 @@ export interface CategoriesQueryParams
 }
 
 export interface CategoriesBatchQueryParams extends FieldAwareQueryParams {
-    "category_id:in"?: string;
-    "category_id:not_in"?: string;
-    "category_uuid:in"?: string;
-    "category_uuid:not_in"?: string;
+    "category_id:in"?: number[];
+    "category_id:not_in"?: number[];
+    "category_uuid:in"?: string[];
+    "category_uuid:not_in"?: string[];
     is_visible?: boolean;
     keyword?: string;
     name?: string;
     "name:like"?: string;
     page_title?: string;
     "page_title:like"?: string;
-    "parent_id:in"?: string;
-    "parent_id:not_in"?: string;
-    "tree_id:in"?: string;
-    "tree_id:not_in"?: string;
+    "parent_id:in"?: number[];
+    "parent_id:not_in"?: number[];
+    "tree_id:in"?: number[];
+    "tree_id:not_in"?: number[];
 }
 
 export interface DeleteCategoriesBatchQueryParams {
-    "category_id:in"?: string;
-    "category_uuid:in"?: string;
-    "parent_id:in"?: string;
-    "tree_id:in"?: string;
+    "category_id:in"?: number[];
+    "category_uuid:in"?: number[];
+    "parent_id:in"?: number[];
+    "tree_id:in"?: number[];
 }
 
 export interface ProductsQueryParams
@@ -484,8 +484,8 @@ export interface ProductsQueryParams
         IdAwareQueryParams {
     availability?: string;
     brand_id?: number;
-    categories?: number;
-    "categories:in"?: number;
+    categories?: number[];
+    "categories:in"?: number[];
     condition?: string;
     date_last_imported?: string;
     "date_last_imported:max"?: string;
@@ -494,7 +494,7 @@ export interface ProductsQueryParams
     "date_modified:max"?: string;
     "date_modified:min"?: string;
     direction?: string;
-    include?: string;
+    include?: string[];
     inventory_level?: number;
     "inventory_level:greater"?: number;
     "inventory_level:in"?: number;
@@ -522,13 +522,13 @@ export interface ProductsQueryParams
 }
 
 export interface UpdateProductsQueryParams {
-    include_fields?: string;
+    include_fields?: string[];
 }
 
 export interface DeleteProductsQueryParams {
-    "id:in": string;
+    "id:in": number[];
     brand_id?: number;
-    categories?: number;
+    categories?: number[];
     condition?: string;
     date_last_imported?: string;
     date_modified?: string;
@@ -545,7 +545,7 @@ export interface DeleteProductsQueryParams {
 }
 
 export interface GetProductQueryParams extends FieldAwareQueryParams {
-    include?: string;
+    include?: string[];
 }
 
 export interface ProductReviewsQueryParams extends FieldAwareQueryParams {
@@ -553,13 +553,13 @@ export interface ProductReviewsQueryParams extends FieldAwareQueryParams {
 }
 
 export interface ProductChannelAssignmentsQueryParams {
-    "channel_id:in"?: string;
-    "product_id:in"?: string;
+    "channel_id:in"?: number[];
+    "product_id:in"?: number[];
 }
 
 export interface ProductCategoryAssignmentsQueryParams {
-    "category_id:in"?: string;
-    "product_id:in"?: string;
+    "category_id:in"?: number[];
+    "product_id:in"?: number[];
 }
 
 export interface VariantsQueryParams extends FieldAwareQueryParams {
@@ -569,12 +569,12 @@ export interface VariantsQueryParams extends FieldAwareQueryParams {
 }
 
 export interface CategoryTreesQueryParams {
-    "channel_id:in"?: string;
-    "id:in"?: string;
+    "channel_id:in"?: number[];
+    "id:in"?: number[];
 }
 
 export interface DeleteCategoryTreesQueryParams {
-    "id:in"?: string;
+    "id:in"?: number[];
 }
 
 export interface GetCategoryTreeQueryParams {

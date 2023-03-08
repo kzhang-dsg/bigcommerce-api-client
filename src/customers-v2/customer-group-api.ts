@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { CustomerGroup, CustomerGroupsQueryParams } from "../model/customer";
+import { CustomerGroup, CustomerV2GroupsQueryParams } from "../model/customer";
 import { Count } from "../model/common";
 import { appendQueryString } from "../util";
 
@@ -7,7 +7,7 @@ export class CustomerGroupApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllCustomerGroups<
-        Params extends CustomerGroupsQueryParams,
+        Params extends CustomerV2GroupsQueryParams,
         T extends CustomerGroup
     >(params?: Params, page?: number, limit?: number): Promise<T[]> {
         const response = await this.apiClient.get(

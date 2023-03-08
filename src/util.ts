@@ -14,8 +14,14 @@ export function toQueryString(params?: Object): string {
     let queryParams = [];
     for (const [key, value] of Object.entries(params)) {
         if (value !== null && typeof value !== "undefined") {
+            let normalizedValue = value;
+            if (Array.isArray(value)) {
+                normalizedValue = value.join(",");
+            }
             queryParams.push(
-                `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+                `${encodeURIComponent(key)}=${encodeURIComponent(
+                    normalizedValue
+                )}`
             );
         }
     }

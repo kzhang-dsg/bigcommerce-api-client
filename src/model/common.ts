@@ -62,8 +62,8 @@ export interface Error {
 }
 
 export interface FieldAwareQueryParams {
-    exclude_fields?: string;
-    include_fields?: string;
+    exclude_fields?: string[];
+    include_fields?: string[];
 }
 
 export interface IdAwareQueryParams {

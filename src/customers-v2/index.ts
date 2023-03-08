@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { Count } from "../model/common";
-import { CustomersQueryParams, Customer } from "../model/customer";
+import { CustomersV2QueryParams, Customer } from "../model/customer";
 import { appendQueryString } from "../util";
 import { CustomerAddressApi } from "./customer-address-api";
 import { CustomerGroupApi } from "./customer-group-api";
@@ -14,7 +14,7 @@ export class CustomersV2Api {
     readonly customerPasswords = new CustomerPasswordApi(this.apiClient);
 
     async getAllCustomers<
-        Params extends CustomersQueryParams,
+        Params extends CustomersV2QueryParams,
         T extends Customer
     >(params?: Params, page?: number, limit?: number): Promise<T[]> {
         const response = await this.apiClient.get(

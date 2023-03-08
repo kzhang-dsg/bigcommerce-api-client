@@ -3,6 +3,7 @@ import { ProductVariant, VariantsQueryParams } from "../model/catalog";
 import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 
+const MAX_BATCH_SIZE = 50;
 export class VariantApi {
     constructor(private readonly apiClient: ApiClient) {}
 
@@ -23,14 +24,17 @@ export class VariantApi {
     }
 
     async batchUpdateVariants<T extends ProductVariant>(
-        variants?: ProductVariant[],
-        page?: number,
-        limit?: number
+        variants: ProductVariant[]
     ): Promise<PaginatedData<T>> {
-        const response = await this.apiClient.put(
-            `/v3/catalog/variants`,
-            variants
-        );
-        return response.data;
+        let result: PaginatedData<T> = { data: [], meta: {} };
+        for (let i = 0; i < variants.length; i += MAX_BATCH_SIZE) {
+            const response = await this.apiClient.put(
+                `/v3/catalog/variants`,
+                variants.slice(i, i + MAX_BATCH_SIZE)
+            );
+            result.data?.concat(response.data.data);
+        }
+
+        return result;
     }
 }
