@@ -24,6 +24,11 @@ export interface Config {
     retryDelay?: number;
     retryOnReadTimeout?: boolean;
     failOn404?: boolean;
+    cache?: {
+        enable?: boolean;
+        ttl?: number;
+        cloneData?: boolean;
+    };
 }
 
 export interface PaginatedData<Type> {

@@ -28,3 +28,23 @@ export function toQueryString(params?: Object): string {
 
     return queryParams.join("&");
 }
+
+export function getCacheRegion(url = "") {
+    url && (url = url.replace(/^https?:\/\//, ""));
+    const urlParts = url.split("/");
+    let modelName = urlParts[3];
+
+    if (modelName === "catalog") {
+        let subModelName = urlParts[4];
+        switch (subModelName) {
+            case "tree":
+                subModelName = "categories";
+                break;
+            case "variants":
+                subModelName = "products";
+                break;
+        }
+        modelName = `${modelName}/${subModelName}`;
+    }
+    return `${urlParts[1]}_${urlParts[3]}|`; // ${storeHash}_${modelName}
+}

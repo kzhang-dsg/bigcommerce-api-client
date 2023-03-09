@@ -1,3 +1,4 @@
+import { AxiosCacheInstance } from "axios-cache-interceptor";
 import { ApiClient } from "./api-client";
 import { CartsApi } from "./cart";
 import { CatalogApi } from "./catalog";
@@ -13,6 +14,11 @@ const DEFAULT_CONFIG: Config = {
     retryDelay: 5000,
     retryOnReadTimeout: true,
     failOn404: false,
+    cache: {
+        enable: false,
+        ttl: 1000 * 60 * 10, // 10 minute.
+        cloneData: false,
+    },
 };
 
 export class BigCommerceApiClient {
@@ -28,5 +34,15 @@ export class BigCommerceApiClient {
         this.carts = new CartsApi(this.apiClient);
         this.catalog = new CatalogApi(this.apiClient);
         this.customersV2 = new CustomersV2Api(this.apiClient);
+    }
+
+    async flushCache(region?: string): Promise<void> {
+        if (!this.config.cache?.enable) {
+            return;
+        }
+
+        (this.apiClient.axiosInstance as AxiosCacheInstance).storage.remove(
+            region || "*"
+        );
     }
 }

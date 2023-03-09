@@ -10,4 +10,5 @@ export declare class BigCommerceApiClient {
     readonly catalog: CatalogApi;
     readonly customersV2: CustomersV2Api;
     constructor(config: Config);
+    flushCache(region?: string): Promise<void>;
 }

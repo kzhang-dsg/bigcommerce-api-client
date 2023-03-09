@@ -9,4 +9,6 @@ export declare class ApiClient {
     put<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R>;
     delete<T = any, R = AxiosResponse<T>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R>;
     private callWithRetries;
+    private setupCacheTtlConfig;
+    private setupCacheInvalidationConfig;
 }
