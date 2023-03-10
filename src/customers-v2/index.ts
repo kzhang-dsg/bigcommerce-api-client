@@ -1,6 +1,7 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
-import { CustomersV2QueryParams, Customer } from "../model/customer";
+import { count_Full, customer_Full } from "../model/generated/customers.v2";
+import { customer_Post, customer_Put } from "../model/generated/customers.v3";
+import { CustomersV2QueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 import { CustomerAddressApi } from "./customer-address-api";
 import { CustomerGroupApi } from "./customer-group-api";
@@ -15,7 +16,7 @@ export class CustomersV2Api {
 
     async getAllCustomers<
         Params extends CustomersV2QueryParams,
-        T extends Customer
+        T extends customer_Full
     >(params?: Params, page?: number, limit?: number): Promise<T[]> {
         const response = await this.apiClient.get(
             appendQueryString("/v2/customers", params),
@@ -25,7 +26,9 @@ export class CustomersV2Api {
         return response.data;
     }
 
-    async createCustomer<T extends Customer>(customer: T): Promise<T> {
+    async createCustomer<T extends customer_Post, R extends customer_Full>(
+        customer: T
+    ): Promise<R> {
         const response = await this.apiClient.post("/v2/customers", customer);
         return response.data;
     }
@@ -34,27 +37,31 @@ export class CustomersV2Api {
         await this.apiClient.delete("/v2/customers");
     }
 
-    async getCustomer<T extends Customer>(customerId: number): Promise<T> {
+    async getCustomer<T extends customer_Full>(customerId: number): Promise<T> {
         const response = await this.apiClient.get(
             `/v2/customers/${customerId}`
         );
         return response.data;
     }
 
-    async updateCustomer<T extends Customer>(customer: T): Promise<T> {
+    async updateCustomer<T extends customer_Put, R extends customer_Full>(
+        customerId: number,
+        customer: T
+    ): Promise<R> {
         const response = await this.apiClient.put(
-            `/v2/customers/${customer.id}`,
+            `/v2/customers/${customerId}`,
             customer
         );
         return response.data;
     }
 
-    async updatePassword<T extends Customer>(
+    async updatePassword<T extends customer_Full>(
         customerId: number,
         newPassword: string,
         confirmPassword?: string
     ): Promise<T> {
-        const customer: Customer = {
+        const customer: customer_Put = {
+            id: customerId,
             _authentication: {
                 password: newPassword,
             },
@@ -71,10 +78,11 @@ export class CustomersV2Api {
         return response.data;
     }
 
-    async forcePasswordResets<T extends Customer>(
+    async forcePasswordResets<T extends customer_Full>(
         customerId: number
     ): Promise<T> {
-        const customer: Customer = {
+        const customer: customer_Put = {
+            id: customerId,
             _authentication: {
                 force_reset: true,
             },
@@ -90,7 +98,7 @@ export class CustomersV2Api {
         await this.apiClient.delete(`/v2/customers/${customerId}`);
     }
 
-    async getCustomersCount<T extends Count>(): Promise<T[]> {
+    async getCustomersCount<T extends count_Full>(): Promise<T[]> {
         const response = await this.apiClient.get("/v2/customers/count");
         return response.data;
     }

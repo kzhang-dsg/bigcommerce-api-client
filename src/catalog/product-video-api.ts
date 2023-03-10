@@ -1,6 +1,10 @@
 import { ApiClient } from "../api-client";
-import { ProductVideo } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import {
+    productVideo_Full,
+    productVideo_Post,
+    productVideo_Put,
+} from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductVideoApi {
@@ -8,7 +12,7 @@ export class ProductVideoApi {
 
     async getAllVideos<
         Params extends FieldAwareQueryParams,
-        T extends ProductVideo
+        T extends productVideo_Full
     >(
         productId: number,
         params?: Params,
@@ -26,10 +30,10 @@ export class ProductVideoApi {
         return response.data;
     }
 
-    async createVideo<T extends ProductVideo>(
+    async createVideo<T extends productVideo_Post, R extends productVideo_Full>(
         productId: number,
         video: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/videos`,
             video
@@ -38,7 +42,7 @@ export class ProductVideoApi {
     }
 
     async getVideo<
-        T extends ProductVideo,
+        T extends productVideo_Full,
         Params extends FieldAwareQueryParams
     >(productId: number, videoId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
@@ -50,12 +54,13 @@ export class ProductVideoApi {
         return response.data;
     }
 
-    async updateVideo<T extends ProductVideo>(
+    async updateVideo<T extends productVideo_Put, R extends productVideo_Full>(
         productId: number,
+        videoId: number,
         video: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/videos/${video.id}`,
+            `/v3/catalog/products/${productId}/videos/${videoId}`,
             video
         );
         return response.data;

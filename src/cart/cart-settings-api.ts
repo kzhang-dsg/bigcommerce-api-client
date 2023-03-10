@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
-import { CartSettings } from "../model/cart";
 import { Data } from "../model/common";
+import { CartSettings } from "../model/generated/carts.v3";
 
 export class CartSettingsApi {
     constructor(private readonly apiClient: ApiClient) {}

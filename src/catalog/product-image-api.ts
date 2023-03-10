@@ -1,16 +1,20 @@
 import { ApiClient } from "../api-client";
-import { ProductImage } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 import FormData from "form-data";
 import { ReadStream } from "fs";
+import {
+    productImage_Full,
+    productImage_Post,
+    productImage_Put,
+} from "../model/generated/catalog.v3";
 
 export class ProductImageApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllImages<
         Params extends FieldAwareQueryParams,
-        T extends ProductImage
+        T extends productImage_Full
     >(
         productId: number,
         params?: Params,
@@ -28,10 +32,10 @@ export class ProductImageApi {
         return response.data;
     }
 
-    async createImage<T extends ProductImage>(
+    async createImage<T extends productImage_Post, R extends productImage_Full>(
         productId: number,
         image: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/images`,
             image
@@ -39,7 +43,7 @@ export class ProductImageApi {
         return response.data;
     }
 
-    async uploadImage<T extends ProductImage>(
+    async uploadImage<T extends productImage_Full>(
         productId: number,
         image: ReadStream,
         imageId?: number
@@ -61,7 +65,7 @@ export class ProductImageApi {
     }
 
     async getImage<
-        T extends ProductImage,
+        T extends productImage_Full,
         Params extends FieldAwareQueryParams
     >(productId: number, imageId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
@@ -73,12 +77,13 @@ export class ProductImageApi {
         return response.data;
     }
 
-    async updateImage<T extends ProductImage>(
+    async updateImage<T extends productImage_Put, R extends productImage_Full>(
         productId: number,
+        imageId: number,
         image: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/images/${image.id}`,
+            `/v3/catalog/products/${productId}/images/${imageId}`,
             image
         );
         return response.data;

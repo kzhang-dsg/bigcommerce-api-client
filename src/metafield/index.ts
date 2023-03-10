@@ -1,7 +1,9 @@
 import { ApiClient } from "../api-client";
-import { Metafield, GetAllMetafieldsParams } from "../model/metafield";
+import { GetAllMetafieldsQueryParams } from "../model/query/metafield";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import { metafield_Full } from "../model/generated/catalog.v3";
+import { metafield_Post, metafield_Put } from "../model/generated/channels.v3";
 
 export class MetafieldApi {
     constructor(
@@ -10,8 +12,8 @@ export class MetafieldApi {
     ) {}
 
     async getAllMetafields<
-        Params extends GetAllMetafieldsParams,
-        T extends Metafield
+        Params extends GetAllMetafieldsQueryParams,
+        T extends metafield_Full
     >(
         parentId: number,
         params?: Params,
@@ -26,10 +28,10 @@ export class MetafieldApi {
         return response.data;
     }
 
-    async createMetafield<T extends Metafield>(
+    async createMetafield<T extends metafield_Post, R extends metafield_Full>(
         parentId: number,
         metafield: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `${this.baseUrl}/${parentId}/metafields`,
             metafield
@@ -38,7 +40,7 @@ export class MetafieldApi {
     }
 
     async getMetafield<
-        T extends Metafield,
+        T extends metafield_Full,
         Params extends FieldAwareQueryParams
     >(
         parentId: number,
@@ -54,12 +56,13 @@ export class MetafieldApi {
         return response.data;
     }
 
-    async updateMetafield<T extends Metafield>(
+    async updateMetafield<T extends metafield_Put, R extends metafield_Full>(
         parentId: number,
+        metafieldId: number,
         metafield: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `${this.baseUrl}/${parentId}/metafields/${metafield.id}`,
+            `${this.baseUrl}/${parentId}/metafields/${metafieldId}`,
             metafield
         );
         return response.data;

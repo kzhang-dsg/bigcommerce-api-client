@@ -1,6 +1,7 @@
 import { ApiClient } from "../api-client";
-import { Category, CategoriesQueryParams } from "../model/catalog";
+import { CategoriesQueryParams } from "../model/query/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import { Category } from "../model/generated/catalog.v3";
 export declare class CategoryApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

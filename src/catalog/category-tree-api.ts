@@ -1,20 +1,19 @@
 import { ApiClient } from "../api-client";
 import {
-    SimpleCategoryTree,
     CategoryTreesQueryParams,
     DeleteCategoryTreesQueryParams,
     GetCategoryTreeQueryParams,
-    NestedCategoryTree,
-} from "../model/catalog";
+} from "../model/query/catalog";
 import { Data, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import { CategoryNode, Tree } from "../model/generated/catalog.v3";
 
 export class CategoryTreeApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllCategoryTrees<
         Params extends CategoryTreesQueryParams,
-        T extends SimpleCategoryTree
+        T extends Tree
     >(
         params?: Params,
         page?: number,
@@ -28,7 +27,7 @@ export class CategoryTreeApi {
         return response.data;
     }
 
-    async upsertCategoryTrees<T extends SimpleCategoryTree>(
+    async upsertCategoryTrees<T extends Tree>(
         categoryTrees: T[]
     ): Promise<Data<T>> {
         const response = await this.apiClient.put(
@@ -47,7 +46,7 @@ export class CategoryTreeApi {
     }
 
     async getCategoryTree<
-        T extends NestedCategoryTree,
+        T extends CategoryNode,
         Params extends GetCategoryTreeQueryParams
     >(treeId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(

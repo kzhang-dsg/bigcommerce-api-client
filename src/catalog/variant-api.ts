@@ -1,7 +1,8 @@
 import { ApiClient } from "../api-client";
-import { ProductVariant, VariantsQueryParams } from "../model/catalog";
+import { VariantsQueryParams } from "../model/query/catalog";
 import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import { productVariant_Full } from "../model/generated/catalog.v3";
 
 const MAX_BATCH_SIZE = 50;
 export class VariantApi {
@@ -9,7 +10,7 @@ export class VariantApi {
 
     async getAllVariants<
         Params extends VariantsQueryParams,
-        T extends ProductVariant
+        T extends productVariant_Full
     >(
         params?: Params,
         page?: number,
@@ -23,8 +24,8 @@ export class VariantApi {
         return response.data;
     }
 
-    async batchUpdateVariants<T extends ProductVariant>(
-        variants: ProductVariant[]
+    async batchUpdateVariants<T extends productVariant_Full>(
+        variants: T[]
     ): Promise<PaginatedData<T>> {
         let result: PaginatedData<T> = { data: [], meta: {} };
         for (let i = 0; i < variants.length; i += MAX_BATCH_SIZE) {

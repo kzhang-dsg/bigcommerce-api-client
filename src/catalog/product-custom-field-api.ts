@@ -1,6 +1,10 @@
 import { ApiClient } from "../api-client";
-import { ProductCustomField } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import {
+    productCustomField_Base,
+    productCustomField_Post,
+    productCustomField_Put,
+} from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductCustomFieldApi {
@@ -8,7 +12,7 @@ export class ProductCustomFieldApi {
 
     async getAllCustomFields<
         Params extends FieldAwareQueryParams,
-        T extends ProductCustomField
+        T extends productCustomField_Base
     >(
         productId: number,
         params?: Params,
@@ -26,10 +30,10 @@ export class ProductCustomFieldApi {
         return response.data;
     }
 
-    async createCustomField<T extends ProductCustomField>(
-        productId: number,
-        customField: T
-    ): Promise<Data<T>> {
+    async createCustomField<
+        T extends productCustomField_Post,
+        R extends productCustomField_Base
+    >(productId: number, customField: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/custom-fields`,
             customField
@@ -38,7 +42,7 @@ export class ProductCustomFieldApi {
     }
 
     async getCustomField<
-        T extends ProductCustomField,
+        T extends productCustomField_Base,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -54,12 +58,16 @@ export class ProductCustomFieldApi {
         return response.data;
     }
 
-    async updateCustomField<T extends ProductCustomField>(
+    async updateCustomField<
+        T extends productCustomField_Put,
+        R extends productCustomField_Base
+    >(
         productId: number,
+        customFieldId: number,
         customField: T
     ): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/custom-fields/${customField.id}`,
+            `/v3/catalog/products/${productId}/custom-fields/${customFieldId}`,
             customField
         );
         return response.data;

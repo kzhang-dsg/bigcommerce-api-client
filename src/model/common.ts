@@ -81,36 +81,3 @@ export interface IdAwareQueryParams {
     "id:min"?: number[];
     "id:not_in"?: number[];
 }
-
-export interface Url {
-    path?: string;
-    is_customized?: boolean;
-}
-
-export interface CustomUrl {
-    url?: string;
-    is_customized?: boolean;
-}
-
-export interface Image {
-    image_url: string;
-}
-
-export interface ProductSortOrder {
-    product_id: number;
-    sort_order: number;
-}
-
-export interface Resource {
-    url?: string;
-    resource?: string;
-}
-
-export interface FormField {
-    name?: string;
-    value?: string;
-}
-
-export interface Count {
-    count: number;
-}

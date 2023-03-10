@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
-import { ProductComplexRule } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import { complexRule_Base } from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductComplexRuleApi {
@@ -8,7 +8,7 @@ export class ProductComplexRuleApi {
 
     async getAllComplexRules<
         Params extends FieldAwareQueryParams,
-        T extends ProductComplexRule
+        T extends complexRule_Base
     >(
         productId: number,
         params?: Params,
@@ -26,7 +26,7 @@ export class ProductComplexRuleApi {
         return response.data;
     }
 
-    async createComplexRule<T extends ProductComplexRule>(
+    async createComplexRule<T extends complexRule_Base>(
         productId: number,
         complexRule: T
     ): Promise<Data<T>> {
@@ -38,7 +38,7 @@ export class ProductComplexRuleApi {
     }
 
     async getComplexRule<
-        T extends ProductComplexRule,
+        T extends complexRule_Base,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -54,12 +54,13 @@ export class ProductComplexRuleApi {
         return response.data;
     }
 
-    async updateComplexRule<T extends ProductComplexRule>(
+    async updateComplexRule<T extends complexRule_Base>(
         productId: number,
+        complexRuleId: number,
         complexRule: T
     ): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/complex-rules/${complexRule.id}`,
+            `/v3/catalog/products/${productId}/complex-rules/${complexRuleId}`,
             complexRule
         );
         return response.data;

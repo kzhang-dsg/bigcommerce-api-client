@@ -1,6 +1,9 @@
 import { ApiClient } from "../api-client";
-import { ProductOptionValue } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import {
+    productOptionOptionValue_Base,
+    productOptionOptionValue_Full,
+} from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductVariantOptionValueApi {
@@ -8,7 +11,7 @@ export class ProductVariantOptionValueApi {
 
     async getAllVariantOptionValues<
         Params extends FieldAwareQueryParams,
-        T extends ProductOptionValue
+        T extends productOptionOptionValue_Full
     >(
         productId: number,
         optionId: number,
@@ -27,11 +30,10 @@ export class ProductVariantOptionValueApi {
         return response.data;
     }
 
-    async createVariantOptionValue<T extends ProductOptionValue>(
-        productId: number,
-        optionId: number,
-        optionValue: T
-    ): Promise<Data<T>> {
+    async createVariantOptionValue<
+        T extends productOptionOptionValue_Base,
+        R extends productOptionOptionValue_Full
+    >(productId: number, optionId: number, optionValue: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/option/${optionId}/values`,
             optionValue
@@ -40,7 +42,7 @@ export class ProductVariantOptionValueApi {
     }
 
     async getVariantOptionValue<
-        T extends ProductOptionValue,
+        T extends productOptionOptionValue_Full,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -57,13 +59,14 @@ export class ProductVariantOptionValueApi {
         return response.data;
     }
 
-    async updateVariantOptionValue<T extends ProductOptionValue>(
+    async updateVariantOptionValue<T extends productOptionOptionValue_Base>(
         productId: number,
         optionId: number,
+        optionValueId: number,
         optionValue: T
     ): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/option/${optionId}/values/${optionValue.id}`,
+            `/v3/catalog/products/${productId}/option/${optionId}/values/${optionValueId}`,
             optionValue
         );
         return response.data;

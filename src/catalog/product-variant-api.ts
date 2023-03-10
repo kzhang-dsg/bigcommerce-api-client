@@ -1,21 +1,21 @@
 import { ApiClient } from "../api-client";
-import { ProductVariant } from "../model/catalog";
-import {
-    Data,
-    FieldAwareQueryParams,
-    Image,
-    PaginatedData,
-} from "../model/common";
+import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 import { ReadStream } from "fs";
 import FormData from "form-data";
+import {
+    productVariant_Full,
+    productVariant_Post,
+    productVariant_Put,
+    resourceImage_Full,
+} from "../model/generated/catalog.v3";
 
 export class ProductVariantApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllVariants<
         Params extends FieldAwareQueryParams,
-        T extends ProductVariant
+        T extends productVariant_Full
     >(
         productId: number,
         params?: Params,
@@ -33,10 +33,10 @@ export class ProductVariantApi {
         return response.data;
     }
 
-    async createVariant<T extends ProductVariant>(
-        productId: number,
-        variant: T
-    ): Promise<Data<T>> {
+    async createVariant<
+        T extends productVariant_Post,
+        R extends productVariant_Full
+    >(productId: number, variant: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/variants`,
             variant
@@ -45,7 +45,7 @@ export class ProductVariantApi {
     }
 
     async getVariant<
-        T extends ProductVariant,
+        T extends productVariant_Full,
         Params extends FieldAwareQueryParams
     >(productId: number, variantId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
@@ -57,12 +57,12 @@ export class ProductVariantApi {
         return response.data;
     }
 
-    async updateVariant<T extends ProductVariant>(
-        productId: number,
-        variant: T
-    ): Promise<Data<T>> {
+    async updateVariant<
+        T extends productVariant_Put,
+        R extends productVariant_Full
+    >(productId: number, variantId: number, variant: T): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/variants/${variant.id}`,
+            `/v3/catalog/products/${productId}/variants/${variantId}`,
             variant
         );
         return response.data;
@@ -74,7 +74,7 @@ export class ProductVariantApi {
         );
     }
 
-    async createVariantImage<T extends Image>(
+    async createVariantImage<T extends resourceImage_Full>(
         productId: number,
         variantId: number,
         image: ReadStream

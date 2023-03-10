@@ -1,12 +1,12 @@
 import { ApiClient } from "../api-client";
-import { ProductVideo } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import { productVideo_Full, productVideo_Post, productVideo_Put } from "../model/generated/catalog.v3";
 export declare class ProductVideoApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    getAllVideos<Params extends FieldAwareQueryParams, T extends ProductVideo>(productId: number, params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
-    createVideo<T extends ProductVideo>(productId: number, video: T): Promise<Data<T>>;
-    getVideo<T extends ProductVideo, Params extends FieldAwareQueryParams>(productId: number, videoId: number, params?: Params): Promise<Data<T>>;
-    updateVideo<T extends ProductVideo>(productId: number, video: T): Promise<Data<T>>;
+    getAllVideos<Params extends FieldAwareQueryParams, T extends productVideo_Full>(productId: number, params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
+    createVideo<T extends productVideo_Post, R extends productVideo_Full>(productId: number, video: T): Promise<Data<R>>;
+    getVideo<T extends productVideo_Full, Params extends FieldAwareQueryParams>(productId: number, videoId: number, params?: Params): Promise<Data<T>>;
+    updateVideo<T extends productVideo_Put, R extends productVideo_Full>(productId: number, videoId: number, video: T): Promise<Data<R>>;
     deleteVideo(productId: number, videoId: number): Promise<void>;
 }

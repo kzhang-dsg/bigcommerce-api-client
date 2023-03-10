@@ -1,6 +1,11 @@
 import { ApiClient } from "../api-client";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { Customer, CustomersV3QueryParams } from "../model/customer";
+import {
+    customer_Full,
+    customer_Post,
+    customer_Put,
+} from "../model/generated/customers.v3";
+import { CustomersV3QueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 
 export class CustomersV3Api {
@@ -8,7 +13,7 @@ export class CustomersV3Api {
 
     async getAllCustomers<
         Params extends CustomersV3QueryParams,
-        T extends Customer
+        T extends customer_Full
     >(
         params?: Params,
         page?: number,
@@ -22,7 +27,9 @@ export class CustomersV3Api {
         return response.data;
     }
 
-    async createCustomer<T extends Customer>(customer: T): Promise<Data<T>> {
+    async createCustomer<T extends customer_Post, R extends customer_Full>(
+        customer: T
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             "/v3/catalog/customers",
             customer
@@ -34,19 +41,22 @@ export class CustomersV3Api {
         await this.apiClient.delete("/v3/catalog/customers");
     }
 
-    async getCustomer<T extends Customer, Params extends FieldAwareQueryParams>(
-        customerId: number,
-        params?: Params
-    ): Promise<Data<T>> {
+    async getCustomer<
+        T extends customer_Full,
+        Params extends FieldAwareQueryParams
+    >(customerId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/catalog/customers/${customerId}`, params)
         );
         return response.data;
     }
 
-    async updateCustomer<T extends Customer>(customer: T): Promise<Data<T>> {
+    async updateCustomer<T extends customer_Put, R extends customer_Full>(
+        customerId: number,
+        customer: T
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/customers/${customer.id}`,
+            `/v3/catalog/customers/${customerId}`,
             customer
         );
         return response.data;

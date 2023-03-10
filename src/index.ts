@@ -3,6 +3,7 @@ import { ApiClient } from "./api-client";
 import { CartsApi } from "./cart";
 import { CatalogApi } from "./catalog";
 import { CustomersV2Api } from "./customers-v2";
+import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
 
 const DEFAULT_CONFIG: Config = {
@@ -26,6 +27,7 @@ export class BigCommerceApiClient {
     readonly carts: CartsApi;
     readonly catalog: CatalogApi;
     readonly customersV2: CustomersV2Api;
+    readonly customersV3: CustomersV3Api;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -34,6 +36,7 @@ export class BigCommerceApiClient {
         this.carts = new CartsApi(this.apiClient);
         this.catalog = new CatalogApi(this.apiClient);
         this.customersV2 = new CustomersV2Api(this.apiClient);
+        this.customersV3 = new CustomersV3Api(this.apiClient);
     }
 
     async flushCache(region?: string): Promise<void> {

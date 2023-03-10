@@ -1,6 +1,10 @@
 import { ApiClient } from "../api-client";
-import { ProductModifier } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import {
+    productModifier_Full,
+    productModifier_Post,
+    productModifier_Put,
+} from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductModifierApi {
@@ -8,7 +12,7 @@ export class ProductModifierApi {
 
     async getAllModifiers<
         Params extends FieldAwareQueryParams,
-        T extends ProductModifier
+        T extends productModifier_Full
     >(
         productId: number,
         params?: Params,
@@ -26,10 +30,10 @@ export class ProductModifierApi {
         return response.data;
     }
 
-    async createModifier<T extends ProductModifier>(
-        productId: number,
-        modifier: T
-    ): Promise<Data<T>> {
+    async createModifier<
+        T extends productModifier_Post,
+        R extends productModifier_Full
+    >(productId: number, modifier: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/modifiers`,
             modifier
@@ -38,7 +42,7 @@ export class ProductModifierApi {
     }
 
     async getModifier<
-        T extends ProductModifier,
+        T extends productModifier_Full,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -54,12 +58,12 @@ export class ProductModifierApi {
         return response.data;
     }
 
-    async updateModifier<T extends ProductModifier>(
-        productId: number,
-        modifier: T
-    ): Promise<Data<T>> {
+    async updateModifier<
+        T extends productModifier_Put,
+        R extends productModifier_Full
+    >(productId: number, modifierId: number, modifier: T): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/modifiers/${modifier.id}`,
+            `/v3/catalog/products/${productId}/modifiers/${modifierId}`,
             modifier
         );
         return response.data;

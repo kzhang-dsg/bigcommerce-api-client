@@ -1,11 +1,12 @@
 import { ApiClient } from "../api-client";
-import { SimpleCategoryTree, CategoryTreesQueryParams, DeleteCategoryTreesQueryParams, GetCategoryTreeQueryParams, NestedCategoryTree } from "../model/catalog";
+import { CategoryTreesQueryParams, DeleteCategoryTreesQueryParams, GetCategoryTreeQueryParams } from "../model/query/catalog";
 import { Data, PaginatedData } from "../model/common";
+import { CategoryNode, Tree } from "../model/generated/catalog.v3";
 export declare class CategoryTreeApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    getAllCategoryTrees<Params extends CategoryTreesQueryParams, T extends SimpleCategoryTree>(params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
-    upsertCategoryTrees<T extends SimpleCategoryTree>(categoryTrees: T[]): Promise<Data<T>>;
+    getAllCategoryTrees<Params extends CategoryTreesQueryParams, T extends Tree>(params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
+    upsertCategoryTrees<T extends Tree>(categoryTrees: T[]): Promise<Data<T>>;
     deleteCategoryTrees<Params extends DeleteCategoryTreesQueryParams>(params?: Params): Promise<void>;
-    getCategoryTree<T extends NestedCategoryTree, Params extends GetCategoryTreeQueryParams>(treeId: number, params?: Params): Promise<Data<T>>;
+    getCategoryTree<T extends CategoryNode, Params extends GetCategoryTreeQueryParams>(treeId: number, params?: Params): Promise<Data<T>>;
 }

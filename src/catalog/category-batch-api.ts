@@ -1,11 +1,15 @@
 import { ApiClient } from "../api-client";
 import {
-    Category,
     CategoriesQueryParams,
     DeleteCategoriesBatchQueryParams,
-} from "../model/catalog";
+} from "../model/query/catalog";
 import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import {
+    Category,
+    CreateCategories,
+    UpdateCategories,
+} from "../model/generated/catalog.v3";
 
 export class CategoryBatchApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -26,9 +30,9 @@ export class CategoryBatchApi {
         return response.data;
     }
 
-    async createCategories<T extends Category>(
-        categories: T[]
-    ): Promise<PaginatedData<T>> {
+    async createCategories<T extends CreateCategories, R extends Category>(
+        categories: T
+    ): Promise<PaginatedData<R>> {
         const response = await this.apiClient.post(
             "/v3/catalog/trees/categories",
             categories
@@ -36,13 +40,15 @@ export class CategoryBatchApi {
         return response.data;
     }
 
-    async updateCategories<T extends Category>(categories: T[]): Promise<void> {
+    async updateCategories<T extends UpdateCategories>(
+        categories: T
+    ): Promise<void> {
         await this.apiClient.put("/v3/catalog/trees/categories", categories);
     }
 
     async deleteCategories<Params extends DeleteCategoriesBatchQueryParams>(
         params?: Params
-    ): Promise<PaginatedData<void>> {
+    ): Promise<void> {
         const response = await this.apiClient.delete(
             appendQueryString("/v3/catalog/trees/categories", params)
         );

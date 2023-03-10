@@ -1,16 +1,16 @@
 import { ApiClient } from "../api-client";
 import {
-    Brand,
     DeleteBrandsQueryParams,
     BrandsQueryParams,
-} from "../model/catalog";
+} from "../model/query/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import { brand_Full } from "../model/generated/catalog.v3";
 
 export class BrandApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getAllBrands<Params extends BrandsQueryParams, T extends Brand>(
+    async getAllBrands<Params extends BrandsQueryParams, T extends brand_Full>(
         params?: Params,
         page?: number,
         limit?: number
@@ -23,7 +23,7 @@ export class BrandApi {
         return response.data;
     }
 
-    async createBrand<T extends Brand>(brand: T): Promise<Data<T>> {
+    async createBrand<T extends brand_Full>(brand: T): Promise<Data<T>> {
         const response = await this.apiClient.post("/v3/catalog/brands", brand);
         return response.data;
     }
@@ -36,7 +36,7 @@ export class BrandApi {
         );
     }
 
-    async getBrand<T extends Brand, Params extends FieldAwareQueryParams>(
+    async getBrand<T extends brand_Full, Params extends FieldAwareQueryParams>(
         brandId: number,
         params?: Params
     ): Promise<Data<T>> {
@@ -46,7 +46,7 @@ export class BrandApi {
         return response.data;
     }
 
-    async updateBrand<T extends Brand>(brand: T): Promise<Data<T>> {
+    async updateBrand<T extends brand_Full>(brand: T): Promise<Data<T>> {
         const response = await this.apiClient.put(
             `/v3/catalog/brands/${brand.id}`,
             brand

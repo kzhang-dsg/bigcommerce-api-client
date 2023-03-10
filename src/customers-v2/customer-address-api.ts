@@ -1,11 +1,14 @@
 import { ApiClient } from "../api-client";
-import { CustomerAddress } from "../model/customer";
-import { Count } from "../model/common";
+import {
+    count_Full,
+    customerAddress_Base,
+    customerAddress_Full,
+} from "../model/generated/customers.v2";
 
 export class CustomerAddressApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getAllCustomerAddresses<T extends CustomerAddress>(
+    async getAllCustomerAddresses<T extends customerAddress_Full>(
         customerId: number,
         page?: number,
         limit?: number
@@ -18,10 +21,10 @@ export class CustomerAddressApi {
         return response.data;
     }
 
-    async createCustomerAddress<T extends CustomerAddress>(
-        customerId: number,
-        customerAddress: T
-    ): Promise<T> {
+    async createCustomerAddress<
+        T extends customerAddress_Base,
+        R extends customerAddress_Full
+    >(customerId: number, customerAddress: T): Promise<customerAddress_Full> {
         const response = await this.apiClient.post(
             `/v2/customers/${customerId}/addresses`,
             customerAddress
@@ -33,7 +36,7 @@ export class CustomerAddressApi {
         await this.apiClient.delete(`/v2/customers/${customerId}/addresses`);
     }
 
-    async getCustomerAddress<T extends CustomerAddress>(
+    async getCustomerAddress<T extends customerAddress_Full>(
         customerId: number,
         customerAddressId: number
     ): Promise<T> {
@@ -43,12 +46,16 @@ export class CustomerAddressApi {
         return response.data;
     }
 
-    async updateCustomerAddress<T extends CustomerAddress>(
+    async updateCustomerAddress<
+        T extends customerAddress_Base,
+        R extends customerAddress_Full
+    >(
         customerId: number,
+        customerAddressId: number,
         customerAddress: T
-    ): Promise<T> {
+    ): Promise<R> {
         const response = await this.apiClient.put(
-            `/v2/customers/${customerId}/addresses/${customerAddress.id}`,
+            `/v2/customers/${customerId}/addresses/${customerAddressId}`,
             customerAddress
         );
         return response.data;
@@ -63,7 +70,7 @@ export class CustomerAddressApi {
         );
     }
 
-    async getCustomerAddressesCount<T extends Count>(
+    async getCustomerAddressesCount<T extends count_Full>(
         customerId: number
     ): Promise<T[]> {
         const response = await this.apiClient.get(

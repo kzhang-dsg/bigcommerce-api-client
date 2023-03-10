@@ -1,6 +1,9 @@
 import { ApiClient } from "../api-client";
-import { ProductModifierValue } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import {
+    productModifierOptionValue_Full,
+    productModifierOptionValue_Post,
+} from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductModifierValueApi {
@@ -8,7 +11,7 @@ export class ProductModifierValueApi {
 
     async getAllModifierValues<
         Params extends FieldAwareQueryParams,
-        T extends ProductModifierValue
+        T extends productModifierOptionValue_Full
     >(
         productId: number,
         modifierId: number,
@@ -27,11 +30,14 @@ export class ProductModifierValueApi {
         return response.data;
     }
 
-    async createModifierValue<T extends ProductModifierValue>(
+    async createModifierValue<
+        T extends productModifierOptionValue_Post,
+        R extends productModifierOptionValue_Full
+    >(
         productId: number,
         modifierId: number,
         modifierValue: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/modifiers/${modifierId}/values`,
             modifierValue
@@ -40,7 +46,7 @@ export class ProductModifierValueApi {
     }
 
     async getModifierValue<
-        T extends ProductModifierValue,
+        T extends productModifierOptionValue_Full,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -57,13 +63,17 @@ export class ProductModifierValueApi {
         return response.data;
     }
 
-    async updateModifierValue<T extends ProductModifierValue>(
+    async updateModifierValue<
+        T extends productModifierOptionValue_Post,
+        R extends productModifierOptionValue_Full
+    >(
         productId: number,
         modifierId: number,
+        modifierValueId: number,
         modifierValue: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/modifiers/${modifierId}/values/${modifierValue.id}`,
+            `/v3/catalog/products/${productId}/modifiers/${modifierId}/values/${modifierValueId}`,
             modifierValue
         );
         return response.data;

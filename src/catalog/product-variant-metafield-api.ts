@@ -1,14 +1,16 @@
 import { ApiClient } from "../api-client";
-import { Metafield, GetAllMetafieldsParams } from "../model/metafield";
+import { GetAllMetafieldsQueryParams } from "../model/query/metafield";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import { metafield_Full } from "../model/generated/catalog.v3";
+import { metafield_Post, metafield_Put } from "../model/generated/channels.v3";
 
 export class ProductVariantMetafieldApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllMetafields<
-        Params extends GetAllMetafieldsParams,
-        T extends Metafield
+        Params extends GetAllMetafieldsQueryParams,
+        T extends metafield_Full
     >(
         productId: number,
         variantId: number,
@@ -27,11 +29,11 @@ export class ProductVariantMetafieldApi {
         return response.data;
     }
 
-    async createMetafield<T extends Metafield>(
+    async createMetafield<T extends metafield_Post, R extends metafield_Full>(
         productId: number,
         variantId: number,
         metafield: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/variants/${variantId}/metafields`,
             metafield
@@ -40,7 +42,7 @@ export class ProductVariantMetafieldApi {
     }
 
     async getMetafield<
-        T extends Metafield,
+        T extends metafield_Full,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -57,13 +59,14 @@ export class ProductVariantMetafieldApi {
         return response.data;
     }
 
-    async updateMetafield<T extends Metafield>(
+    async updateMetafield<T extends metafield_Put, R extends metafield_Full>(
         productId: number,
         variantId: number,
+        metafieldId: number,
         metafield: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/variants/${variantId}/metafields/${metafield.id}`,
+            `/v3/catalog/products/${productId}/variants/${variantId}/metafields/${metafieldId}`,
             metafield
         );
         return response.data;

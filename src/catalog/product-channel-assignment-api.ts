@@ -1,17 +1,15 @@
 import { ApiClient } from "../api-client";
-import {
-    ProductChannelAssignment,
-    ProductChannelAssignmentsQueryParams,
-} from "../model/catalog";
+import { ProductChannelAssignmentsQueryParams } from "../model/query/catalog";
 import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import { ExtendedProductChannelAssignment } from "../model/extended";
 
 export class ProductChannelAssignmentApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllChannelAssignments<
         Params extends ProductChannelAssignmentsQueryParams,
-        T extends ProductChannelAssignment
+        T extends ExtendedProductChannelAssignment
     >(
         params?: Params,
         page?: number,
@@ -28,7 +26,7 @@ export class ProductChannelAssignmentApi {
         return response.data;
     }
 
-    async createChannelAssignments<T extends ProductChannelAssignment>(
+    async createChannelAssignments<T extends ExtendedProductChannelAssignment>(
         channelAssignments: T[]
     ): Promise<void> {
         await this.apiClient.post(

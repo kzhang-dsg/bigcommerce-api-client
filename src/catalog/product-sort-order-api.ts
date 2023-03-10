@@ -1,10 +1,11 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, ProductSortOrder } from "../model/common";
+import { PaginatedData } from "../model/common";
+import { productSortOrder } from "../model/generated/catalog.v3";
 
 export class ProductSortOrderApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getProductSortOrder<T extends ProductSortOrder>(
+    async getProductSortOrder<T extends productSortOrder>(
         categoryId: number
     ): Promise<PaginatedData<T>> {
         const response = await this.apiClient.get(
@@ -13,7 +14,7 @@ export class ProductSortOrderApi {
         return response.data;
     }
 
-    async updateProductSortOrder<T extends ProductSortOrder>(
+    async updateProductSortOrder<T extends productSortOrder>(
         categoryId: number,
         productSortOrders: T[]
     ): Promise<T[]> {

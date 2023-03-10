@@ -1,6 +1,7 @@
 import { ApiClient } from "../api-client";
-import { ProductBuckPricingRule } from "../model/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import { ExtendedBulkPricingRule } from "../model/extended";
+import { bulkPricingRule_Full } from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductBuckPricingRuleApi {
@@ -8,7 +9,7 @@ export class ProductBuckPricingRuleApi {
 
     async getAllBuckPricingRules<
         Params extends FieldAwareQueryParams,
-        T extends ProductBuckPricingRule
+        T extends ExtendedBulkPricingRule
     >(
         productId: number,
         params?: Params,
@@ -26,10 +27,10 @@ export class ProductBuckPricingRuleApi {
         return response.data;
     }
 
-    async createBuckPricingRule<T extends ProductBuckPricingRule>(
-        productId: number,
-        buckPricingRule: T
-    ): Promise<Data<T>> {
+    async createBuckPricingRule<
+        T extends bulkPricingRule_Full,
+        R extends ExtendedBulkPricingRule
+    >(productId: number, buckPricingRule: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/bulk-pricing-rules`,
             buckPricingRule
@@ -38,7 +39,7 @@ export class ProductBuckPricingRuleApi {
     }
 
     async getBuckPricingRule<
-        T extends ProductBuckPricingRule,
+        T extends ExtendedBulkPricingRule,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -54,12 +55,16 @@ export class ProductBuckPricingRuleApi {
         return response.data;
     }
 
-    async updateBuckPricingRule<T extends ProductBuckPricingRule>(
+    async updateBuckPricingRule<
+        T extends bulkPricingRule_Full,
+        R extends ExtendedBulkPricingRule
+    >(
         productId: number,
+        buckPricingRuleId: number,
         buckPricingRule: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/bulk-pricing-rules/${buckPricingRule.id}`,
+            `/v3/catalog/products/${productId}/bulk-pricing-rules/${buckPricingRuleId}`,
             buckPricingRule
         );
         return response.data;

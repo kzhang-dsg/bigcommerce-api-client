@@ -1,11 +1,12 @@
 import { ApiClient } from "../api-client";
-import { Data, Image } from "../model/common";
+import { Data } from "../model/common";
 import FormData from "form-data";
+import { resourceImage_Full } from "../model/generated/catalog.v3";
 
 export class ProductModifierImageApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async createImage<T extends Image>(
+    async createImage<T extends resourceImage_Full>(
         productId: number,
         modifierId: number,
         valueId: number,

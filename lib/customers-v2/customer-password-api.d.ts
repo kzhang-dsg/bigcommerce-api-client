@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
-import { ValidatePasswordResponse } from "../model/customer";
+import { validatePassword } from "../model/generated/customers.v2";
 export declare class CustomerPasswordApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    validatePassword<T extends ValidatePasswordResponse>(customerId: number, password: string): Promise<T>;
+    validatePassword<T extends validatePassword>(customerId: number, password: string): Promise<T>;
 }

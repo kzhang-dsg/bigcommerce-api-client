@@ -1,6 +1,7 @@
 import FormData from "form-data";
 import { ApiClient } from "../api-client";
-import { Data, Image } from "../model/common";
+import { Data } from "../model/common";
+import { resourceImage_Full } from "../model/generated/catalog.v3";
 
 export class ImageApi {
     constructor(
@@ -8,7 +9,7 @@ export class ImageApi {
         private readonly baseUrl: string
     ) {}
 
-    async createImage<T extends Image>(
+    async createImage<T extends resourceImage_Full>(
         parentId: number,
         image: T
     ): Promise<Data<T>> {

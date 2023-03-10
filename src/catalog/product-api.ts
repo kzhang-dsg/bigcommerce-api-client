@@ -3,16 +3,25 @@ import {
     UpdateProductsQueryParams,
     DeleteProductsQueryParams,
     GetProductQueryParams,
-    Product,
     ProductsQueryParams,
-} from "../model/catalog";
+} from "../model/query/catalog";
 import { Data, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
+import {
+    product_Full,
+    product_Post,
+    product_Put,
+} from "../model/generated/catalog.v3";
+
+const MAX_BATCH_SIZE = 10;
 
 export class ProductApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getAllProducts<Params extends ProductsQueryParams, T extends Product>(
+    async getAllProducts<
+        Params extends ProductsQueryParams,
+        T extends product_Full
+    >(
         params?: Params,
         page?: number,
         limit?: number
@@ -27,16 +36,23 @@ export class ProductApi {
 
     async batchUpdateProducts<
         Params extends UpdateProductsQueryParams,
-        T extends Product
+        T extends product_Full
     >(products: T[], params?: Params): Promise<PaginatedData<T>> {
-        const response = await this.apiClient.put(
-            appendQueryString("/v3/catalog/products", params),
-            products
-        );
-        return response.data;
+        let result: PaginatedData<T> = { data: [], meta: {} };
+        for (let i = 0; i < products.length; i += MAX_BATCH_SIZE) {
+            const response = await this.apiClient.put(
+                appendQueryString("/v3/catalog/products", params),
+                products.slice(i, i + MAX_BATCH_SIZE)
+            );
+            result.data?.concat(response.data.data);
+        }
+
+        return result;
     }
 
-    async createProduct<T extends Product>(product: T): Promise<Data<T>> {
+    async createProduct<T extends product_Post, R extends product_Full>(
+        product: T
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             "/v3/catalog/products",
             product
@@ -52,10 +68,10 @@ export class ProductApi {
         );
     }
 
-    async getProduct<T extends Product, Params extends GetProductQueryParams>(
-        productId: number,
-        params?: Params
-    ): Promise<Data<T>> {
+    async getProduct<
+        T extends product_Full,
+        Params extends GetProductQueryParams
+    >(productId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/catalog/products/${productId}`, params)
         );
@@ -64,10 +80,11 @@ export class ProductApi {
 
     async updateProduct<
         Params extends UpdateProductsQueryParams,
-        T extends Product
-    >(product: T, params?: Params): Promise<Data<T>> {
+        T extends product_Put,
+        R extends product_Full
+    >(productId: number, product: T, params?: Params): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            appendQueryString(`/v3/catalog/products/${product.id}`, params),
+            appendQueryString(`/v3/catalog/products/${productId}`, params),
             product
         );
         return response.data;
