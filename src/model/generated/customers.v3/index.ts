@@ -10,6 +10,7 @@ export type { attribute_Full } from './models/attribute_Full';
 export { attribute_Post } from './models/attribute_Post';
 export type { attribute_Put } from './models/attribute_Put';
 export type { attributeValue_Base } from './models/attributeValue_Base';
+export type { attributeValue_Full } from './models/attributeValue_Full';
 export { BankAccountInstrument } from './models/BankAccountInstrument';
 export type { BillingAddress } from './models/BillingAddress';
 export { CardInstrument } from './models/CardInstrument';

@@ -24,7 +24,7 @@ export class CustomerAddressApi {
     async createCustomerAddress<
         T extends customerAddress_Base,
         R extends customerAddress_Full
-    >(customerId: number, customerAddress: T): Promise<customerAddress_Full> {
+    >(customerId: number, customerAddress: T): Promise<R> {
         const response = await this.apiClient.post(
             `/v2/customers/${customerId}/addresses`,
             customerAddress

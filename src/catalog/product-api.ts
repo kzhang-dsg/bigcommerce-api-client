@@ -11,6 +11,7 @@ import {
     product_Full,
     product_Post,
     product_Put,
+    product_Put_Collection,
 } from "../model/generated/catalog.v3";
 
 const MAX_BATCH_SIZE = 10;
@@ -36,9 +37,10 @@ export class ProductApi {
 
     async batchUpdateProducts<
         Params extends UpdateProductsQueryParams,
-        T extends product_Full
-    >(products: T[], params?: Params): Promise<PaginatedData<T>> {
-        let result: PaginatedData<T> = { data: [], meta: {} };
+        T extends product_Put_Collection,
+        R extends product_Full
+    >(products: T, params?: Params): Promise<PaginatedData<R>> {
+        let result: PaginatedData<R> = { data: [], meta: {} };
         for (let i = 0; i < products.length; i += MAX_BATCH_SIZE) {
             const response = await this.apiClient.put(
                 appendQueryString("/v3/catalog/products", params),

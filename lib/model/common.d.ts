@@ -72,3 +72,6 @@ export interface IdAwareQueryParams {
     "id:min"?: number[];
     "id:not_in"?: number[];
 }
+export interface IdInQueryParams {
+    "id:in"?: number[];
+}

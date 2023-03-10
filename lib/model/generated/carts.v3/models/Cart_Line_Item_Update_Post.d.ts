@@ -2,7 +2,7 @@ import type { cart_PostCustomItem } from './cart_PostCustomItem';
 import type { cart_PostModifier } from './cart_PostModifier';
 import type { cart_PostVariant } from './cart_PostVariant';
 export type Cart_Line_Item_Update_Post = {
-    line_items?: (cart_PostVariant | cart_PostModifier);
+    line_items?: Array<(cart_PostVariant | cart_PostModifier)>;
     gift_certificates?: Array<{
         /**
          * Given name for gift certificate line item.
