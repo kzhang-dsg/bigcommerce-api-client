@@ -1,5 +1,10 @@
 import { ApiClient } from "../api-client";
-import { count_Full, customer_Full } from "../model/generated/customers.v2";
+import {
+    count_Full,
+    customer_Base,
+    customer_Full,
+    customer_Put,
+} from "../model/generated/customers.v2";
 import { CustomersV2QueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 import { CustomerAddressApi } from "./customer-address-api";
@@ -25,7 +30,7 @@ export class CustomersV2Api {
         return response.data;
     }
 
-    async createCustomer<T extends customer_Post, R extends customer_Full>(
+    async createCustomer<T extends customer_Base, R extends customer_Full>(
         customer: T
     ): Promise<R> {
         const response = await this.apiClient.post("/v2/customers", customer);
@@ -43,7 +48,7 @@ export class CustomersV2Api {
         return response.data;
     }
 
-    async updateCustomer<T extends customer_Put, R extends customer_Full>(
+    async updateCustomer<T extends customer_Base, R extends customer_Full>(
         customerId: number,
         customer: T
     ): Promise<R> {
@@ -60,7 +65,6 @@ export class CustomersV2Api {
         confirmPassword?: string
     ): Promise<T> {
         const customer: customer_Put = {
-            id: customerId,
             _authentication: {
                 password: newPassword,
             },
@@ -81,7 +85,6 @@ export class CustomersV2Api {
         customerId: number
     ): Promise<T> {
         const customer: customer_Put = {
-            id: customerId,
             _authentication: {
                 force_reset: true,
             },
