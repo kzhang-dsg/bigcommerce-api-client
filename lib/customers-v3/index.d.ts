@@ -3,8 +3,8 @@ import { IdInQueryParams, PaginatedData } from "../model/common";
 import { customer_Full, customer_Post, customer_Put } from "../model/generated/customers.v3";
 import { CustomersV3QueryParams } from "../model/query/customer";
 import { CustomerAddressApi } from "./customer-address-api";
-import { CustomerAttributeApi } from "./customer-atribute-api";
-import { CustomerAttributeValueApi } from "./customer-atribute-value-api";
+import { CustomerAttributeApi } from "./customer-attribute-api";
+import { CustomerAttributeValueApi } from "./customer-attribute-value-api";
 export declare class CustomersV3Api {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

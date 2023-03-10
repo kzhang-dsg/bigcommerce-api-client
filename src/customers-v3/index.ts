@@ -8,8 +8,8 @@ import {
 import { CustomersV3QueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 import { CustomerAddressApi } from "./customer-address-api";
-import { CustomerAttributeApi } from "./customer-atribute-api";
-import { CustomerAttributeValueApi } from "./customer-atribute-value-api";
+import { CustomerAttributeApi } from "./customer-attribute-api";
+import { CustomerAttributeValueApi } from "./customer-attribute-value-api";
 
 const MAX_BATCH_SIZE = 10;
 
