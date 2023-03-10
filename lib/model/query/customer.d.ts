@@ -62,3 +62,14 @@ export interface CustomersV3AttributeValuesQueryParams {
     "date_modified:max"?: string;
     "date_modified:min"?: string;
 }
+export interface CustomersV3AttributesQueryParams {
+    name?: string;
+    "name:like"?: string;
+    type?: string;
+    date_created?: string;
+    "date_created:max"?: string;
+    "date_created:min"?: string;
+    date_modified?: string;
+    "date_modified:max"?: string;
+    "date_modified:min"?: string;
+}

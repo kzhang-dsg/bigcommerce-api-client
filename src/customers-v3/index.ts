@@ -1,10 +1,5 @@
 import { ApiClient } from "../api-client";
-import {
-    Data,
-    FieldAwareQueryParams,
-    IdInQueryParams,
-    PaginatedData,
-} from "../model/common";
+import { IdInQueryParams, PaginatedData } from "../model/common";
 import {
     customer_Full,
     customer_Post,
@@ -12,11 +7,20 @@ import {
 } from "../model/generated/customers.v3";
 import { CustomersV3QueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
+import { CustomerAddressApi } from "./customer-address-api";
+import { CustomerAttributeApi } from "./customer-atribute-api";
+import { CustomerAttributeValueApi } from "./customer-atribute-value-api";
 
 const MAX_BATCH_SIZE = 10;
 
 export class CustomersV3Api {
     constructor(private readonly apiClient: ApiClient) {}
+
+    readonly customerAddresses = new CustomerAddressApi(this.apiClient);
+    readonly customerAttributeValues = new CustomerAttributeValueApi(
+        this.apiClient
+    );
+    readonly customerAttributes = new CustomerAttributeApi(this.apiClient);
 
     async getAllCustomers<
         Params extends CustomersV3QueryParams,
