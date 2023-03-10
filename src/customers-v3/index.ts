@@ -11,6 +11,9 @@ import { CustomerAddressApi } from "./customer-address-api";
 import { CustomerAttributeApi } from "./customer-attribute-api";
 import { CustomerAttributeValueApi } from "./customer-attribute-value-api";
 import { CustomerConsentApi } from "./customer-consent-api";
+import { CustomerFormFieldValueApi } from "./customer-form-field-value-api";
+import { CustomerSettingsApi } from "./customer-setting-api";
+import { CustomerSettingsChannelApi } from "./customer-setting-channel-api";
 
 const MAX_BATCH_SIZE = 10;
 
@@ -23,6 +26,13 @@ export class CustomersV3Api {
     );
     readonly customerAttributes = new CustomerAttributeApi(this.apiClient);
     readonly customerConsent = new CustomerConsentApi(this.apiClient);
+    readonly customerFormFieldValues = new CustomerFormFieldValueApi(
+        this.apiClient
+    );
+    readonly customerSettings = new CustomerSettingsApi(this.apiClient);
+    readonly customerSettingsChannel = new CustomerSettingsChannelApi(
+        this.apiClient
+    );
 
     async getAllCustomers<
         Params extends CustomersV3QueryParams,

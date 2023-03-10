@@ -73,3 +73,9 @@ export interface CustomersV3AttributesQueryParams {
     "date_modified:max"?: string;
     "date_modified:min"?: string;
 }
+export interface CustomersV3FormFieldValuesQueryParams {
+    customer_id?: number;
+    address_id?: number;
+    field_name?: string;
+    field_type?: string;
+}
