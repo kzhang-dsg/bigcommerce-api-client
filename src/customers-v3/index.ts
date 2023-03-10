@@ -10,6 +10,7 @@ import { appendQueryString } from "../util";
 import { CustomerAddressApi } from "./customer-address-api";
 import { CustomerAttributeApi } from "./customer-attribute-api";
 import { CustomerAttributeValueApi } from "./customer-attribute-value-api";
+import { CustomerConsentApi } from "./customer-consent-api";
 
 const MAX_BATCH_SIZE = 10;
 
@@ -21,6 +22,7 @@ export class CustomersV3Api {
         this.apiClient
     );
     readonly customerAttributes = new CustomerAttributeApi(this.apiClient);
+    readonly customerConsent = new CustomerConsentApi(this.apiClient);
 
     async getAllCustomers<
         Params extends CustomersV3QueryParams,

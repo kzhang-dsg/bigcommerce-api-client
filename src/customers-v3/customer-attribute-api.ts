@@ -9,8 +9,6 @@ import {
 import { CustomersV3AttributesQueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 
-const MAX_BATCH_SIZE = 10;
-
 export class CustomerAttributeApi {
     constructor(private readonly apiClient: ApiClient) {}
 
