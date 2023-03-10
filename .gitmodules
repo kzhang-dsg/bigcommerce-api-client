@@ -1,0 +1,3 @@
+[submodule "api-specs"]
+	path = api-specs
+	url = https://github.com/bigcommerce/api-specs.git
