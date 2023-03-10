@@ -1,6 +1,5 @@
 import { ApiClient } from "../api-client";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { ExtendedBulkPricingRule } from "../model/extended";
 import { bulkPricingRule_Full } from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
@@ -9,7 +8,7 @@ export class ProductBuckPricingRuleApi {
 
     async getAllBuckPricingRules<
         Params extends FieldAwareQueryParams,
-        T extends ExtendedBulkPricingRule
+        T extends bulkPricingRule_Full
     >(
         productId: number,
         params?: Params,
@@ -27,10 +26,10 @@ export class ProductBuckPricingRuleApi {
         return response.data;
     }
 
-    async createBuckPricingRule<
-        T extends bulkPricingRule_Full,
-        R extends ExtendedBulkPricingRule
-    >(productId: number, buckPricingRule: T): Promise<Data<R>> {
+    async createBuckPricingRule<T extends bulkPricingRule_Full>(
+        productId: number,
+        buckPricingRule: T
+    ): Promise<Data<T>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/bulk-pricing-rules`,
             buckPricingRule
@@ -39,7 +38,7 @@ export class ProductBuckPricingRuleApi {
     }
 
     async getBuckPricingRule<
-        T extends ExtendedBulkPricingRule,
+        T extends bulkPricingRule_Full,
         Params extends FieldAwareQueryParams
     >(
         productId: number,
@@ -55,14 +54,11 @@ export class ProductBuckPricingRuleApi {
         return response.data;
     }
 
-    async updateBuckPricingRule<
-        T extends bulkPricingRule_Full,
-        R extends ExtendedBulkPricingRule
-    >(
+    async updateBuckPricingRule<T extends bulkPricingRule_Full>(
         productId: number,
         buckPricingRuleId: number,
         buckPricingRule: T
-    ): Promise<Data<R>> {
+    ): Promise<Data<T>> {
         const response = await this.apiClient.put(
             `/v3/catalog/products/${productId}/bulk-pricing-rules/${buckPricingRuleId}`,
             buckPricingRule

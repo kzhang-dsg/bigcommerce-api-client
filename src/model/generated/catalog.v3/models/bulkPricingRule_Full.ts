@@ -7,6 +7,11 @@
  */
 export type bulkPricingRule_Full = {
     /**
+     * The unique numeric ID of the bulk pricing rule; increments sequentially. Read-Only
+     *
+     */
+    id?: number;
+    /**
      * The minimum inclusive quantity of a product to satisfy this rule. Must be greater than or equal to zero.
      * Required in /POST.
      *

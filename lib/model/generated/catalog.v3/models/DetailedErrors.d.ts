@@ -1,5 +1,6 @@
 /**
- * Details of errors.
- *
+ * Each key-value pair describes a failure or partial success case.
  */
-export type DetailedErrors = Record<string, string>;
+export type DetailedErrors = {
+    additionalProperties?: string;
+};

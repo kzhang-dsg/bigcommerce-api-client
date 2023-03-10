@@ -1,11 +1,11 @@
 import { ApiClient } from "../api-client";
 import { Data } from "../model/common";
-import { CartRedirectResponse } from "../model/extended";
+import { CartRedirectUrl } from "../model/generated/carts.v3";
 
 export class CartRedirectUrlApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async createCartLineRedirectUrl<T extends CartRedirectResponse>(
+    async createCartLineRedirectUrl<T extends CartRedirectUrl>(
         cartId: number
     ): Promise<Data<T>> {
         const response = await this.apiClient.post(

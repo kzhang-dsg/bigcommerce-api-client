@@ -42,7 +42,7 @@ export type customer_Put = {
      * The unique numeric ID of the customer.
      */
     id: number;
-    _authentication?: customerAuthentication_PostPut;
+    authentication?: customerAuthentication_PostPut;
     /**
      * It determines if the customer is signed up to receive either product review or abandoned cart emails or receive both emails.
      */

@@ -2,14 +2,14 @@ import { ApiClient } from "../api-client";
 import { ProductCategoryAssignmentsQueryParams } from "../model/query/catalog";
 import { PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
-import { ExtendedProductCategoryAssignment } from "../model/extended";
+import { ProductCategoryAssignment } from "../model/generated/catalog.v3";
 
 export class ProductCategoryAssignmentApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getAllCategoryAssignments<
         Params extends ProductCategoryAssignmentsQueryParams,
-        T extends ExtendedProductCategoryAssignment
+        T extends ProductCategoryAssignment
     >(
         params?: Params,
         page?: number,
@@ -26,9 +26,9 @@ export class ProductCategoryAssignmentApi {
         return response.data;
     }
 
-    async createCategoryAssignments<
-        T extends ExtendedProductCategoryAssignment
-    >(categoryAssignments: T[]): Promise<void> {
+    async createCategoryAssignments<T extends ProductCategoryAssignment>(
+        categoryAssignments: T[]
+    ): Promise<void> {
         await this.apiClient.post(
             `/v3/catalog/products/category-assignments`,
             categoryAssignments

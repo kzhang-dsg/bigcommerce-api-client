@@ -12,6 +12,7 @@ export type { cart_PostCustomItem } from './models/cart_PostCustomItem';
 export type { cart_PostModifier } from './models/cart_PostModifier';
 export type { cart_PostVariant } from './models/cart_PostVariant';
 export type { CartCreatePostData } from './models/CartCreatePostData';
+export type { CartRedirectUrl } from './models/CartRedirectUrl';
 export type { CartRequestData } from './models/CartRequestData';
 export type { CartSettings } from './models/CartSettings';
 export type { CartUpdatePutRequestData } from './models/CartUpdatePutRequestData';

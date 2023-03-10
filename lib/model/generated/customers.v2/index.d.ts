@@ -4,6 +4,7 @@ export type { count_Full } from './models/count_Full';
 export type { country_Full } from './models/country_Full';
 export type { customer_Base } from './models/customer_Base';
 export type { customer_Full } from './models/customer_Full';
+export type { customer_Put } from './models/customer_Put';
 export { customerAddress_Base } from './models/customerAddress_Base';
 export type { customerAddress_Full } from './models/customerAddress_Full';
 export type { customerFormFields } from './models/customerFormFields';
