@@ -1,6 +1,5 @@
 import { ApiClient } from "../api-client";
 import { count_Full, customer_Full } from "../model/generated/customers.v2";
-import { customer_Post, customer_Put } from "../model/generated/customers.v3";
 import { CustomersV2QueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 import { CustomerAddressApi } from "./customer-address-api";

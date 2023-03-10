@@ -49,7 +49,7 @@ export type customer_Post = {
      * Array of customer attributes. Limited to 10.
      */
     attributes?: Array<customerAttributes_Base>;
-    _authentication?: customerAuthentication_PostPut;
+    authentication?: customerAuthentication_PostPut;
     /**
      * It determines if the customer is signed up to receive either product review or abandoned cart emails or receive both emails.
      */

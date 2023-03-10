@@ -65,7 +65,7 @@ export type customer_Full = {
      * Total number of customer attributes.
      */
     attribute_count?: number;
-    _authentication?: {
+    authentication?: {
         /**
          * If `true`, this customer will be forced to change password on next login.
          */

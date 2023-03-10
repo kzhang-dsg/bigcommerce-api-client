@@ -1,0 +1,3 @@
+[submodule "bigcommerce-api-specs"]
+	path = bigcommerce-api-specs
+	url = git@github.com:kzhang-dsg/bigcommerce-api-specs.git
