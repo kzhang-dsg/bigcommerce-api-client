@@ -3,11 +3,11 @@
  */
 export type ChannelConfigMeta = {
     /**
-     * A [channel app](/api-docs/channels/overview#channel-apps) config object for optionally configuring the channel's user interface in the control panel.
+     * A [channel app](/api-docs/channels/overview#channel-apps) config object for optionally configuring the channelʼs user interface in the control panel.
      */
     app?: {
         /**
-         * The unique `id` given to an app registered in [DevTools](https://devtools.bigcommerce.com/); used to create links to the app in channel manager. `app.id` is optional; however, if you're building an app that creates or manages a channel, we recommend including it to ensure the user interface in the control panel works properly. Select partners who are promoted in the Channel Manager must build an app, and include the app ID in the create channel request. [Learn how to find an App's ID](/api-docs/apps/tutorials/id).
+         * The unique `id` given to an app registered in [DevTools](https://devtools.bigcommerce.com/); used to create links to the app in channel manager. `app.id` is optional; however, if youʼre building an app that creates or manages a channel, we recommend including it to ensure the user interface in the control panel works properly. Select partners who are promoted in the Channel Manager must build an app, and include the app ID in the create channel request. [Learn how to find an Appʼs ID](/api-docs/apps/tutorials/id).
          */
         id?: number;
         /**

@@ -63,6 +63,7 @@ export type { layout_file } from './models/layout_file';
 export type { meta_description } from './models/meta_description';
 export type { meta_keywords } from './models/meta_keywords';
 export type { metaCollection_Full } from './models/metaCollection_Full';
+export type { metaCollection_open } from './models/metaCollection_open';
 export type { MetaData } from './models/MetaData';
 export type { metaEmpty_Full } from './models/metaEmpty_Full';
 export type { MetaError } from './models/MetaError';

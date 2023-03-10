@@ -5,8 +5,6 @@ import type { error_Base } from './error_Base';
  */
 export type resp_variantBatchError = {
     batch_errors?: Array<(error_Base & {
-        errors?: {
-            additionalProperties?: string;
-        };
+        errors?: any;
     })>;
 };

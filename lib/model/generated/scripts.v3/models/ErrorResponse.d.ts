@@ -12,5 +12,5 @@ export type ErrorResponse = ({
     type?: string;
     instance?: string;
 } & {
-    errors?: Record<string, string>;
+    errors?: any;
 });

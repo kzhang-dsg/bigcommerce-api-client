@@ -1,4 +1,4 @@
 /**
- * Empty meta object; may be used later.
+ * Response metadata.
  */
 export type Meta = {};

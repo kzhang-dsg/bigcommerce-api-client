@@ -1,5 +1,6 @@
+import type { Meta } from './Meta';
 /**
- * PriceList Reponse returns for:
+ * PriceList Response returns for:
  *
  * * Create a PriceList
  * * Get a PriceList
@@ -18,8 +19,5 @@ export type PriceListResponse = {
          */
         active?: boolean;
     };
-    /**
-     * Empty meta object; may be used later.
-     */
-    meta?: any;
+    meta?: Meta;
 };

@@ -59,7 +59,7 @@ export type customer_Full = {
      */
     notes?: string;
     /**
-     * If applicable, the tax-exempt category of the shopper's customer account. You can apply a tax-exempt category to multiple customers. This code should match the exemption codes provided by the third-party integration.
+     * If applicable, the tax-exempt category of the shopperʼs customer account. You can apply a tax-exempt category to multiple customers. This code should match the exemption codes provided by the third-party integration.
      */
     tax_exempt_category?: string;
     /**

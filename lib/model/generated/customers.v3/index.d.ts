@@ -30,6 +30,7 @@ export type { formFieldValue_Address } from './models/formFieldValue_Address';
 export type { formFieldValue_Customer } from './models/formFieldValue_Customer';
 export type { formFieldValue_Full } from './models/formFieldValue_Full';
 export type { Links } from './models/Links';
+export type { MetaOpen } from './models/MetaOpen';
 export type { Pagination } from './models/Pagination';
 export { PayPalAccountInstrument } from './models/PayPalAccountInstrument';
 export type { ValidateCustomerCredentialsObject } from './models/ValidateCustomerCredentialsObject';

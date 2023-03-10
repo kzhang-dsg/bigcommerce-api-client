@@ -17,7 +17,7 @@ import type { orderCatalogProduct_Post } from './orderCatalogProduct_Post';
  */
 export type orderCatalogProduct_Put = ({
     /**
-     * The order product `id`. To add a product to an existing order, don't include `id` in the payload. `id` is required when updating an order product.
+     * The order product `id`. To add a product to an existing order, donʼt include `id` in the payload. `id` is required when updating an order product.
      */
     id?: number;
 } & orderCatalogProduct_Post);

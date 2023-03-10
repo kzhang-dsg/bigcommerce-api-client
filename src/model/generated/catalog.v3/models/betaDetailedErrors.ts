@@ -3,6 +3,5 @@
 /* eslint-disable */
 
 export type betaDetailedErrors = {
-    additionalProperties?: string;
 };
 

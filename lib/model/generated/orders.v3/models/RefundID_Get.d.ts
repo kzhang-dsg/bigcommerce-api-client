@@ -1,3 +1,4 @@
+import type { metaEmpty_Full } from './metaEmpty_Full';
 export type RefundID_Get = {
     data?: {
         /**
@@ -100,5 +101,5 @@ export type RefundID_Get = {
             reason?: string;
         }>;
     };
-    meta?: any;
+    meta?: metaEmpty_Full;
 };

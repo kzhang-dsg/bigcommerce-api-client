@@ -12,6 +12,4 @@ do
 done;
 
 echo Fixing the generated models
-find ./src/model/generated/ -name '*.ts' -exec sed -i -e 's/= ;/= any;/g' {} \;
-find ./src/model/generated/ -name '*.ts' -exec sed -i -e 's/\?: ;/\?: any;/g' {} \;
 find ./src/model/generated/ -name '*.ts' -exec sed -i -e "s/        = '',/        BLANK = '',/g" {} \;

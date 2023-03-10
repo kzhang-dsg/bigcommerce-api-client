@@ -16,8 +16,6 @@ export type ErrorResponse = ({
     type?: string;
     instance?: string;
 } & {
-    errors?: {
-        additionalProperties?: string;
-    };
+    errors?: any;
 });
 

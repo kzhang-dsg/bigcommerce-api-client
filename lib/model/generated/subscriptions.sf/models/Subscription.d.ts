@@ -36,5 +36,5 @@ export type Subscription = {
      * The collection of consents the shopper is subscribing to.
      *
      */
-    consents?: any[];
+    consents?: Array<any>;
 };

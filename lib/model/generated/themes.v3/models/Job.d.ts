@@ -26,7 +26,7 @@ export type Job = {
     /**
      * The result.
      */
-    result?: Record<string, string>;
+    result?: any;
     /**
      * The status.
      */

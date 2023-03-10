@@ -1,3 +1,4 @@
-export type meta_Empty = {
-    meta?: any;
-};
+/**
+ * Response metadata.
+ */
+export type meta_Empty = {};

@@ -73,8 +73,6 @@ export type RefundQuote_Full = {
                                          * 2. Mark an amount up to the full order amount as refunded externally, through a provider or means not represented directly in BC ("custom").
                                          * 3. Refund the amount paid by store credit to store credit, and the amount paid by bank deposit via a manual refund, which will be recorded as being refunded against the bank deposit.
                                          *
-                                         * >
-                                         *
                                          */
     refund_methods?: Array<RefundMethod>;
 };

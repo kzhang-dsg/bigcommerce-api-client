@@ -4,7 +4,7 @@
 
 export type siteRoutes_Route_Base = {
     /**
-     * The type of resource being routed to; [supported types](/api-reference/store-management/sites#route-types).
+     * The type of resource being routed to; [supported types](/docs/rest-management/sites#route-types).
      */
     type: siteRoutes_Route_Base.type;
     /**
@@ -27,7 +27,7 @@ export type siteRoutes_Route_Base = {
 export namespace siteRoutes_Route_Base {
 
     /**
-     * The type of resource being routed to; [supported types](/api-reference/store-management/sites#route-types).
+     * The type of resource being routed to; [supported types](/docs/rest-management/sites#route-types).
      */
     export enum type {
         PRODUCT = 'product',

@@ -1,3 +1,4 @@
+import type { Meta } from './Meta';
 /**
  * Response payload for the BigCommerce API.
  */
@@ -54,8 +55,5 @@ export type PriceRecordResponse = {
          */
         sku?: string;
     };
-    /**
-     * Empty meta object; may be used later.
-     */
-    meta?: any;
+    meta?: Meta;
 };

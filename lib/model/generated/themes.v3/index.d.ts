@@ -9,6 +9,7 @@ export { JobResponse } from './models/JobResponse';
 export type { Meta } from './models/Meta';
 export type { NoContent } from './models/NoContent';
 export type { NotFound } from './models/NotFound';
+export type { OpenMeta } from './models/OpenMeta';
 export type { Pagination } from './models/Pagination';
 export type { RequestHeaders } from './models/RequestHeaders';
 export type { Theme } from './models/Theme';
@@ -17,4 +18,4 @@ export type { themeConfiguration_Write } from './models/themeConfiguration_Write
 export type { ThemeResponse } from './models/ThemeResponse';
 export type { ThemesCollectionResponse } from './models/ThemesCollectionResponse';
 export type { Variation } from './models/Variation';
-export type { WhichThemeToDownload } from './models/WhichThemeToDownload';
+export { WhichThemeToDownload } from './models/WhichThemeToDownload';

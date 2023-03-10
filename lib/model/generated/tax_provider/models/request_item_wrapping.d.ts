@@ -50,7 +50,7 @@ export type request_item_wrapping = {
      * The type refund is used when the tax estimate request is for an order-level refund.
      */
     type: request_item_wrapping.type;
-    wrapping?: (request_item | null);
+    wrapping?: request_item;
 };
 export declare namespace request_item_wrapping {
     /**

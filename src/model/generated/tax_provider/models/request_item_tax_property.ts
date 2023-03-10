@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 /**
- * A simple key value pairing allowing merchants to provide an additional input into a tax provider's tax calculation.
+ * A simple key value pairing allowing merchants to provide an additional input into a tax providerʼs tax calculation.
  */
 export type request_item_tax_property = {
     /**
@@ -11,7 +11,7 @@ export type request_item_tax_property = {
      */
     code: string;
     /**
-     * The value that will be factored into the tax provider's tax calculation rules, where supported.
+     * The value that will be factored into the tax providerʼs tax calculation rules, where supported.
      */
     value: string;
 };

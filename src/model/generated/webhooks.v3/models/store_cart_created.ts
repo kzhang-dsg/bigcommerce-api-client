@@ -7,7 +7,7 @@ import type { webhook_callback_base } from './webhook_callback_base';
 /**
  * This webhook fires on new cart creation when any of the following occur:
  * * a storefront shopper adds their first product to a cart during a new session
- * * thereʼs a successful `POST` request to `/carts` using either the [Storefront](/api-reference/storefront/carts/cart/createacart) API or the [Store Management](/api-reference/store-management/carts/cart/createacart) API
+ * * thereʼs a successful `POST` request to `/carts` using either the [Storefront](/docs/rest-storefront/carts#create-a-cart) API or the [Store Management](/docs/rest-management/carts/carts-single#create-a-cart) API
  *
  * Cart creation also fires the `store/cart/updated` webhook.
  *

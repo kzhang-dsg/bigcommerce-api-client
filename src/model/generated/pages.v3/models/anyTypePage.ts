@@ -26,7 +26,7 @@ export type anyTypePage = {
      */
     sort_order?: number;
     /**
-     * Determines the type of page. See [Pages v3 page types](/api-reference/store-management/pages#page-types) for more about the differences.
+     * Determines the type of page. See [Pages v3 page types](/docs/rest-content/pages#page-types) for more about the differences.
      */
     type: anyTypePage.type;
     /**
@@ -42,7 +42,7 @@ export type anyTypePage = {
 export namespace anyTypePage {
 
     /**
-     * Determines the type of page. See [Pages v3 page types](/api-reference/store-management/pages#page-types) for more about the differences.
+     * Determines the type of page. See [Pages v3 page types](/docs/rest-content/pages#page-types) for more about the differences.
      */
     export enum type {
         PAGE = 'page',

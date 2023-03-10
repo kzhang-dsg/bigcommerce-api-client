@@ -25,7 +25,7 @@ export type orderCatalogProduct_Post = {
      */
     product_options?: Array<{
         /**
-         * Numeric ID of an option applied to the product from a list of options available to the product. This field has the same value as `product_option_id` when [retrieving products in an order](/api-reference/store-management/orders/order-products/getallorderproducts).
+         * Numeric ID of an option applied to the product from a list of options available to the product. This field has the same value as `product_option_id` when [retrieving products in an order](/docs/rest-management/orders/order-products#list-order-products).
          */
         id?: number;
         /**

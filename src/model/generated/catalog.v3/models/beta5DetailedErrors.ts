@@ -2,4 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type beta5DetailedErrors = Record<string, string>;
+export type beta5DetailedErrors = {
+};
+

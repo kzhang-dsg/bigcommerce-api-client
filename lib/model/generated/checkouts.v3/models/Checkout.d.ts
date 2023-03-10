@@ -244,11 +244,61 @@ export type Checkout = {
          */
         updated_time?: string;
     };
-    billing_address?: any;
+    billing_address?: ({
+        first_name?: string;
+        last_name?: string;
+        email?: string;
+        company?: string;
+        address1?: string;
+        address2?: string;
+        city?: string;
+        /**
+         * Represents state or province.
+         */
+        state_or_province?: string;
+        state_or_province_code?: string;
+        country_code?: string;
+        postal_code?: string;
+        phone?: string;
+        custom_fields?: Array<{
+            field_id?: string;
+            /**
+             * This can also be an array for fields that need to support a list of values (e.g., a set of check boxes.)
+             */
+            field_value?: string;
+        }>;
+    } & {
+        id?: string;
+    });
     consignments?: Array<{
         id?: string;
         shippingAddress?: any;
-        address?: any;
+        address?: ({
+            first_name?: string;
+            last_name?: string;
+            email: string;
+            company?: string;
+            address1?: string;
+            address2?: string;
+            city?: string;
+            /**
+             * Represents state or province.
+             */
+            state_or_province?: string;
+            state_or_province_code?: string;
+            country_code: string;
+            postal_code?: string;
+            phone?: string;
+            custom_fields?: Array<{
+                field_id?: string;
+                /**
+                 * This can also be an array for fields that need to support a list of values (e.g., a set of check boxes.)
+                 */
+                field_value?: string;
+            }>;
+        } & {
+            id?: string;
+        });
         /**
          * This is available only when "include=consignments.available_shipping_options" is presented in the URL.
          */

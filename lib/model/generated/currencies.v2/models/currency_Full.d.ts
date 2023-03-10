@@ -1,9 +1,9 @@
 import type { currency_Base } from './currency_Base';
 export type currency_Full = (currency_Base & {
     /**
-     * Id of the currency. READ-ONLY.
+     * ID of the currency. Read only.
      */
-    id?: number;
+    readonly id?: number;
     /**
      * Date the currency was last updated, created or modified.
      */

@@ -22,7 +22,7 @@ export type orderCoupons_Base = {
     /**
      * Amount of the discount. This information is returned as in integer. Dollar and percentage discounts will return the same. For example, $3 returns as '3' while 5% will return as 5. Check the discount type to see what type of discount is available.
      */
-    amount?: string | number | number;
+    amount?: (string | number);
     /**
      * 0: per_item_discount
      * 1: percentage_discount

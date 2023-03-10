@@ -39,7 +39,7 @@ export { LineItemGiftCertificateRequestData } from './models/LineItemGiftCertifi
 export type { LineItemRequestData } from './models/LineItemRequestData';
 export type { LineItems } from './models/LineItems';
 export type { LineItemsGet } from './models/LineItemsGet';
-export type { Meta } from './models/Meta';
+export type { metaCollection_open } from './models/metaCollection_open';
 export type { Metafield } from './models/Metafield';
 export { MetafieldBase } from './models/MetafieldBase';
 export { MetafieldBase_Post } from './models/MetafieldBase_Post';

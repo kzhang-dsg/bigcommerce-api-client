@@ -1,1 +1,1 @@
-export type DetailedErrors = Record<string, string>;
+export type DetailedErrors = {};

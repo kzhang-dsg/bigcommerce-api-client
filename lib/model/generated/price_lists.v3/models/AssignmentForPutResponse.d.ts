@@ -1,3 +1,4 @@
+import type { Meta } from './Meta';
 export type AssignmentForPutResponse = {
     data?: {
         /**
@@ -17,5 +18,5 @@ export type AssignmentForPutResponse = {
          */
         channel_id?: number;
     };
-    meta?: any;
+    meta?: Meta;
 };

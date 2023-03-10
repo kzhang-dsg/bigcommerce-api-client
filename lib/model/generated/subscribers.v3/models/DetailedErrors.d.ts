@@ -1,3 +1,1 @@
-export type DetailedErrors = {
-    additionalProperties?: string;
-};
+export type DetailedErrors = {};

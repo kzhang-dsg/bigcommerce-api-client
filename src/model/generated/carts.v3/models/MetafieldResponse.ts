@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Meta } from './Meta';
+import type { CollectionMeta } from './CollectionMeta';
 import type { Metafield } from './Metafield';
 
 /**
@@ -11,5 +11,5 @@ import type { Metafield } from './Metafield';
  */
 export type MetafieldResponse = ({
     data?: Metafield;
-} & Meta);
+} & CollectionMeta);
 

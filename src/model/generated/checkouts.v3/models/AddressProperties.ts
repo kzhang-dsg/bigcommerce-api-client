@@ -19,7 +19,7 @@ export type AddressProperties = {
     postal_code?: string;
     phone?: string;
     /**
-     * You can retrieve custom fields from the [Get Form Fields](/api-reference/storefront/form-fields/form-fields/getformfields) endpoint.
+     * You can retrieve custom fields from the [Get Form Fields](/docs/rest-storefront/forms#get-form-fields) endpoint.
      */
     custom_fields?: Array<{
         field_id?: string;

@@ -1,9 +1,9 @@
 /**
- * A particular locale's translations.
+ * A particular localeʼs translations.
  */
 export type LocaleObject = {
     /**
-     * Locale code for this language, such as 'en', 'en-us', 'fr-ca'.
+     * Locale code for this language, such as "en", "en-us", "fr-ca".
      */
     locale?: string;
     /**

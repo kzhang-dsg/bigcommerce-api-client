@@ -45,7 +45,7 @@ export type BaseOptions = {
          */
         address_type?: BaseOptions.address_type;
         /**
-         * Describes one or more [custom form fields](/api-reference/storefront/form-fields/form-fields/getformfields). Property key is the global ID of a shipping address form field. When no custom fields exist, the object is empty.
+         * Describes one or more [custom form fields](/docs/rest-storefront/forms). Property key is the global ID of a shipping address form field. When no custom fields exist, the object is empty.
          */
         form_fields?: {
             '<form field global ID>'?: FormFieldValue;
@@ -115,7 +115,7 @@ export type BaseOptions = {
              */
             value?: string;
             /**
-             * The namespace associated with a product(/api-reference/catalog/catalog-api/product-metafields/createproductmetafield) or product variant(/api-reference/store-management/catalog/product-variants-metafields/createvariantmetafield) meta fields. You should save a meta field namespace under this format `shipping_carrier_{yourCarrierId}`; otherwise, you will not be able to recognize it as an attribute.
+             * The namespace associated with a [product](docs/rest-management/catalog/product-metafields) or [product variant](/docs/rest-management/catalog/product-variants-metafields) metafields. You should save a metafield namespace under this format `shipping_carrier_{yourCarrierId}`; otherwise, you will not be able to recognize it as an attribute.
              */
             namespace?: string;
             /**

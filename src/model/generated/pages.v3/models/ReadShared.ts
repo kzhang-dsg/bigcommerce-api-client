@@ -20,7 +20,7 @@ export type ReadShared = {
      */
     sort_order?: number;
     /**
-     * Determines the type of page. See [Pages v3 page types](/api-reference/store-management/pages#page-types) for more about the differences.
+     * Determines the type of page. See [Pages v3 page types](/docs/rest-content/pages#page-types) for more about the differences.
      */
     type: ReadShared.type;
     /**
@@ -36,7 +36,7 @@ export type ReadShared = {
 export namespace ReadShared {
 
     /**
-     * Determines the type of page. See [Pages v3 page types](/api-reference/store-management/pages#page-types) for more about the differences.
+     * Determines the type of page. See [Pages v3 page types](/docs/rest-content/pages#page-types) for more about the differences.
      */
     export enum type {
         PAGE = 'page',

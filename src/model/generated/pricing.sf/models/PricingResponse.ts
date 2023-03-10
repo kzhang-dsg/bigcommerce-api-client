@@ -237,6 +237,9 @@ export type PricingResponse = {
             discount_type?: 'price' | 'percent' | 'fixed';
         }>;
     }>;
+    /**
+     * Response metadata.
+     */
     meta?: any;
 };
 

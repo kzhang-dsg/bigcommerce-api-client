@@ -15,6 +15,7 @@ export type { GetCertificatesResponse } from './models/GetCertificatesResponse';
 export type { IndexMeta } from './models/IndexMeta';
 export type { InstallCertificateData } from './models/InstallCertificateData';
 export type { InstalledCertificateDetail } from './models/InstalledCertificateDetail';
+export type { MetaOpen } from './models/MetaOpen';
 export type { post_Site } from './models/post_Site';
 export type { put_Site } from './models/put_Site';
 export type { SiteCreate } from './models/SiteCreate';

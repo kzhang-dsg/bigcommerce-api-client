@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 /**
- * The status of the channel; channel `type`, `platform`, and `status` must be a [valid combination](/api-reference/store-management/channels#status). `terminated` is not valid for `PUT` or `POST` requests. `deleted` is not valid for `POST` requests.
+ * The status of the channel; channel `type`, `platform`, and `status` must be a [valid combination](/docs/rest-management/channels#status). `terminated` is not valid for `PUT` or `POST` requests. `deleted` is not valid for `POST` requests.
  */
 export enum ChannelStatus {
     ACTIVE = 'active',

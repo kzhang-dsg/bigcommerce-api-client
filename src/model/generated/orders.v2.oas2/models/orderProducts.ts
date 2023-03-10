@@ -97,7 +97,7 @@ export type orderProducts = {
     /**
      * Weight of the product. (Float, Float-As-String, Integer)
      */
-    weight?: number | string;
+    weight?: (number | string);
     /**
      * Tax applied to the product’s cost price. (Float, Float-As-String, Integer)
      * The cost of your products to you; this is never shown to customers, but can be used for accounting purposes. Read Only

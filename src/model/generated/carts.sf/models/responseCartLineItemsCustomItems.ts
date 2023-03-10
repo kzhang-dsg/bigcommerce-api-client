@@ -5,7 +5,7 @@
 /**
  * **Read Only**
  *
- * This will return in the Cart Response if the Cart was created using the [Server to Server Cart API](/api-reference/cart-checkout/server-server-cart-api). A custom item can only be added to a cart using the Server to Server API.
+ * This will return in the Cart Response if the Cart was created using the [Store Management Carts API](/docs/rest-management/carts). A custom item can only be added to a cart using the Server to Server API.
  */
 export type responseCartLineItemsCustomItems = {
     readonly extendedListPrice?: number;

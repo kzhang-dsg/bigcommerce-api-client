@@ -49,18 +49,18 @@ export type order_Shared = {
     /**
      * The order ID in another system, such as the Amazon Order ID if this is an Amazon order. After setting it, you cannot write to or update the `external_id`. You can update this field using a POST request, but a PUT request to update the order will return a 400 error.  Please remove it from your request before trying again.
      */
-    external_id?: string;
+    external_id?: string | null;
     /**
      * The merchant ID represents an upstream order from an external system. It is the source of truth for orders. After setting it, you cannot write to or update the `external_merchant_id`. For example, you can update the Facebook by Meta page ID in a POST request, but a PUT request to update the order will return a 400 error. Please remove it from your request before trying again.
      */
-    external_merchant_id?: string;
+    external_merchant_id?: string | null;
     /**
      * This value identifies an external system that generated the order and submitted it to BigCommerce with the Orders API.
      * * When supplying the value, we recommend combining the type of system and vendor, e.g., ERP (Acumatica) or POS (Square).
      * * If you are migrating historical orders processed on another eCommerce platform to BigCommerce, supply the following code as the value: M-MIG. This code will exclude historical orders from the store’s GMV/order count, which factors into pricing.
      * * If you do not provide a value, then it will default to null.
      */
-    external_source?: string;
+    external_source?: string | null;
     /**
      * The full name of the country where the customer made the purchase, based on the IP.
      */
@@ -112,7 +112,7 @@ export type order_Shared = {
     /**
      * The external Transaction ID/Payment ID within this order’s payment provider (if a payment provider was used).
      */
-    payment_provider_id?: string | number;
+    payment_provider_id?: (string | number);
     /**
      * The amount refunded from this transaction; always returns `0`. (Float, Float-As-String, Integer)
      */

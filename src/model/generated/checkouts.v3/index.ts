@@ -10,5 +10,6 @@ export type { CheckoutsSettings } from './models/CheckoutsSettings';
 export type { CheckoutsSettingsRequest } from './models/CheckoutsSettingsRequest';
 export type { CouponCodeRequest } from './models/CouponCodeRequest';
 export type { CreateConsignmentRequest } from './models/CreateConsignmentRequest';
+export type { MetaOpen } from './models/MetaOpen';
 export type { Order } from './models/Order';
 export type { UpdateConsignmentRequest } from './models/UpdateConsignmentRequest';

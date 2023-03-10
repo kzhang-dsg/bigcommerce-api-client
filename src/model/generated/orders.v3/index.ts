@@ -76,7 +76,7 @@ export { Status_Full } from './models/Status_Full';
 export type { StatusUpdate_Full } from './models/StatusUpdate_Full';
 export type { StoreCredit } from './models/StoreCredit';
 export { TaxExemptItem } from './models/TaxExemptItem';
-export type { Transaction } from './models/Transaction';
+export { Transaction } from './models/Transaction';
 export { Transaction_Post } from './models/Transaction_Post';
 export type { UpdateReturnStatuses } from './models/UpdateReturnStatuses';
 export type { UpdateReturnStatusesRequest } from './models/UpdateReturnStatusesRequest';

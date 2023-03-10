@@ -41,7 +41,25 @@ export type ShippingZone = {
         minimum_sub_total?: string;
         exclude_fixed_shipping_products?: boolean;
     };
-    handling_fees?: any;
+    handling_fees?: ({
+        /**
+         * Flat-rate handling fee applied to shipping cost.
+         */
+        fixed_surcharge?: string;
+        /**
+         * Indicates whether store displays handling fee separately at checkout.
+         */
+        display_separately?: boolean;
+    } | {
+        /**
+         * Percentage handling fee applied to shipping cost.
+         */
+        percentage_surcharge?: string;
+        /**
+         * Indicates whether store displays handling fee separately at checkout.
+         */
+        display_separately?: boolean;
+    });
     /**
      * Whether this shipping zone is enabled.
      */

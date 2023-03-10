@@ -39,6 +39,7 @@ export { InventorySettings } from './models/InventorySettings';
 export { Locale } from './models/Locale';
 export { LogoSettings } from './models/LogoSettings';
 export { LogoSettingsUpdate } from './models/LogoSettingsUpdate';
+export type { MetaOpen } from './models/MetaOpen';
 export type { MetaPaginationObject } from './models/MetaPaginationObject';
 export { ProductSortEnumValues } from './models/ProductSortEnumValues';
 export type { RobotsTxtSettings } from './models/RobotsTxtSettings';

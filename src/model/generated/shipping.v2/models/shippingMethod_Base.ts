@@ -23,7 +23,17 @@ export type shippingMethod_Base = {
      * Whether or not this shipping zone method is enabled.
      */
     enabled?: boolean;
-    handling_fees?: any;
+    handling_fees?: ({
+        /**
+         * Flat-rate handling fee applied to shipping cost.
+         */
+        fixed_surcharge?: number;
+    } | {
+        /**
+         * Percentage handling fee applied to shipping cost.
+         */
+        percentage_surcharge?: number;
+    });
     /**
      * Whether or not this shipping zone is the fallback if all others are not valid for the order.
      */

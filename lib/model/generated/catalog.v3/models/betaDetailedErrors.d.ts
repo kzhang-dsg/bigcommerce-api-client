@@ -1,3 +1,1 @@
-export type betaDetailedErrors = {
-    additionalProperties?: string;
-};
+export type betaDetailedErrors = {};

@@ -16,7 +16,7 @@ export type Tax_Settings = {
          */
         show_inclusive_in_control_panel?: boolean;
         /**
-         * Whether to show prices as tax inclusive or tax exclusive across all invoices, or use the shopper's tax zone for price display on invoices.
+         * Whether to show prices as tax inclusive or tax exclusive across all invoices, or use the shopperʼs tax zone for price display on invoices.
          */
         invoice_price_display_strategy?: Tax_Settings.invoice_price_display_strategy;
     };
@@ -29,7 +29,7 @@ export type Tax_Settings = {
 export namespace Tax_Settings {
 
     /**
-     * Whether to show prices as tax inclusive or tax exclusive across all invoices, or use the shopper's tax zone for price display on invoices.
+     * Whether to show prices as tax inclusive or tax exclusive across all invoices, or use the shopperʼs tax zone for price display on invoices.
      */
     export enum invoice_price_display_strategy {
         ZONE = 'ZONE',

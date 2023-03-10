@@ -25,7 +25,7 @@ export type Cart_Full = {
      */
     currency?: {
         /**
-         * The [transactional currency](/api-docs/multi-currency/guide/introduction#multi-currency-definitions) code for the cart, formatted as an [ISO-4217](https://www.iso.org/iso-4217-currency-codes.html) string.
+         * The [transactional currency](/docs/rest-management/currencies#definitions) code for the cart, formatted as an [ISO-4217](https://www.iso.org/iso-4217-currency-codes.html) string.
          */
         code?: string;
     };

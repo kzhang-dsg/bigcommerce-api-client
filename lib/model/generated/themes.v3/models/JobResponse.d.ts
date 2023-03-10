@@ -1,3 +1,4 @@
+import type { OpenMeta } from './OpenMeta';
 /**
  * Response for /GET Jobs by Id.
  */
@@ -30,7 +31,7 @@ export type JobResponse = {
         /**
          * The result.
          */
-        result?: Record<string, string>;
+        result?: any;
         /**
          * The status.
          */
@@ -53,10 +54,7 @@ export type JobResponse = {
             warning?: string;
         }>;
     };
-    /**
-     * Empty meta object; may be used later.
-     */
-    meta?: any;
+    meta?: OpenMeta;
 };
 export declare namespace JobResponse {
     /**

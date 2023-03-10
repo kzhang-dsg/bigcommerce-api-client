@@ -23,7 +23,7 @@ export type Site = {
      */
     updated_at?: string;
     /**
-     * Indicates if a private/dedicated SSL is installed on this site, or if it's using shared SSL.
+     * Indicates if a private/dedicated SSL is installed on this site, or if itʼs using shared SSL.
      */
     ssl_status?: Site.ssl_status;
     /**
@@ -39,7 +39,7 @@ export type Site = {
 export namespace Site {
 
     /**
-     * Indicates if a private/dedicated SSL is installed on this site, or if it's using shared SSL.
+     * Indicates if a private/dedicated SSL is installed on this site, or if itʼs using shared SSL.
      */
     export enum ssl_status {
         DEDICATED = 'dedicated',

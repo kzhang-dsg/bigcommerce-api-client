@@ -35,7 +35,7 @@ export type CartCreatePostData = {
     channel_id?: number;
     currency?: {
         /**
-         * The [transactional currency](/api-docs/multi-currency/guide/introduction#multi-currency-definitions) code for the cart, formatted as an [ISO-4217](https://www.iso.org/iso-4217-currency-codes.html) string. This code is required when multi-currency is enabled. Passing a non-transactional display currency will result in a `400` error.
+         * The [transactional currency](/docs/rest-management/currencies#definitions) code for the cart, formatted as an [ISO-4217](https://www.iso.org/iso-4217-currency-codes.html) string. This code is required when multi-currency is enabled. Passing a non-transactional display currency will result in a `400` error.
          */
         code?: string;
     };
