@@ -14,6 +14,8 @@ import { CustomerConsentApi } from "./customer-consent-api";
 import { CustomerFormFieldValueApi } from "./customer-form-field-value-api";
 import { CustomerSettingsApi } from "./customer-setting-api";
 import { CustomerSettingsChannelApi } from "./customer-setting-channel-api";
+import { CustomerStoredInstrumentApi } from "./customer-stored-instrument-api";
+import { ValidateCustomerCredentialApi } from "./customer-valid-credential-api";
 
 const MAX_BATCH_SIZE = 10;
 
@@ -31,6 +33,12 @@ export class CustomersV3Api {
     );
     readonly customerSettings = new CustomerSettingsApi(this.apiClient);
     readonly customerSettingsChannel = new CustomerSettingsChannelApi(
+        this.apiClient
+    );
+    readonly customerStoredInstruments = new CustomerStoredInstrumentApi(
+        this.apiClient
+    );
+    readonly validateCustomerCredentials = new ValidateCustomerCredentialApi(
         this.apiClient
     );
 

@@ -9,6 +9,8 @@ import { CustomerConsentApi } from "./customer-consent-api";
 import { CustomerFormFieldValueApi } from "./customer-form-field-value-api";
 import { CustomerSettingsApi } from "./customer-setting-api";
 import { CustomerSettingsChannelApi } from "./customer-setting-channel-api";
+import { CustomerStoredInstrumentApi } from "./customer-stored-instrument-api";
+import { ValidateCustomerCredentialApi } from "./customer-valid-credential-api";
 export declare class CustomersV3Api {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
@@ -19,6 +21,8 @@ export declare class CustomersV3Api {
     readonly customerFormFieldValues: CustomerFormFieldValueApi;
     readonly customerSettings: CustomerSettingsApi;
     readonly customerSettingsChannel: CustomerSettingsChannelApi;
+    readonly customerStoredInstruments: CustomerStoredInstrumentApi;
+    readonly validateCustomerCredentials: ValidateCustomerCredentialApi;
     getAllCustomers<Params extends CustomersV3QueryParams, T extends customer_Full>(params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
     createCustomers<T extends customer_Post, R extends customer_Full>(customers: T[]): Promise<PaginatedData<R>>;
     updateCustomers<T extends customer_Put, R extends customer_Full>(customers: T[]): Promise<PaginatedData<R>>;
