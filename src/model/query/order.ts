@@ -26,3 +26,7 @@ export interface OrderMessagesQueryParams {
     is_flagged?: boolean;
     status?: string;
 }
+
+export interface OrderTaxesQueryParams {
+    details?: boolean;
+}

@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { OrderStatus } from "../model/common";
 import {
     ordersCountStatus,
     order_Post,
@@ -12,6 +13,9 @@ import { OrderMessageApi } from "./order-message-api";
 import { OrderProductApi } from "./order-product-api";
 import { OrderShipmentApi } from "./order-shipment-api";
 import { OrderShippingAddressApi } from "./order-shipping-address-api";
+import { OrderShippingAddressQuoteApi } from "./order-shipping-address-quote-api";
+import { OrderStatusApi } from "./order-status-api";
+import { OrderTaxApi } from "./order-tax-api";
 
 export class OrderApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -23,6 +27,11 @@ export class OrderApi {
     readonly orderShippingAddresses = new OrderShippingAddressApi(
         this.apiClient
     );
+    readonly orderShippingAddressQuotes = new OrderShippingAddressQuoteApi(
+        this.apiClient
+    );
+    readonly orderStatus = new OrderStatusApi(this.apiClient);
+    readonly orderTaxes = new OrderTaxApi(this.apiClient);
 
     async getAllOrders<
         Params extends OrdersQueryParams,
@@ -70,5 +79,16 @@ export class OrderApi {
     async getOrdersCount<T extends ordersCountStatus>(): Promise<T[]> {
         const response = await this.apiClient.get("/v2/orders/count");
         return response.data;
+    }
+
+    async updateOrderStatus<T extends order_RespOnly>(
+        orderId: number,
+        status: OrderStatus
+    ): Promise<T> {
+        const order: order_Put = {
+            status_id: status,
+        };
+
+        return await this.updateOrder(orderId, order);
     }
 }

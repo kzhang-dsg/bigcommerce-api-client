@@ -39,7 +39,7 @@ export class OrderShippingAddressApi {
         orderShippingAddress: T
     ): Promise<R> {
         const response = await this.apiClient.put(
-            `/v2/orders/${orderId}/shippingAddresses/${orderShippingAddressId}`,
+            `/v2/orders/${orderId}/shipping_addresses/${orderShippingAddressId}`,
             orderShippingAddress
         );
         return response.data;
