@@ -8,11 +8,15 @@ import {
 import { OrdersQueryParams } from "../model/query/order";
 import { appendQueryString } from "../util";
 import { OrderCouponApi } from "./order-coupon-api";
+import { OrderMessageApi } from "./order-message-api";
+import { OrderProductApi } from "./order-product-api";
 
 export class OrderApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    readonly OrderCoupons = new OrderCouponApi(this.apiClient);
+    readonly orderCoupons = new OrderCouponApi(this.apiClient);
+    readonly orderMessages = new OrderMessageApi(this.apiClient);
+    readonly orderProducts = new OrderProductApi(this.apiClient);
 
     async getAllOrders<
         Params extends OrdersQueryParams,

@@ -16,3 +16,13 @@ export interface OrdersQueryParams {
     is_deleted?: boolean;
     channel_id?: number;
 }
+
+export interface OrderMessagesQueryParams {
+    min_id?: number;
+    max_id?: number;
+    customer_id?: number;
+    min_date_created?: string;
+    max_date_created?: string;
+    is_flagged?: boolean;
+    status?: string;
+}
