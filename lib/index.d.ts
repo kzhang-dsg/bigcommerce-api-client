@@ -4,6 +4,7 @@ import { CatalogApi } from "./catalog";
 import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
+import { OrderApi } from "./order";
 export declare class BigCommerceApiClient {
     private readonly config;
     readonly apiClient: ApiClient;
@@ -11,6 +12,7 @@ export declare class BigCommerceApiClient {
     readonly catalog: CatalogApi;
     readonly customersV2: CustomersV2Api;
     readonly customersV3: CustomersV3Api;
+    readonly orders: OrderApi;
     constructor(config: Config);
     flushCache(region?: string): Promise<void>;
 }
