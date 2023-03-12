@@ -126,6 +126,15 @@ export class ApiClient {
         return this.callWithRetries("delete", url, null, config);
     }
 
+    async getResources<T>(
+        resourceUrl: string,
+        page?: number,
+        limit?: number
+    ): Promise<T[]> {
+        const response = await this.get(resourceUrl, page, limit);
+        return response.data;
+    }
+
     private async callWithRetries<T = any, R = AxiosResponse<T>, D = any>(
         method: string,
         url: string,

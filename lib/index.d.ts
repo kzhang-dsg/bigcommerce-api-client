@@ -14,5 +14,6 @@ export declare class BigCommerceApiClient {
     readonly customersV3: CustomersV3Api;
     readonly orders: OrderApi;
     constructor(config: Config);
+    getResources<T>(resourceUrl: string, page?: number, limit?: number): Promise<T[]>;
     flushCache(region?: string): Promise<void>;
 }

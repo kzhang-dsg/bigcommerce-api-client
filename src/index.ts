@@ -42,6 +42,14 @@ export class BigCommerceApiClient {
         this.orders = new OrderApi(this.apiClient);
     }
 
+    async getResources<T>(
+        resourceUrl: string,
+        page?: number,
+        limit?: number
+    ): Promise<T[]> {
+        return this.apiClient.getResources<T>(resourceUrl, page, limit);
+    }
+
     async flushCache(region?: string): Promise<void> {
         if (!this.config.cache?.enable) {
             return;
