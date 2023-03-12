@@ -1,4 +1,5 @@
 import { AxiosCacheInstance } from "axios-cache-interceptor";
+import { AbandonedCartApi } from "./abandoned-carts";
 import { ApiClient } from "./api-client";
 import { CartsApi } from "./cart";
 import { CatalogApi } from "./catalog";
@@ -25,6 +26,7 @@ const DEFAULT_CONFIG: Config = {
 
 export class BigCommerceApiClient {
     readonly apiClient: ApiClient;
+    readonly abandonedCarts: AbandonedCartApi;
     readonly carts: CartsApi;
     readonly catalog: CatalogApi;
     readonly customersV2: CustomersV2Api;
@@ -35,6 +37,7 @@ export class BigCommerceApiClient {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
 
         this.apiClient = new ApiClient(this.config);
+        this.abandonedCarts = new AbandonedCartApi(this.apiClient);
         this.carts = new CartsApi(this.apiClient);
         this.catalog = new CatalogApi(this.apiClient);
         this.customersV2 = new CustomersV2Api(this.apiClient);

@@ -1,3 +1,4 @@
+import { AbandonedCartApi } from "./abandoned-carts";
 import { ApiClient } from "./api-client";
 import { CartsApi } from "./cart";
 import { CatalogApi } from "./catalog";
@@ -8,6 +9,7 @@ import { OrderApi } from "./order";
 export declare class BigCommerceApiClient {
     private readonly config;
     readonly apiClient: ApiClient;
+    readonly abandonedCarts: AbandonedCartApi;
     readonly carts: CartsApi;
     readonly catalog: CatalogApi;
     readonly customersV2: CustomersV2Api;
