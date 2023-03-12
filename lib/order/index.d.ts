@@ -5,6 +5,7 @@ import { OrderCouponApi } from "./order-coupon-api";
 import { OrderMessageApi } from "./order-message-api";
 import { OrderProductApi } from "./order-product-api";
 import { OrderShipmentApi } from "./order-shipment-api";
+import { OrderShippingAddressApi } from "./order-shipping-address-api";
 export declare class OrderApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
@@ -12,6 +13,7 @@ export declare class OrderApi {
     readonly orderMessages: OrderMessageApi;
     readonly orderProducts: OrderProductApi;
     readonly orderShipments: OrderShipmentApi;
+    readonly orderShippingAddresses: OrderShippingAddressApi;
     getAllOrders<Params extends OrdersQueryParams, T extends order_RespOnly>(params?: Params, page?: number, limit?: number): Promise<T[]>;
     createOrder<T extends order_Post, R extends order_RespOnly>(order: T): Promise<R>;
     getOrder<T extends order_RespOnly>(orderId: number): Promise<T>;
