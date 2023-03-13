@@ -30,3 +30,10 @@ export interface OrderMessagesQueryParams {
 export interface OrderTaxesQueryParams {
     details?: boolean;
 }
+
+export interface RefundsQueryParams {
+    "order_id:in": number[];
+    "id:in": number[];
+    "created:min": string;
+    "created:max": string;
+}
