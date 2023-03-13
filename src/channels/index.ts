@@ -11,14 +11,18 @@ import {
     GetChannelQueryParams,
 } from "../model/query/channel";
 import { appendQueryString } from "../util";
+import { ChannelActiveThemeApi } from "./channel-active-theme-api";
 import { ChannelCurrencyAssignmentApi } from "./channel-currency-assignment-api";
+import { ChannelListingApi } from "./channel-listing-api";
 
 export class ChannelsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
+    readonly channelActiveTheme = new ChannelActiveThemeApi(this.apiClient);
     readonly channelCurrencyAssignments = new ChannelCurrencyAssignmentApi(
         this.apiClient
     );
+    readonly channelListings = new ChannelListingApi(this.apiClient);
 
     async getAllChannels<
         Params extends ChannelsQueryParams,

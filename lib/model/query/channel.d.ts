@@ -14,3 +14,13 @@ export interface ChannelsQueryParams {
 export interface GetChannelQueryParams {
     include?: string[];
 }
+export interface ChannelListingsQueryParams {
+    after?: number;
+    "product_id:in"?: string[];
+    date_created?: string;
+    "date_created:min"?: string;
+    "date_created:max"?: string;
+    date_modified?: string;
+    "date_modified:min"?: string;
+    "date_modified:max"?: string;
+}

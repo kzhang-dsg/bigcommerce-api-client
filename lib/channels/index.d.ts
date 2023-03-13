@@ -2,11 +2,15 @@ import { ApiClient } from "../api-client";
 import { Data, PaginatedData } from "../model/common";
 import { ChannelWithCurrencies, ChannelWithoutCurrencies, CreateChannelReq, UpdateChannelReq } from "../model/generated/channels.v3";
 import { ChannelsQueryParams, GetChannelQueryParams } from "../model/query/channel";
+import { ChannelActiveThemeApi } from "./channel-active-theme-api";
 import { ChannelCurrencyAssignmentApi } from "./channel-currency-assignment-api";
+import { ChannelListingApi } from "./channel-listing-api";
 export declare class ChannelsApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
+    readonly channelActiveTheme: ChannelActiveThemeApi;
     readonly channelCurrencyAssignments: ChannelCurrencyAssignmentApi;
+    readonly channelListings: ChannelListingApi;
     getAllChannels<Params extends ChannelsQueryParams, T extends ChannelWithoutCurrencies>(params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
     createChannel<T extends CreateChannelReq, R extends ChannelWithoutCurrencies>(channel: T): Promise<PaginatedData<R>>;
     getChannel<Params extends GetChannelQueryParams, T extends ChannelWithCurrencies>(params?: Params): Promise<Data<T>>;
