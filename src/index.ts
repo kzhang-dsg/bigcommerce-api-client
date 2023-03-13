@@ -4,6 +4,8 @@ import { ApiClient } from "./api-client";
 import { CartsApi } from "./cart";
 import { CatalogApi } from "./catalog";
 import { ChannelsApi } from "./channels";
+import { CheckoutsApi } from "./checkouts";
+import { CurrenciesApi } from "./currencies";
 import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
@@ -31,6 +33,8 @@ export class BigCommerceApiClient {
     readonly carts: CartsApi;
     readonly catalog: CatalogApi;
     readonly channels: ChannelsApi;
+    readonly checkouts: CheckoutsApi;
+    readonly currencies: CurrenciesApi;
     readonly customersV2: CustomersV2Api;
     readonly customersV3: CustomersV3Api;
     readonly orders: OrderApi;
@@ -43,6 +47,8 @@ export class BigCommerceApiClient {
         this.carts = new CartsApi(this.apiClient);
         this.catalog = new CatalogApi(this.apiClient);
         this.channels = new ChannelsApi(this.apiClient);
+        this.checkouts = new CheckoutsApi(this.apiClient);
+        this.currencies = new CurrenciesApi(this.apiClient);
         this.customersV2 = new CustomersV2Api(this.apiClient);
         this.customersV3 = new CustomersV3Api(this.apiClient);
         this.orders = new OrderApi(this.apiClient);
