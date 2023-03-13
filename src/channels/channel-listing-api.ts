@@ -9,7 +9,7 @@ const MAX_BATCH_SIZE = 10;
 export class ChannelListingApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getChannelsListings<
+    async getChannelListings<
         Params extends ChannelListingsQueryParams,
         T extends Listing
     >(
@@ -26,15 +26,15 @@ export class ChannelListingApi {
         return response.data;
     }
 
-    async createChannelsListings<T extends Listing>(
+    async createChannelListings<T extends Listing>(
         channelId: number,
-        channelsListings: T[]
+        channelListings: T[]
     ): Promise<PaginatedData<T>> {
-        let result: PaginatedData<R> = { data: [], meta: {} };
-        for (let i = 0; i < channelsListings.length; i += MAX_BATCH_SIZE) {
+        let result: PaginatedData<T> = { data: [], meta: {} };
+        for (let i = 0; i < channelListings.length; i += MAX_BATCH_SIZE) {
             const response = await this.apiClient.post(
                 `/v3/channels/${channelId}/listings`,
-                channelsListings.slice(i, i + MAX_BATCH_SIZE)
+                channelListings.slice(i, i + MAX_BATCH_SIZE)
             );
             result.data?.concat(response.data.data);
         }
@@ -42,15 +42,15 @@ export class ChannelListingApi {
         return result;
     }
 
-    async updateChannelsListings<T extends Listing>(
+    async updateChannelListings<T extends Listing>(
         channelId: number,
-        channelsListings: T[]
+        channelListings: T[]
     ): Promise<PaginatedData<T>> {
-        let result: PaginatedData<R> = { data: [], meta: {} };
-        for (let i = 0; i < channelsListings.length; i += MAX_BATCH_SIZE) {
+        let result: PaginatedData<T> = { data: [], meta: {} };
+        for (let i = 0; i < channelListings.length; i += MAX_BATCH_SIZE) {
             const response = await this.apiClient.put(
                 `/v3/channels/${channelId}/listings`,
-                channelsListings.slice(i, i + MAX_BATCH_SIZE)
+                channelListings.slice(i, i + MAX_BATCH_SIZE)
             );
             result.data?.concat(response.data.data);
         }

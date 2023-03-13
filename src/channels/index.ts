@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { MetafieldApi } from "../metafield";
 import { Data, PaginatedData } from "../model/common";
 import {
     ChannelWithCurrencies,
@@ -14,6 +15,9 @@ import { appendQueryString } from "../util";
 import { ChannelActiveThemeApi } from "./channel-active-theme-api";
 import { ChannelCurrencyAssignmentApi } from "./channel-currency-assignment-api";
 import { ChannelListingApi } from "./channel-listing-api";
+import { ChannelMenuApi } from "./channel-menu-api";
+import { ChannelSiteApi } from "./channel-site-api";
+import { ChannelSiteCheckoutUrlApi } from "./channel-site-checkout-url-api";
 
 export class ChannelsApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -23,6 +27,15 @@ export class ChannelsApi {
         this.apiClient
     );
     readonly channelListings = new ChannelListingApi(this.apiClient);
+    readonly channelMenus = new ChannelMenuApi(this.apiClient);
+    readonly channelMetafields = new MetafieldApi(
+        this.apiClient,
+        "/v3/channels"
+    );
+    readonly channelSite = new ChannelSiteApi(this.apiClient);
+    readonly channelSiteCheckoutUrl = new ChannelSiteCheckoutUrlApi(
+        this.apiClient
+    );
 
     async getAllChannels<
         Params extends ChannelsQueryParams,

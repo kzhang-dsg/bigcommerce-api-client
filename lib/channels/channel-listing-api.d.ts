@@ -5,8 +5,8 @@ import { ChannelListingsQueryParams } from "../model/query/channel";
 export declare class ChannelListingApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    getChannelsListings<Params extends ChannelListingsQueryParams, T extends Listing>(channelId: number, params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
-    createChannelsListings<T extends Listing>(channelId: number, channelsListings: T[]): Promise<PaginatedData<T>>;
-    updateChannelsListings<T extends Listing>(channelId: number, channelsListings: T[]): Promise<PaginatedData<T>>;
+    getChannelListings<Params extends ChannelListingsQueryParams, T extends Listing>(channelId: number, params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
+    createChannelListings<T extends Listing>(channelId: number, channelListings: T[]): Promise<PaginatedData<T>>;
+    updateChannelListings<T extends Listing>(channelId: number, channelListings: T[]): Promise<PaginatedData<T>>;
     getChannelListing<T extends Listing>(channelId: number, listingId: number): Promise<Data<T>>;
 }
