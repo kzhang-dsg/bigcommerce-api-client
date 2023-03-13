@@ -16,7 +16,7 @@ export const regionAwareKeyGenerator = buildKeyGenerator(
         const region = getCacheRegion(url);
 
         // prefix the region to every cache key, so the keys in the same region can be invalidated together
-        return `${region}|${baseURL}${
+        return `${region}:${baseURL}${
             baseURL && url ? "/" : ""
         }${url}${JSON.stringify(params)}`;
     }

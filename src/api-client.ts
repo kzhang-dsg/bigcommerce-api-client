@@ -260,7 +260,7 @@ export class ApiClient {
         return Object.assign(
             {
                 cache: {
-                    update: { [region]: "delete" },
+                    update: { [`${region}:*`]: "delete" },
                 },
             },
             config as CacheRequestConfig

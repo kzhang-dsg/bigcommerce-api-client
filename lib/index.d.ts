@@ -2,6 +2,7 @@ import { AbandonedCartApi } from "./abandoned-carts";
 import { ApiClient } from "./api-client";
 import { CartsApi } from "./cart";
 import { CatalogApi } from "./catalog";
+import { ChannelsApi } from "./channels";
 import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
@@ -12,6 +13,7 @@ export declare class BigCommerceApiClient {
     readonly abandonedCarts: AbandonedCartApi;
     readonly carts: CartsApi;
     readonly catalog: CatalogApi;
+    readonly channels: ChannelsApi;
     readonly customersV2: CustomersV2Api;
     readonly customersV3: CustomersV3Api;
     readonly orders: OrderApi;

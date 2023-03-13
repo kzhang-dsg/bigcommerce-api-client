@@ -46,5 +46,5 @@ export function getCacheRegion(url = "") {
         }
         modelName = `${modelName}/${subModelName}`;
     }
-    return `${urlParts[1]}_${urlParts[3]}|`; // ${storeHash}_${modelName}
+    return `${urlParts[1]}_${urlParts[3]}`; // ${storeHash}_${modelName}
 }
