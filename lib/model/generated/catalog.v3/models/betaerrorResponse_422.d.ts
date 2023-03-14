@@ -1,4 +1,5 @@
-export type betaerrorResponse_422 = {
+import type { betaDetailedErrors } from './betaDetailedErrors';
+export type betaerrorResponse_422 = ({
     code?: number;
     status?: number;
     /**
@@ -6,4 +7,6 @@ export type betaerrorResponse_422 = {
      */
     title?: string;
     type?: string;
-};
+} & {
+    errors?: betaDetailedErrors;
+});

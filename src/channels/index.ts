@@ -56,7 +56,7 @@ export class ChannelsApi {
     async createChannel<
         T extends CreateChannelReq,
         R extends ChannelWithoutCurrencies
-    >(channel: T): Promise<PaginatedData<R>> {
+    >(channel: T): Promise<Data<R>> {
         const response = await this.apiClient.post("/v3/channels", channel);
         return response.data;
     }

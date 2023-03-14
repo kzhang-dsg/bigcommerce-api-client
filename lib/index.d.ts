@@ -9,6 +9,7 @@ import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
 import { OrderApi } from "./order";
+import { PriceListsApi } from "./price-lists";
 import { PricingApi } from "./pricing";
 export declare class BigCommerceApiClient {
     private readonly config;
@@ -23,6 +24,7 @@ export declare class BigCommerceApiClient {
     readonly customersV3: CustomersV3Api;
     readonly orders: OrderApi;
     readonly pricing: PricingApi;
+    readonly priceLists: PriceListsApi;
     constructor(config: Config);
     getResources<T>(resourceUrl: string, page?: number, limit?: number): Promise<T[]>;
     flushCache(region?: string): Promise<void>;

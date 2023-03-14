@@ -20,7 +20,7 @@ export declare class ChannelsApi {
     readonly channelSite: ChannelSiteApi;
     readonly channelSiteCheckoutUrl: ChannelSiteCheckoutUrlApi;
     getAllChannels<Params extends ChannelsQueryParams, T extends ChannelWithoutCurrencies>(params?: Params, page?: number, limit?: number): Promise<PaginatedData<T>>;
-    createChannel<T extends CreateChannelReq, R extends ChannelWithoutCurrencies>(channel: T): Promise<PaginatedData<R>>;
+    createChannel<T extends CreateChannelReq, R extends ChannelWithoutCurrencies>(channel: T): Promise<Data<R>>;
     getChannel<Params extends GetChannelQueryParams, T extends ChannelWithCurrencies>(params?: Params): Promise<Data<T>>;
     updateChannel<T extends UpdateChannelReq, R extends ChannelWithoutCurrencies>(channel: T): Promise<Data<R>>;
 }

@@ -1,4 +1,4 @@
-export type ItemPhysicalGet = {
+export type ItemPhysicalGet = ({
     /**
      * The line-item ID.
      */
@@ -140,4 +140,11 @@ export type ItemPhysicalGet = {
          */
         valueId?: number;
     }>;
-};
+} & {
+    is_require_shipping?: boolean;
+    gift_wrapping?: {
+        name?: string;
+        message?: string;
+        amount?: number;
+    };
+});

@@ -5,7 +5,49 @@
 /**
  * The Price Record object.
  */
-export type PriceRecord = {
+export type PriceRecord = ({
+    /**
+     * The price of the variant as seen on the storefront if a price record is in effect. It will be equal to the `sale_price`, if set, and the `price` if there is not a `sale_price`. Read only.
+     *
+     */
+    calculated_price?: number;
+    /**
+     * The date on which the Price entry was created.
+     *
+     */
+    date_created?: string;
+    /**
+     * The date on which the Price entry was created.
+     *
+     */
+    date_modified?: string;
+    /**
+     * The id of the `Product` this `Price Record`'s variant_id is associated with.  Read only.
+     *
+     */
+    product_id?: number;
+} & {
+    /**
+     * The Price List with which this price set is associated.
+     *
+     */
+    price_list_id?: number;
+    /**
+     * The variant ID with which this price set is associated. Either variant_id or SKU is required.
+     *
+     */
+    variant_id?: number;
+    /**
+     * The SKU with which this price set is associated. Either SKU or variant_id is required.
+     *
+     */
+    sku?: string;
+    /**
+     * The 3-letter currency code with which this price set is associated.
+     *
+     */
+    currency?: string;
+} & {
     /**
      * The list price for the variant mapped in a Price List. Overrides any existing or Catalog list price for the variant/product.
      *
@@ -53,5 +95,5 @@ export type PriceRecord = {
      *
      */
     sku?: string;
-};
+});
 

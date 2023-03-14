@@ -1,4 +1,20 @@
-export type PriceRecordCollectionPut = Array<{
+export type PriceRecordCollectionPut = Array<({
+    /**
+     * The variant ID with which this price set is associated. Either variant_id or SKU is required.
+     *
+     */
+    variant_id?: number;
+    /**
+     * The SKU for the variant with which this price set is associated. Either SKU or variant_id is required.
+     *
+     */
+    sku?: string;
+    /**
+     * The 3-letter currency code with which this price set is associated.
+     *
+     */
+    currency?: string;
+} & {
     /**
      * The list price for the variant mapped in a Price List. Overrides any existing or Catalog list price for the variant/product.
      *
@@ -46,4 +62,4 @@ export type PriceRecordCollectionPut = Array<{
      *
      */
     sku?: string;
-}>;
+})>;

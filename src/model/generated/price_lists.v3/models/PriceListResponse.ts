@@ -12,7 +12,23 @@ import type { Meta } from './Meta';
  * * Update a PriceList
  */
 export type PriceListResponse = {
-    data?: {
+    data?: ({
+        /**
+         * The unique numeric ID of the `Price List`; increments sequentially.
+         *
+         */
+        id?: number;
+        /**
+         * The date on which the `Price List` was created.
+         *
+         */
+        date_created?: string;
+        /**
+         * The date on which the `Price List` was created.
+         *
+         */
+        date_modified?: string;
+    } & {
         /**
          * The unique name of the Price List. Required in a POST request.
          *
@@ -23,7 +39,7 @@ export type PriceListResponse = {
          *
          */
         active?: boolean;
-    };
+    });
     meta?: Meta;
 };
 

@@ -10,6 +10,7 @@ import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
 import { OrderApi } from "./order";
+import { PriceListsApi } from "./price-lists";
 import { PricingApi } from "./pricing";
 
 const DEFAULT_CONFIG: Config = {
@@ -40,6 +41,7 @@ export class BigCommerceApiClient {
     readonly customersV3: CustomersV3Api;
     readonly orders: OrderApi;
     readonly pricing: PricingApi;
+    readonly priceLists: PriceListsApi;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -55,6 +57,7 @@ export class BigCommerceApiClient {
         this.customersV3 = new CustomersV3Api(this.apiClient);
         this.orders = new OrderApi(this.apiClient);
         this.pricing = new PricingApi(this.apiClient);
+        this.priceLists = new PriceListsApi(this.apiClient);
     }
 
     async getResources<T>(
