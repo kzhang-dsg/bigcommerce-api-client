@@ -45,6 +45,14 @@ export function getCacheRegion(url = "") {
                 break;
         }
         modelName = `${modelName}/${subModelName}`;
+    } else if (
+        modelName === "storefront" ||
+        modelName === "content" ||
+        modelName === "settings"
+    ) {
+        let subModelName = urlParts[4];
+        modelName = `${modelName}/${subModelName}`;
     }
+
     return `${urlParts[1]}_${urlParts[3]}`; // ${storeHash}_${modelName}
 }
