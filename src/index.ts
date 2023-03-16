@@ -20,6 +20,7 @@ import { ShippingV3Api } from "./shipping-v3";
 import { SitesApi } from "./sites";
 import { StoreInformationApi } from "./store-information";
 import { StoreLogsApi } from "./store-logs";
+import { SubscribersApi } from "./subscribers";
 
 const DEFAULT_CONFIG: Config = {
     storeHash: "",
@@ -58,6 +59,7 @@ export class BigCommerceApiClient {
     readonly sites: SitesApi;
     readonly storeInformation: StoreInformationApi;
     readonly storeLogs: StoreLogsApi;
+    readonly subscribers: SubscribersApi;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -82,6 +84,7 @@ export class BigCommerceApiClient {
         this.sites = new SitesApi(this.apiClient);
         this.storeInformation = new StoreInformationApi(this.apiClient);
         this.storeLogs = new StoreLogsApi(this.apiClient);
+        this.subscribers = new SubscribersApi(this.apiClient);
     }
 
     async getResources<T>(

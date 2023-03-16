@@ -49,7 +49,7 @@ export class ScriptsApi {
     async updateScript<T extends script_Put, R extends script_Full>(
         scriptUuid: string,
         script: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
             `/v3/content/scripts/${scriptUuid}`,
             script
@@ -57,7 +57,7 @@ export class ScriptsApi {
         return response.data;
     }
 
-    async deleteScripts(scriptUuid: string): Promise<void> {
+    async deleteScript(scriptUuid: string): Promise<void> {
         await this.apiClient.delete(`/v3/content/scripts/${scriptUuid}`);
     }
 }

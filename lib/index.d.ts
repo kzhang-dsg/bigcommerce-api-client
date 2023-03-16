@@ -19,6 +19,7 @@ import { ShippingV3Api } from "./shipping-v3";
 import { SitesApi } from "./sites";
 import { StoreInformationApi } from "./store-information";
 import { StoreLogsApi } from "./store-logs";
+import { SubscribersApi } from "./subscribers";
 export declare class BigCommerceApiClient {
     private readonly config;
     readonly apiClient: ApiClient;
@@ -41,6 +42,7 @@ export declare class BigCommerceApiClient {
     readonly sites: SitesApi;
     readonly storeInformation: StoreInformationApi;
     readonly storeLogs: StoreLogsApi;
+    readonly subscribers: SubscribersApi;
     constructor(config: Config);
     getResources<T>(resourceUrl: string, page?: number, limit?: number): Promise<T[]>;
     flushCache(region?: string): Promise<void>;

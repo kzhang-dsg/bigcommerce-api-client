@@ -1,0 +1,20 @@
+export interface SubscribersQueryParams {
+    email?: string;
+    first_name?: string;
+    last_name?: string;
+    source?: string;
+    order_id?: number;
+    date_created?: string;
+    date_modified?: string;
+    id?: number;
+}
+
+export interface DeleteSubscribersQueryParams {
+    email?: string;
+    first_name?: string;
+    last_name?: string;
+    source?: string;
+    order_id?: number;
+    date_created?: string;
+    date_modified?: string;
+}
