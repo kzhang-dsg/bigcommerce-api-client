@@ -14,6 +14,7 @@ import { PriceListsApi } from "./price-lists";
 import { PricingApi } from "./pricing";
 import { RedirectsApi } from "./redirects";
 import { ScriptsApi } from "./scripts";
+import { SettingsApi } from "./settings";
 
 const DEFAULT_CONFIG: Config = {
     storeHash: "",
@@ -46,6 +47,7 @@ export class BigCommerceApiClient {
     readonly priceLists: PriceListsApi;
     readonly redirects: RedirectsApi;
     readonly scripts: ScriptsApi;
+    readonly settings: SettingsApi;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -64,6 +66,7 @@ export class BigCommerceApiClient {
         this.priceLists = new PriceListsApi(this.apiClient);
         this.redirects = new RedirectsApi(this.apiClient);
         this.scripts = new ScriptsApi(this.apiClient);
+        this.settings = new SettingsApi(this.apiClient);
     }
 
     async getResources<T>(

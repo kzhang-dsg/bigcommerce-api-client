@@ -13,6 +13,7 @@ import { PriceListsApi } from "./price-lists";
 import { PricingApi } from "./pricing";
 import { RedirectsApi } from "./redirects";
 import { ScriptsApi } from "./scripts";
+import { SettingsApi } from "./settings";
 export declare class BigCommerceApiClient {
     private readonly config;
     readonly apiClient: ApiClient;
@@ -29,6 +30,7 @@ export declare class BigCommerceApiClient {
     readonly priceLists: PriceListsApi;
     readonly redirects: RedirectsApi;
     readonly scripts: ScriptsApi;
+    readonly settings: SettingsApi;
     constructor(config: Config);
     getResources<T>(resourceUrl: string, page?: number, limit?: number): Promise<T[]>;
     flushCache(region?: string): Promise<void>;

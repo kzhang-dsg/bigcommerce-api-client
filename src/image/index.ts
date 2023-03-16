@@ -1,4 +1,5 @@
 import FormData from "form-data";
+import { ReadStream } from "fs";
 import { ApiClient } from "../api-client";
 import { Data } from "../model/common";
 import { resourceImage_Full } from "../model/generated/catalog.v3";
@@ -11,7 +12,7 @@ export class ImageApi {
 
     async createImage<T extends resourceImage_Full>(
         parentId: number,
-        image: T
+        image: ReadStream
     ): Promise<Data<T>> {
         const formData = new FormData();
         formData.append("image_file", image);

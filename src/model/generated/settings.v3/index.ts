@@ -4,6 +4,7 @@
 
 export { AddressTypeEnumValues } from './models/AddressTypeEnumValues';
 export type { AnalyticsProvider } from './models/AnalyticsProvider';
+export type { AnalyticsProviderPut } from './models/AnalyticsProviderPut';
 export type { AnalyticsProviders } from './models/AnalyticsProviders';
 export type { AvailableFilter } from './models/AvailableFilter';
 export { AvailableNormalFilter } from './models/AvailableNormalFilter';

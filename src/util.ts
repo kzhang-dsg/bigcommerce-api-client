@@ -32,6 +32,7 @@ export function toQueryString(params?: Object): string {
 export function getCacheRegion(url = "") {
     url && (url = url.replace(/^https?:\/\//, ""));
     const urlParts = url.split("/");
+    const storeHash = urlParts[1];
     let modelName = urlParts[3];
 
     if (modelName === "catalog") {
@@ -52,7 +53,15 @@ export function getCacheRegion(url = "") {
     ) {
         let subModelName = urlParts[4];
         modelName = `${modelName}/${subModelName}`;
+
+        if (
+            modelName === "settings" &&
+            (subModelName === "store" || subModelName === "storefront")
+        ) {
+            let subModelName = urlParts[5];
+            modelName = `${modelName}/${subModelName}`;
+        }
     }
 
-    return `${urlParts[1]}_${urlParts[3]}`; // ${storeHash}_${modelName}
+    return `${storeHash}_${modelName}`;
 }
