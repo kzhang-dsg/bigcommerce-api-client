@@ -24,6 +24,8 @@ import { SubscribersApi } from "./subscribers";
 import { TaxClassesApi } from "./tax-classes";
 import { TaxPropertiesApi } from "./tax-properties";
 import { TaxRatesAndZonesApi } from "./tax-rates-and-zones";
+import { TaxSettingsApi } from "./tax-settings";
+import { WishlistsApi } from "./wishlists";
 
 const DEFAULT_CONFIG: Config = {
     storeHash: "",
@@ -66,6 +68,8 @@ export class BigCommerceApiClient {
     readonly taxClasses: TaxClassesApi;
     readonly taxRatesAndZones: TaxRatesAndZonesApi;
     readonly taxProperties: TaxPropertiesApi;
+    readonly taxSettings: TaxSettingsApi;
+    readonly wishlists: WishlistsApi;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -94,6 +98,8 @@ export class BigCommerceApiClient {
         this.taxClasses = new TaxClassesApi(this.apiClient);
         this.taxRatesAndZones = new TaxRatesAndZonesApi(this.apiClient);
         this.taxProperties = new TaxPropertiesApi(this.apiClient);
+        this.taxSettings = new TaxSettingsApi(this.apiClient);
+        this.wishlists = new WishlistsApi(this.apiClient);
     }
 
     async getResources<T>(

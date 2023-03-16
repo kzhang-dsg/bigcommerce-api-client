@@ -49,7 +49,8 @@ export function getCacheRegion(url = "") {
     } else if (
         modelName === "storefront" ||
         modelName === "content" ||
-        modelName === "settings"
+        modelName === "settings"||
+        modelName === "tax"
     ) {
         let subModelName = urlParts[4];
         modelName = `${modelName}/${subModelName}`;
