@@ -31,7 +31,7 @@ export class ApiClient {
         url: string,
         page?: number,
         limit?: number,
-        config?: AxiosRequestConfig<D>
+        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheTtlConfig(config);
         if (limit === Limit.ALL) {
@@ -103,7 +103,7 @@ export class ApiClient {
     async post<T = any, R = AxiosResponse<T>, D = any>(
         url: string,
         data?: D,
-        config?: AxiosRequestConfig<D>
+        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
         return this.callWithRetries("post", url, data, config);
@@ -112,7 +112,7 @@ export class ApiClient {
     async put<T = any, R = AxiosResponse<T>, D = any>(
         url: string,
         data?: D,
-        config?: AxiosRequestConfig<D>
+        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
         return this.callWithRetries("put", url, data, config);
@@ -120,7 +120,7 @@ export class ApiClient {
 
     async delete<T = any, R = AxiosResponse<T>, D = any>(
         url: string,
-        config?: AxiosRequestConfig<D>
+        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
         return this.callWithRetries("delete", url, null, config);
@@ -139,7 +139,7 @@ export class ApiClient {
         method: string,
         url: string,
         data?: D,
-        config?: AxiosRequestConfig<D>
+        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         let retries = 0;
         while (true) {
@@ -230,7 +230,7 @@ export class ApiClient {
     }
 
     private setupCacheTtlConfig(
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig | CacheRequestConfig
     ): CacheRequestConfig | undefined {
         if (!this.config.cache?.enable) {
             return config;
@@ -248,7 +248,7 @@ export class ApiClient {
 
     private setupCacheInvalidationConfig(
         url: string = "",
-        config?: AxiosRequestConfig
+        config?: AxiosRequestConfig | CacheRequestConfig
     ): CacheRequestConfig | undefined {
         if (!this.config.cache?.enable) {
             return config;
