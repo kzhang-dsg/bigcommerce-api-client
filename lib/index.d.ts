@@ -21,6 +21,7 @@ import { StoreInformationApi } from "./store-information";
 import { StoreLogsApi } from "./store-logs";
 import { SubscribersApi } from "./subscribers";
 import { TaxClassesApi } from "./tax-classes";
+import { TaxPropertiesApi } from "./tax-properties";
 import { TaxRatesAndZonesApi } from "./tax-rates-and-zones";
 export declare class BigCommerceApiClient {
     private readonly config;
@@ -47,6 +48,7 @@ export declare class BigCommerceApiClient {
     readonly subscribers: SubscribersApi;
     readonly taxClasses: TaxClassesApi;
     readonly taxRatesAndZones: TaxRatesAndZonesApi;
+    readonly taxProperties: TaxPropertiesApi;
     constructor(config: Config);
     getResources<T>(resourceUrl: string, page?: number, limit?: number): Promise<T[]>;
     flushCache(region?: string): Promise<void>;
