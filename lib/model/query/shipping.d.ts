@@ -1,3 +1,3 @@
 export interface CustomsInformationQueryParams {
-    "product_id:in": number[];
+    "product_id:in"?: number[];
 }
