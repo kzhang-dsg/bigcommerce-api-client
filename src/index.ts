@@ -15,6 +15,7 @@ import { PricingApi } from "./pricing";
 import { RedirectsApi } from "./redirects";
 import { ScriptsApi } from "./scripts";
 import { SettingsApi } from "./settings";
+import { ShippingV2Api } from "./shipping-v2";
 import { ShippingV3Api } from "./shipping-v3";
 
 const DEFAULT_CONFIG: Config = {
@@ -50,6 +51,7 @@ export class BigCommerceApiClient {
     readonly scripts: ScriptsApi;
     readonly settings: SettingsApi;
     readonly shippingV3: ShippingV3Api;
+    readonly shippingV2: ShippingV2Api;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -70,6 +72,7 @@ export class BigCommerceApiClient {
         this.scripts = new ScriptsApi(this.apiClient);
         this.settings = new SettingsApi(this.apiClient);
         this.shippingV3 = new ShippingV3Api(this.apiClient);
+        this.shippingV2 = new ShippingV2Api(this.apiClient);
     }
 
     async getResources<T>(

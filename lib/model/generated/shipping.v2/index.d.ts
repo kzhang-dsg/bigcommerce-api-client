@@ -8,4 +8,6 @@ export { ShippingProvider } from './models/ShippingProvider';
 export type { ShippingResponse } from './models/ShippingResponse';
 export { ShippingZone } from './models/ShippingZone';
 export type { ShippingZoneLocations } from './models/ShippingZoneLocations';
+export { ShippingZonePost } from './models/ShippingZonePost';
+export { ShippingZonePut } from './models/ShippingZonePut';
 export { TrackingCarrier } from './models/TrackingCarrier';
