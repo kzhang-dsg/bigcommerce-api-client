@@ -10,6 +10,8 @@ import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
 import { OrderApi } from "./order";
+import { PaymentMethodsApi } from "./payment-methods";
+import { PaymentProcessingApi } from "./payment-processing";
 import { PriceListsApi } from "./price-lists";
 import { PricingApi } from "./pricing";
 import { RedirectsApi } from "./redirects";
@@ -70,6 +72,8 @@ export class BigCommerceApiClient {
     readonly taxProperties: TaxPropertiesApi;
     readonly taxSettings: TaxSettingsApi;
     readonly wishlists: WishlistsApi;
+    readonly paymentMethods: PaymentMethodsApi;
+    readonly paymentProcessing: PaymentProcessingApi;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -100,6 +104,8 @@ export class BigCommerceApiClient {
         this.taxProperties = new TaxPropertiesApi(this.apiClient);
         this.taxSettings = new TaxSettingsApi(this.apiClient);
         this.wishlists = new WishlistsApi(this.apiClient);
+        this.paymentMethods = new PaymentMethodsApi(this.apiClient);
+        this.paymentProcessing = new PaymentProcessingApi(this.apiClient);
     }
 
     async getResources<T>(

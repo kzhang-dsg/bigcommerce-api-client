@@ -7,9 +7,12 @@ import {
 } from "../model/generated/wishlists.v3";
 import { WishlistsQueryParams } from "../model/query/wishlist";
 import { appendQueryString } from "../util";
+import { WishlistItemApi } from "./wishlist-item-api";
 
 export class WishlistsApi {
     constructor(private readonly apiClient: ApiClient) {}
+
+    readonly wishlistItems = new WishlistItemApi(this.apiClient);
 
     async getAllWishlists<
         Params extends WishlistsQueryParams,

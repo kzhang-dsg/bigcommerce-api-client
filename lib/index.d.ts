@@ -9,6 +9,8 @@ import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
 import { Config } from "./model/common";
 import { OrderApi } from "./order";
+import { PaymentMethodsApi } from "./payment-methods";
+import { PaymentProcessingApi } from "./payment-processing";
 import { PriceListsApi } from "./price-lists";
 import { PricingApi } from "./pricing";
 import { RedirectsApi } from "./redirects";
@@ -53,6 +55,8 @@ export declare class BigCommerceApiClient {
     readonly taxProperties: TaxPropertiesApi;
     readonly taxSettings: TaxSettingsApi;
     readonly wishlists: WishlistsApi;
+    readonly paymentMethods: PaymentMethodsApi;
+    readonly paymentProcessing: PaymentProcessingApi;
     constructor(config: Config);
     getResources<T>(resourceUrl: string, page?: number, limit?: number): Promise<T[]>;
     flushCache(region?: string): Promise<void>;

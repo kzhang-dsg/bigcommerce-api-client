@@ -49,11 +49,15 @@ export function getCacheRegion(url = "") {
     } else if (
         modelName === "storefront" ||
         modelName === "content" ||
-        modelName === "settings"||
-        modelName === "tax"
+        modelName === "settings" ||
+        modelName === "tax" ||
+        modelName === "payments"
     ) {
         let subModelName = urlParts[4];
-        modelName = `${modelName}/${subModelName}`;
+
+        if (subModelName) {
+            modelName = `${modelName}/${subModelName}`;
+        }
 
         if (
             modelName === "settings" &&
