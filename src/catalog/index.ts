@@ -19,7 +19,7 @@ import { ProductSortOrderApi } from "./product-sort-order-api";
 import { ProductVariantApi } from "./product-variant-api";
 import { ProductVariantMetafieldApi } from "./product-variant-metafield-api";
 import { ProductVariantOptionApi } from "./product-variant-option-api";
-import { ProductVariantOptionValueApi } from "./product-variant-option-api copy";
+import { ProductVariantOptionValueApi } from "./product-variant-option-value-api";
 import { ProductVideoApi } from "./product-video-api";
 import { SummaryApi } from "./summary-api";
 import { VariantApi } from "./variant-api";
