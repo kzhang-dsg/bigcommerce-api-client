@@ -52,11 +52,11 @@ export type customer_Full = {
     /**
      * The date on which the customer was modified.
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * The date of which the customer was created.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * Total number of customer addresses.
      */

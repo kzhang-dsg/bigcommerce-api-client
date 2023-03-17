@@ -4,8 +4,8 @@ export interface SubscribersQueryParams {
     last_name?: string;
     source?: string;
     order_id?: number;
-    date_created?: string;
-    date_modified?: string;
+    date_created?: Date;
+    date_modified?: Date;
     id?: number;
 }
 export interface DeleteSubscribersQueryParams {
@@ -14,6 +14,6 @@ export interface DeleteSubscribersQueryParams {
     last_name?: string;
     source?: string;
     order_id?: number;
-    date_created?: string;
-    date_modified?: string;
+    date_created?: Date;
+    date_modified?: Date;
 }

@@ -8,6 +8,6 @@ export type orderMessages = Array<{
     message?: string;
     status?: string;
     is_flagged?: boolean;
-    date_created?: string;
+    date_created?: Date;
     customer?: any;
 }>;

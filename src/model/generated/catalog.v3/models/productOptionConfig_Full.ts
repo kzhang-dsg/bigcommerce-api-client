@@ -35,12 +35,12 @@ export type productOptionConfig_Full = {
      * (date) The earliest date allowed to be entered on the date option, as an ISO-8601 formatted string.
      *
      */
-    date_earliest_value?: string;
+    date_earliest_value?: Date;
     /**
      * (date) The latest date allowed to be entered on the date option, as an ISO-8601 formatted string.
      *
      */
-    date_latest_value?: string;
+    date_latest_value?: Date;
     /**
      * (file) The kind of restriction on the file types that can be uploaded with a file upload option. Values: `specific` - restricts uploads to particular file types; `all` - allows all file types.
      *

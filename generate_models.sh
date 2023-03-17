@@ -13,3 +13,7 @@ done;
 
 echo Fixing the generated models
 find ./src/model/generated/ -name '*.ts' -exec sed -i -e "s/        = '',/        BLANK = '',/g" {} \;
+find ./src/model/generated/ -name '*.ts' -exec sed -i -r "s/ (date_.+): string;/ \1: Date;/g" {} \;
+find ./src/model/generated/ -name '*.ts' -exec sed -i -r "s/ (.+_date\??): string;/ \1: Date;/g" {} \;
+find ./src/model/generated/ -name '*.ts' -exec sed -i -r "s/ (created|updated)_time\?: string;/ \1_time?: Date;/g" {} \;
+

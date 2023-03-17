@@ -17,12 +17,12 @@ export type product_Full = ({
      * The date on which the product was created.
      *
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * The date on which the product was modified.
      *
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * The unique identifier of the base variant associated with a simple product. This value is `null` for complex products.
      */

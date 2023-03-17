@@ -12,7 +12,7 @@ export type coupon_Full = ({
     /**
      * Date Created
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * Number of times this coupon has been used. This is a read-only field; do not set or modify its value in a POST or PUT request.
      */

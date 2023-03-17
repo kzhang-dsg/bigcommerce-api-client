@@ -23,11 +23,11 @@ export type productReview_Full = (productReview_Base & {
      * Date the product review was created.
      *
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * Date the product review was modified.
      *
      */
-    date_modified?: string;
+    date_modified?: Date;
 });
 

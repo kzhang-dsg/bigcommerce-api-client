@@ -27,6 +27,6 @@ export type Return_Full = {
      */
     comment?: string;
     status?: Status_Full;
-    date_modified?: string;
+    date_modified?: Date;
 };
 

@@ -35,6 +35,10 @@ export declare enum CacheType {
     IN_MEMORY = 0,
     REDIS = 1
 }
+export declare enum DateFormat {
+    ISO8601 = 0,
+    UNIX_TIMESTAMP = 1
+}
 export interface Config {
     storeHash: string;
     accessToken: string;

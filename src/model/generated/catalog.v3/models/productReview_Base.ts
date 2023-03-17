@@ -34,6 +34,6 @@ export type productReview_Base = {
      * Date the product was reviewed. Required in /POST.
      *
      */
-    date_reviewed: string;
+    date_reviewed: Date;
 };
 

@@ -40,6 +40,11 @@ export enum CacheType {
     REDIS,
 }
 
+export enum DateFormat {
+    ISO8601,
+    UNIX_TIMESTAMP,
+}
+
 export interface Config {
     storeHash: string;
     accessToken: string;

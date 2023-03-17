@@ -15,12 +15,12 @@ export type PriceRecord = ({
      * The date on which the Price entry was created.
      *
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * The date on which the Price entry was created.
      *
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * The id of the `Product` this `Price Record`'s variant_id is associated with.  Read only.
      *

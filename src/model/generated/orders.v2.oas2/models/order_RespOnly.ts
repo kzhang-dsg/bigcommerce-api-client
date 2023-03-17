@@ -18,11 +18,11 @@ export type order_RespOnly = {
     /**
      * A read-only value representing the last modification of the order. Do not attempt to modify or set this value in a POST or PUT request. RFC-2822
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * A read-only value representing the date of shipment. Do not attempt to modify or set this value in a POST or PUT request. RFC-2822
      */
-    date_shipped?: string;
+    date_shipped?: Date;
     /**
      * The cart ID from which this order originated, if applicable. Correlates with the Cart API. This is a read-only field; do not set or modify its value in a POST or PUT request.
      */

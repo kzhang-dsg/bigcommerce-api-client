@@ -11,11 +11,11 @@ export type widgetTemplate_Full = (widgetTemplate_Base & {
     /**
      * The date on which this object was initially created.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * The date on which this object was last updated.
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * The identifier to the current version of this widget template.
      */

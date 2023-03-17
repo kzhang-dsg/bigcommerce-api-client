@@ -8,10 +8,10 @@ export interface OrdersQueryParams {
     status_id?: number;
     cart_id?: number;
     payment_method?: string;
-    min_date_created?: string;
-    max_date_created?: string;
-    min_date_modified?: string;
-    max_date_modified?: string;
+    min_date_created?: Date;
+    max_date_created?: Date;
+    min_date_modified?: Date;
+    max_date_modified?: Date;
     sort?: string;
     is_deleted?: boolean;
     channel_id?: number;
@@ -21,8 +21,8 @@ export interface OrderMessagesQueryParams {
     min_id?: number;
     max_id?: number;
     customer_id?: number;
-    min_date_created?: string;
-    max_date_created?: string;
+    min_date_created?: Date;
+    max_date_created?: Date;
     is_flagged?: boolean;
     status?: string;
 }

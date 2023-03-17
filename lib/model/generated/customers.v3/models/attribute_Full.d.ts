@@ -14,11 +14,11 @@ export type attribute_Full = {
     /**
      * The date the customer attribute was created.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * The date the customer attribute was modified.
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * Attribute value ID.
      */

@@ -12,8 +12,8 @@ export type CustomTemplateAssociation = {
      * An invalid file name does not match with an existing custom layout file in the currently active theme for the channel. When an association is invalid the store will fallback to using the default for that entity type.
      */
     is_valid?: boolean;
-    date_created?: string;
-    date_modified?: string;
+    date_created?: Date;
+    date_modified?: Date;
 };
 
 export namespace CustomTemplateAssociation {

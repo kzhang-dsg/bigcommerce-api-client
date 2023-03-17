@@ -7,11 +7,11 @@ export type giftCertificate_Post = (giftCertificate_Base & {
     /**
      * Date the gift certificate was purchased. If not assigned, this will be set to today’s date. Enter date in RFC-2822 format.
      */
-    purchase_date?: string;
+    purchase_date?: Date;
     /**
      * Date on which the gift certificate is set to expire. The date must be in [RFC 2822](https://www.rfc-editor.org/rfc/rfc2822#section-3.3) format.
      */
-    expiry_date?: string;
+    expiry_date?: Date;
     /**
      * The ID of the customer placing the order.
      */

@@ -17,12 +17,12 @@ export type PriceListResponse = {
          * The date on which the `Price List` was created.
          *
          */
-        date_created?: string;
+        date_created?: Date;
         /**
          * The date on which the `Price List` was created.
          *
          */
-        date_modified?: string;
+        date_modified?: Date;
     } & {
         /**
          * The unique name of the Price List. Required in a POST request.

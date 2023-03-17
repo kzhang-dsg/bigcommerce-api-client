@@ -57,11 +57,11 @@ export type Cart_Full = {
     /**
      * Time when the cart was created.
      */
-    created_time?: string;
+    created_time?: Date;
     /**
      * Time when the cart was last updated.
      */
-    updated_time?: string;
+    updated_time?: Date;
     /**
      * The channel ID. If no channel is specified, defaults to 1.
      */

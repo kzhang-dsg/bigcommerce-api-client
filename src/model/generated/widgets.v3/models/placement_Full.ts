@@ -17,11 +17,11 @@ export type placement_Full = ({
     /**
      * The date on which this object was initially created.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * The date on which this object was last updated.
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * The ID of the channel on which this placement exists.
      */

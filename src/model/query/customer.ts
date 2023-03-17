@@ -13,11 +13,11 @@ export interface CustomersV2QueryParams {
     email?: string;
     first_name?: string;
     last_name?: string;
-    max_date_created?: string;
-    max_date_modified?: string;
+    max_date_created?: Date;
+    max_date_modified?: Date;
     max_id?: number;
-    min_date_created?: string;
-    min_date_modified?: string;
+    min_date_created?: Date;
+    min_date_modified?: Date;
     min_id?: number;
     phone?: string;
     store_credit?: string;
@@ -34,12 +34,12 @@ export interface CustomersV3QueryParams {
     "id:in"?: number[];
     "company:in"?: number[];
     "customer_group_id:in"?: number[];
-    date_created?: string;
-    "date_created:max"?: string;
-    "date_created:min"?: string;
-    date_modified?: string;
-    "date_modified:min"?: string;
-    "date_modified:max"?: string;
+    date_created?: Date;
+    "date_created:max"?: Date;
+    "date_created:min"?: Date;
+    date_modified?: Date;
+    "date_modified:min"?: Date;
+    "date_modified:max"?: Date;
     "email:in"?: string;
     "name:in"?: string[];
     "name:like"?: string[];
@@ -60,24 +60,24 @@ export interface CustomersV3AttributeValuesQueryParams {
     "customer_id:in"?: string[];
     "attribute_id:in"?: string[];
     name?: string;
-    date_created?: string;
-    "date_created:max"?: string;
-    "date_created:min"?: string;
-    date_modified?: string;
-    "date_modified:max"?: string;
-    "date_modified:min"?: string;
+    date_created?: Date;
+    "date_created:max"?: Date;
+    "date_created:min"?: Date;
+    date_modified?: Date;
+    "date_modified:max"?: Date;
+    "date_modified:min"?: Date;
 }
 
 export interface CustomersV3AttributesQueryParams {
     name?: string;
     "name:like"?: string;
     type?: string;
-    date_created?: string;
-    "date_created:max"?: string;
-    "date_created:min"?: string;
-    date_modified?: string;
-    "date_modified:max"?: string;
-    "date_modified:min"?: string;
+    date_created?: Date;
+    "date_created:max"?: Date;
+    "date_created:min"?: Date;
+    date_modified?: Date;
+    "date_modified:max"?: Date;
+    "date_modified:min"?: Date;
 }
 
 export interface CustomersV3FormFieldValuesQueryParams {

@@ -34,7 +34,7 @@ export type Transaction = ({
      * The datetime of the transaction.
      *
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * True if the transaction performed was a test, or if the gateway is in test mode.
      *
@@ -95,7 +95,7 @@ export type Transaction = ({
      * The datetime of the transaction.
      *
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * This field contains internal BigPay token for stored card that is then mapped to the actual third-party token. We currently do not offer a way to get third party tokens.These tokens are read-only and do not return any information about the payment.
      */

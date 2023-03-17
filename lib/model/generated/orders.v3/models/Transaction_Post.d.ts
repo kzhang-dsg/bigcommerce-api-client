@@ -35,7 +35,7 @@ export type Transaction_Post = {
      * The datetime of the transaction.
      *
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * True if the transaction performed was a test, or if the gateway is in test mode.
      *

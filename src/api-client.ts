@@ -9,7 +9,7 @@ import { regionAwareKeyGenerator } from "./cache/region-aware-key-generator";
 import { buildRegionAwareMemoryStorage } from "./cache/region-aware-memory";
 import { buildRegionAwareRedisStorage } from "./cache/region-aware-redis";
 import { CacheType, Config, Limit, PaginatedData } from "./model/common";
-import { appendQueryString, getCacheRegion } from "./util";
+import { appendQueryString, dateTransformer, getCacheRegion } from "./util";
 
 export class ApiClient {
     readonly axiosInstance: AxiosInstance;
@@ -23,6 +23,8 @@ export class ApiClient {
                 Accept: `application/json`,
             },
         });
+
+        this.axiosInstance.defaults.transformResponse = [dateTransformer];
 
         if (this.config.cache?.enable) {
             let storage: AxiosStorage;

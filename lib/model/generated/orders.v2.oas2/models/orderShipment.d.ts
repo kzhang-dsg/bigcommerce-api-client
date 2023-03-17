@@ -20,7 +20,7 @@ export type orderShipment = {
     /**
      * Creation date for the shipment.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * Tracking number of the shipment.
      */

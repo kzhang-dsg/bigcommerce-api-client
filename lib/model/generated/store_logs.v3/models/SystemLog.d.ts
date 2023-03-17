@@ -5,5 +5,5 @@ export type SystemLog = {
     severity?: string;
     summary?: string;
     message?: string;
-    date_created?: string;
+    date_created?: Date;
 };

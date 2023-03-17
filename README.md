@@ -12,6 +12,7 @@ A TypeScript NodeJS client for [BigCommerce's REST APIs](https://developer.bigco
     - [Use typed query parameters](#use-typed-query-parameters)
     - [Automatically iterate thru pagination](#automatically-iterate-thru-pagination)
     - [Automatically handle large batch](#automatically-handle-large-batch)
+    - [Automatic date conversion](#automatic-date-conversion)
     - [Enable cache](#enable-cache)
     - [Augment models](#augment-models)
     - [Low level API](#low-level-api)
@@ -25,6 +26,7 @@ A TypeScript NodeJS client for [BigCommerce's REST APIs](https://developer.bigco
 
 - One-to-one mapping to [BigCommerce's REST APIs](https://developer.bigcommerce.com/docs/rest). Very easy to use.
 - All the API endpoints, models, and query parameters are fully typed. The typings are generated from [BigCommerce's API Spec official GitHub repo](https://github.com/bigcommerce/api-specs) (with patching).
+- Automatically converts `string` date to `Date` object in models and query parameters.
 - Automatic retry on errors with `429` and `5XX` response codes.
 - Automatically iterate thru the pagination to get all the data if `limit = Limit.MAX_LIMIT`.
 - Automatically split one large batch request into multiple smaller batch requests if the max batch size exceeded.
@@ -109,6 +111,10 @@ Some BigCommerce API support batch operations. For example, the [Update Products
 const products: product_Base[] = [ ... 50 products];
 await bigCommerceApiClient.catalog.products.batchUpdateProducts(products);
 ```
+
+### Automatic date conversion
+
+bigcommerce-api-client will automatically convert the ISO 8601 datetime string to the Date object for the requests and responses. If the date field is in `YYYY-MM-DD` format without timezone information, then it will convert it to the local time using the system's time zone settings. Please make sure the system's time zone is correctly configured.
 
 ### Enable cache
 

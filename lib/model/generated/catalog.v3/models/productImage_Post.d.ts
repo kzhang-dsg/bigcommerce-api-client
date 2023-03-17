@@ -41,7 +41,7 @@ export type productImage_Post = ({
      * The date on which the product image was modified.
      *
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * Flag for identifying whether the image is used as the product's thumbnail.
      *

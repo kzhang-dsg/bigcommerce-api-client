@@ -22,11 +22,11 @@ export type banner_Base = {
     /**
      * If the datetype is set as 'custom’, this field specifies the date when the banner should become visible on the storefront.
      */
-    date_from?: string;
+    date_from?: Date;
     /**
      * If the datetype is set as 'custom’, this field specifies the date when the banner should stop being visible on the storefront.
      */
-    date_to?: string;
+    date_to?: Date;
     /**
      * Integer value denoting whether or not the banner is visible on the storefront: 1 = visible; 0 = not visible
      */

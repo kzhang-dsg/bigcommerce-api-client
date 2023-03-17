@@ -19,11 +19,11 @@ export type giftCertificate_Full = (giftCertificate_Base & {
     /**
      * Date the gift certificate was purchased. If not assigned, this will be set to today’s date. Date displays in the [RFC 2822](https://www.rfc-editor.org/rfc/rfc2822#section-3.3) timestamp format.
      */
-    purchase_date?: string;
+    purchase_date?: Date;
     /**
      * Date on which the gift certificate is set to expire. Date displays in the [RFC 2822](https://www.rfc-editor.org/rfc/rfc2822#section-3.3) timestamp format.
      */
-    expiry_date?: string;
+    expiry_date?: Date;
     /**
      * The email theme to use in the message sent to the recipient.
      */

@@ -38,5 +38,5 @@ export type blogPost_Base_Post = {
      * Local path to a thumbnail uploaded to `/product_images/` via [WebDav](https://support.bigcommerce.com/s/article/File-Access-WebDAV).
      */
     thumbnail_path?: string;
-    published_date?: string;
+    published_date?: Date;
 };

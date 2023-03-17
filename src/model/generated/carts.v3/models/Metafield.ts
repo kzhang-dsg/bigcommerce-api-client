@@ -16,10 +16,10 @@ export type Metafield = (MetafieldBase & {
     /**
      * Date and time of the metafieldʼs creation.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * Date and time when the metafield was last updated.
      */
-    date_modified?: string;
+    date_modified?: Date;
 });
 

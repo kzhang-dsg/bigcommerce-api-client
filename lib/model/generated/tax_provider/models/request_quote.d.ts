@@ -31,7 +31,7 @@ export type request_quote = {
     /**
      * ISO 8601 formatted date the shopper placed this order. Dates will be provided in UTC.
      */
-    transaction_date: string;
+    transaction_date: Date;
     /**
      * One or more consignments containing items being purchased by the shopper, including shipping and handling fees that are charged for each consignment. Most orders will contain a single consignment (to a single shipping address), however the BigCommerce platform also supports "Multi-address orders" which allow shoppers to place a single order with items shipped to different addresses.
      */

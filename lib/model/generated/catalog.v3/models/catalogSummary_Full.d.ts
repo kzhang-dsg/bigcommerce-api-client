@@ -38,6 +38,6 @@ export type catalogSummary_Full = {
      * Lowest priced variant in the store
      */
     lowest_variant_price?: string;
-    oldest_variant_date?: string;
-    newest_variant_date?: string;
+    oldest_variant_date?: Date;
+    newest_variant_date?: Date;
 };

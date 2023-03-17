@@ -9,7 +9,7 @@ export type banner_Full = ({
     /**
      * Date the banner is created.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * If the banner is on a specific category or brand page then the `item_id` will correspond the category or brand id.
      */

@@ -28,7 +28,7 @@ export type order_Shared = {
     /**
      * The date the order was created, formatted in the RFC-2822 standard. You set this attribute on Order creation (POST) to support the migration of historical orders. If you do not provide a value, then it will default to the current date/time. e.g., `Tue, 20 Nov 2012 00:00:00 +0000`.
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * The currency code of the transactional currency the shopper pays in; writeable when multi-currency is enabled.
      */

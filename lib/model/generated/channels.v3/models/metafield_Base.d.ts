@@ -48,12 +48,12 @@ export type metafield_Base = {
      * Date and time of the metafield's creation. Read-Only.
      *
      */
-    date_created?: string;
+    date_created?: Date;
     /**
      * Date and time when the metafield was last updated. Read-Only.
      *
      */
-    date_modified?: string;
+    date_modified?: Date;
 };
 export declare namespace metafield_Base {
     /**

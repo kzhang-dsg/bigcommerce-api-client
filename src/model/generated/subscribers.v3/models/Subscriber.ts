@@ -38,11 +38,11 @@ export type Subscriber = ({
      * The date on which the subscriber was modified.
      *
      */
-    date_modified?: string;
+    date_modified?: Date;
     /**
      * The date of which the subscriber was created.
      *
      */
-    date_created?: string;
+    date_created?: Date;
 });
 

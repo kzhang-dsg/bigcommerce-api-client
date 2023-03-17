@@ -42,6 +42,6 @@ export type productImage_Full = (productImage_Base & {
      * The date on which the product image was modified.
      *
      */
-    date_modified?: string;
+    date_modified?: Date;
 });
 

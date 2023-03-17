@@ -19,12 +19,12 @@ export type metafield_Full = ({
      * Date and time of the metafield's creation. Read-Only.
      *
      */
-    readonly date_created?: string;
+    readonly date_created?: Date;
     /**
      * Date and time when the metafield was last updated. Read-Only.
      *
      */
-    readonly date_modified?: string;
+    readonly date_modified?: Date;
 });
 export declare namespace metafield_Full {
     /**

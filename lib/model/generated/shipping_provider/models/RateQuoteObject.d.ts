@@ -30,7 +30,7 @@ export type RateQuoteObject = {
         currency: string;
         amount: number;
     };
-    dispatch_date?: string;
+    dispatch_date?: Date;
     /**
      * Value object for the length of time in transit.
      */

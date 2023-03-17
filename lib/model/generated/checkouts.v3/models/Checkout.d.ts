@@ -238,11 +238,11 @@ export type Checkout = {
         /**
          * Time when the cart was created.
          */
-        created_time?: string;
+        created_time?: Date;
         /**
          * Time when the cart was last updated.
          */
-        updated_time?: string;
+        updated_time?: Date;
     };
     billing_address?: ({
         first_name?: string;
@@ -422,11 +422,11 @@ export type Checkout = {
     /**
      * Time when the cart was created.
      */
-    created_time?: string;
+    created_time?: Date;
     /**
      * Time when the cart was last updated.
      */
-    updated_time?: string;
+    updated_time?: Date;
     /**
      * Shopper's message provided as details for the order to be created from this checkout.
      */
