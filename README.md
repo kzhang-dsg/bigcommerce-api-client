@@ -78,7 +78,7 @@ import { ProductsQueryParams } from "bigcommerce-api-client/lib/model/query/cata
 
 const params: ProductsQueryParams = {
     "id:in": [1, 2, 3],
-    availability: "availability",
+    availability: "available",
     is_visible: true,
 };
 await bigCommerceApiClient.catalog.products.getAllProducts(params);
@@ -86,7 +86,7 @@ await bigCommerceApiClient.catalog.products.getAllProducts(params);
 // or simply:
 await bigCommerceApiClient.catalog.products.getAllProducts({
     "id:in": [1, 2, 3],
-    availability: "availability",
+    availability: "available",
     is_visible: true,
 });
 ```
