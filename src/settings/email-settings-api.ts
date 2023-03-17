@@ -1,28 +1,27 @@
 import { ApiClient } from "../api-client";
-import { Data } from "../model/common";
+import { ChannelIdQueryParams, Data } from "../model/common";
 import { EnabledTransactionalEmails } from "../model/generated/settings.v3";
+import { appendQueryString } from "../util";
 
 export class EmailSettingsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getTransactionalEmailSettings<T extends EnabledTransactionalEmails>(
-        channelId?: number
-    ): Promise<Data<T>> {
+    async getTransactionalEmailSettings<
+        Params extends ChannelIdQueryParams,
+        T extends EnabledTransactionalEmails
+    >(params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
-            `/v3/settings/email-statuses${
-                channelId ? "?channel_id=" + channelId : ""
-            }`
+            appendQueryString(`/v3/settings/email-statuses`, params)
         );
         return response.data;
     }
 
     async updateTransactionalEmailSettings<
+        Params extends ChannelIdQueryParams,
         T extends EnabledTransactionalEmails
-    >(emailSettings: T, channelId?: number): Promise<Data<T>> {
+    >(emailSettings: T, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/settings/email-statuses${
-                channelId ? "?channel_id=" + channelId : ""
-            }`,
+            appendQueryString(`/v3/settings/email-statuses`, params),
             emailSettings
         );
         return response.data;

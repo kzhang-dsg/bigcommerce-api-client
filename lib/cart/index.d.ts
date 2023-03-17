@@ -1,15 +1,19 @@
 import { ApiClient } from "../api-client";
 import { MetafieldApi } from "../metafield";
-import { CartSingleApi } from "./cart--single-api";
 import { CartLineItemApi } from "./cart-item-api";
 import { CartRedirectUrlApi } from "./cart-redirect-url-api";
 import { CartSettingsApi } from "./cart-settings-api";
+import { IncludeQueryParams } from "../model/common";
+import { CartCreatePostData, Cart_Full } from "../model/generated/carts.v3";
 export declare class CartsApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    readonly cartsSingle: CartSingleApi;
     readonly items: CartLineItemApi;
     readonly metafields: MetafieldApi;
     readonly redirects: CartRedirectUrlApi;
     readonly settings: CartSettingsApi;
+    createCart<Params extends IncludeQueryParams, T extends CartCreatePostData, R extends Cart_Full>(createCartRequest: T, params?: Params): Promise<R>;
+    getCart<Params extends IncludeQueryParams, T extends Cart_Full>(cartId: number, params?: Params): Promise<T>;
+    updateCustomerId<Params extends IncludeQueryParams, T extends Cart_Full>(cartId: number, customerId: number, params?: Params): Promise<T>;
+    deleteCart(cartId: number): Promise<void>;
 }

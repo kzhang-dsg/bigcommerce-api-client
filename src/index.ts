@@ -1,4 +1,5 @@
 import { AxiosCacheInstance } from "axios-cache-interceptor";
+import { AbandonedCartEmailsApi } from "./abandoned-cart-emails";
 import { AbandonedCartApi } from "./abandoned-carts";
 import { ApiClient } from "./api-client";
 import { CartsApi } from "./cart";
@@ -6,10 +7,14 @@ import { CatalogApi } from "./catalog";
 import { ChannelsApi } from "./channels";
 import { CheckoutsApi } from "./checkouts";
 import { CurrenciesApi } from "./currencies";
+import { CustomTemplateAssociationsApi } from "./custom-template-associations";
 import { CustomersV2Api } from "./customers-v2";
 import { CustomersV3Api } from "./customers-v3";
-import { Config } from "./model/common";
+import { EmailTemplatesApi } from "./email-templates";
+import { MarketingApi } from "./marketing";
+import { CacheType, Config } from "./model/common";
 import { OrderApi } from "./order";
+import { PagesApi } from "./pages";
 import { PaymentMethodsApi } from "./payment-methods";
 import { PaymentProcessingApi } from "./payment-processing";
 import { PriceListsApi } from "./price-lists";
@@ -20,13 +25,18 @@ import { SettingsApi } from "./settings";
 import { ShippingV2Api } from "./shipping-v2";
 import { ShippingV3Api } from "./shipping-v3";
 import { SitesApi } from "./sites";
+import { StoreContentApi } from "./store-content";
 import { StoreInformationApi } from "./store-information";
 import { StoreLogsApi } from "./store-logs";
 import { SubscribersApi } from "./subscribers";
 import { TaxClassesApi } from "./tax-classes";
 import { TaxPropertiesApi } from "./tax-properties";
+import { TaxProviderConnectionApi } from "./tax-provider-connection";
 import { TaxRatesAndZonesApi } from "./tax-rates-and-zones";
 import { TaxSettingsApi } from "./tax-settings";
+import { ThemesApi } from "./themes";
+import { WebhooksApi } from "./webhooks";
+import { WidgetsApi } from "./widgets";
 import { WishlistsApi } from "./wishlists";
 
 const DEFAULT_CONFIG: Config = {
@@ -42,6 +52,7 @@ const DEFAULT_CONFIG: Config = {
         enable: false,
         ttl: 1000 * 60 * 10, // 10 minute.
         cloneData: false,
+        type: CacheType.IN_MEMORY
     },
 };
 
@@ -74,6 +85,16 @@ export class BigCommerceApiClient {
     readonly wishlists: WishlistsApi;
     readonly paymentMethods: PaymentMethodsApi;
     readonly paymentProcessing: PaymentProcessingApi;
+    readonly abandonedCartEmails: AbandonedCartEmailsApi;
+    readonly customTemplateAssociations: CustomTemplateAssociationsApi;
+    readonly emailTemplates: EmailTemplatesApi;
+    readonly pages: PagesApi;
+    readonly marketing: MarketingApi;
+    readonly storeContent: StoreContentApi;
+    readonly themes: ThemesApi;
+    readonly widgets: WidgetsApi;
+    readonly taxProviderConnection: TaxProviderConnectionApi;
+    readonly webhooks: WebhooksApi;
 
     constructor(private readonly config: Config) {
         this.config = Object.assign(DEFAULT_CONFIG, this.config);
@@ -106,6 +127,20 @@ export class BigCommerceApiClient {
         this.wishlists = new WishlistsApi(this.apiClient);
         this.paymentMethods = new PaymentMethodsApi(this.apiClient);
         this.paymentProcessing = new PaymentProcessingApi(this.apiClient);
+        this.abandonedCartEmails = new AbandonedCartEmailsApi(this.apiClient);
+        this.customTemplateAssociations = new CustomTemplateAssociationsApi(
+            this.apiClient
+        );
+        this.emailTemplates = new EmailTemplatesApi(this.apiClient);
+        this.pages = new PagesApi(this.apiClient);
+        this.marketing = new MarketingApi(this.apiClient);
+        this.storeContent = new StoreContentApi(this.apiClient);
+        this.themes = new ThemesApi(this.apiClient);
+        this.widgets = new WidgetsApi(this.apiClient);
+        this.taxProviderConnection = new TaxProviderConnectionApi(
+            this.apiClient
+        );
+        this.webhooks = new WebhooksApi(this.apiClient);
     }
 
     async getResources<T>(

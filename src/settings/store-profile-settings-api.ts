@@ -1,29 +1,27 @@
 import { ApiClient } from "../api-client";
-import { Data } from "../model/common";
+import { ChannelIdQueryParams, Data } from "../model/common";
 import { StoreProfile } from "../model/generated/settings.v3";
+import { appendQueryString } from "../util";
 
 export class StoreProfileSettingsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getStoreProfileSettings<T extends StoreProfile>(
-        channelId?: number
-    ): Promise<Data<T>> {
+    async getStoreProfileSettings<
+        Params extends ChannelIdQueryParams,
+        T extends StoreProfile
+    >(params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
-            `/v3/settings/store/profile${
-                channelId ? "?channel_id=" + channelId : ""
-            }`
+            appendQueryString(`/v3/settings/store/profile`, params)
         );
         return response.data;
     }
 
-    async updateStoreProfileSettings<T extends StoreProfile>(
-        storeProfileSettings: T,
-        channelId?: number
-    ): Promise<Data<T>> {
+    async updateStoreProfileSettings<
+        Params extends ChannelIdQueryParams,
+        T extends StoreProfile
+    >(storeProfileSettings: T, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/settings/store/profile${
-                channelId ? "?channel_id=" + channelId : ""
-            }`,
+            appendQueryString(`/v3/settings/store/profile`, params),
             storeProfileSettings
         );
         return response.data;

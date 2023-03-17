@@ -107,9 +107,6 @@ export interface DeleteProductsQueryParams {
     type?: string;
     weight?: number;
 }
-export interface GetProductQueryParams extends FieldAwareQueryParams {
-    include?: string[];
-}
 export interface ProductReviewsQueryParams extends FieldAwareQueryParams {
     status?: ProductReviewStatus;
 }

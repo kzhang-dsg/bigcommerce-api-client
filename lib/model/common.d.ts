@@ -1,3 +1,4 @@
+import { RedisClientOptions } from "redis";
 export declare enum OrderStatus {
     INCOMPLETE = 0,
     PENDING = 1,
@@ -30,6 +31,10 @@ export declare enum Sort {
     PRICE_ASC = "price_asc",
     PRICE_DESC = "price_desc"
 }
+export declare enum CacheType {
+    IN_MEMORY = 0,
+    REDIS = 1
+}
 export interface Config {
     storeHash: string;
     accessToken: string;
@@ -43,6 +48,8 @@ export interface Config {
         enable?: boolean;
         ttl?: number;
         cloneData?: boolean;
+        type?: CacheType;
+        redisClientOptions?: RedisClientOptions;
     };
 }
 export interface PaginatedData<Type> {
@@ -76,6 +83,9 @@ export interface Error {
     type: string;
     errors?: any;
 }
+export interface Count {
+    count: number;
+}
 export interface FieldAwareQueryParams {
     exclude_fields?: string[];
     include_fields?: string[];
@@ -91,4 +101,10 @@ export interface IdAwareQueryParams {
 }
 export interface IdInQueryParams {
     "id:in"?: number[];
+}
+export interface ChannelIdQueryParams {
+    channel_id?: number;
+}
+export interface IncludeQueryParams {
+    include?: string[];
 }

@@ -46,7 +46,7 @@ export interface PriceListRecordsQueryParams {
     "variant_id:in"?: number[];
     "product_id:in"?: number[];
     currency?: string;
-    include?: string;
+    include?: string[];
     price?: number;
     sale_price?: number;
     retail_price?: number;

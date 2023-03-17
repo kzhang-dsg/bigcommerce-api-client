@@ -1,5 +1,6 @@
 import { ApiClient } from "../api-client";
-import { country_Full, count_Full } from "../model/generated/geography.v2";
+import { Count } from "../model/common";
+import { country_Full } from "../model/generated/geography.v2";
 import { CountriesQueryParams } from "../model/query/geography";
 import { appendQueryString } from "../util";
 
@@ -23,7 +24,7 @@ export class CountryApi {
         return response.data;
     }
 
-    async getCountriesCount<T extends count_Full>(): Promise<T> {
+    async getCountriesCount<T extends Count>(): Promise<T> {
         const response = await this.apiClient.get(`/v2/countries/count`);
         return response.data;
     }

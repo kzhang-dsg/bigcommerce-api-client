@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
+import { Count } from "../model/common";
 import {
-    count_Full,
     customerGroup_Full,
     customerGroup_Post,
 } from "../model/generated/customers.v2";
@@ -61,7 +61,7 @@ export class CustomerGroupApi {
         await this.apiClient.delete(`/v2/customer_groups/${customerGroupId}`);
     }
 
-    async getCustomerGroupsCount<T extends count_Full>(): Promise<T[]> {
+    async getCustomerGroupsCount<T extends Count>(): Promise<T> {
         const response = await this.apiClient.get("/v2/customer_groups/count");
         return response.data;
     }

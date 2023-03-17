@@ -1,3 +1,5 @@
+import { RedisClientOptions } from "redis";
+
 export enum OrderStatus {
     INCOMPLETE = 0,
     PENDING = 1,
@@ -33,6 +35,11 @@ export enum Sort {
     PRICE_DESC = "price_desc",
 }
 
+export enum CacheType {
+    IN_MEMORY,
+    REDIS,
+}
+
 export interface Config {
     storeHash: string;
     accessToken: string;
@@ -46,6 +53,8 @@ export interface Config {
         enable?: boolean;
         ttl?: number;
         cloneData?: boolean;
+        type?: CacheType;
+        redisClientOptions?: RedisClientOptions;
     };
 }
 
@@ -85,6 +94,10 @@ export interface Error {
     errors?: any;
 }
 
+export interface Count {
+    count: number;
+}
+
 export interface FieldAwareQueryParams {
     exclude_fields?: string[];
     include_fields?: string[];
@@ -102,4 +115,12 @@ export interface IdAwareQueryParams {
 
 export interface IdInQueryParams {
     "id:in"?: number[];
+}
+
+export interface ChannelIdQueryParams {
+    channel_id?: number;
+}
+
+export interface IncludeQueryParams {
+    include?: string[];
 }

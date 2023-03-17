@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
+import { Count } from "../model/common";
 import {
-    count_Full,
     customerAddress_Base,
     customerAddress_Full,
 } from "../model/generated/customers.v2";
@@ -70,9 +70,9 @@ export class CustomerAddressApi {
         );
     }
 
-    async getCustomerAddressesCount<T extends count_Full>(
+    async getCustomerAddressesCount<T extends Count>(
         customerId: number
-    ): Promise<T[]> {
+    ): Promise<T> {
         const response = await this.apiClient.get(
             `/v2/customers/${customerId}/addresses/count`
         );

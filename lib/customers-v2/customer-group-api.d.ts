@@ -1,5 +1,6 @@
 import { ApiClient } from "../api-client";
-import { count_Full, customerGroup_Full, customerGroup_Post } from "../model/generated/customers.v2";
+import { Count } from "../model/common";
+import { customerGroup_Full, customerGroup_Post } from "../model/generated/customers.v2";
 import { CustomerV2GroupsQueryParams } from "../model/query/customer";
 export declare class CustomerGroupApi {
     private readonly apiClient;
@@ -10,5 +11,5 @@ export declare class CustomerGroupApi {
     getCustomerGroup<T extends customerGroup_Full>(customerGroupId: number): Promise<T>;
     updateCustomerGroup<T extends customerGroup_Post, R extends customerGroup_Full>(customerGroupId: number, customerGroup: T): Promise<R>;
     deleteCustomerGroup(customerGroupId: number): Promise<void>;
-    getCustomerGroupsCount<T extends count_Full>(): Promise<T[]>;
+    getCustomerGroupsCount<T extends Count>(): Promise<T>;
 }

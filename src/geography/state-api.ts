@@ -1,8 +1,6 @@
 import { ApiClient } from "../api-client";
-import {
-    countriesState_Full,
-    count_Full,
-} from "../model/generated/geography.v2";
+import { Count } from "../model/common";
+import { countriesState_Full } from "../model/generated/geography.v2";
 import { StatesQueryParams } from "../model/query/geography";
 import { appendQueryString } from "../util";
 
@@ -36,7 +34,7 @@ export class StateApi {
         return response.data;
     }
 
-    async getStatesCount<T extends count_Full>(): Promise<T> {
+    async getStatesCount<T extends Count>(): Promise<T> {
         const response = await this.apiClient.get(`/v2/countries/states/count`);
         return response.data;
     }
@@ -53,7 +51,7 @@ export class StateApi {
         return response.data;
     }
 
-    async getCountryStatesCount<T extends count_Full>(
+    async getCountryStatesCount<T extends Count>(
         countryId: number
     ): Promise<T> {
         const response = await this.apiClient.get(

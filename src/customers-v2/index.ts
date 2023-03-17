@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
+import { Count } from "../model/common";
 import {
-    count_Full,
     customer_Base,
     customer_Full,
     customer_Put,
@@ -100,7 +100,7 @@ export class CustomersV2Api {
         await this.apiClient.delete(`/v2/customers/${customerId}`);
     }
 
-    async getCustomersCount<T extends count_Full>(): Promise<T[]> {
+    async getCustomersCount<T extends Count>(): Promise<T> {
         const response = await this.apiClient.get("/v2/customers/count");
         return response.data;
     }

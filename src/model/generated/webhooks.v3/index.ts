@@ -65,3 +65,5 @@ export type { store_subscriber_wildcard } from './models/store_subscriber_wildca
 export type { webhook_Base } from './models/webhook_Base';
 export type { webhook_callback_base } from './models/webhook_callback_base';
 export type { webhook_Full } from './models/webhook_Full';
+export type { WebhookAdminInfo } from './models/WebhookAdminInfo';
+export type { WebhookAdminInfoBase } from './models/WebhookAdminInfoBase';

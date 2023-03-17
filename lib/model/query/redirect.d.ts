@@ -3,7 +3,7 @@ export interface RedirectsQueryParams {
     "id:in"?: string[];
     sort?: string;
     direction?: string;
-    include?: string;
+    include?: string[];
     keyword?: string;
 }
 export interface DeleteRedirectsQueryParams {

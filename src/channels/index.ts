@@ -1,16 +1,13 @@
 import { ApiClient } from "../api-client";
 import { MetafieldApi } from "../metafield";
-import { Data, PaginatedData } from "../model/common";
+import { Data, IncludeQueryParams, PaginatedData } from "../model/common";
 import {
     ChannelWithCurrencies,
     ChannelWithoutCurrencies,
     CreateChannelReq,
     UpdateChannelReq,
 } from "../model/generated/channels.v3";
-import {
-    ChannelsQueryParams,
-    GetChannelQueryParams,
-} from "../model/query/channel";
+import { ChannelsQueryParams } from "../model/query/channel";
 import { appendQueryString } from "../util";
 import { ChannelActiveThemeApi } from "./channel-active-theme-api";
 import { ChannelCurrencyAssignmentApi } from "./channel-currency-assignment-api";
@@ -62,7 +59,7 @@ export class ChannelsApi {
     }
 
     async getChannel<
-        Params extends GetChannelQueryParams,
+        Params extends IncludeQueryParams,
         T extends ChannelWithCurrencies
     >(params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(

@@ -1,9 +1,9 @@
 import { ApiClient } from "../api-client";
-import { Data } from "../model/common";
+import { ChannelIdQueryParams, Data } from "../model/common";
 import { EnabledTransactionalEmails } from "../model/generated/settings.v3";
 export declare class EmailSettingsApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    getTransactionalEmailSettings<T extends EnabledTransactionalEmails>(channelId?: number): Promise<Data<T>>;
-    updateTransactionalEmailSettings<T extends EnabledTransactionalEmails>(emailSettings: T, channelId?: number): Promise<Data<T>>;
+    getTransactionalEmailSettings<Params extends ChannelIdQueryParams, T extends EnabledTransactionalEmails>(params?: Params): Promise<Data<T>>;
+    updateTransactionalEmailSettings<Params extends ChannelIdQueryParams, T extends EnabledTransactionalEmails>(emailSettings: T, params?: Params): Promise<Data<T>>;
 }

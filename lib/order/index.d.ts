@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { OrderStatus } from "../model/common";
-import { ordersCountStatus, order_Post, order_Put, order_RespOnly } from "../model/generated/orders.v2.oas2";
+import { ordersCount_Full, order_Post, order_Put, order_RespOnly } from "../model/generated/orders.v2.oas2";
 import { OrdersQueryParams } from "../model/query/order";
 import { OrderCouponApi } from "./order-coupon-api";
 import { OrderMessageApi } from "./order-message-api";
@@ -27,6 +27,6 @@ export declare class OrderApi {
     updateOrder<T extends order_Put, R extends order_RespOnly>(orderId: number, order: T): Promise<R>;
     archiveOrder(orderId: number): Promise<void>;
     deleteAllOrders(): Promise<void>;
-    getOrdersCount<T extends ordersCountStatus>(): Promise<T[]>;
+    getOrdersCount<T extends ordersCount_Full>(): Promise<T[]>;
     updateOrderStatus<T extends order_RespOnly>(orderId: number, status: OrderStatus): Promise<T>;
 }

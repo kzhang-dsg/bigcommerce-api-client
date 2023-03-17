@@ -1,9 +1,14 @@
 import Axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { CacheRequestConfig, setupCache } from "axios-cache-interceptor";
+import {
+    AxiosStorage,
+    CacheRequestConfig,
+    setupCache,
+} from "axios-cache-interceptor";
 import { ClientRequest } from "http";
 import { regionAwareKeyGenerator } from "./cache/region-aware-key-generator";
 import { buildRegionAwareMemoryStorage } from "./cache/region-aware-memory";
-import { Config, Limit, PaginatedData } from "./model/common";
+import { buildRegionAwareRedisStorage } from "./cache/region-aware-redis";
+import { CacheType, Config, Limit, PaginatedData } from "./model/common";
 import { appendQueryString, getCacheRegion } from "./util";
 
 export class ApiClient {
@@ -20,9 +25,17 @@ export class ApiClient {
         });
 
         if (this.config.cache?.enable) {
+            let storage: AxiosStorage;
+            if (this.config.cache?.type === CacheType.REDIS) {
+                storage = buildRegionAwareRedisStorage(
+                    this.config.cache?.redisClientOptions
+                );
+            } else {
+                storage = buildRegionAwareMemoryStorage();
+            }
             this.axiosInstance = setupCache(this.axiosInstance, {
                 generateKey: regionAwareKeyGenerator,
-                storage: buildRegionAwareMemoryStorage(),
+                storage,
             });
         }
     }

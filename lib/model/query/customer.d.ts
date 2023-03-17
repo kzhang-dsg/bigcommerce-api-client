@@ -48,7 +48,7 @@ export interface CustomersV3AddressesQueryParams {
     "company:in"?: string[];
     "name:in"?: string[];
     "customer_id:in"?: string[];
-    include?: string;
+    include?: string[];
     "id:in"?: string[];
 }
 export interface CustomersV3AttributeValuesQueryParams {

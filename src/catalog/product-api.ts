@@ -2,10 +2,9 @@ import { ApiClient } from "../api-client";
 import {
     UpdateProductsQueryParams,
     DeleteProductsQueryParams,
-    GetProductQueryParams,
     ProductsQueryParams,
 } from "../model/query/catalog";
-import { Data, PaginatedData } from "../model/common";
+import { Data, IncludeQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
 import {
     product_Full,
@@ -72,7 +71,7 @@ export class ProductApi {
 
     async getProduct<
         T extends product_Full,
-        Params extends GetProductQueryParams
+        Params extends IncludeQueryParams
     >(productId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/catalog/products/${productId}`, params)

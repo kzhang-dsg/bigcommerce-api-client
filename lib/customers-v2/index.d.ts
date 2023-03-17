@@ -1,5 +1,6 @@
 import { ApiClient } from "../api-client";
-import { count_Full, customer_Base, customer_Full } from "../model/generated/customers.v2";
+import { Count } from "../model/common";
+import { customer_Base, customer_Full } from "../model/generated/customers.v2";
 import { CustomersV2QueryParams } from "../model/query/customer";
 import { CustomerAddressApi } from "./customer-address-api";
 import { CustomerGroupApi } from "./customer-group-api";
@@ -18,5 +19,5 @@ export declare class CustomersV2Api {
     updatePassword<T extends customer_Full>(customerId: number, newPassword: string, confirmPassword?: string): Promise<T>;
     forcePasswordResets<T extends customer_Full>(customerId: number): Promise<T>;
     deleteCustomer(customerId: number): Promise<void>;
-    getCustomersCount<T extends count_Full>(): Promise<T[]>;
+    getCustomersCount<T extends Count>(): Promise<T>;
 }

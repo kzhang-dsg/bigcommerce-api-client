@@ -51,7 +51,8 @@ export function getCacheRegion(url = "") {
         modelName === "content" ||
         modelName === "settings" ||
         modelName === "tax" ||
-        modelName === "payments"
+        modelName === "payments" ||
+        modelName === "marketing"
     ) {
         let subModelName = urlParts[4];
 

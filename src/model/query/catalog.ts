@@ -123,10 +123,6 @@ export interface DeleteProductsQueryParams {
     weight?: number;
 }
 
-export interface GetProductQueryParams extends FieldAwareQueryParams {
-    include?: string[];
-}
-
 export interface ProductReviewsQueryParams extends FieldAwareQueryParams {
     status?: ProductReviewStatus;
 }

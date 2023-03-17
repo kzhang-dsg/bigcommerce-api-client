@@ -1,27 +1,27 @@
 import { ApiClient } from "../api-client";
-import { Data } from "../model/common";
+import { ChannelIdQueryParams, Data } from "../model/common";
 import { CatalogSettings } from "../model/generated/settings.v3";
+import { appendQueryString } from "../util";
 
 export class CatalogSettingsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getCatalogSettings<T extends CatalogSettings>(
-        channelId?: number
-    ): Promise<Data<T>> {
+    async getCatalogSettings<
+        Params extends ChannelIdQueryParams,
+        T extends CatalogSettings
+    >(params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
-            `/v3/settings/catalog${channelId ? "?channel_id=" + channelId : ""}`
+            appendQueryString(`/v3/settings/catalog`, params)
         );
         return response.data;
     }
 
-    async updateCatalogSettings<T extends CatalogSettings>(
-        catalogSettings: T,
-        channelId?: number
-    ): Promise<Data<T>> {
+    async updateCatalogSettings<
+        Params extends ChannelIdQueryParams,
+        T extends CatalogSettings
+    >(catalogSettings: T, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/settings/catalog${
-                channelId ? "?channel_id=" + channelId : ""
-            }`,
+            appendQueryString(`/v3/settings/catalog`, params),
             catalogSettings
         );
         return response.data;

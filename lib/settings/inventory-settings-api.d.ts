@@ -1,9 +1,9 @@
 import { ApiClient } from "../api-client";
-import { Data } from "../model/common";
+import { ChannelIdQueryParams, Data } from "../model/common";
 import { InventorySettings } from "../model/generated/settings.v3";
 export declare class InventorySettingsApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    getInventorySettings<T extends InventorySettings>(channelId?: number): Promise<Data<T>>;
-    updateInventorySettings<T extends InventorySettings>(inventorySettings: T, channelId?: number): Promise<Data<T>>;
+    getInventorySettings<Params extends ChannelIdQueryParams, T extends InventorySettings>(params?: Params): Promise<Data<T>>;
+    updateInventorySettings<Params extends ChannelIdQueryParams, T extends InventorySettings>(inventorySettings: T, params?: Params): Promise<Data<T>>;
 }

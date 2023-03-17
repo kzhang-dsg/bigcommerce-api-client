@@ -1,8 +1,9 @@
 /// <reference types="node" />
 import { ReadStream } from "fs";
 import { ApiClient } from "../api-client";
+import { ChannelIdQueryParams } from "../model/common";
 export declare class FaviconImageSettingsApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    createFaviconImage(image: ReadStream, channelId?: number): Promise<void>;
+    createFaviconImage<Params extends ChannelIdQueryParams>(image: ReadStream, params?: Params): Promise<void>;
 }

@@ -1,29 +1,27 @@
 import { ApiClient } from "../api-client";
-import { Data } from "../model/common";
+import { ChannelIdQueryParams, Data } from "../model/common";
 import { InventorySettings } from "../model/generated/settings.v3";
+import { appendQueryString } from "../util";
 
 export class InventorySettingsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getInventorySettings<T extends InventorySettings>(
-        channelId?: number
-    ): Promise<Data<T>> {
+    async getInventorySettings<
+        Params extends ChannelIdQueryParams,
+        T extends InventorySettings
+    >(params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
-            `/v3/settings/inventory${
-                channelId ? "?channel_id=" + channelId : ""
-            }`
+            appendQueryString(`/v3/settings/inventory`, params)
         );
         return response.data;
     }
 
-    async updateInventorySettings<T extends InventorySettings>(
-        inventorySettings: T,
-        channelId?: number
-    ): Promise<Data<T>> {
+    async updateInventorySettings<
+        Params extends ChannelIdQueryParams,
+        T extends InventorySettings
+    >(inventorySettings: T, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/settings/inventory${
-                channelId ? "?channel_id=" + channelId : ""
-            }`,
+            appendQueryString(`/v3/settings/inventory`, params),
             inventorySettings
         );
         return response.data;

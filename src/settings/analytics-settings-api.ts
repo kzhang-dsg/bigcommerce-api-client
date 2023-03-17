@@ -1,22 +1,24 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { ChannelIdQueryParams, PaginatedData } from "../model/common";
 import {
     AnalyticsProvider,
     AnalyticsProviderPut,
 } from "../model/generated/settings.v3";
+import { appendQueryString } from "../util";
 
 export class AnalyticsSettingsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async getAllAnalyticsProviders<T extends AnalyticsProvider>(
-        channelId?: number,
+    async getAllAnalyticsProviders<
+        Params extends ChannelIdQueryParams,
+        T extends AnalyticsProvider
+    >(
+        params?: Params,
         page?: number,
         limit?: number
     ): Promise<PaginatedData<T>> {
         const response = await this.apiClient.get(
-            `/v3/settings/analytics${
-                channelId ? "?channel_id=" + channelId : ""
-            }`,
+            appendQueryString(`/v3/settings/analytics`, params),
             page,
             limit
         );
@@ -33,17 +35,19 @@ export class AnalyticsSettingsApi {
     }
 
     async updateAnalyticsProvider<
+        Params extends ChannelIdQueryParams,
         T extends AnalyticsProviderPut,
         R extends AnalyticsProvider
     >(
         analyticsProviderId: number,
         analyticsProvider: T,
-        channelId?: number
+        params?: Params
     ): Promise<R> {
         const response = await this.apiClient.put(
-            `/v3/settings/analytics/${analyticsProviderId}${
-                channelId ? "?channel_id=" + channelId : ""
-            }`,
+            appendQueryString(
+                `/v3/settings/analytics/${analyticsProviderId}`,
+                params
+            ),
             analyticsProvider
         );
         return response.data;

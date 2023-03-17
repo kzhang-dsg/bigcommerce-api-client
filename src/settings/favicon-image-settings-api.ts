@@ -1,20 +1,20 @@
 import FormData from "form-data";
 import { ReadStream } from "fs";
 import { ApiClient } from "../api-client";
+import { ChannelIdQueryParams } from "../model/common";
+import { appendQueryString } from "../util";
 
 export class FaviconImageSettingsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
-    async createFaviconImage(
+    async createFaviconImage<Params extends ChannelIdQueryParams>(
         image: ReadStream,
-        channelId?: number
+        params?: Params
     ): Promise<void> {
         const formData = new FormData();
         formData.append("FaviconFile", image);
         const response = await this.apiClient.post(
-            `/v3/settings/favicon/image${
-                channelId ? "?channel_id=" + channelId : ""
-            }`,
+            appendQueryString(`/v3/settings/favicon/image`, params),
             formData,
             {
                 headers: {

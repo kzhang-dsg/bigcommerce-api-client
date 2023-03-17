@@ -1,5 +1,5 @@
 export interface ChannelsQueryParams {
-    include?: string;
+    include?: string[];
     available?: boolean;
     "status:in"?: string[];
     "type:in"?: string[];
@@ -10,9 +10,6 @@ export interface ChannelsQueryParams {
     date_modified?: string;
     "date_modified:min"?: string;
     "date_modified:max"?: string;
-}
-export interface GetChannelQueryParams {
-    include?: string[];
 }
 export interface ChannelListingsQueryParams {
     after?: number;
