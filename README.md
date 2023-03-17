@@ -1,17 +1,20 @@
 # BigCommerce API Client
 
-A TypeScript NodeJS client for all API endpoints of [BigCommerce's REST APIs](https://developer.bigcommerce.com/docs/rest).
+A TypeScript NodeJS client for [BigCommerce's REST APIs](https://developer.bigcommerce.com/docs/rest) with complete typing for API and models,  built-in cache and automatic retries.
 
 - [BigCommerce API Client](#bigcommerce-api-client)
   - [Features](#features)
-  - [Getting started](#getting-started)
-    - [Installation](#installation)
-    - [Basic Usage](#basic-usage)
+  - [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Basic Usage](#basic-usage)
+  - [API Layout](#api-layout)
   - [Advanced Usage](#advanced-usage)
-    - [Pass Additional parameters](#pass-additional-parameters)
-    - [Automatically Iterate Thru Pagination](#automatically-iterate-thru-pagination)
-    - [Automatically Handle Large Batch](#automatically-handle-large-batch)
-    - [Low Level API](#low-level-api)
+    - [Use typed query parameters](#use-typed-query-parameters)
+    - [Automatically iterate thru pagination](#automatically-iterate-thru-pagination)
+    - [Automatically handle large batch](#automatically-handle-large-batch)
+    - [Enable cache](#enable-cache)
+    - [Augment models](#augment-models)
+    - [Low level API](#low-level-api)
   - [Configuration](#configuration)
   - [Error Handling](#error-handling)
   - [Versioning](#versioning)
@@ -20,22 +23,25 @@ A TypeScript NodeJS client for all API endpoints of [BigCommerce's REST APIs](ht
 
 ## Features
 
-- One-to-one mapping to BigCommerce's Server Side APIs. The layout of the bigcommerce-api-client matches exactly as the [BigCommerce's REST APIs](https://developer.bigcommerce.com/docs/rest).
-- The TypeScript typings (include all the models) are up-to-date and generated from [BigCommerce's API Spec Official GitHub repo](https://github.com/bigcommerce/api-specs) (with some patching).
-- Automatic retry on errors with 429 and >=500 response codes.
-- Can automatically iterate thru the pagination to get all the data in one call by passing `Limit.MAX_LIMIT` to the `limit` parameter
-- Automatically split the large batch request into multiple smaller batch requests if the max batch size exceeded.
-- Built in cache (in memory or redis)
+- One-to-one mapping to [BigCommerce's REST APIs](https://developer.bigcommerce.com/docs/rest). Very easy to use.
+- All the API endpoints, models, and query parameters are fully typed. The typings are generated from [BigCommerce's API Spec official GitHub repo](https://github.com/bigcommerce/api-specs) (with patching).
+- Automatic retry on errors with `429` and `5XX` response codes.
+- Automatically iterate thru the pagination to get all the data if `limit = Limit.MAX_LIMIT`.
+- Automatically split one large batch request into multiple smaller batch requests if the max batch size exceeded.
+- Built in cache (support in memory or Redis)
 
-## Getting started
+## Getting Started
 
-### Installation
+- [Installation](#installation)
+- [Basic Usage](#basic-usage)
+
+## Installation
 
 ```sh
-npm install bigcommerce-api-client
+npm install bigcommerce-api-client --save
 ```
 
-### Basic Usage
+## Basic Usage
 
 ```typescript
 import { BigCommerceApiClient } from "bigcommerce-api-client";
@@ -53,11 +59,17 @@ console.log(JSON.stringify(results));
 
 ```
 
+## API Layout
+
+The bigcommerce-api-client has one-to-one mapping to the [BigCommerce API Reference Documentation](https://developer.bigcommerce.com/docs/rest). Developers can easily navigate thru and find the API endpoints:
+
+![API Layout](doc/api-doc-mapping.png?raw=true "API Layout")
+
 ## Advanced Usage
 
-### Pass Additional parameters
+### Use typed query parameters
 
-All the parameters are typed based on the BigCommerce API Spec. Passing additional parameters to the API is easy. For example:
+All the parameters are typed based on the BigCommerce API Spec. The typescript type definitions for query parameters are located in `bigcommerce-api-client/lib/model/query/` folder. Passing additional parameters to the API is easy. For example:
 
 ```typescript
 import { ProductsQueryParams } from "bigcommerce-api-client/lib/model/query/catalog";
@@ -77,7 +89,7 @@ await bigCommerceApiClient.catalog.products.getAllProducts({
 });
 ```
 
-### Automatically Iterate Thru Pagination
+### Automatically iterate thru pagination
 
 API with pagination has two parameters `page` and `limit`. If you pass the the `Limit.MAX_LIMIT` to the `limit` parameter, the bigcommerce-api-client will automatically iterate thru all the pages from the starting page specified by the `page` parameter to the last page.
 
@@ -89,7 +101,7 @@ import { Limit } from "bigcommerce-api-client/lib/model/common";
 await bigCommerceApiClient.catalog.products.getAllProducts({}, 1, Limit.MAX_LIMIT);  // returns all the products from the first page to the last page
 ```
 
-### Automatically Handle Large Batch
+### Automatically handle large batch
 
 Some BigCommerce API support batch operations. For example, the [Update Products (Batch) API](https://developer.bigcommerce.com/docs/rest-management/catalog/products#update-products-batch) can update up to 10 products per request. The bigcommerce-api-client automatically handles the large batch payloads and splits it into multiple small batch requests. So the developer does not need to worry about the batch limits. For example, you can pass in 50 products to the Update Products (Batch) API, and the bigcommerce-api-client will split it into 5 requests, each request contains 10 products.
 
@@ -98,7 +110,34 @@ const products: product_Base[] = [ ... 50 products];
 await bigCommerceApiClient.catalog.products.batchUpdateProducts(products);
 ```
 
-### Low Level API
+### Enable cache
+
+Cache is disabled by default. To enable cache, set `config.cache.enable = true` when creating the BigCommerceApiClient instance.
+
+```typescript
+import { BigCommerceApiClient } from "bigcommerce-api-client";
+
+const bigCommerceApiClient = new BigCommerceApiClient({
+    storeHash: "xxxxxx",  // replace it with your store hash
+    accessToken: "xxxxxx",  // replace it with your access token
+    cache: {
+        enable: true
+    }
+});
+```
+
+### Augment models
+
+If you want to pass in additional parameters, or add extra fields to the models, you can define your own type to extend the existing model and add extra fields. For example:
+
+```typescript
+type CustomProduct = {extra_field: string} & product_Full;
+
+const result: Data<CustomProduct> = await bigCommerceApiClient.catalog.products.getProduct(1);
+console.log(JSON.stringify(result.data.extra_field));
+```
+
+### Low level API
 
 If you need to directly call the `get`, `post` `put` `delete` methods with a custom URL and custom parameter, you can get the `bigCommerceApiClient.apiClient` object and call the corresponding method. For example:
 
@@ -138,45 +177,45 @@ const bigCommerceApiClient = new BigCommerceApiClient({
 
 Below is the complete list of config parameters:
 
-- defaultLimit (default: `250`)
+- `defaultLimit` (default value: `250`)
   - the global `limit` parameter value for pagination. The default value is 250, which means it will fetch 250 records per page. The `limit` parameter can be override at each API call level.
-- timeout (default: `60000`)
+- `timeout` (default: `60000`)
   - Request timeout. Default is 1 minute
-- maxRetries (default: `5`)
+- `maxRetries` (default: `5`)
   - Max number of retries when error happened. Default is 5
-- retryDelay (default: `5000`)
-  - Wait time before next retry. Default is 5 seconds. The wait time for each retry is calculated by `retryDelay * nthRetry`. For example, if `retryDelay = 5000` and it is the 3rd retry, then wait for `5000 * 3 = 15000 ms`.
-- retryOnReadTimeout (default: `true`)
+- `retryDelay` (default: `5000`)
+  - Wait time before next retry. Default is 5 seconds. The wait time for each retry is calculated by `retryDelay * nthRetry`. For example, if `retryDelay = 5000` and it is the 3rd retry, then wait for `5000 * 3 = 15000 ms`. For `429` errors, the wait time is indicated by `X-Rate-Limit-Time-Reset-Ms` response header. See the [BigCommerce Document](https://developer.bigcommerce.com/api-docs/getting-started/best-practices#playing-nicely-with-the-platform) for details.
+- `retryOnReadTimeout` (default: `true`)
   - If set to true, then retry when the request is timeout on a `GET` request.
-- failOn404 (default: `false`)
+- `failOn404` (default: `false`)
   - If set to true, then throw error on 404 response code for a `GET` or `DELETE` request. Otherwise return `null`.
-- cache
-  - enable (default: `false`)
+- `cache`
+  - `enable` (default: `false`)
     - Enable cache or not.
-  - ttl (default: `1000 * 60 * 10`)
+  - `ttl` (default: `1000 * 60 * 10`)
     - Time-To-Live of the cache. Default is 10 min.
-  - cloneData (default: `false`)
+  - `cloneData` (default: `false`)
     - IN_MEMORY CACHE ONLY. Clone option to clone the response before saving it in cache. See [axios-cache-interceptor issue #163](https://github.com/arthurfiorette/axios-cache-interceptor/issues/163)
-  - type (default: `CacheType.IN_MEMORY`)
+  - `type` (default: `CacheType.IN_MEMORY`)
     - Use `CacheType.IN_MEMORY` cache or `CacheType.REDIS` cache. For Redis cache, additional `redisClientOptions` is required
-  - redisClientOptions (default: `undefined`)
-    - The `RedisClientOptions` when initialize the redis client: `redis.createClient(options: RedisClientOptions)`. See [Redis documentation](https://docs.redis.com/latest/rs/references/client_references/client_nodejs/) for details.
+  - `redisClientOptions` (default: `undefined`)
+    - REDIS CACHE ONLY. The `RedisClientOptions` when initialize the redis client: `redis.createClient(options: RedisClientOptions)`. See [Redis documentation](https://docs.redis.com/latest/rs/references/client_references/client_nodejs/) for details.
 
 ## Error Handling
 
 bigcommerce-api-client throws an error with a friendly error message when
 
-- 4xx error, except
-  - 429 error
+- 4xx error, except for
+  - 429 error if `maxRetries` is not reached yet
   - 404 error if `config.failOn404 = false`
 - Timeout
-- Max retry reached
+- Max retry reached on 429 error and 5XX errors
 
 If you need to get the underlying axios error object, you just need to
 
 ```typescript
 try {
-
+    // call bigcommerceApiClient
 } catch (err) {
     let axiosError = err.cause; // the axios error object is in the error cause
     let request = axiosError.request;

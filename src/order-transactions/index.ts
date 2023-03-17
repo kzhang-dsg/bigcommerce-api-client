@@ -5,7 +5,7 @@ import { Transaction } from "../model/generated/orders.v3";
 import { OrderSettingsApi } from "./order-settings-api";
 import { PaymentActionApi } from "./payment-action-api";
 
-export class OrderTransactionApi {
+export class OrderTransactionsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     readonly orderMetafields = new MetafieldApi(this.apiClient, "/v3/orders");

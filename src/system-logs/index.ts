@@ -4,7 +4,7 @@ import { SystemLog } from "../model/generated/store_logs.v3";
 import { StoreLogsQueryParams } from "../model/query/store-log";
 import { appendQueryString } from "../util";
 
-export class StoreLogsApi {
+export class SystemLogsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async getStoreLogs<

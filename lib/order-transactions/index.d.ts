@@ -4,7 +4,7 @@ import { PaginatedData } from "../model/common";
 import { Transaction } from "../model/generated/orders.v3";
 import { OrderSettingsApi } from "./order-settings-api";
 import { PaymentActionApi } from "./payment-action-api";
-export declare class OrderTransactionApi {
+export declare class OrderTransactionsApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
     readonly orderMetafields: MetafieldApi;
