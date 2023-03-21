@@ -1,6 +1,6 @@
 # BigCommerce API Client
 
-A TypeScript NodeJS client for [BigCommerce's REST APIs](https://developer.bigcommerce.com/docs/rest) with complete typing for API and models,  built-in cache and automatic retries.
+A TypeScript NodeJS client for [BigCommerce's REST APIs](https://developer.bigcommerce.com/docs/rest) with complete typing for API and models,  built-in cache and automatic retries. If you are looking for the BigCommerce OAuth Client for BigCommerce App development, Customer Logins, Verify Customer JWTs, you can try [BigCommerce OAuth Client](https://github.com/kzhang-dsg/bigcommerce-oauth-client).
 
 - [BigCommerce API Client](#bigcommerce-api-client)
   - [Features](#features)
