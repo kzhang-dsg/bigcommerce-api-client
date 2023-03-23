@@ -38,4 +38,7 @@ export type UpdateConsignmentRequest = Array<{
         quantity: number;
     }>;
     shipping_option_id?: string;
+    pickup_option?: {
+        pickup_method_id?: number;
+    };
 }>;

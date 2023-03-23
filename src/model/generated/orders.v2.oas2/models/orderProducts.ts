@@ -19,7 +19,11 @@ export type orderProducts = {
      */
     product_id?: number;
     /**
-     * Numeric ID of the associated order address.
+     * ID of the pickup fulfillment method for this item. Default value is 0 when the item is not fulfilled by pickup method.
+     */
+    order_pickup_method_id?: number;
+    /**
+     * Numeric ID of the associated order address. Value is `0` for items that are not fulfilled by a pickup method.
      */
     order_address_id?: number;
     /**
@@ -71,7 +75,7 @@ export type orderProducts = {
      * Total tax applied to products.
      * For example, if quantity if 2, base price is 5 and tax rate is 10%. price_tax will be $.50 and total_tax will be $1.00.
      *
-     * If there is a manual discount applied total_tax is calcuted as the following:
+     * If there is a manual discount applied total_tax is calculated as the following:
      * `(price_ex_tax - discount)*tax_rate=total_tax`.
      * (Float, Float-As-String, Integer)
      */

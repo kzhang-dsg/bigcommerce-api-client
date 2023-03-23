@@ -2,17 +2,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Read-Only.
- */
 export type formFields = {
     /**
-     * Read-Only.
+     * The form field name.
      */
-    readonly name?: string;
+    name?: string;
     /**
-     * Read-Only.
+     * The form field value.
      */
-    readonly value?: string;
+    value?: number | string | any[];
 };
 

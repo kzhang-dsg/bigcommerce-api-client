@@ -11,4 +11,5 @@ export type { CreateConsignmentRequest } from './models/CreateConsignmentRequest
 export type { DiscountRequest } from './models/DiscountRequest';
 export type { MetaOpen } from './models/MetaOpen';
 export type { Order } from './models/Order';
+export type { PickupOption } from './models/PickupOption';
 export type { UpdateConsignmentRequest } from './models/UpdateConsignmentRequest';

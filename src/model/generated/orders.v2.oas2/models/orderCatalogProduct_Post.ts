@@ -41,7 +41,7 @@ export type orderCatalogProduct_Post = {
          * - The API does not currently support the following option types:
          * - File upload
          * - Pick list
-         * - For date modifiers use either the `YYYY-MM-DDThh:mm:ss±hh:mm` or the `YYYY-MM-DD` ISO-8601 formats. The date field modifier values are saved and retuned as timestamps. For values entered using the YYYY-MM-DD format, the store timezone is used when creating the timestamp.
+         * - For date modifiers use either the `YYYY-MM-DDThh:mm:ss±hh:mm` or the `YYYY-MM-DD` ISO-8601 formats. The date field modifier values are saved and returned as timestamps. For values entered using the YYYY-MM-DD format, the store timezone is used when creating the timestamp.
          * - For multi-line text field modifiers, use the `\n` characters for separating the lines.
          */
         value?: string;

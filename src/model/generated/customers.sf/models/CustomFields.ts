@@ -4,6 +4,6 @@
 
 export type CustomFields = {
     fieldId?: string;
-    fieldValue?: string;
+    fieldValue?: (string | number | Array<string>);
 };
 

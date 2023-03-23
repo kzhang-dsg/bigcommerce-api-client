@@ -35,7 +35,7 @@ export type Cart_Full = {
      */
     base_amount?: number;
     /**
-     * Discounted amount.
+     * Order-based discounted amount only - Excludes coupon discounts and product-based discounts.
      */
     discount_amount?: number;
     /**

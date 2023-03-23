@@ -33,4 +33,7 @@ export type CreateConsignmentRequest = Array<{
         item_id: string;
         quantity: number;
     }>;
+    pickup_option?: {
+        pickup_method_id?: number;
+    };
 }>;

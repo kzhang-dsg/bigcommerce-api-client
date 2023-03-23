@@ -4,6 +4,7 @@
 
 import type { coupons_Resource } from './coupons_Resource';
 import type { formFields } from './formFields';
+import type { orderConsignments_Resource } from './orderConsignments_Resource';
 import type { products_Resource } from './products_Resource';
 import type { shippingAddresses_Resource } from './shippingAddresses_Resource';
 
@@ -115,11 +116,12 @@ export type order_RespOnly = {
      * Orders submitted from the store’s website will include a `www` value. Orders submitted with the API will be set to `external`. This value is read-only. Do not pass in a POST or PUT.
      */
     order_source?: string;
+    consignments?: orderConsignments_Resource;
     products?: products_Resource;
     shipping_addresses?: shippingAddresses_Resource;
     coupons?: coupons_Resource;
     /**
-     * The staus ID of the order.
+     * The status ID of the order.
      */
     status_id?: number;
     billing_address?: {

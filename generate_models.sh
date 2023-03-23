@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#git submodule update --remote
+git submodule update --remote
 
 rm -rf ./src/model/generated/
 

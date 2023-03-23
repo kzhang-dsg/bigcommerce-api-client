@@ -1,5 +1,6 @@
 import type { address_Full } from './address_Full';
 import type { consignmentAvailableShippingOptions } from './consignmentAvailableShippingOptions';
+import type { PickupOption } from './PickupOption';
 /**
  * This allows us to have multiple shipping addresses. Where there is only one shipping address, this array will contain only one value, with all the items.
  */
@@ -7,6 +8,7 @@ export type consignment_Full = {
     id?: string;
     shippingAddress?: any;
     address?: address_Full;
+    selectedPickupOption?: PickupOption;
     /**
      * This is available only when "include=consignments.availableShippingOptions" is present in the URL.
      */

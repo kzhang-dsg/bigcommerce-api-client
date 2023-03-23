@@ -48,7 +48,7 @@ export type checkouts_Resp = {
              */
             baseAmount?: number;
             /**
-             * Discounted amount.
+             * Order-based discounted amount only - Excludes coupon discounts and product-based discounts.
              */
             discountAmount?: number;
             /**

@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { AppliedCoupon } from './AppliedCoupon';
+import type { PickupOption } from './PickupOption';
 
 export type Checkout = {
     id?: string;
@@ -34,7 +35,7 @@ export type Checkout = {
          */
         channel_id?: number;
         /**
-         * Discounted amount.
+         * Order-based discounted amount only - Excludes coupon discounts and product-based discounts.
          */
         discount_amount?: number;
         /**
@@ -382,6 +383,7 @@ export type Checkout = {
          * Array lists only one line item. To display multiple `line_item_ids`, perform a `POST` request to add consignments to the checkout using the same address.
          */
         line_item_ids?: Array<string>;
+        selected_pickup_option?: PickupOption;
     }>;
     taxes?: Array<{
         /**

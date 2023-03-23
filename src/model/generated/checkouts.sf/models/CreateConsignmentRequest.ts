@@ -36,5 +36,9 @@ export type CreateConsignmentRequest = {
         itemId: string;
         quantity: number;
     }>;
+    shippingOptionId?: string;
+    pickupOption?: {
+        pickupMethodId?: number;
+    };
 };
 

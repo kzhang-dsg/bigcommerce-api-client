@@ -19,4 +19,5 @@ export type { CreateConsignmentRequest } from './models/CreateConsignmentRequest
 export type { customFields } from './models/customFields';
 export type { GiftCertificateRequest } from './models/GiftCertificateRequest';
 export type { NewUpdateConsignment } from './models/NewUpdateConsignment';
+export type { PickupOption } from './models/PickupOption';
 export type { SpamProtectionRequest } from './models/SpamProtectionRequest';

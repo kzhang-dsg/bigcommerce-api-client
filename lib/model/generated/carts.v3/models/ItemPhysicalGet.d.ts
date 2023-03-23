@@ -20,6 +20,24 @@ export type ItemPhysicalGet = ({
      */
     name?: string;
     /**
+     * The weight is displayed here if the item has a custom dimension.
+     */
+    weight?: number;
+    dimensions?: {
+        /**
+         * The height is displayed here if the item has a custom dimension.
+         */
+        height?: number;
+        /**
+         * The width is displayed here if the item has a custom dimension.
+         */
+        width?: number;
+        /**
+         * The depth is displayed here if the item has a custom dimension.
+         */
+        depth?: number;
+    };
+    /**
      * The product URL.
      */
     url?: string;

@@ -28,7 +28,7 @@ export type responseCart = {
      */
     baseAmount?: number;
     /**
-     * Discounted amount.
+     * Order based discounted amount only - Coupon discounts and product based discounts are excluded.
      */
     discountAmount?: number;
     /**

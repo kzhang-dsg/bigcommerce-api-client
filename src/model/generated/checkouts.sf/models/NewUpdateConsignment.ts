@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 /**
- * One or more of these three fields are mandatory. Shipping address and line items can be updated in one request. Shipping option ID has to be updated in a separate request, since changing the address or line items can invalidate the previously available shipping options.
+ * One or more of these three fields is mandatory. You can update address and line items in one request. You have to update shipping option ID or pickup option ID in a separate request since changing the address or line items can invalidate the previously available shipping options.
  */
 export type NewUpdateConsignment = {
     shippingAddress?: any;
@@ -40,5 +40,8 @@ export type NewUpdateConsignment = {
         quantity: number;
     }>;
     shippingOptionId?: string;
+    pickupOption?: {
+        pickupMethodId?: number;
+    };
 };
 
