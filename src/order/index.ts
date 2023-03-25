@@ -76,7 +76,7 @@ export class OrderApi {
         await this.apiClient.delete(`/v2/orders`);
     }
 
-    async getOrdersCount<T extends ordersCount_Full>(): Promise<T[]> {
+    async getOrdersCount<T extends ordersCount_Full>(): Promise<T> {
         const response = await this.apiClient.get("/v2/orders/count");
         return response.data;
     }

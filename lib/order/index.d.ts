@@ -27,6 +27,6 @@ export declare class OrderApi {
     updateOrder<T extends order_Put, R extends order_RespOnly>(orderId: number, order: T): Promise<R>;
     archiveOrder(orderId: number): Promise<void>;
     deleteAllOrders(): Promise<void>;
-    getOrdersCount<T extends ordersCount_Full>(): Promise<T[]>;
+    getOrdersCount<T extends ordersCount_Full>(): Promise<T>;
     updateOrderStatus<T extends order_RespOnly>(orderId: number, status: OrderStatus): Promise<T>;
 }
