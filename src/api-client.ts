@@ -49,8 +49,9 @@ export class ApiClient {
         config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheTtlConfig(config);
-        if (limit === Limit.ALL) {
-            // fetch all data by iterating thru the pagination
+        if (limit === Limit.ALL || (limit || 0) > Limit.MAX_LIMIT) {
+            // fetch data by iterating thru the pagination
+            page = page || 1;
             let response = await this.callWithRetries(
                 "get",
                 appendQueryString(url, {
@@ -63,13 +64,18 @@ export class ApiClient {
             const totalPages = response.data?.meta?.pagination?.total_pages;
             if (totalPages) {
                 let result: PaginatedData<T> = response.data;
-                page = page || 1;
                 while (page < totalPages) {
+                    const remainingLimit =
+                        (limit || 0) - page * Limit.MAX_LIMIT;
+                    page++;
                     response = await this.callWithRetries(
                         "get",
                         appendQueryString(url, {
-                            page: ++page,
-                            limit: Limit.MAX_LIMIT,
+                            page: page,
+                            limit:
+                                limit === Limit.ALL
+                                    ? Limit.MAX_LIMIT
+                                    : remainingLimit,
                         }),
                         null,
                         config
@@ -80,13 +86,18 @@ export class ApiClient {
                 response.data = result;
             } else if (Array.isArray(response.data)) {
                 let result: T[] = response.data;
-                page = page || 1;
                 while (true) {
+                    const remainingLimit =
+                        (limit || 0) - page * Limit.MAX_LIMIT;
+                    page++;
                     response = await this.callWithRetries(
                         "get",
                         appendQueryString(url, {
-                            page: ++page,
-                            limit: Limit.MAX_LIMIT,
+                            page: page,
+                            limit:
+                                limit === Limit.ALL
+                                    ? Limit.MAX_LIMIT
+                                    : remainingLimit,
                         }),
                         null,
                         config
