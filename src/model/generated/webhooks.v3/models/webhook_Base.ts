@@ -22,8 +22,6 @@ export type webhook_Base = {
     /**
      * Headers used to validate that webhooks are active. You can pass in any number of custom headers to validate webhooks are being returned.
      */
-    headers: {
-        custom?: string;
-    } | null;
+    headers: Record<string, string> | null;
 };
 

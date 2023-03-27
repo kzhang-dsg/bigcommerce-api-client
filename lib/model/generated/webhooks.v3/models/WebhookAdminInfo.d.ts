@@ -30,7 +30,7 @@ export type WebhookAdminInfo = {
         /**
          * You can pass in any number of custom headers to validate webhooks being returned.
          */
-        headers?: any;
+        headers?: Record<string, string>;
         /**
          * If webhook is active or not
          */
