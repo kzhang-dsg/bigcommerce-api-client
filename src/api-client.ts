@@ -114,7 +114,7 @@ export class ApiClient {
             return Promise.resolve(response) as R;
         } else {
             limit = limit || this.config.defaultLimit;
-            return this.callWithRetries(
+            return await this.callWithRetries(
                 "get",
                 appendQueryString(url, {
                     page,
@@ -132,7 +132,7 @@ export class ApiClient {
         config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
-        return this.callWithRetries("post", url, data, config);
+        return await this.callWithRetries("post", url, data, config);
     }
 
     async put<T = any, R = AxiosResponse<T>, D = any>(
@@ -141,7 +141,7 @@ export class ApiClient {
         config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
-        return this.callWithRetries("put", url, data, config);
+        return await this.callWithRetries("put", url, data, config);
     }
 
     async delete<T = any, R = AxiosResponse<T>, D = any>(
@@ -149,7 +149,7 @@ export class ApiClient {
         config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
-        return this.callWithRetries("delete", url, null, config);
+        return await this.callWithRetries("delete", url, null, config);
     }
 
     async getResources<T>(
@@ -172,16 +172,16 @@ export class ApiClient {
             try {
                 switch (method) {
                     case "get":
-                        return this.axiosInstance.get(url, config);
+                        return await this.axiosInstance.get(url, config);
                     case "post":
-                        return this.axiosInstance.post(url, data, config);
+                        return await this.axiosInstance.post(url, data, config);
                     case "put":
-                        return this.axiosInstance.put(url, data, config);
+                        return await this.axiosInstance.put(url, data, config);
                     case "delete":
-                        return this.axiosInstance.delete(url, config);
+                        return await this.axiosInstance.delete(url, config);
                 }
                 throw new Error(
-                    `Failed to call API ${url}. Unsupported http method ${method}`
+                    `Failed to call BigCommerce API ${url}. Unsupported http method ${method}`
                 );
             } catch (error: any) {
                 if (
@@ -229,9 +229,11 @@ export class ApiClient {
 
                     if (request && response) {
                         throw new Error(
-                            `Failed to call API ${request.protocol}://${
-                                request.host
-                            }${request.path}. Response Status: ${
+                            `Failed to call BigCommerce API ${
+                                request.protocol
+                            }://${request.host}${
+                                request.path
+                            }. Response Status: ${
                                 response.status
                             }, Response: ${JSON.stringify(
                                 response.data,
@@ -242,14 +244,23 @@ export class ApiClient {
                         );
                     }
 
-                    if (request && error.code === "ECONNABORTED") {
+                    if (request) {
+                        if (error.code === "ECONNABORTED") {
+                            throw new Error(
+                                `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}. Timeout after ${this.config.timeout} ms.`,
+                                { cause: error }
+                            );
+                        }
+
                         throw new Error(
-                            `Failed to call API ${request.protocol}://${request.host}${request.path}. Timeout after ${this.config.timeout} ms.`,
+                            `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}.`,
                             { cause: error }
                         );
                     }
 
-                    throw error;
+                    throw new Error(`Failed to call BigCommerce API.`, {
+                        cause: error,
+                    });
                 }
             }
         }
