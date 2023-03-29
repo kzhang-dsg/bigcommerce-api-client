@@ -198,15 +198,15 @@ export class ApiClient {
                     ((this.config.retryOnReadTimeout &&
                         method === "get" &&
                         error.code === "ECONNABORTED") || // read timeout
-                        error.response.status === 429 || // rate limit
-                        error.response.status >= 500) // BigCommerce API down
+                        error.response?.status === 429 || // rate limit
+                        error.response?.status >= 500) // BigCommerce API down
                 ) {
                     // retry if the error is recoverable
                     let retryDelay: number =
                         retries * (this.config.retryDelay || 0);
-                    if (error.response.status === 429) {
+                    if (error.response?.status === 429) {
                         retryDelay = parseInt(
-                            error.response.headers[
+                            error.response?.headers[
                                 "X-Rate-Limit-Time-Reset-Ms"
                             ] || retryDelay,
                             10
