@@ -123,9 +123,13 @@ function parseDate(key: string, value: any) {
 }
 
 export function dateTransformer(data: string) {
-    if (data === "") {
-        return JSON.parse("{}");
-    } else {
+    if (!data) {
+        return data;
+    }
+
+    try {
         return JSON.parse(data, parseDate);
+    } catch (err) {
+        return data;
     }
 }
