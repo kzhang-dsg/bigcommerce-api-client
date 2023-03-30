@@ -101,7 +101,7 @@ export class BigCommerceApiClient {
     readonly webhooks: WebhooksApi;
 
     constructor(private readonly config: Config) {
-        this.config = Object.assign(DEFAULT_CONFIG, this.config);
+        this.config = Object.assign({}, DEFAULT_CONFIG, this.config);
 
         this.apiClient = new ApiClient(this.config);
         this.abandonedCarts = new AbandonedCartApi(this.apiClient);
