@@ -92,7 +92,6 @@ export function getCacheRegion(url = "") {
 
 const ISO8601_REGEX =
     /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d*)?(?:[-+]\d{2}:?\d{2}|Z)?$/;
-const YYYYMMDD_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 const TIME_ZONE_OFFSET = (new Date().getTimezoneOffset() / 60) * -1;
 
 function isValidDate(date: any) {
@@ -106,9 +105,9 @@ function isValidDate(date: any) {
 function parseDate(key: string, value: any) {
     if (typeof value === "string") {
         if (
-            ISO8601_REGEX.test(value) ||
-            ((key.startsWith("date_") || key.endsWith("_date")) &&
-                YYYYMMDD_REGEX.test(value))
+            key.startsWith("date_") ||
+            key.endsWith("_date") ||
+            ISO8601_REGEX.test(value)
         ) {
             let potentialDate = new Date(value);
             if (isValidDate(potentialDate)) {
