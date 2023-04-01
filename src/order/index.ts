@@ -8,6 +8,7 @@ import {
 } from "../model/generated/orders.v2.oas2";
 import { OrdersQueryParams } from "../model/query/order";
 import { appendQueryString } from "../util";
+import { OrderConsignmentApi } from "./order-consignments-api";
 import { OrderCouponApi } from "./order-coupon-api";
 import { OrderMessageApi } from "./order-message-api";
 import { OrderProductApi } from "./order-product-api";
@@ -20,6 +21,7 @@ import { OrderTaxApi } from "./order-tax-api";
 export class OrderApi {
     constructor(private readonly apiClient: ApiClient) {}
 
+    readonly orderConsignments = new OrderConsignmentApi(this.apiClient);
     readonly orderCoupons = new OrderCouponApi(this.apiClient);
     readonly orderMessages = new OrderMessageApi(this.apiClient);
     readonly orderProducts = new OrderProductApi(this.apiClient);

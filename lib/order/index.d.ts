@@ -2,6 +2,7 @@ import { ApiClient } from "../api-client";
 import { OrderStatus } from "../model/common";
 import { ordersCount_Full, order_Post, order_Put, order_Resp } from "../model/generated/orders.v2.oas2";
 import { OrdersQueryParams } from "../model/query/order";
+import { OrderConsignmentApi } from "./order-consignments-api";
 import { OrderCouponApi } from "./order-coupon-api";
 import { OrderMessageApi } from "./order-message-api";
 import { OrderProductApi } from "./order-product-api";
@@ -13,6 +14,7 @@ import { OrderTaxApi } from "./order-tax-api";
 export declare class OrderApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
+    readonly orderConsignments: OrderConsignmentApi;
     readonly orderCoupons: OrderCouponApi;
     readonly orderMessages: OrderMessageApi;
     readonly orderProducts: OrderProductApi;

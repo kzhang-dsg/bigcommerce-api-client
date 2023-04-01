@@ -1,6 +1,6 @@
 {
     "name": "bigcommerce-api-client",
-    "version": "0.4.11",
+    "version": "0.5.0",
     "description": "",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
