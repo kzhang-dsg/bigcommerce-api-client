@@ -83,5 +83,6 @@ export declare class BigCommerceApiClient {
     readonly webhooks: WebhooksApi;
     constructor(config: Config);
     getResources<T>(resourceUrl: string, page?: number, limit?: number): Promise<T[]>;
+    enableCache(enable: boolean, ttl?: number): void;
     flushCache(region?: string): Promise<void>;
 }

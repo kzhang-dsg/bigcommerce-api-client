@@ -54,7 +54,7 @@ const DEFAULT_CONFIG: Config = {
         enable: false,
         ttl: 1000 * 60 * 10, // 10 minute.
         cloneData: false,
-        type: CacheType.IN_MEMORY
+        type: CacheType.IN_MEMORY,
     },
 };
 
@@ -157,11 +157,11 @@ export class BigCommerceApiClient {
         return this.apiClient.getResources<T>(resourceUrl, page, limit);
     }
 
-    async flushCache(region?: string): Promise<void> {
-        if (!this.config.cache?.enable) {
-            return;
-        }
+    enableCache(enable: boolean, ttl?: number) {
+        this.apiClient.enableCache(enable, ttl);
+    }
 
+    async flushCache(region?: string): Promise<void> {
         (this.apiClient.axiosInstance as AxiosCacheInstance).storage.remove(
             region || "*"
         );

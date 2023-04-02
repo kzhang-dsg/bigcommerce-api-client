@@ -1,10 +1,12 @@
-import Axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import Axios, { AxiosResponse } from "axios";
 import {
+    AxiosCacheInstance,
     AxiosStorage,
     CacheRequestConfig,
     setupCache,
 } from "axios-cache-interceptor";
 import { ClientRequest } from "http";
+
 import { regionAwareKeyGenerator } from "./cache/region-aware-key-generator";
 import { buildRegionAwareMemoryStorage } from "./cache/region-aware-memory";
 import { buildRegionAwareRedisStorage } from "./cache/region-aware-redis";
@@ -12,9 +14,9 @@ import { CacheType, Config, Limit, PaginatedData } from "./model/common";
 import { appendQueryString, dateTransformer, getCacheRegion } from "./util";
 
 export class ApiClient {
-    readonly axiosInstance: AxiosInstance;
+    readonly axiosInstance: AxiosCacheInstance;
     constructor(private readonly config: Config) {
-        this.axiosInstance = Axios.create({
+        const axiosInstance = Axios.create({
             baseURL: `https://api.bigcommerce.com/stores/${this.config.storeHash}`,
             timeout: this.config.timeout,
             headers: {
@@ -24,31 +26,39 @@ export class ApiClient {
             },
         });
 
-        this.axiosInstance.defaults.transformResponse = [dateTransformer];
+        axiosInstance.defaults.transformResponse = [dateTransformer];
 
-        if (this.config.cache?.enable) {
-            let storage: AxiosStorage;
-            if (this.config.cache?.type === CacheType.REDIS) {
-                storage = buildRegionAwareRedisStorage(
-                    this.config.cache?.redisClientOptions
-                );
-            } else {
-                storage = buildRegionAwareMemoryStorage();
-            }
-            this.axiosInstance = setupCache(this.axiosInstance, {
-                generateKey: regionAwareKeyGenerator,
-                storage,
-            });
+        let storage: AxiosStorage;
+        if (this.config.cache?.type === CacheType.REDIS) {
+            storage = buildRegionAwareRedisStorage(
+                this.config.cache?.redisClientOptions
+            );
+        } else {
+            storage = buildRegionAwareMemoryStorage();
         }
+        this.axiosInstance = setupCache(axiosInstance, {
+            generateKey: regionAwareKeyGenerator,
+            storage,
+        });
+    }
+
+    enableCache(enable: boolean, ttl?: number) {
+        const newConfig: any = {
+            enable,
+        };
+        if (ttl) {
+            newConfig.ttl = ttl;
+        }
+        this.config.cache = Object.assign({}, this.config.cache, newConfig);
     }
 
     async get<T = any, R = AxiosResponse<T>, D = any>(
         url: string,
         page?: number,
         limit?: number,
-        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
+        config?: CacheRequestConfig<D>
     ): Promise<R> {
-        config = this.setupCacheTtlConfig(config);
+        config = this.setupCacheTtlConfig<D>(config);
         if (limit === Limit.ALL || (limit || 0) > Limit.MAX_LIMIT) {
             // fetch data by iterating thru the pagination
             page = page || 1;
@@ -58,7 +68,7 @@ export class ApiClient {
                     page,
                     limit: Limit.MAX_LIMIT,
                 }),
-                null,
+                undefined,
                 config
             );
             const totalPages = response.data?.meta?.pagination?.total_pages;
@@ -77,7 +87,7 @@ export class ApiClient {
                                     ? Limit.MAX_LIMIT
                                     : remainingLimit,
                         }),
-                        null,
+                        undefined,
                         config
                     );
                     result.data?.concat(response.data.data);
@@ -99,7 +109,7 @@ export class ApiClient {
                                     ? Limit.MAX_LIMIT
                                     : remainingLimit,
                         }),
-                        null,
+                        undefined,
                         config
                     );
                     if (response.data?.length) {
@@ -120,7 +130,7 @@ export class ApiClient {
                     page,
                     limit,
                 }),
-                null,
+                undefined,
                 config
             );
         }
@@ -129,7 +139,7 @@ export class ApiClient {
     async post<T = any, R = AxiosResponse<T>, D = any>(
         url: string,
         data?: D,
-        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
+        config?: CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
         return await this.callWithRetries("post", url, data, config);
@@ -138,7 +148,7 @@ export class ApiClient {
     async put<T = any, R = AxiosResponse<T>, D = any>(
         url: string,
         data?: D,
-        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
+        config?: CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
         return await this.callWithRetries("put", url, data, config);
@@ -146,10 +156,10 @@ export class ApiClient {
 
     async delete<T = any, R = AxiosResponse<T>, D = any>(
         url: string,
-        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
+        config?: CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheInvalidationConfig(url, config);
-        return await this.callWithRetries("delete", url, null, config);
+        return await this.callWithRetries("delete", url, undefined, config);
     }
 
     async getResources<T>(
@@ -165,7 +175,7 @@ export class ApiClient {
         method: string,
         url: string,
         data?: D,
-        config?: AxiosRequestConfig<D> | CacheRequestConfig<D>
+        config?: CacheRequestConfig<D>
     ): Promise<R> {
         let retries = 0;
         while (true) {
@@ -266,41 +276,37 @@ export class ApiClient {
         }
     }
 
-    private setupCacheTtlConfig(
-        config?: AxiosRequestConfig | CacheRequestConfig
-    ): CacheRequestConfig | undefined {
-        if (!this.config.cache?.enable) {
-            return config;
-        }
-
+    private setupCacheTtlConfig<D = any>(
+        config?: CacheRequestConfig<D>
+    ): CacheRequestConfig<D> {
         return Object.assign(
             {
-                cache: {
-                    ttl: this.config.cache.ttl,
-                },
+                cache: this.config.cache?.enable
+                    ? {
+                          ttl: this.config.cache.ttl,
+                      }
+                    : false,
             },
-            config as CacheRequestConfig
+            config
         );
     }
 
-    private setupCacheInvalidationConfig(
+    private setupCacheInvalidationConfig<D = any>(
         url: string = "",
-        config?: AxiosRequestConfig | CacheRequestConfig
-    ): CacheRequestConfig | undefined {
-        if (!this.config.cache?.enable) {
-            return config;
-        }
-
+        config?: CacheRequestConfig<D>
+    ): CacheRequestConfig<D> {
         const region = getCacheRegion(url);
 
         // remove the entire region of cached data
         return Object.assign(
             {
-                cache: {
-                    update: { [`${region}:*`]: "delete" },
-                },
+                cache: this.config.cache?.enable
+                    ? {
+                          update: { [`${region}:*`]: "delete" },
+                      }
+                    : false,
             },
-            config as CacheRequestConfig
+            config
         );
     }
 }
