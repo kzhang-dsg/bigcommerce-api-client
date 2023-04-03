@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { Data, PaginatedData } from "../model/common";
-import { webhook_Base, webhook_Full } from "../model/generated/webhooks.v3";
+import { webhook_Put, webhook_Base, webhook_Full } from "../model/generated/webhooks.v3";
 import { WebhooksQueryParams } from "../model/query/webhook";
 import { appendQueryString } from "../util";
 import { WebhookAdminApi } from "./webhook-admin-api";
@@ -42,7 +42,7 @@ export class WebhooksApi {
         return response.data;
     }
 
-    async updateWebhook<T extends webhook_Base, R extends webhook_Full>(
+    async updateWebhook<T extends webhook_Put, R extends webhook_Full>(
         webhookId: number,
         webhook: T
     ): Promise<Data<R>> {
