@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type { AppliedCoupon } from './models/AppliedCoupon';
+export { AppliedCoupon } from './models/AppliedCoupon';
 export type { AppliedDiscount } from './models/AppliedDiscount';
 export type { BaseItem } from './models/BaseItem';
 export type { Cart_Full } from './models/Cart_Full';

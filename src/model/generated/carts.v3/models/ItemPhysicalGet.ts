@@ -58,61 +58,13 @@ export type ItemPhysicalGet = ({
      */
     image_url?: string;
     discounts?: Array<{
-        /**
-         * ID of the applied discount.
-         */
         id?: (string | number);
         /**
          * The discounted amount.
          */
         discounted_amount?: number;
     }>;
-    coupons?: Array<{
-        /**
-         * Required in a /POST request.
-         */
-        coupons?: {
-            /**
-             * The coupon code.
-             */
-            coupon_code: {
-                /**
-                 * The ID of the coupon.
-                 */
-                id?: number;
-                /**
-                 * The coupon code. Required in a /POST request.
-                 */
-                code?: string;
-                /**
-                 * Name given to the coupon in the control panel.
-                 */
-                name?: string;
-                /**
-                 * The discount type.
-                 *
-                 * - type 0: per_item_discount
-                 * - type 1: percentage_discount
-                 * - type 2: per_total_discount
-                 * - type 3: shipping_discount
-                 * - type 4: free_shipping
-                 */
-                discountType?: 0 | 1 | 2 | 3 | 4;
-                /**
-                 * The amount of the discount based on the coupon. For example, 3 percent off will show a 3.
-                 */
-                discountAmount?: number;
-                /**
-                 * Returns 0 if no expiration date is set.
-                 */
-                expiresDate?: number;
-                /**
-                 * The total amount of all discounts applied to the cart.
-                 */
-                totalDiscount?: number;
-            };
-        };
-    }>;
+    coupons?: number;
     /**
      * The total value of all discounts applied to this item. This includes coupons and cart-level discounts.
      */

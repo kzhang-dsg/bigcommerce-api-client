@@ -4,15 +4,15 @@
 
 export type PaymentOption = {
     /**
-     * Name of the payment method
+     * Name of the payment method.
      */
     provider_id?: string;
     /**
-     * Description for payment provider
+     * Description for payment provider.
      */
     provider_description?: string;
     /**
-     * amount to be refunded via this payment provider
+     * Amount to be refunded via this payment provider.
      */
     amount?: number;
     /**

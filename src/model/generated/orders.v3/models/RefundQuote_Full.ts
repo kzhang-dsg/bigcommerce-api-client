@@ -7,19 +7,15 @@ import type { Amount } from './Amount';
 import type { RefundMethod } from './RefundMethod';
 
 export type RefundQuote_Full = {
-    /**
-     * ID of the order to be refunded
-     */
-    order_id?: number;
     total_refund_amount?: Amount;
     total_refund_tax_amount?: number;
     /**
-     * Indicates rounding value to bring refund_total to an amount refundable via payment providers (in this case to 2 decimal places)
+     * Indicates rounding value to bring `refund_total` to an amount refundable via payment providers (in this case to 2 decimal places).
      */
     rounding?: number;
     adjustment?: AdjustmentAmount;
     /**
-     * Indicate if total_refund_amount includes tax amount
+     * Indicate if `total_refund_amount` includes tax amount.
      */
     tax_inclusive?: boolean;
     /**

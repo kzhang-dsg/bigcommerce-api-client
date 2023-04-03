@@ -9,7 +9,6 @@
 export type MetafieldBase_Post = {
     /**
      * Determines the visibility and writeability of the field by other API consumers.
-     *
      * | Value | Description |
      * | :--- | :--- |
      * | `app_only` | Private to the app that owns the field. |
@@ -46,7 +45,6 @@ export namespace MetafieldBase_Post {
 
     /**
      * Determines the visibility and writeability of the field by other API consumers.
-     *
      * | Value | Description |
      * | :--- | :--- |
      * | `app_only` | Private to the app that owns the field. |

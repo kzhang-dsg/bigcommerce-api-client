@@ -40,7 +40,7 @@ export type CartCreatePostData = {
         code?: string;
     };
     /**
-     * Accepts string of format `xx` or `xx-YY`.
+     * The locale of the cart. Accepts strings of format `xx` or `xx-YY`. Uses the [ISO-639 standard](https://www.iso.org/iso-639-language-codes.html) format.
      */
     locale?: string;
 };

@@ -67,7 +67,7 @@ export type Cart_Full = {
      */
     channel_id?: number;
     /**
-     * Locale of the cart.
+     * Locale of the cart. Accepts strings of format `xx` or `xx-YY`. Uses the [ISO-639 standard](https://www.iso.org/iso-639-language-codes.html) format.
      */
     locale?: string;
     /**

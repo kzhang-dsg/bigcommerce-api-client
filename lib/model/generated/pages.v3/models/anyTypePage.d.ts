@@ -33,6 +33,11 @@ export type anyTypePage = {
      * When `true`, this page is not visible to merchant users who are signed in to the store control panel.
      */
     is_customers_only?: boolean;
+    /**
+     * Relative URL on the storefront for this page.
+     *
+     */
+    url?: string;
 };
 export declare namespace anyTypePage {
     /**

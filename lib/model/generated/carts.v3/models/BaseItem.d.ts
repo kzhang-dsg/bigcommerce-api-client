@@ -74,8 +74,14 @@ export type BaseItem = {
                  * - type 2: per_total_discount
                  * - type 3: shipping_discount
                  * - type 4: free_shipping
+                 * enum:
+                 * - 0
+                 * - 1
+                 * - 2
+                 * - 3
+                 * - 4
                  */
-                discountType?: 0 | 1 | 2 | 3 | 4;
+                discountType?: number;
                 /**
                  * The amount of the discount based on the coupon. For example, 3 percent off will show a 3.
                  */

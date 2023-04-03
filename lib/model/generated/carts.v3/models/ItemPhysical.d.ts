@@ -36,9 +36,6 @@ export type ItemPhysical = ({
      */
     image_url?: string;
     discounts?: Array<{
-        /**
-         * ID of the applied discount.
-         */
         id?: (string | number);
         /**
          * The discounted amount.

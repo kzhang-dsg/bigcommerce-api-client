@@ -25,7 +25,7 @@ export type orderProductOptions = {
      */
     display_value?: string;
     /**
-     * This value is used to access the Customer File Upload.
+     * For file-upload type, it's a unique string describing the properties of the file upload. For other types, it's the value of the property.
      */
     value?: string;
     /**

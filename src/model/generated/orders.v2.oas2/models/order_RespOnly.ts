@@ -113,7 +113,7 @@ export type order_RespOnly = {
      */
     is_email_opt_in?: boolean;
     /**
-     * Orders submitted from the store’s website will include a `www` value. Orders submitted with the API will be set to `external`. This value is read-only. Do not pass in a POST or PUT.
+     * Orders submitted from the store's website will include a `www` value. Orders submitted with the Checkout API will be set to `checkout_api`.
      */
     order_source?: string;
     consignments?: orderConsignments_Resource;

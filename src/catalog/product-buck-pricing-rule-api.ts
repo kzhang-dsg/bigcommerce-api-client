@@ -1,6 +1,9 @@
 import { ApiClient } from "../api-client";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { bulkPricingRule_Full } from "../model/generated/catalog.v3";
+import {
+    bulkPricingRuleFull_Response,
+    bulkPricingRule_Full,
+} from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
 export class ProductBuckPricingRuleApi {
@@ -8,7 +11,7 @@ export class ProductBuckPricingRuleApi {
 
     async getAllBuckPricingRules<
         Params extends FieldAwareQueryParams,
-        T extends bulkPricingRule_Full
+        T extends bulkPricingRuleFull_Response
     >(
         productId: number,
         params?: Params,
@@ -26,10 +29,10 @@ export class ProductBuckPricingRuleApi {
         return response.data;
     }
 
-    async createBuckPricingRule<T extends bulkPricingRule_Full>(
-        productId: number,
-        buckPricingRule: T
-    ): Promise<Data<T>> {
+    async createBuckPricingRule<
+        T extends bulkPricingRule_Full,
+        R extends bulkPricingRuleFull_Response
+    >(productId: number, buckPricingRule: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
             `/v3/catalog/products/${productId}/bulk-pricing-rules`,
             buckPricingRule
@@ -38,8 +41,8 @@ export class ProductBuckPricingRuleApi {
     }
 
     async getBuckPricingRule<
-        T extends bulkPricingRule_Full,
-        Params extends FieldAwareQueryParams
+        Params extends FieldAwareQueryParams,
+        T extends bulkPricingRuleFull_Response
     >(
         productId: number,
         buckPricingRuleId: number,
@@ -54,11 +57,14 @@ export class ProductBuckPricingRuleApi {
         return response.data;
     }
 
-    async updateBuckPricingRule<T extends bulkPricingRule_Full>(
+    async updateBuckPricingRule<
+        T extends bulkPricingRule_Full,
+        R extends bulkPricingRuleFull_Response
+    >(
         productId: number,
         buckPricingRuleId: number,
         buckPricingRule: T
-    ): Promise<Data<T>> {
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
             `/v3/catalog/products/${productId}/bulk-pricing-rules/${buckPricingRuleId}`,
             buckPricingRule

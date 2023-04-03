@@ -21,6 +21,7 @@ export type { betametaEmpty_Full } from './models/betametaEmpty_Full';
 export type { betapagination_Full } from './models/betapagination_Full';
 export type { brand_Full } from './models/brand_Full';
 export { bulkPricingRule_Full } from './models/bulkPricingRule_Full';
+export { bulkPricingRuleFull_Response } from './models/bulkPricingRuleFull_Response';
 export type { catalogSummary_Full } from './models/catalogSummary_Full';
 export type { CategoriesCount } from './models/CategoriesCount';
 export type { categoriesTree_Resp } from './models/categoriesTree_Resp';

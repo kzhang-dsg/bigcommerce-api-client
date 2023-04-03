@@ -3,6 +3,8 @@ import type { Amount } from './Amount';
  * Amount Bound Item
  *
  * Type of refund item that capture refunding of items in the order that are of type amount.
+ * * `PRODUCT`
+ * * `ORDER`
  * * `SHIPPING`
  * * `HANDLING`
  *
@@ -17,6 +19,13 @@ export type AmountBoundItem = {
      */
     item_id?: number;
     amount?: Amount;
+    /**
+     * Number of items in refund.
+     */
+    quantity?: number;
+    /**
+     * Explanation of refund.
+     */
     reason?: string;
 };
 export declare namespace AmountBoundItem {
@@ -24,6 +33,8 @@ export declare namespace AmountBoundItem {
      * Type of refund.
      */
     enum item_type {
+        PRODUCT = "PRODUCT",
+        ORDER = "ORDER",
         SHIPPING = "SHIPPING",
         HANDLING = "HANDLING"
     }

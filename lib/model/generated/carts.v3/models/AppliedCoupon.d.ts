@@ -27,9 +27,29 @@ export type AppliedCoupon = {
      * type 4: free_shipping
      * type 5: promotion
      */
-    readonly coupon_type?: string;
+    readonly coupon_type?: AppliedCoupon.coupon_type;
     /**
      * The discounted amount applied within a given context.
      */
     readonly discounted_amount?: number;
 };
+export declare namespace AppliedCoupon {
+    /**
+     * Key name to identify the type of coupon.
+     *
+     * type 0: per_item_discount
+     * type 1: percentage_discount
+     * type 2: per_total_discount
+     * type 3: shipping_discount
+     * type 4: free_shipping
+     * type 5: promotion
+     */
+    enum coupon_type {
+        _0 = "0",
+        _1 = "1",
+        _2 = "2",
+        _3 = "3",
+        _4 = "4",
+        _5 = "5"
+    }
+}

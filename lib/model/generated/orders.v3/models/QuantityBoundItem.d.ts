@@ -2,8 +2,10 @@
  * Quantity Bound Item
  *
  * Type of refund item that capture refunding of items in the order that are of type quantity.
+ * * `ORDER`
  * * `PRODUCT`
- * * `GIFT_WRAPPING`
+ * * `SHIPPING`
+ * * `HANDLING`
  *
  */
 export type QuantityBoundItem = {
@@ -26,7 +28,9 @@ export declare namespace QuantityBoundItem {
      * Type of refund.
      */
     enum item_type {
+        ORDER = "ORDER",
         PRODUCT = "PRODUCT",
-        GIFT_WRAPPING = "GIFT_WRAPPING"
+        SHIPPING = "SHIPPING",
+        HANDLING = "HANDLING"
     }
 }
