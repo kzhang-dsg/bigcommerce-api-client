@@ -14,6 +14,7 @@ import { ProductCustomFieldApi } from "./product-custom-field-api";
 import { ProductModifierApi } from "./product-modifier-api";
 import { ProductModifierImageApi } from "./product-modifier-image-api";
 import { ProductModifierValueApi } from "./product-modifier-value-api";
+import { ProductImageApi } from './product-image-api';
 import { ProductReviewApi } from "./product-review-api";
 import { ProductSortOrderApi } from "./product-sort-order-api";
 import { ProductVariantApi } from "./product-variant-api";
@@ -41,6 +42,7 @@ export declare class CatalogApi {
     readonly ProductModifierImages: ProductModifierImageApi;
     readonly ProductModifierValues: ProductModifierValueApi;
     readonly productModifiers: ProductModifierApi;
+    readonly productImages: ProductImageApi;
     readonly productReviews: ProductReviewApi;
     readonly productSortOrder: ProductSortOrderApi;
     readonly productVariantOptionValues: ProductVariantOptionValueApi;
