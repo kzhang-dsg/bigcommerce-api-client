@@ -132,6 +132,13 @@ const bigCommerceApiClient = new BigCommerceApiClient({
 });
 ```
 
+you can also dynamically enable or disable caches on the fly after the bigCommerceApiClient is created:
+
+```typescript
+bigCommerceApiClient.cacheDefault.enable = true;  // enable or disable cache on the fly
+bigCommerceApiClient.cacheDefault.ttl = 1000 * 60 * 15;  // change the ttl of the cache. Note: this does not affect the objects already in the cache
+```
+
 ### Augment models
 
 If you want to pass in additional parameters, or add extra fields to the models, you can define your own type to extend the existing model and add extra fields. For example:
