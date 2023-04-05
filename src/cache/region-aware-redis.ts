@@ -7,6 +7,7 @@ import * as redis from "redis";
 import { RedisClientOptions } from "redis";
 
 export function buildRegionAwareRedisStorage(
+    storeHash: string,
     redisClientOptions?: RedisClientOptions
 ) {
     const client = redis.createClient(redisClientOptions);
@@ -16,7 +17,7 @@ export function buildRegionAwareRedisStorage(
             if (!client.isOpen) {
                 await client.connect();
             }
-            const result = await client.get(`axios-cache:${key}`);
+            const result = await client.get(`${storeHash}-cache:${key}`);
             return result ? JSON.parse(result) : null;
         },
 
@@ -24,7 +25,7 @@ export function buildRegionAwareRedisStorage(
             if (!client.isOpen) {
                 await client.connect();
             }
-            await client.set(`axios-cache:${key}`, JSON.stringify(value), {
+            await client.set(`${storeHash}-cache:${key}`, JSON.stringify(value), {
                 PXAT:
                     value.data !== undefined &&
                     canStale(value as CachedStorageValue)
@@ -39,12 +40,12 @@ export function buildRegionAwareRedisStorage(
             }
 
             if (key.endsWith("*")) {
-                const keys = await client.keys(`axios-cache:${key}`);
+                const keys = await client.keys(`${storeHash}-cache:${key}`);
                 for (const k of keys) {
                     client.del(k);
                 }
             } else {
-                await client.del(`axios-cache:${key}`);
+                await client.del(`${storeHash}-cache:${key}`);
             }
         },
     });
