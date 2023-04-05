@@ -87,7 +87,7 @@ export function getCacheRegion(url = "") {
         }
     }
 
-    return `${storeHash}_${modelName}`;
+    return `${storeHash}${modelName ? `_${modelName}` : ""}`;
 }
 
 const ISO8601_REGEX =

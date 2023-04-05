@@ -18,20 +18,24 @@ export function buildRegionAwareRedisStorage(
                 await client.connect();
             }
             const result = await client.get(`${storeHash}-cache:${key}`);
-            return result ? JSON.parse(result) : null;
+            return result ? JSON.parse(result) : undefined;
         },
 
         async set(key, value) {
             if (!client.isOpen) {
                 await client.connect();
             }
-            await client.set(`${storeHash}-cache:${key}`, JSON.stringify(value), {
-                PXAT:
-                    value.data !== undefined &&
-                    canStale(value as CachedStorageValue)
-                        ? value.createdAt + (value.ttl || 0)
-                        : undefined,
-            });
+            await client.set(
+                `${storeHash}-cache:${key}`,
+                JSON.stringify(value),
+                {
+                    PX:
+                        value.data !== undefined &&
+                        canStale(value as CachedStorageValue)
+                            ? value.ttl || 0
+                            : undefined,
+                }
+            );
         },
 
         async remove(key) {
