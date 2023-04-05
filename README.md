@@ -135,8 +135,7 @@ const bigCommerceApiClient = new BigCommerceApiClient({
 you can also dynamically enable or disable caches on the fly after the bigCommerceApiClient is created:
 
 ```typescript
-bigCommerceApiClient.cacheDefault.enable = true;  // enable or disable cache on the fly
-bigCommerceApiClient.cacheDefault.ttl = 1000 * 60 * 15;  // change the ttl of the cache. Note: this does not affect the objects already in the cache
+bigCommerceApiClient.enableCache(true, 1000 * 60 * 15);  // enable or disable cache on the fly. Optionally you can change the ttl of the cache. Note: this does not affect the objects already in the cache
 ```
 
 ### Augment models
