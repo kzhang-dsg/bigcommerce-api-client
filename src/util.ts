@@ -102,7 +102,7 @@ function isValidDate(date: any) {
     );
 }
 
-function parseDate(key: string, value: any) {
+export function parseDate(key: string, value: any) {
     if (typeof value === "string") {
         if (
             key.startsWith("date_") ||

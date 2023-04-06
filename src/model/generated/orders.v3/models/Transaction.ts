@@ -36,7 +36,7 @@ export type Transaction = ({
      */
     gateway_transaction_id?: string;
     /**
-     * The datetime of the transaction.
+     * The date/time of the transaction.
      *
      */
     date_created?: Date;
@@ -81,7 +81,7 @@ export type Transaction = ({
         payment_method?: string;
     };
     /**
-     * The payment method ID used for this transaction
+     * The payment method ID used for this transaction.
      *
      */
     payment_method_id?: string;
@@ -97,7 +97,7 @@ export type Transaction = ({
      */
     order_id?: string;
     /**
-     * The datetime of the transaction.
+     * The date/time of the transaction.
      *
      */
     date_created?: Date;

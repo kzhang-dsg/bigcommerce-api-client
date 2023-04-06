@@ -1,62 +1,62 @@
 import type { ItemReferenceId } from './ItemReferenceId';
 /**
- * A view of a return item
+ * A view of a returned item.
  */
 export type ReturnItem = {
     /**
-     * The unique identifier of this return item
+     * The unique identifier of this returned item.
      */
     id?: number;
     reference_id?: ItemReferenceId;
     /**
-     * The quantity of items for which a return was requested
+     * The quantity of items for which a return was requested.
      */
     quantity?: number;
     /**
-     * The total price of the line item
+     * The total price of the line item.
      */
     total?: string;
     preferred_outcome?: {
         /**
-         * Unique identifier of the preferred outcome
+         * Unique identifier of the preferred outcome.
          */
         id?: number;
         /**
-         * A displayable label for the preferred outcome
+         * A displayable label for the preferred outcome.
          */
         label?: string;
     };
     reason?: {
         /**
-         * Unique identifier of the reason
+         * Unique identifier of the reason.
          */
         id?: number;
         /**
-         * A displayable label for the reason
+         * A displayable label for the reason.
          */
         label?: string;
     };
     received_state?: {
         /**
-         * The quantity of items marked as received by the merchant
+         * The quantity of items marked as received by the merchant.
          */
         received_quantity?: number;
         /**
-         * The quantity of items pending receipt by the merchant
+         * The quantity of items pending receipt by the merchant.
          */
         pending_quantity?: number;
     };
     review_state?: {
         /**
-         * The quantity of items approved for return by the merchant
+         * The quantity of items approved for return by the merchant.
          */
         approved_quantity?: number;
         /**
-         * The quantity of items pending receipt by the merchant
+         * The quantity of items pending receipt by the merchant.
          */
         pending_quantity?: number;
         /**
-         * The quantity of items rejected by the merchant
+         * The quantity of items rejected by the merchant.
          */
         rejected_quantity?: number;
     };

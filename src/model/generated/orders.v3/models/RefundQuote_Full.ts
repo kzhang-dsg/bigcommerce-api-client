@@ -7,10 +7,14 @@ import type { Amount } from './Amount';
 import type { RefundMethod } from './RefundMethod';
 
 export type RefundQuote_Full = {
+    /**
+     * ID of the order to be refunded.
+     */
+    order_id?: number;
     total_refund_amount?: Amount;
     total_refund_tax_amount?: number;
     /**
-     * Indicates rounding value to bring `refund_total` to an amount refundable via payment providers (in this case to 2 decimal places).
+     * Indicates rounding value to bring `refund_total` to an amount refundable with payment providers (in this case to 2 decimal places).
      */
     rounding?: number;
     adjustment?: AdjustmentAmount;
@@ -72,7 +76,7 @@ export type RefundQuote_Full = {
                                          * In this case there are three refund methods available to the merchant:
                                          * 1. Refund up to the entire order amount to store credit.
                                          * 2. Mark an amount up to the full order amount as refunded externally, through a provider or means not represented directly in BC ("custom").
-                                         * 3. Refund the amount paid by store credit to store credit, and the amount paid by bank deposit via a manual refund, which will be recorded as being refunded against the bank deposit.
+                                         * 3. Refund the amount paid by store credit to store credit, and the amount paid by bank deposit with a manual refund, which will be recorded as being refunded against the bank deposit.
                                          *
                                          */
                                         refund_methods?: Array<RefundMethod>;

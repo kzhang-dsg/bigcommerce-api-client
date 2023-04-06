@@ -19,7 +19,7 @@ export type QuantityBoundItem = {
     item_id?: number;
     quantity?: number;
     /**
-     * Reason for refund
+     * Reason for refund.
      */
     reason?: string;
 };

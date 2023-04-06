@@ -6,16 +6,16 @@ import type { ReturnItem } from './ReturnItem';
 import type { Status_Full } from './Status_Full';
 
 /**
- * A view of a return
+ * A view of a return.
  */
 export type Return_Full = {
     items?: Array<ReturnItem>;
     /**
-     * The total price of the items being returned
+     * The total price of the items being returned.
      */
     total?: string;
     /**
-     * The transactional currency of the return and the associated order
+     * The transactional currency of the return and the associated order.
      */
     currency?: string;
     customer?: {
@@ -23,7 +23,7 @@ export type Return_Full = {
         email?: string;
     };
     /**
-     * A comment provided to the merchant for review
+     * A comment provided to the merchant for review.
      */
     comment?: string;
     status?: Status_Full;

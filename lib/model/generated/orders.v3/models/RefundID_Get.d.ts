@@ -2,12 +2,12 @@ import type { metaEmpty_Full } from './metaEmpty_Full';
 export type RefundID_Get = {
     data?: {
         /**
-         * Refund ID for the returned refund
+         * Refund ID for the returned refund.
          *
          */
         id?: number;
         /**
-         * Order ID associated with the refund
+         * Order ID associated with the refund.
          */
         order_id?: number;
         /**
@@ -16,12 +16,12 @@ export type RefundID_Get = {
          */
         user_id?: number;
         /**
-         * Timestamp of when the refund was created
+         * Timestamp of when the refund was created.
          *
          */
         created?: string;
         /**
-         * Reason for refund
+         * Reason for refund.
          *
          */
         reason?: string;
@@ -42,40 +42,40 @@ export type RefundID_Get = {
         uses_merchant_override_values?: boolean;
         payments?: Array<{
             /**
-             * Reference to refund payment ID
+             * Reference to refund payment ID.
              *
              */
             id?: number;
             /**
-             * Reference to payment provider
+             * Reference to payment provider.
              * example: storecredit
              *
              */
             provider_id?: string;
             /**
-             * A non-negative two decimal place rounded value represents the amount that can be charged/refunded via payment providers.
+             * A non-negative two decimal place rounded value represents the amount that can be charged/refunded with payment providers.
              *
              */
             amount?: number;
             /**
-             * Indicates whether the payment was offline
+             * Indicates whether the payment was offline.
              *
              */
             offline?: boolean;
             /**
-             * Indicates if this payment has been declined by the payment provider
+             * Indicates if this payment has been declined by the payment provider.
              *
              */
             is_declined?: boolean;
             /**
-             * Message indicates why the payment was declined
+             * Message indicates why the payment was declined.
              *
              */
             declined_message?: string;
         }>;
         items?: Array<{
             /**
-             * Type of item that was refunded
+             * Type of item that was refunded.
              *
              */
             item_type?: 'PRODUCT' | 'GIFT_WRAPPING' | 'SHIPPING' | 'HANDLING' | 'ORDER';
@@ -85,7 +85,7 @@ export type RefundID_Get = {
              */
             item_id?: number;
             /**
-             * Quantity of item refunded. Note: this will only be populated for item_type PRODUCT
+             * Quantity of item refunded. Note: this will only be populated for item_type PRODUCT.
              *
              */
             quantity?: number;
@@ -95,7 +95,7 @@ export type RefundID_Get = {
              */
             requested_amount?: string | null;
             /**
-             * Reason for refunding an item
+             * Reason for refunding an item.
              *
              */
             reason?: string;

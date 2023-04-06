@@ -7,7 +7,7 @@ import type { Amount } from './Amount';
  * * `ORDER`
  * * `SHIPPING`
  * * `HANDLING`
- *
+ * * `TAX`
  */
 export type AmountBoundItem = {
     /**
@@ -36,6 +36,7 @@ export declare namespace AmountBoundItem {
         PRODUCT = "PRODUCT",
         ORDER = "ORDER",
         SHIPPING = "SHIPPING",
-        HANDLING = "HANDLING"
+        HANDLING = "HANDLING",
+        TAX = "TAX"
     }
 }

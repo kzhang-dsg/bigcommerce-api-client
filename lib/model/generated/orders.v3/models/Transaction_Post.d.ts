@@ -32,7 +32,7 @@ export type Transaction_Post = {
      */
     gateway_transaction_id?: string;
     /**
-     * The datetime of the transaction.
+     * The date/time of the transaction.
      *
      */
     date_created?: Date;

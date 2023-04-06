@@ -4,15 +4,15 @@
 
 export type Problem = {
     /**
-     * Status code of the problem
+     * Status code of the problem.
      */
     status?: number;
     /**
-     * A short description of the problem
+     * A short description of the problem.
      */
     title?: string;
     /**
-     * A resource describing the problem
+     * A resource describing the problem.
      */
     type?: string;
 };

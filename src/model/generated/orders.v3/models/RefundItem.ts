@@ -6,7 +6,7 @@ import type { Amount } from './Amount';
 
 export type RefundItem = {
     /**
-     * Type of item that was refunded
+     * Type of item that was refunded.
      */
     item_type?: RefundItem.item_type;
     /**
@@ -14,7 +14,7 @@ export type RefundItem = {
      */
     item_id?: number;
     /**
-     * Reason for refunding an item
+     * Reason for refunding an item.
      */
     reason?: string;
     /**
@@ -27,7 +27,7 @@ export type RefundItem = {
 export namespace RefundItem {
 
     /**
-     * Type of item that was refunded
+     * Type of item that was refunded.
      */
     export enum item_type {
         PRODUCT = 'PRODUCT',

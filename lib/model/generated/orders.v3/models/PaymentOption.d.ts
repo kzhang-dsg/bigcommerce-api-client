@@ -8,7 +8,7 @@ export type PaymentOption = {
      */
     provider_description?: string;
     /**
-     * Amount to be refunded via this payment provider.
+     * Amount to be refunded with this payment provider.
      */
     amount?: number;
     /**

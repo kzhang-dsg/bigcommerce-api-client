@@ -4,11 +4,11 @@
 
 export type PaymentRequest = {
     /**
-     * Reference to payment provider
+     * Reference to payment provider.
      */
     provider_id?: string;
     /**
-     * Amount refunded via this provider
+     * Amount refunded with this provider.
      */
     amount?: number;
     /**

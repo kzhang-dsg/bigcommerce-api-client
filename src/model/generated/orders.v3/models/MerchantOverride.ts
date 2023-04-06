@@ -12,7 +12,6 @@ import type { Amount } from './Amount';
  * - use explicit values calculated by external systems (e.g., merchants' own Extended Producer Responsibility or Order Management System)
  *
  * Note: when using the override, BC internal tax based refund calculation is skipped and therefore order/taxes records are not updated.
- *
  */
 export type MerchantOverride = {
     total_amount: Amount;

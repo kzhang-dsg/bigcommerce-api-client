@@ -4,11 +4,11 @@
 
 export type ItemReferenceId = {
     /**
-     * The reference type
+     * The reference type.
      */
     type: ItemReferenceId.type;
     /**
-     * The value identifying the returned item
+     * The value identifying the returned item.
      */
     value: string;
 };
@@ -16,7 +16,7 @@ export type ItemReferenceId = {
 export namespace ItemReferenceId {
 
     /**
-     * The reference type
+     * The reference type.
      */
     export enum type {
         ORDER_PRODUCT = 'ORDER_PRODUCT',

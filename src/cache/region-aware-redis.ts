@@ -5,6 +5,7 @@ import {
 } from "axios-cache-interceptor";
 import * as redis from "redis";
 import { RedisClientOptions } from "redis";
+import { parseDate } from "../util";
 
 export function buildRegionAwareRedisStorage(
     storeHash: string,
@@ -18,7 +19,7 @@ export function buildRegionAwareRedisStorage(
                 await client.connect();
             }
             const result = await client.get(`${storeHash}-cache:${key}`);
-            return result ? JSON.parse(result) : undefined;
+            return result ? JSON.parse(result, parseDate) : undefined;
         },
 
         async set(key, value) {

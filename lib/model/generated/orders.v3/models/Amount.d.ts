@@ -1,4 +1,4 @@
 /**
- * A non-negative 2 decimal place rounded value that represents the amount that can be charged/refunded via payment providers.
+ * A non-negative 2 decimal place rounded value that represents the amount that can be charged/refunded with payment providers.
  */
 export type Amount = number;
