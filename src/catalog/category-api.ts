@@ -2,7 +2,7 @@ import { ApiClient } from "../api-client";
 import { CategoriesQueryParams } from "../model/query/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
-import { Category } from "../model/generated/catalog.v3";
+import { Category, category_Post, category_Put, category_Full } from "../model/generated/catalog.v3";
 
 export class CategoryApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -23,7 +23,7 @@ export class CategoryApi {
         return response.data;
     }
 
-    async createCategory<T extends Category>(category: T): Promise<Data<T>> {
+    async createCategory<T extends category_Post, R extends category_Full>(category: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
             "/v3/catalog/categories",
             category
@@ -39,7 +39,7 @@ export class CategoryApi {
         );
     }
 
-    async getCategory<T extends Category, Params extends FieldAwareQueryParams>(
+    async getCategory<Params extends FieldAwareQueryParams, T extends category_Full>(
         categoryId: number,
         params?: Params
     ): Promise<Data<T>> {
@@ -49,7 +49,7 @@ export class CategoryApi {
         return response.data;
     }
 
-    async updateCategory<T extends Category>(category: T): Promise<Data<T>> {
+    async updateCategory<T extends category_Put, R extends category_Full>(category: T): Promise<Data<R>> {
         const response = await this.apiClient.put(
             `/v3/catalog/categories/${category.id}`,
             category
