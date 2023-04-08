@@ -29,7 +29,7 @@ export type productOption_Base = {
      * Order in which the option is displayed on the storefront.
      */
     sort_order?: number;
-    option_values?: productOptionOptionValue_Full;
+    option_values?: Array<productOptionOptionValue_Full>;
 };
 export declare namespace productOption_Base {
     /**
