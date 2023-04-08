@@ -54,14 +54,17 @@ export interface Config {
     retryDelay?: number;
     retryOnReadTimeout?: boolean;
     failOn404?: boolean;
-    cache?: {
-        enable?: boolean;
-        ttl?: number;
-        cloneData?: boolean;
-        type?: CacheType;
-        redisClientOptions?: RedisClientOptions;
-    };
+    cache?: CacheConfig;
 }
+
+export type CacheConfig = {
+    enable?: boolean;
+    ttl?: number;
+    cloneData?: boolean;
+    type?: CacheType;
+    redisClientOptions?: RedisClientOptions;
+    cacheKeyPrefix?: string;
+};
 
 export interface PaginatedData<Type> {
     data?: Type[];

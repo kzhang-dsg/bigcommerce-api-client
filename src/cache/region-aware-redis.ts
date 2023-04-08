@@ -8,7 +8,7 @@ import { RedisClientOptions } from "redis";
 import { parseDate } from "../util";
 
 export function buildRegionAwareRedisStorage(
-    storeHash: string,
+    cacheKeyPrefix: string,
     redisClientOptions?: RedisClientOptions
 ) {
     const client = redis.createClient(redisClientOptions);
@@ -18,7 +18,7 @@ export function buildRegionAwareRedisStorage(
             if (!client.isOpen) {
                 await client.connect();
             }
-            const result = await client.get(`${storeHash}-cache:${key}`);
+            const result = await client.get(`${cacheKeyPrefix}:${key}`);
             return result ? JSON.parse(result, parseDate) : undefined;
         },
 
@@ -27,7 +27,7 @@ export function buildRegionAwareRedisStorage(
                 await client.connect();
             }
             await client.set(
-                `${storeHash}-cache:${key}`,
+                `${cacheKeyPrefix}:${key}`,
                 JSON.stringify(value),
                 {
                     PX:
@@ -45,12 +45,12 @@ export function buildRegionAwareRedisStorage(
             }
 
             if (key.endsWith("*")) {
-                const keys = await client.keys(`${storeHash}-cache:${key}`);
+                const keys = await client.keys(`${cacheKeyPrefix}:${key}`);
                 for (const k of keys) {
                     client.del(k);
                 }
             } else {
-                await client.del(`${storeHash}-cache:${key}`);
+                await client.del(`${cacheKeyPrefix}:${key}`);
             }
         },
     });

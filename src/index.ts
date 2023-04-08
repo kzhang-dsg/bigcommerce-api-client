@@ -1,4 +1,5 @@
 import { AxiosCacheInstance } from "axios-cache-interceptor";
+
 import { AbandonedCartEmailsApi } from "./abandoned-cart-emails";
 import { AbandonedCartApi } from "./abandoned-carts";
 import { ApiClient } from "./api-client";
@@ -29,8 +30,8 @@ import { ShippingV3Api } from "./shipping-v3";
 import { SitesApi } from "./sites";
 import { StoreContentApi } from "./store-content";
 import { StoreInformationApi } from "./store-information";
-import { SystemLogsApi } from "./system-logs";
 import { SubscribersApi } from "./subscribers";
+import { SystemLogsApi } from "./system-logs";
 import { TaxClassesApi } from "./tax-classes";
 import { TaxPropertiesApi } from "./tax-properties";
 import { TaxProviderConnectionApi } from "./tax-provider-connection";
@@ -55,6 +56,7 @@ const DEFAULT_CONFIG: Config = {
         ttl: 1000 * 60 * 10, // 10 minute.
         cloneData: false,
         type: CacheType.IN_MEMORY,
+        cacheKeyPrefix: "axios",
     },
 };
 
