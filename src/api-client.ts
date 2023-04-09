@@ -60,14 +60,18 @@ export class ApiClient {
         config?: CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheTtlConfig<D>(config);
-        if (limit === Limit.ALL || (limit || 0) > Limit.MAX_LIMIT) {
+        const maxLimit =
+            url === "/v3/catalog/products"
+                ? Limit.PRODUCTS_V3_MAX_LIMIT
+                : Limit.MAX_LIMIT;
+        if (limit === Limit.ALL || (limit || 0) > maxLimit) {
             // fetch data by iterating thru the pagination
             page = page || 1;
             let response = await this.callWithRetries(
                 "get",
                 appendQueryString(url, {
                     page,
-                    limit: Limit.MAX_LIMIT,
+                    limit: maxLimit,
                 }),
                 undefined,
                 config
@@ -76,17 +80,16 @@ export class ApiClient {
             if (totalPages) {
                 let result: PaginatedData<T> = response.data;
                 while (page < totalPages) {
-                    const remainingLimit =
-                        (limit || 0) - page * Limit.MAX_LIMIT;
+                    const perPage =
+                        response.data?.meta?.pagination?.per_page || maxLimit;
+                    const remainingLimit = (limit || 0) - page * perPage;
                     page++;
                     response = await this.callWithRetries(
                         "get",
                         appendQueryString(url, {
                             page: page,
                             limit:
-                                limit === Limit.ALL
-                                    ? Limit.MAX_LIMIT
-                                    : remainingLimit,
+                                limit === Limit.ALL ? perPage : remainingLimit,
                         }),
                         undefined,
                         config
@@ -98,17 +101,14 @@ export class ApiClient {
             } else if (Array.isArray(response.data)) {
                 let result: T[] = response.data;
                 while (true) {
-                    const remainingLimit =
-                        (limit || 0) - page * Limit.MAX_LIMIT;
+                    const remainingLimit = (limit || 0) - page * maxLimit;
                     page++;
                     response = await this.callWithRetries(
                         "get",
                         appendQueryString(url, {
                             page: page,
                             limit:
-                                limit === Limit.ALL
-                                    ? Limit.MAX_LIMIT
-                                    : remainingLimit,
+                                limit === Limit.ALL ? maxLimit : remainingLimit,
                         }),
                         undefined,
                         config
