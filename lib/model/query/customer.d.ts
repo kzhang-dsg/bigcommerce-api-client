@@ -1,3 +1,4 @@
+import { IdInQueryParams } from "./../common";
 export declare enum CustomerSort {
     DATE_CREATED_ASC = "date_created:asc",
     DATE_CREATED_DESC = "date_created:desc",
@@ -27,8 +28,7 @@ export interface CustomerV2GroupsQueryParams {
     is_group_for_guests?: boolean;
     name?: string;
 }
-export interface CustomersV3QueryParams {
-    "id:in"?: number[];
+export interface CustomersV3QueryParams extends IdInQueryParams {
     "company:in"?: number[];
     "customer_group_id:in"?: number[];
     date_created?: Date;
@@ -44,16 +44,15 @@ export interface CustomersV3QueryParams {
     include?: string[];
     sort?: CustomerSort;
 }
-export interface CustomersV3AddressesQueryParams {
+export interface CustomersV3AddressesQueryParams extends IdInQueryParams {
     "company:in"?: string[];
     "name:in"?: string[];
-    "customer_id:in"?: string[];
+    "customer_id:in"?: number[];
     include?: string[];
-    "id:in"?: string[];
 }
 export interface CustomersV3AttributeValuesQueryParams {
-    "customer_id:in"?: string[];
-    "attribute_id:in"?: string[];
+    "customer_id:in"?: number[];
+    "attribute_id:in"?: number[];
     name?: string;
     date_created?: Date;
     "date_created:max"?: Date;
