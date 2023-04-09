@@ -83,7 +83,7 @@ export class PaymentActionApi {
                 "/v3/orders/payment_actions/refund_quotes",
                 refundQuotes.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;
@@ -111,7 +111,7 @@ export class PaymentActionApi {
                 "/v3/orders/payment_actions/refunds",
                 refunds.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

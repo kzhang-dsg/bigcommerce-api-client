@@ -43,7 +43,7 @@ export class PriceListRecordApi {
                 `/v3/pricelists/${priceListId}/records`,
                 priceListRecords.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.concat(response.data);
+            result = result.concat(response.data);
         }
 
         return result as R[];

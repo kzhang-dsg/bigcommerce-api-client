@@ -43,7 +43,7 @@ export class CustomerAttributeValueApi {
                 "/v3/customers/attribute-values",
                 customerAttributeValues.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

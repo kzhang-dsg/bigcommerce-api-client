@@ -33,7 +33,7 @@ export class ProductTaxPropertyApi {
                 "/v3/tax/products/properties",
                 taxProperties.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

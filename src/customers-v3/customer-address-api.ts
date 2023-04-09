@@ -38,7 +38,7 @@ export class CustomerAddressApi {
                 "/v3/customers/addresses",
                 customerAddresses.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;
@@ -53,7 +53,7 @@ export class CustomerAddressApi {
                 "/v3/customers/addresses",
                 customerAddresses.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

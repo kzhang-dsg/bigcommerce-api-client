@@ -67,7 +67,7 @@ export class CustomersV3Api {
                 "/v3/customers",
                 customers.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;
@@ -82,7 +82,7 @@ export class CustomersV3Api {
                 "/v3/customers",
                 customers.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

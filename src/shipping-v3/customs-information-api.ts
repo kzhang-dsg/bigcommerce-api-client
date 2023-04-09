@@ -52,7 +52,7 @@ export class CustomsInformationApi {
                 `/v3/shipping/products/customs-information`,
                 customsInformation.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

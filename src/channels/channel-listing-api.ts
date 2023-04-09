@@ -36,7 +36,7 @@ export class ChannelListingApi {
                 `/v3/channels/${channelId}/listings`,
                 channelListings.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;
@@ -52,7 +52,7 @@ export class ChannelListingApi {
                 `/v3/channels/${channelId}/listings`,
                 channelListings.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

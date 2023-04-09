@@ -82,7 +82,7 @@ export class PagesApi {
                     appendQueryString("/v3/content/pages", params),
                     pages.slice(i, i + MAX_BATCH_SIZE)
                 );
-                result.data?.concat(response.data.data);
+                result.data = result.data?.concat(response.data.data);
             }
 
             return result;

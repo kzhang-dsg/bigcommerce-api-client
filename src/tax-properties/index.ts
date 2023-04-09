@@ -38,7 +38,7 @@ export class TaxPropertiesApi {
                 "/v3/tax/properties",
                 taxProperties.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;
@@ -53,7 +53,7 @@ export class TaxPropertiesApi {
                 "/v3/tax/properties",
                 taxProperties.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

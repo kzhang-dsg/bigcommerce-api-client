@@ -36,7 +36,7 @@ export class ChannelCurrencyAssignmentApi {
                 "/v3/channels/currency-assignments",
                 channelsCurrencyAssignments.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;
@@ -56,7 +56,7 @@ export class ChannelCurrencyAssignmentApi {
                 "/v3/channels/currency-assignments",
                 channelsCurrencyAssignments.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

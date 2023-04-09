@@ -33,7 +33,7 @@ export class VariantApi {
                 `/v3/catalog/variants`,
                 variants.slice(i, i + MAX_BATCH_SIZE)
             );
-            result.data?.concat(response.data.data);
+            result.data = result.data?.concat(response.data.data);
         }
 
         return result;

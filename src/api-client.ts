@@ -82,7 +82,7 @@ export class ApiClient {
                 while (page < totalPages) {
                     const perPage =
                         response.data?.meta?.pagination?.per_page || maxLimit;
-                    const remainingLimit = (limit || 0) - page * perPage;
+                    const remainingLimit = Math.min((limit || 0) - page * perPage, maxLimit);
                     page++;
                     response = await this.callWithRetries(
                         "get",
@@ -94,14 +94,16 @@ export class ApiClient {
                         undefined,
                         config
                     );
-                    result.data?.concat(response.data.data);
-                    result.meta = response.data.meta;
+                    if (result.data && response.data?.data) {
+                        result.data = result.data.concat(response.data.data);
+                        result.meta = response.data.meta;
+                    }
                 }
                 response.data = result;
             } else if (Array.isArray(response.data)) {
                 let result: T[] = response.data;
                 while (true) {
-                    const remainingLimit = (limit || 0) - page * maxLimit;
+                    const remainingLimit = Math.min((limit || 0) - page * maxLimit, maxLimit);
                     page++;
                     response = await this.callWithRetries(
                         "get",
@@ -114,7 +116,7 @@ export class ApiClient {
                         config
                     );
                     if (response.data?.length) {
-                        result.concat(response.data);
+                        result = result.concat(response.data);
                     } else {
                         break;
                     }
