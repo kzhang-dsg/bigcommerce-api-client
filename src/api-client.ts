@@ -83,6 +83,9 @@ export class ApiClient {
                     const perPage =
                         response.data?.meta?.pagination?.per_page || maxLimit;
                     const remainingLimit = Math.min((limit || 0) - page * perPage, maxLimit);
+                    if (remainingLimit <= 0) {
+                        break;
+                    }
                     page++;
                     response = await this.callWithRetries(
                         "get",
@@ -104,6 +107,9 @@ export class ApiClient {
                 let result: T[] = response.data;
                 while (true) {
                     const remainingLimit = Math.min((limit || 0) - page * maxLimit, maxLimit);
+                    if (remainingLimit <= 0) {
+                        break;
+                    }
                     page++;
                     response = await this.callWithRetries(
                         "get",
