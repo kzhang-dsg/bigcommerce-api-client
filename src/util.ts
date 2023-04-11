@@ -33,7 +33,9 @@ export function toQueryString(
                 if (dateFormat === DateFormat.ISO8601) {
                     normalizedValue = (value as Date).toISOString();
                 } else if (dateFormat === DateFormat.UNIX_TIMESTAMP) {
-                    normalizedValue = (value as Date).getTime() / 1000;
+                    normalizedValue = Math.ceil(
+                        (value as Date).getTime() / 1000
+                    );
                 }
             }
             queryParams.push(
