@@ -13,7 +13,7 @@ export declare class CartsApi {
     readonly redirects: CartRedirectUrlApi;
     readonly settings: CartSettingsApi;
     createCart<Params extends IncludeQueryParams, T extends CartCreatePostData, R extends Cart_Full>(createCartRequest: T, params?: Params): Promise<R>;
-    getCart<Params extends IncludeQueryParams, T extends Cart_Full>(cartId: number, params?: Params): Promise<T>;
-    updateCustomerId<Params extends IncludeQueryParams, T extends Cart_Full>(cartId: number, customerId: number, params?: Params): Promise<T>;
-    deleteCart(cartId: number): Promise<void>;
+    getCart<Params extends IncludeQueryParams, T extends Cart_Full>(cartId: string, params?: Params): Promise<T>;
+    updateCustomerId<Params extends IncludeQueryParams, T extends Cart_Full>(cartId: string, customerId: number, params?: Params): Promise<T>;
+    deleteCart(cartId: string): Promise<void>;
 }

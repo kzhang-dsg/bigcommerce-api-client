@@ -28,7 +28,7 @@ export class CartsApi {
     }
 
     async getCart<Params extends IncludeQueryParams, T extends Cart_Full>(
-        cartId: number,
+        cartId: string,
         params?: Params
     ): Promise<T> {
         const response = await this.apiClient.get(
@@ -40,7 +40,7 @@ export class CartsApi {
     async updateCustomerId<
         Params extends IncludeQueryParams,
         T extends Cart_Full
-    >(cartId: number, customerId: number, params?: Params): Promise<T> {
+    >(cartId: string, customerId: number, params?: Params): Promise<T> {
         const response = await this.apiClient.put(
             appendQueryString(`/v3/carts/${cartId}`, params),
             {
@@ -50,7 +50,7 @@ export class CartsApi {
         return response.data;
     }
 
-    async deleteCart(cartId: number): Promise<void> {
+    async deleteCart(cartId: string): Promise<void> {
         const response = await this.apiClient.delete(`/v3/carts/${cartId}`);
         return response.data;
     }

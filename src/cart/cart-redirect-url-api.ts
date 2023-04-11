@@ -6,7 +6,7 @@ export class CartRedirectUrlApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     async createCartLineRedirectUrl<T extends CartRedirectUrl>(
-        cartId: number
+        cartId: string
     ): Promise<Data<T>> {
         const response = await this.apiClient.post(
             `/v3/carts/${cartId}/redirect_urls`

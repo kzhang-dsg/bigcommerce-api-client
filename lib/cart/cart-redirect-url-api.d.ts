@@ -4,5 +4,5 @@ import { CartRedirectUrl } from "../model/generated/carts.v3";
 export declare class CartRedirectUrlApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);
-    createCartLineRedirectUrl<T extends CartRedirectUrl>(cartId: number): Promise<Data<T>>;
+    createCartLineRedirectUrl<T extends CartRedirectUrl>(cartId: string): Promise<Data<T>>;
 }
