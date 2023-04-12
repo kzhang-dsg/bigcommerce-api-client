@@ -28,7 +28,7 @@ export class CartLineItemApi {
         R extends Cart_Full
     >(
         cartId: string,
-        cartLineItemId: number,
+        cartLineItemId: string,
         cartLineItems: T,
         params?: Params
     ): Promise<R> {
@@ -45,7 +45,7 @@ export class CartLineItemApi {
     async deleteCartLineItem<
         Params extends IncludeQueryParams,
         R extends Cart_Full
-    >(cartId: string, cartLineItemId: number, params?: Params): Promise<R> {
+    >(cartId: string, cartLineItemId: string, params?: Params): Promise<R> {
         const response = await this.apiClient.delete(
             appendQueryString(
                 `/v3/carts/${cartId}/items/${cartLineItemId}`,
