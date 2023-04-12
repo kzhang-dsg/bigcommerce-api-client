@@ -77,7 +77,7 @@ export type page_Base_Res = {
      */
     meta_keywords?: string;
     /**
-     * If page type is `rss_feed` then this field is visisble.
+     * If page type is `rss_feed` then this field is visible.
      */
     feed?: string;
     /**

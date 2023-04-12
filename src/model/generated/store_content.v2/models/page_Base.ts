@@ -77,7 +77,7 @@ export type page_Base = {
      */
     meta_keywords?: string;
     /**
-     * If page type is `rss_feed` the n this field is visisble. Required in POST required for `rss page` type.
+     * If page type is `rss_feed` then this field is visible. Required in POST required for `rss page` type.
      */
     feed?: string;
     /**

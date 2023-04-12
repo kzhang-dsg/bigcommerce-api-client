@@ -90,10 +90,6 @@ export type product_Base = {
      */
     categories?: Array<number>;
     /**
-     * Optional. You can supply a single ID, multiple IDs, or leave the field empty.
-     */
-    channels?: Array<number>;
-    /**
      * A product can be added to an existing brand during a product /PUT or /POST.
      *
      */
