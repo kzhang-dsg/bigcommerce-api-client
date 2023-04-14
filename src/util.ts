@@ -65,7 +65,7 @@ export function getCacheRegion(url = "") {
                 subModelName = "products";
                 break;
         }
-        modelName = `${modelName}/${subModelName}`;
+        modelName = `${modelName}:${subModelName}`;
     } else if (
         modelName === "storefront" ||
         modelName === "content" ||
@@ -77,7 +77,7 @@ export function getCacheRegion(url = "") {
         let subModelName = urlParts[4];
 
         if (subModelName) {
-            modelName = `${modelName}/${subModelName}`;
+            modelName = `${modelName}:${subModelName}`;
         }
 
         if (
@@ -85,11 +85,11 @@ export function getCacheRegion(url = "") {
             (subModelName === "store" || subModelName === "storefront")
         ) {
             let subModelName = urlParts[5];
-            modelName = `${modelName}/${subModelName}`;
+            modelName = `${modelName}:${subModelName}`;
         }
     }
 
-    return `${storeHash}${modelName ? `_${modelName}` : ""}`;
+    return `${storeHash}${modelName ? `:${modelName}` : ""}`;
 }
 
 const ISO8601_REGEX =

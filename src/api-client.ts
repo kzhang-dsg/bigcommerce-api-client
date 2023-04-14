@@ -35,7 +35,7 @@ export class ApiClient {
                 this.config.cache?.redisClientOptions
             );
         } else {
-            storage = buildRegionAwareMemoryStorage();
+            storage = buildRegionAwareMemoryStorage(this.config.cache?.cacheKeyPrefix || "axios");
         }
         this.axiosInstance = setupCache(axiosInstance, {
             generateKey: regionAwareKeyGenerator,

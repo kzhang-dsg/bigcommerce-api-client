@@ -11,10 +11,10 @@ import {
  */
 declare const structuredClone: (<T>(value: T) => T) | undefined;
 
-export function buildRegionAwareMemoryStorage(cloneData = false) {
+export function buildRegionAwareMemoryStorage(cacheKeyPrefix: string, cloneData = false) {
     const storage = buildStorage({
         set: (key, value) => {
-            storage.data[key] = value;
+            storage.data[`${cacheKeyPrefix}:${key}`] = value;
         },
 
         remove: (key) => {
@@ -24,17 +24,17 @@ export function buildRegionAwareMemoryStorage(cloneData = false) {
                 // remove the entire region of cached data
                 let regionPrefix = key.slice(0, -1);  // remove the last character '*'
                 for (const k of Object.keys(storage.data)) {
-                    if (k.startsWith(regionPrefix)) {
+                    if (k.startsWith(`${cacheKeyPrefix}:${regionPrefix}`)) {
                         delete storage.data[k];
                     }
                 }
             } else {
-                delete storage.data[key];
+                delete storage.data[`${cacheKeyPrefix}:${key}`];
             }
         },
 
         find: (key) => {
-            const value = storage.data[key];
+            const value = storage.data[`${cacheKeyPrefix}:${key}`];
 
             if (cloneData && value !== undefined) {
                 if (typeof structuredClone === "function") {
