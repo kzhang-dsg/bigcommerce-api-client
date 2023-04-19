@@ -35,7 +35,9 @@ export class ApiClient {
                 this.config.cache?.redisClientOptions
             );
         } else {
-            storage = buildRegionAwareMemoryStorage(this.config.cache?.cacheKeyPrefix || "axios");
+            storage = buildRegionAwareMemoryStorage(
+                this.config.cache?.cacheKeyPrefix || "axios"
+            );
         }
         this.axiosInstance = setupCache(axiosInstance, {
             generateKey: regionAwareKeyGenerator,
@@ -61,7 +63,8 @@ export class ApiClient {
     ): Promise<R> {
         config = this.setupCacheTtlConfig<D>(config);
         const maxLimit =
-            url === "/v3/catalog/products"
+            url.startsWith("/v3/catalog/products?") &&
+            url.indexOf("include=") > -1
                 ? Limit.PRODUCTS_V3_MAX_LIMIT
                 : Limit.MAX_LIMIT;
         if (limit === Limit.ALL || (limit || 0) > maxLimit) {
@@ -82,7 +85,10 @@ export class ApiClient {
                 while (page < totalPages) {
                     const perPage =
                         response.data?.meta?.pagination?.per_page || maxLimit;
-                    const remainingLimit = Math.min((limit || 0) - page * perPage, maxLimit);
+                    const remainingLimit = Math.min(
+                        (limit || 0) - page * perPage,
+                        maxLimit
+                    );
                     if (remainingLimit <= 0) {
                         break;
                     }
@@ -106,7 +112,10 @@ export class ApiClient {
             } else if (Array.isArray(response.data)) {
                 let result: T[] = response.data;
                 while (true) {
-                    const remainingLimit = Math.min((limit || 0) - page * maxLimit, maxLimit);
+                    const remainingLimit = Math.min(
+                        (limit || 0) - page * maxLimit,
+                        maxLimit
+                    );
                     if (remainingLimit <= 0) {
                         break;
                     }
