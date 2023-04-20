@@ -19,7 +19,7 @@ export declare enum OrderStatus {
 export declare enum Limit {
     ALL = -1,
     MAX_LIMIT = 250,
-    PRODUCTS_V3_MAX_LIMIT = 10
+    BATCH_MAX_LIMIT = 10
 }
 export declare enum Sort {
     USE_STORE_SETTINGS = "use_store_settings",

@@ -21,7 +21,7 @@ export enum OrderStatus {
 export enum Limit {
     ALL = -1,
     MAX_LIMIT = 250,
-    PRODUCTS_V3_MAX_LIMIT = 10,
+    BATCH_MAX_LIMIT = 10,
 }
 
 export enum Sort {

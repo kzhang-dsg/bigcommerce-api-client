@@ -62,11 +62,23 @@ export class ApiClient {
         config?: CacheRequestConfig<D>
     ): Promise<R> {
         config = this.setupCacheTtlConfig<D>(config);
-        const maxLimit =
+        let maxLimit = Limit.MAX_LIMIT;
+        if (
             url.startsWith("/v3/catalog/products?") &&
             url.indexOf("include=") > -1
-                ? Limit.PRODUCTS_V3_MAX_LIMIT
-                : Limit.MAX_LIMIT;
+        ) {
+            let params = new URLSearchParams(url);
+            const includeParam = params
+                .get("include")
+                ?.split(",")
+                .map((param) => param.trim());
+            if (
+                includeParam?.includes("options") ||
+                includeParam?.includes("modifiers")
+            ) {
+                maxLimit = Limit.BATCH_MAX_LIMIT;
+            }
+        }
         if (limit === Limit.ALL || (limit || 0) > maxLimit) {
             // fetch data by iterating thru the pagination
             page = page || 1;
