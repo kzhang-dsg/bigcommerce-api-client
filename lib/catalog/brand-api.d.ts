@@ -9,6 +9,6 @@ export declare class BrandApi {
     createBrand<T extends brand_Post, R extends brand_Full>(brand: T): Promise<Data<R>>;
     deleteBrands<Params extends DeleteBrandsQueryParams>(params?: Params): Promise<void>;
     getBrand<T extends brand_Full, Params extends FieldAwareQueryParams>(brandId: number, params?: Params): Promise<Data<T>>;
-    updateBrand<T extends brand_Put, R extends brand_Full>(brand: T): Promise<Data<R>>;
+    updateBrand<T extends brand_Put, R extends brand_Full>(brandId: number, brand: T): Promise<Data<R>>;
     deleteBrand(brandId: number): Promise<void>;
 }

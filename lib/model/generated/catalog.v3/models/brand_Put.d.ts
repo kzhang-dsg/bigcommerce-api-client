@@ -3,10 +3,6 @@
  */
 export type brand_Put = {
     /**
-     * Unique ID of the *Brand*. Read-Only.
-     */
-    readonly id?: number;
-    /**
      * The name of the brand. Must be unique.
      * Required in POST.
      */
