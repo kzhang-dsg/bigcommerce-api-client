@@ -46,9 +46,9 @@ export class BrandApi {
         return response.data;
     }
 
-    async updateBrand<T extends brand_Put, R extends brand_Full>(brand: T): Promise<Data<R>> {
+    async updateBrand<T extends brand_Put, R extends brand_Full>(brandId: number, brand: T): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/brands/${brand.id}`,
+            `/v3/catalog/brands/${brandId}`,
             brand
         );
         return response.data;
