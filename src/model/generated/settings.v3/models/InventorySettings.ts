@@ -35,6 +35,14 @@ export type InventorySettings = {
      * Describes whether an option is hidden in product filtering. Applies when `option_out_of_stock_behavior` is set to `label_option`.
      */
     hide_in_product_filtering?: boolean;
+    /**
+     * Describes whether pre-order stock levels are shown.
+     */
+    show_pre_order_stock_levels?: boolean;
+    /**
+     * Describes whether out-of-stock messages are shown on product listing pages.
+     */
+    show_out_of_stock_message?: boolean;
 };
 
 export namespace InventorySettings {
