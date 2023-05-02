@@ -1,4 +1,4 @@
 export type Url = {
-    path?: string;
+    url?: string;
     is_customized?: boolean;
 };

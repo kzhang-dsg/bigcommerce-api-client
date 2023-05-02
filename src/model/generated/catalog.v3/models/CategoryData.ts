@@ -16,6 +16,6 @@ export type CategoryData = {
     layout_file?: string;
     is_visible?: boolean;
     image_url?: string;
-    url?: Url;
+    custom_url?: Url;
 };
 

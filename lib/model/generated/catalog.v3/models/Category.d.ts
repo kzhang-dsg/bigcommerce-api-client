@@ -14,5 +14,5 @@ import type { sort_order } from './sort_order';
 import type { Url } from './Url';
 import type { views } from './views';
 export type Category = (id & parent_id & name & description & views & sort_order & page_title & meta_keywords & meta_description & layout_file & image_url & is_visible & search_keywords & default_product_sort & {
-    url?: Url;
+    custom_url?: Url;
 });
