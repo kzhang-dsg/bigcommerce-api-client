@@ -5,7 +5,7 @@ import { appendQueryString } from "../util";
 import { Category, category_Post, category_Put, category_Full } from "../model/generated/catalog.v3";
 
 export class CategoryApi {
-    constructor(private readonly apiClient: ApiClient) {}
+    constructor(private readonly apiClient: ApiClient) { }
 
     async getAllCategories<
         Params extends CategoriesQueryParams,
@@ -49,9 +49,9 @@ export class CategoryApi {
         return response.data;
     }
 
-    async updateCategory<T extends category_Put, R extends category_Full>(category: T): Promise<Data<R>> {
+    async updateCategory<T extends category_Put, R extends category_Full>(categoryId: number, category: T): Promise<Data<R>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/categories/${category.id}`,
+            `/v3/catalog/categories/${categoryId}`,
             category
         );
         return response.data;

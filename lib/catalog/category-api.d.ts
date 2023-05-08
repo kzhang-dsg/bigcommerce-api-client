@@ -9,6 +9,6 @@ export declare class CategoryApi {
     createCategory<T extends category_Post, R extends category_Full>(category: T): Promise<Data<R>>;
     deleteCategories<Params extends CategoriesQueryParams>(params?: Params): Promise<void>;
     getCategory<Params extends FieldAwareQueryParams, T extends category_Full>(categoryId: number, params?: Params): Promise<Data<T>>;
-    updateCategory<T extends category_Put, R extends category_Full>(category: T): Promise<Data<R>>;
+    updateCategory<T extends category_Put, R extends category_Full>(categoryId: number, category: T): Promise<Data<R>>;
     deleteCategory(categoryId: number): Promise<void>;
 }
