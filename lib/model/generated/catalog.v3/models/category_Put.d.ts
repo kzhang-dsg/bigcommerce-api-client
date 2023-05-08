@@ -3,11 +3,6 @@
  */
 export type category_Put = {
     /**
-     * Unique ID of the *Category*. Increments sequentially.
-     * Read-Only.
-     */
-    readonly id?: number;
-    /**
      * The unique numeric ID of the category's parent. This field controls where the category sits in the tree of categories that organize the catalog.
      * Required in a POST if creating a child category.
      */
