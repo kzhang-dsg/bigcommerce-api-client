@@ -10,6 +10,8 @@ export type { customerAddress_Full } from './models/customerAddress_Full';
 export type { customerFormFields } from './models/customerFormFields';
 export type { customerGroup_Full } from './models/customerGroup_Full';
 export type { customerGroup_Post } from './models/customerGroup_Post';
+export type { ErrorBasic } from './models/ErrorBasic';
+export type { ErrorRequest } from './models/ErrorRequest';
 export type { shippingAddress_Full } from './models/shippingAddress_Full';
 export type { state_Full } from './models/state_Full';
 export type { statesResource_Full } from './models/statesResource_Full';

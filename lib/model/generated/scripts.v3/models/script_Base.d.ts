@@ -3,6 +3,10 @@
  */
 export type script_Base = {
     /**
+     * The user-friendly name.
+     */
+    name?: string;
+    /**
      * The user-friendly description.
      */
     description?: string;

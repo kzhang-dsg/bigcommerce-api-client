@@ -115,7 +115,7 @@ export type BaseOptions = {
              */
             value?: string;
             /**
-             * The namespace associated with a [product](docs/rest-management/catalog/product-metafields) or [product variant](/docs/rest-management/catalog/product-variants-metafields) metafields. You should save a metafield namespace under this format `shipping_carrier_{yourCarrierId}`; otherwise, you will not be able to recognize it as an attribute.
+             * The namespace associated with a [product](/docs/rest-catalog/products/metafields) or [product variant](/docs/rest-catalog/product-variants/metafields) metafields. You should save a metafield namespace under this format `shipping_carrier_{yourCarrierId}`; otherwise, you will not be able to recognize it as an attribute.
              */
             namespace?: string;
             /**

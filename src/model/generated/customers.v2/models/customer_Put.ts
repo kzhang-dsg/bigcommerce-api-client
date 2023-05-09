@@ -4,10 +4,6 @@
 
 export type customer_Put = {
     /**
-     * Unique numeric ID of this customer. This is a READ-ONLY field; do not set or modify its value in a POST or PUT request.
-     */
-    id?: number;
-    /**
      * Not returned in any responses, but accepts up to two fields allowing you to set the customer’s password. If a password is not supplied, it is generated automatically. For further information about using this object, please see the Customers resource documentation.
      */
     _authentication?: {

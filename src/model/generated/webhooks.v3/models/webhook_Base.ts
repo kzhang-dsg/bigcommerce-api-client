@@ -16,7 +16,8 @@ export type webhook_Base = {
      */
     is_active?: boolean;
     /**
-     * Boolean value that identifies whether events are stored that could not be received.
+     * Deprecated. Boolean value that identifies whether events are stored that could not be received.
+     * @deprecated
      */
     events_history_enabled?: boolean;
     /**

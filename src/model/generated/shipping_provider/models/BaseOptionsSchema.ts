@@ -119,7 +119,7 @@ export type BaseOptionsSchema = {
                  */
                 value?: string;
                 /**
-                 * The namespace associated with metafields for [products](/docs/rest-management/catalog/product-metafields#create-a-product-metafield) and [product variants](/docs/rest-management/catalog/product-variants-metafields). Save the metafield namespace using the format `shipping_carrier_{yourCarrierId}`; otherwise, it will not be recognized as a valid attribute.
+                 * The namespace associated with metafields for [products](/docs/rest-catalog/products/metafields#create-a-product-metafield) and [product variants](/docs/rest-catalog/product-variants/metafields). Save the metafield namespace using the format `shipping_carrier_{yourCarrierId}`; otherwise, it will not be recognized as a valid attribute.
                  */
                 namespace?: string;
                 /**
