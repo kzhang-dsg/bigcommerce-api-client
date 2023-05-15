@@ -12,6 +12,7 @@ import { buildRegionAwareMemoryStorage } from "./cache/region-aware-memory";
 import { buildRegionAwareRedisStorage } from "./cache/region-aware-redis";
 import { CacheType, Config, Limit, PaginatedData } from "./model/common";
 import { appendQueryString, dateTransformer, getCacheRegion } from "./util";
+import { randomInt } from "crypto";
 
 export class ApiClient {
     readonly axiosInstance: AxiosCacheInstance;
@@ -244,6 +245,7 @@ export class ApiClient {
                     // retry if the error is recoverable
                     let retryDelay: number =
                         retries * (this.config.retryDelay || 0);
+                    retryDelay += randomInt(0, this.config.retryDelay || 0);
                     if (error.response?.status === 429) {
                         retryDelay = parseInt(
                             error.response?.headers[
