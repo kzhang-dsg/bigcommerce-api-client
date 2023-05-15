@@ -196,7 +196,7 @@ Below is the complete list of config parameters:
 - `maxRetries` (default: `5`)
   - Max number of retries when error happened. Default is 5
 - `retryDelay` (default: `5000`)
-  - Wait time before next retry. Default is 5 seconds. The wait time for each retry is calculated by `retryDelay * nthRetry`. For example, if `retryDelay = 5000` and it is the 3rd retry, then wait for `5000 * 3 = 15000 ms`. For `429` errors, the wait time is indicated by `X-Rate-Limit-Time-Reset-Ms` response header. See the [BigCommerce Document](https://developer.bigcommerce.com/api-docs/getting-started/best-practices#playing-nicely-with-the-platform) for details.
+  - Wait time before next retry. Default is 5 seconds. The wait time for each retry is calculated by `retryDelay * nthRetry + randomInt(0, retryDelay)`. The randomness is added to bypass DDoS firewalls. For example, if `retryDelay = 5000` and it is the 3rd retry, then wait for `5000 * 3 + random_between_0_and_5000 = 15000 ms to 20000 ms`. For `429` errors, the wait time is indicated by `X-Rate-Limit-Time-Reset-Ms` response header. See the [BigCommerce Document](https://developer.bigcommerce.com/api-docs/getting-started/best-practices#playing-nicely-with-the-platform) for details.
 - `retryOnReadTimeout` (default: `true`)
   - If set to true, then retry when the request is timeout on a `GET` request.
 - `failOn404` (default: `false`)
