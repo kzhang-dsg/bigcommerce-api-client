@@ -287,7 +287,7 @@ export class ApiClient {
                                 response.data,
                                 null,
                                 0
-                            )}.`,
+                            )}. Retries: ${retries}. Error: ${error.message}.`,
                             { cause: error }
                         );
                     }
@@ -295,20 +295,23 @@ export class ApiClient {
                     if (request) {
                         if (error.code === "ECONNABORTED") {
                             throw new Error(
-                                `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}. Timeout after ${this.config.timeout} ms.`,
+                                `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}. Timeout after ${this.config.timeout} ms. Retries: ${retries}. Error: ${error.message}.`,
                                 { cause: error }
                             );
                         }
 
                         throw new Error(
-                            `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}.`,
+                            `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}. Retries: ${retries}. Error: ${error.message}.`,
                             { cause: error }
                         );
                     }
 
-                    throw new Error(`Failed to call BigCommerce API.`, {
-                        cause: error,
-                    });
+                    throw new Error(
+                        `Failed to call BigCommerce API. Retries: ${retries}. Error: ${error.message}.`,
+                        {
+                            cause: error,
+                        }
+                    );
                 }
             }
         }
