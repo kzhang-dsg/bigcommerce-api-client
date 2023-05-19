@@ -5,6 +5,7 @@ import {
     CacheRequestConfig,
     setupCache,
 } from "axios-cache-interceptor";
+import { randomInt } from "crypto";
 import { ClientRequest } from "http";
 
 import { regionAwareKeyGenerator } from "./cache/region-aware-key-generator";
@@ -12,7 +13,6 @@ import { buildRegionAwareMemoryStorage } from "./cache/region-aware-memory";
 import { buildRegionAwareRedisStorage } from "./cache/region-aware-redis";
 import { CacheType, Config, Limit, PaginatedData } from "./model/common";
 import { appendQueryString, dateTransformer, getCacheRegion } from "./util";
-import { randomInt } from "crypto";
 
 export class ApiClient {
     readonly axiosInstance: AxiosCacheInstance;
@@ -240,7 +240,13 @@ export class ApiClient {
                         method === "get" &&
                         error.code === "ECONNABORTED") || // read timeout
                         error.response?.status === 429 || // rate limit
-                        error.response?.status >= 500) // BigCommerce API down
+                        (error.response?.status >= 500 && // BigCommerce API down
+                            !(
+                                error.response?.status === 503 &&
+                                error.response?.data?.title?.startsWith(
+                                    "The store is suspended"
+                                )
+                            )))
                 ) {
                     // retry if the error is recoverable
                     let retryDelay: number =
