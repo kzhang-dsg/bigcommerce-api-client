@@ -7,6 +7,8 @@ import * as redis from "redis";
 import { RedisClientOptions } from "redis";
 import { parseDate } from "../util";
 
+const DEFAULT_TTL = 1; // expire immediately after 1 ms if ttl is not set
+
 export function buildRegionAwareRedisStorage(
     cacheKeyPrefix: string,
     redisClientOptions?: RedisClientOptions
@@ -33,8 +35,8 @@ export function buildRegionAwareRedisStorage(
                     PX:
                         value.data !== undefined &&
                         canStale(value as CachedStorageValue)
-                            ? value.ttl || 0
-                            : undefined,
+                            ? value.ttl || DEFAULT_TTL
+                            : DEFAULT_TTL,
                 }
             );
         },
