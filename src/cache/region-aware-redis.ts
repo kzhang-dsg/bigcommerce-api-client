@@ -1,17 +1,12 @@
-import {
-    buildStorage,
-    CachedStorageValue,
-    canStale,
-} from "axios-cache-interceptor";
+import { buildStorage } from "axios-cache-interceptor";
 import * as redis from "redis";
 import { RedisClientOptions } from "redis";
 import { parseDate } from "../util";
 
-const DEFAULT_TTL = 1; // expire immediately after 1 ms if ttl is not set
-
 export function buildRegionAwareRedisStorage(
     cacheKeyPrefix: string,
-    redisClientOptions?: RedisClientOptions
+    redisClientOptions?: RedisClientOptions,
+    axiosRequestTimeout?: number
 ) {
     const client = redis.createClient(redisClientOptions);
 
@@ -33,10 +28,9 @@ export function buildRegionAwareRedisStorage(
                 JSON.stringify(value),
                 {
                     PX:
-                        value.data !== undefined &&
-                        canStale(value as CachedStorageValue)
-                            ? value.ttl || DEFAULT_TTL
-                            : DEFAULT_TTL,
+                        value.data === undefined
+                            ? axiosRequestTimeout
+                            : value.ttl || axiosRequestTimeout,
                 }
             );
         },

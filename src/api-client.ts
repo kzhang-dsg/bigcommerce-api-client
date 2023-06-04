@@ -33,7 +33,8 @@ export class ApiClient {
         if (this.config.cache?.type === CacheType.REDIS) {
             storage = buildRegionAwareRedisStorage(
                 this.config.cache?.cacheKeyPrefix || "axios",
-                this.config.cache?.redisClientOptions
+                this.config.cache?.redisClientOptions,
+                this.config.timeout
             );
         } else {
             storage = buildRegionAwareMemoryStorage(
