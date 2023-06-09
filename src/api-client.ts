@@ -337,7 +337,7 @@ export class ApiClient {
         url: string = "",
         config?: CacheRequestConfig<D>
     ): CacheRequestConfig<D> {
-        const region = getCacheRegion(url);
+        const region = getCacheRegion(this.config.storeHash, url);
 
         // remove the entire region of cached data
         return Object.assign(

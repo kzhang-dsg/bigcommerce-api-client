@@ -13,7 +13,8 @@ export const regionAwareKeyGenerator = buildKeyGenerator(
     ({ baseURL = "", url = "", method = "get", params, data }) => {
         baseURL && (baseURL = baseURL.replace(SLASHES_REGEX, ""));
         url && (url = url.replace(SLASHES_REGEX, ""));
-        const region = getCacheRegion(url);
+        const storeHash = baseURL.substring(baseURL.lastIndexOf("/") + 1);
+        const region = getCacheRegion(storeHash, url);
 
         // prefix the region to every cache key, so the keys in the same region can be invalidated together
         return `${region}:${baseURL}${baseURL && url ? "/" : ""}${url}${

@@ -49,14 +49,13 @@ export function toQueryString(
     return queryParams.join("&");
 }
 
-export function getCacheRegion(url = "") {
-    url && (url = url.replace(/^https?:\/\//, ""));
+export function getCacheRegion(storeHash = "", url = "") {
+    url && (url = url.replace(/^https?:\/\/|^\//, ""));
     const urlParts = url.split("/");
-    const storeHash = urlParts[1];
-    let modelName = urlParts[3];
+    let modelName = urlParts[1];
 
     if (modelName === "catalog") {
-        let subModelName = urlParts[4];
+        let subModelName = urlParts[2];
         switch (subModelName) {
             case "tree":
                 subModelName = "categories";
@@ -74,7 +73,7 @@ export function getCacheRegion(url = "") {
         modelName === "payments" ||
         modelName === "marketing"
     ) {
-        let subModelName = urlParts[4];
+        let subModelName = urlParts[2];
 
         if (subModelName) {
             modelName = `${modelName}:${subModelName}`;
@@ -84,7 +83,7 @@ export function getCacheRegion(url = "") {
             modelName === "settings" &&
             (subModelName === "store" || subModelName === "storefront")
         ) {
-            let subModelName = urlParts[5];
+            let subModelName = urlParts[3];
             modelName = `${modelName}:${subModelName}`;
         }
     }
