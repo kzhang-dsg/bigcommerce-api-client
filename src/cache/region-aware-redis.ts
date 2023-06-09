@@ -41,9 +41,11 @@ export function buildRegionAwareRedisStorage(
             }
 
             if (key.endsWith("*")) {
-                const keys = await client.keys(`${cacheKeyPrefix}:${key}`);
-                if (keys.length) {
-                    client.del(keys);
+                for await (const k of client.scanIterator({
+                    MATCH: `${cacheKeyPrefix}:${key}`,
+                    COUNT: 100,
+                })) {
+                    await client.del(k);
                 }
             } else {
                 await client.del(`${cacheKeyPrefix}:${key}`);
