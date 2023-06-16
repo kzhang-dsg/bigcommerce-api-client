@@ -1,22 +1,22 @@
 import { ApiClient } from "../api-client";
 import {
-    UpdateProductsQueryParams,
-    DeleteProductsQueryParams,
-    ProductsQueryParams,
-} from "../model/query/catalog";
-import {
     Data,
     DateFormat,
     IncludeQueryParams,
     PaginatedData,
 } from "../model/common";
-import { appendQueryString } from "../util";
 import {
     product_Full,
     product_Post,
     product_Put,
     product_Put_Collection,
 } from "../model/generated/catalog.v3";
+import {
+    DeleteProductsQueryParams,
+    ProductsQueryParams,
+    UpdateProductsQueryParams,
+} from "../model/query/catalog";
+import { appendQueryString } from "../util";
 
 const MAX_BATCH_SIZE = 10;
 
@@ -60,7 +60,7 @@ export class ProductApi {
         return result;
     }
 
-    async createProduct<T extends product_Post, R extends product_Full>(
+    async createProduct<T extends product_Post, R extends product_Post>(
         product: T
     ): Promise<Data<R>> {
         const response = await this.apiClient.post(

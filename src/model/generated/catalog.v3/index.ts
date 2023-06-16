@@ -90,7 +90,7 @@ export type { PartialSuccessNoContentResponse } from './models/PartialSuccessNoC
 export type { PartialSuccessResponse } from './models/PartialSuccessResponse';
 export { product_Base } from './models/product_Base';
 export type { product_Full } from './models/product_Full';
-export type { product_Post } from './models/product_Post';
+export { product_Post } from './models/product_Post';
 export type { product_Put } from './models/product_Put';
 export type { product_Put_Collection } from './models/product_Put_Collection';
 export type { ProductCategoryAssignment } from './models/ProductCategoryAssignment';

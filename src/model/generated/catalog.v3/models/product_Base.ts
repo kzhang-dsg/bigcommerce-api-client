@@ -19,12 +19,12 @@ export type product_Base = {
      * A unique product name.
      *
      */
-    name: string;
+    name?: string;
     /**
      * The product type. One of: `physical` - a physical stock unit, `digital` - a digital download.
      *
      */
-    type: product_Base.type;
+    type?: product_Base.type;
     /**
      * A unique user-defined product code/stock keeping unit (SKU).
      *
@@ -39,7 +39,7 @@ export type product_Base = {
      * Weight of the product, which can be used when calculating shipping costs. This is based on the unit set on the store
      *
      */
-    weight: number;
+    weight?: number;
     /**
      * Width of the product, which can be used when calculating shipping costs.
      *
@@ -59,7 +59,7 @@ export type product_Base = {
      * The price of the product. The price should include or exclude tax, based on the store settings.
      *
      */
-    price: number;
+    price?: number;
     /**
      * The cost price of the product. Stored for reference only; it is not used or displayed anywhere on the store.
      *
