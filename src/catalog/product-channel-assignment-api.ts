@@ -5,7 +5,7 @@ import { appendQueryString } from "../util";
 import { ProductChannelAssignment } from "../model/generated/catalog.v3";
 
 export class ProductChannelAssignmentApi {
-    constructor(private readonly apiClient: ApiClient) {}
+    constructor(private readonly apiClient: ApiClient) { }
 
     async getAllChannelAssignments<
         Params extends ProductChannelAssignmentsQueryParams,
@@ -29,7 +29,7 @@ export class ProductChannelAssignmentApi {
     async createChannelAssignments<T extends ProductChannelAssignment>(
         channelAssignments: T[]
     ): Promise<void> {
-        await this.apiClient.post(
+        await this.apiClient.put(
             `/v3/catalog/products/channel-assignments`,
             channelAssignments
         );
