@@ -21,7 +21,7 @@ export class ProductVariantOptionValueApi {
     ): Promise<PaginatedData<T>> {
         const response = await this.apiClient.get(
             appendQueryString(
-                `/v3/catalog/products/${productId}/option/${optionId}/values`,
+                `/v3/catalog/products/${productId}/options/${optionId}/values`,
                 params
             ),
             page,
@@ -35,7 +35,7 @@ export class ProductVariantOptionValueApi {
         R extends productOptionOptionValue_Full
     >(productId: number, optionId: number, optionValue: T): Promise<Data<R>> {
         const response = await this.apiClient.post(
-            `/v3/catalog/products/${productId}/option/${optionId}/values`,
+            `/v3/catalog/products/${productId}/options/${optionId}/values`,
             optionValue
         );
         return response.data;
@@ -52,7 +52,7 @@ export class ProductVariantOptionValueApi {
     ): Promise<Data<T>> {
         const response = await this.apiClient.get(
             appendQueryString(
-                `/v3/catalog/products/${productId}/option/${optionId}/values/${valueId}`,
+                `/v3/catalog/products/${productId}/options/${optionId}/values/${valueId}`,
                 params
             )
         );
@@ -66,7 +66,7 @@ export class ProductVariantOptionValueApi {
         optionValue: T
     ): Promise<Data<T>> {
         const response = await this.apiClient.put(
-            `/v3/catalog/products/${productId}/option/${optionId}/values/${optionValueId}`,
+            `/v3/catalog/products/${productId}/options/${optionId}/values/${optionValueId}`,
             optionValue
         );
         return response.data;
@@ -78,7 +78,7 @@ export class ProductVariantOptionValueApi {
         valueId: number
     ): Promise<void> {
         await this.apiClient.delete(
-            `/v3/catalog/products/${productId}/option/${optionId}/values/${valueId}`
+            `/v3/catalog/products/${productId}/options/${optionId}/values/${valueId}`
         );
     }
 }
