@@ -29,7 +29,7 @@ export class ProductCategoryAssignmentApi {
     async createCategoryAssignments<T extends ProductCategoryAssignment>(
         categoryAssignments: T[]
     ): Promise<void> {
-        await this.apiClient.post(
+        await this.apiClient.put(
             `/v3/catalog/products/category-assignments`,
             categoryAssignments
         );
