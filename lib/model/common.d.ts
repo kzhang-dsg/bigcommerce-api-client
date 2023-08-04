@@ -17,6 +17,7 @@ export declare enum OrderStatus {
     PARTIALLY_REFUNDED = 14
 }
 export declare enum Limit {
+    NONE = -2,
     ALL = -1,
     MAX_LIMIT = 250,
     BATCH_MAX_LIMIT = 10

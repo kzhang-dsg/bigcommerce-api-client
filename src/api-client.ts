@@ -160,7 +160,7 @@ export class ApiClient {
                 "get",
                 appendQueryString(url, {
                     page,
-                    limit,
+                    limit: limit === Limit.NONE ? undefined : limit,
                 }),
                 undefined,
                 config

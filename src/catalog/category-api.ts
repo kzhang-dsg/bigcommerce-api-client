@@ -1,11 +1,21 @@
 import { ApiClient } from "../api-client";
+import {
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
+import {
+    Category,
+    category_Full,
+    category_Post,
+    category_Put,
+} from "../model/generated/catalog.v3";
 import { CategoriesQueryParams } from "../model/query/catalog";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
-import { Category, category_Post, category_Put, category_Full } from "../model/generated/catalog.v3";
 
 export class CategoryApi {
-    constructor(private readonly apiClient: ApiClient) { }
+    constructor(private readonly apiClient: ApiClient) {}
 
     async getAllCategories<
         Params extends CategoriesQueryParams,
@@ -23,7 +33,9 @@ export class CategoryApi {
         return response.data;
     }
 
-    async createCategory<T extends category_Post, R extends category_Full>(category: T): Promise<Data<R>> {
+    async createCategory<T extends category_Post, R extends category_Full>(
+        category: T
+    ): Promise<Data<R>> {
         const response = await this.apiClient.post(
             "/v3/catalog/categories",
             category
@@ -39,17 +51,22 @@ export class CategoryApi {
         );
     }
 
-    async getCategory<Params extends FieldAwareQueryParams, T extends category_Full>(
-        categoryId: number,
-        params?: Params
-    ): Promise<Data<T>> {
+    async getCategory<
+        Params extends FieldAwareQueryParams,
+        T extends category_Full
+    >(categoryId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
-            appendQueryString(`/v3/catalog/categories/${categoryId}`, params)
+            appendQueryString(`/v3/catalog/categories/${categoryId}`, params),
+            undefined,
+            Limit.NONE // Get Category APi does not allow any extra parameters
         );
         return response.data;
     }
 
-    async updateCategory<T extends category_Put, R extends category_Full>(categoryId: number, category: T): Promise<Data<R>> {
+    async updateCategory<T extends category_Put, R extends category_Full>(
+        categoryId: number,
+        category: T
+    ): Promise<Data<R>> {
         const response = await this.apiClient.put(
             `/v3/catalog/categories/${categoryId}`,
             category
