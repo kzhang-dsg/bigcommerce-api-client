@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { taxClass_Full } from "../model/generated/tax_classes.v2";
 
 export class TaxClassesApi {
@@ -11,7 +12,7 @@ export class TaxClassesApi {
         const response = await this.apiClient.get(
             "/v2/tax_classes",
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

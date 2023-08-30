@@ -63,7 +63,7 @@ export class PriceListsApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/pricelists/${priceListId}`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
