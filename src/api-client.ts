@@ -81,7 +81,7 @@ export class ApiClient {
                 maxLimit = Limit.BATCH_MAX_LIMIT;
             }
         }
-        if (limit === Limit.ALL || (limit || 0) > maxLimit) {
+        if (limit && (limit === Limit.ALL || limit > maxLimit)) {
             // fetch data by iterating thru the pagination
             page = page || 1;
             let response = await this.callWithRetries(
@@ -155,12 +155,11 @@ export class ApiClient {
 
             return Promise.resolve(response) as R;
         } else {
-            limit = limit || this.config.defaultLimit;
             return await this.callWithRetries(
                 "get",
                 appendQueryString(url, {
                     page,
-                    limit: limit === Limit.NONE ? undefined : limit,
+                    limit: limit === Limit.DEFAULT ? this.config.defaultLimit : limit,
                 }),
                 undefined,
                 config

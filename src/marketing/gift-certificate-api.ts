@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import {
     giftCertificate_Full,
     giftCertificate_Post,
@@ -17,7 +18,7 @@ export class GiftCertificateApi {
         const response = await this.apiClient.get(
             appendQueryString("/v2/giftCertificates", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

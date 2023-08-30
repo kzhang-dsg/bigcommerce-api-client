@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
-import { ProductChannelAssignmentsQueryParams } from "../model/query/catalog";
 import { PaginatedData } from "../model/common";
 import { ProductChannelAssignment } from "../model/generated/catalog.v3";
+import { ProductChannelAssignmentsQueryParams } from "../model/query/catalog";
 export declare class ProductChannelAssignmentApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { bulkPricingRuleFull_Response, bulkPricingRule_Full } from "../model/generated/catalog.v3";
+import { bulkPricingRule_Full, bulkPricingRuleFull_Response } from "../model/generated/catalog.v3";
 export declare class ProductBuckPricingRuleApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

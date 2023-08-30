@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { orderMessages } from "../model/generated/orders.v2.oas2";
 import { OrderMessagesQueryParams } from "../model/query/order";
 import { appendQueryString } from "../util";
@@ -18,7 +19,7 @@ export class OrderMessageApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v2/orders/${orderId}/messages`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

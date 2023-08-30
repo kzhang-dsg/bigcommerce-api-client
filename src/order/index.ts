@@ -1,10 +1,10 @@
 import { ApiClient } from "../api-client";
-import { OrderStatus } from "../model/common";
+import { Limit, OrderStatus } from "../model/common";
 import {
-    ordersCount_Full,
     order_Post,
     order_Put,
     order_Resp,
+    ordersCount_Full,
 } from "../model/generated/orders.v2.oas2";
 import { OrdersQueryParams } from "../model/query/order";
 import { appendQueryString } from "../util";
@@ -43,7 +43,7 @@ export class OrderApi {
         const response = await this.apiClient.get(
             appendQueryString("/v2/orders", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

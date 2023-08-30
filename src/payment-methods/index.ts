@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { payment_Base } from "../model/generated/payment_methods.v2";
 
 export class PaymentMethodsApi {
@@ -11,7 +12,7 @@ export class PaymentMethodsApi {
         const response = await this.apiClient.get(
             "/v2/payments/methods",
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, IdInQueryParams } from "../model/common";
+import { IdInQueryParams, PaginatedData } from "../model/common";
 import { Property, PropertyPOST, PropertyPUT } from "../model/generated/tax_properties.v3";
 import { ProductTaxPropertyApi } from "./product-tax-property-api";
 export declare class TaxPropertiesApi {

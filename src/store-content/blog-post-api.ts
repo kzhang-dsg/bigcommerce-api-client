@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
+import { Count, Limit } from "../model/common";
 import {
     blogPost_Base_Post,
     blogPost_Full,
@@ -17,7 +17,7 @@ export class BlogPostApi {
         const response = await this.apiClient.get(
             appendQueryString("/v2/blog/posts", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

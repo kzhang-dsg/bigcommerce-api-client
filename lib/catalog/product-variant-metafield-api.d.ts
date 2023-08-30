@@ -1,8 +1,8 @@
 import { ApiClient } from "../api-client";
-import { GetAllMetafieldsQueryParams } from "../model/query/metafield";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { metafield_Full } from "../model/generated/catalog.v3";
 import { metafield_Post, metafield_Put } from "../model/generated/channels.v3";
+import { GetAllMetafieldsQueryParams } from "../model/query/metafield";
 export declare class ProductVariantMetafieldApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

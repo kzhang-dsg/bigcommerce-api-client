@@ -1,11 +1,11 @@
 import { ApiClient } from "../api-client";
-import { ProductChannelAssignmentsQueryParams } from "../model/query/catalog";
-import { PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
+import { Limit, PaginatedData } from "../model/common";
 import { ProductChannelAssignment } from "../model/generated/catalog.v3";
+import { ProductChannelAssignmentsQueryParams } from "../model/query/catalog";
+import { appendQueryString } from "../util";
 
 export class ProductChannelAssignmentApi {
-    constructor(private readonly apiClient: ApiClient) { }
+    constructor(private readonly apiClient: ApiClient) {}
 
     async getAllChannelAssignments<
         Params extends ProductChannelAssignmentsQueryParams,
@@ -21,7 +21,7 @@ export class ProductChannelAssignmentApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

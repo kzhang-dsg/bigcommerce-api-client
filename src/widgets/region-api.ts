@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import { themeRegion } from "../model/generated/widgets.v3";
 
 export class RegionApi {
@@ -13,7 +13,7 @@ export class RegionApi {
         const response = await this.apiClient.get(
             `/v3/content/regions?template_file=${templateFile}`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

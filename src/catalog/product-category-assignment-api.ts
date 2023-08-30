@@ -1,8 +1,8 @@
 import { ApiClient } from "../api-client";
-import { ProductCategoryAssignmentsQueryParams } from "../model/query/catalog";
-import { PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
+import { Limit, PaginatedData } from "../model/common";
 import { ProductCategoryAssignment } from "../model/generated/catalog.v3";
+import { ProductCategoryAssignmentsQueryParams } from "../model/query/catalog";
+import { appendQueryString } from "../util";
 
 export class ProductCategoryAssignmentApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -21,7 +21,7 @@ export class ProductCategoryAssignmentApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

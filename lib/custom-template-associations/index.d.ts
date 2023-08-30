@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
 import { PaginatedData } from "../model/common";
 import { CustomTemplateAssociation, CustomTemplateAssociationUpsert } from "../model/generated/custom-template-associations.v3";
-import { DeleteCustomTemplateAssociationsQueryParams, CustomTemplateAssociationsQueryParams } from "../model/query/custom-template-association";
+import { CustomTemplateAssociationsQueryParams, DeleteCustomTemplateAssociationsQueryParams } from "../model/query/custom-template-association";
 export declare class CustomTemplateAssociationsApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

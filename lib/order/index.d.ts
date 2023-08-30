@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { OrderStatus } from "../model/common";
-import { ordersCount_Full, order_Post, order_Put, order_Resp } from "../model/generated/orders.v2.oas2";
+import { order_Post, order_Put, order_Resp, ordersCount_Full } from "../model/generated/orders.v2.oas2";
 import { OrdersQueryParams } from "../model/query/order";
 import { OrderConsignmentApi } from "./order-consignments-api";
 import { OrderCouponApi } from "./order-coupon-api";

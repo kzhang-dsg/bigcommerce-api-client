@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, Data } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     placement_Full,
     placement_Post,
@@ -32,7 +32,7 @@ export class PlacementApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/content/placements", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

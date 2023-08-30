@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, Data } from "../model/common";
+import { Data, PaginatedData } from "../model/common";
 import { placement_Full, placement_Post, placement_Put } from "../model/generated/widgets.v3";
 import { PlacementsQueryParams } from "../model/query/widget";
 export declare class PlacementApi {

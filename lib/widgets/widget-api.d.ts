@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, Data } from "../model/common";
+import { Data, PaginatedData } from "../model/common";
 import { widget_Full, widget_Post, widget_Put } from "../model/generated/widgets.v3";
 import { WidgetsQueryParams } from "../model/query/widget";
 export declare class WidgetApi {

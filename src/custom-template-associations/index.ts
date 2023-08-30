@@ -1,12 +1,12 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import {
     CustomTemplateAssociation,
     CustomTemplateAssociationUpsert,
 } from "../model/generated/custom-template-associations.v3";
 import {
-    DeleteCustomTemplateAssociationsQueryParams,
     CustomTemplateAssociationsQueryParams,
+    DeleteCustomTemplateAssociationsQueryParams,
 } from "../model/query/custom-template-association";
 import { appendQueryString } from "../util";
 
@@ -27,7 +27,7 @@ export class CustomTemplateAssociationsApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,6 +1,5 @@
-import { threadId } from "worker_threads";
 import { ApiClient } from "../api-client";
-import { PaginatedData, IdInQueryParams } from "../model/common";
+import { IdInQueryParams, Limit, PaginatedData } from "../model/common";
 import {
     Property,
     PropertyPOST,
@@ -24,7 +23,7 @@ export class TaxPropertiesApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/tax/properties", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { IdInQueryParams, PaginatedData } from "../model/common";
+import { IdInQueryParams, Limit, PaginatedData } from "../model/common";
 import {
     Tax_Rate,
     Tax_RatePOST,
@@ -21,7 +21,7 @@ export class TaxRateApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/tax/rates", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     Refund,
     RefundQuote_Full,
@@ -58,7 +58,7 @@ export class PaymentActionApi {
         const response = await this.apiClient.get(
             `/v3/orders/${orderId}/payment_actions/refunds`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
@@ -97,7 +97,7 @@ export class PaymentActionApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/orders/payment_actions/refunds`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

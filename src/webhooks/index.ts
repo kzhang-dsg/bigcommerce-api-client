@@ -1,6 +1,10 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
-import { webhook_Put, webhook_Base, webhook_Full } from "../model/generated/webhooks.v3";
+import { Data, Limit, PaginatedData } from "../model/common";
+import {
+    webhook_Base,
+    webhook_Full,
+    webhook_Put,
+} from "../model/generated/webhooks.v3";
 import { WebhooksQueryParams } from "../model/query/webhook";
 import { appendQueryString } from "../util";
 import { WebhookAdminApi } from "./webhook-admin-api";
@@ -30,7 +34,7 @@ export class WebhooksApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/hooks", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

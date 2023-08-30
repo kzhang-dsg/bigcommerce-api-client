@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { ChannelIdQueryParams, PaginatedData } from "../model/common";
+import { ChannelIdQueryParams, Limit, PaginatedData } from "../model/common";
 import {
     AnalyticsProvider,
     AnalyticsProviderPut,
@@ -20,7 +20,7 @@ export class AnalyticsSettingsApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/settings/analytics`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

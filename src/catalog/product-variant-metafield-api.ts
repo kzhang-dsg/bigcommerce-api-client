@@ -1,9 +1,14 @@
 import { ApiClient } from "../api-client";
-import { GetAllMetafieldsQueryParams } from "../model/query/metafield";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
+import {
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import { metafield_Full } from "../model/generated/catalog.v3";
 import { metafield_Post, metafield_Put } from "../model/generated/channels.v3";
+import { GetAllMetafieldsQueryParams } from "../model/query/metafield";
+import { appendQueryString } from "../util";
 
 export class ProductVariantMetafieldApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -24,7 +29,7 @@ export class ProductVariantMetafieldApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

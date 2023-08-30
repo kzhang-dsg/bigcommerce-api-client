@@ -3,6 +3,7 @@ import {
     Data,
     IdInQueryParams,
     IncludeQueryParams,
+    Limit,
     PaginatedData,
 } from "../model/common";
 import {
@@ -41,7 +42,7 @@ export class PagesApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/content/pages", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

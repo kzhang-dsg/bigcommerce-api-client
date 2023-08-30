@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, Data } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     widget_Full,
     widget_Post,
@@ -32,7 +32,7 @@ export class WidgetApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/content/widgets", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

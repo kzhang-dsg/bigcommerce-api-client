@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
-import { ProductReviewsQueryParams } from "../model/query/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import { productReview_Full, productReview_Post, productReview_Put } from "../model/generated/catalog.v3";
+import { ProductReviewsQueryParams } from "../model/query/catalog";
 export declare class ProductReviewApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import { RedirectRead, RedirectUpsert } from "../model/generated/redirects.v3";
 import {
     DeleteRedirectsQueryParams,
@@ -21,7 +21,7 @@ export class RedirectsApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/storefront/redirects", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

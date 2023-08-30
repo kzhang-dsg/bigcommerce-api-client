@@ -19,8 +19,8 @@ export enum OrderStatus {
 }
 
 export enum Limit {
-    NONE = -2,
     ALL = -1,
+    DEFAULT = 0,
     MAX_LIMIT = 250,
     BATCH_MAX_LIMIT = 10,
 }

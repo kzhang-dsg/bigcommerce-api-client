@@ -1,7 +1,7 @@
 /// <reference types="node" />
+import { ReadStream } from "fs";
 import { ApiClient } from "../api-client";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { ReadStream } from "fs";
 import { productImage_Full, productImage_Post, productImage_Put } from "../model/generated/catalog.v3";
 export declare class ProductImageApi {
     private readonly apiClient;

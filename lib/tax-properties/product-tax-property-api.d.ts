@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, IdInQueryParams } from "../model/common";
+import { IdInQueryParams, PaginatedData } from "../model/common";
 import { ProductTaxProperty } from "../model/generated/tax_properties.v3";
 export declare class ProductTaxPropertyApi {
     private readonly apiClient;

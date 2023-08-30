@@ -1,12 +1,17 @@
 import { ApiClient } from "../api-client";
-import { ProductReviewsQueryParams } from "../model/query/catalog";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
+import {
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import {
     productReview_Full,
     productReview_Post,
     productReview_Put,
 } from "../model/generated/catalog.v3";
+import { ProductReviewsQueryParams } from "../model/query/catalog";
+import { appendQueryString } from "../util";
 
 export class ProductReviewApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -26,7 +31,7 @@ export class ProductReviewApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import { site_Full, site_Post, site_Put } from "../model/generated/channels.v3";
 import { SitesQueryParams } from "../model/query/site";
 import { appendQueryString } from "../util";
@@ -28,7 +28,7 @@ export class SitesApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/sites", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

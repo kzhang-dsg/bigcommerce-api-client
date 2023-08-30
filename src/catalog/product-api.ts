@@ -3,6 +3,7 @@ import {
     Data,
     DateFormat,
     IncludeQueryParams,
+    Limit,
     PaginatedData,
 } from "../model/common";
 import {
@@ -38,7 +39,7 @@ export class ProductApi {
                 DateFormat.UNIX_TIMESTAMP
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

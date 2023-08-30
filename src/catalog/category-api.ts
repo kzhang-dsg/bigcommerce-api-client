@@ -28,7 +28,7 @@ export class CategoryApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/catalog/categories", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
@@ -57,8 +57,7 @@ export class CategoryApi {
     >(categoryId: number, params?: Params): Promise<Data<T>> {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/catalog/categories/${categoryId}`, params),
-            undefined,
-            Limit.NONE // Get Category APi does not allow any extra parameters
+            undefined
         );
         return response.data;
     }

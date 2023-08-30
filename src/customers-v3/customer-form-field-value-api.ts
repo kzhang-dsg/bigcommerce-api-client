@@ -1,7 +1,6 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import { formFieldValue_Full } from "../model/generated/customers.v3";
-
 import { CustomersV3FormFieldValuesQueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 
@@ -21,7 +20,7 @@ export class CustomerFormFieldValueApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/customers/form-field-values", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

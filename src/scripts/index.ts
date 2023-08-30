@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     script_Full,
     script_Post,
@@ -32,7 +32,7 @@ export class ScriptsApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/content/scripts", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

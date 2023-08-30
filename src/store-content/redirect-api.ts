@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
+import { Count, Limit } from "../model/common";
 import { redirect } from "../model/generated/store_content.v2";
 
 export class RedirectApi {
@@ -9,7 +9,11 @@ export class RedirectApi {
         page?: number,
         limit?: number
     ): Promise<T[]> {
-        const response = await this.apiClient.get("/v2/redirects", page, limit);
+        const response = await this.apiClient.get(
+            "/v2/redirects",
+            page,
+            limit || Limit.DEFAULT
+        );
         return response.data;
     }
 

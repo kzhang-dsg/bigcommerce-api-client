@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import { HistoryEvent } from "../model/generated/webhooks.v3";
 import { WebhookEventsQueryParams } from "../model/query/webhook";
 import { appendQueryString } from "../util";
@@ -18,7 +18,7 @@ export class WebhookEventApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/hooks/events", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

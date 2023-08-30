@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { orderCoupons_Base } from "../model/generated/orders.v2.oas2";
 
 export class OrderCouponApi {
@@ -12,7 +13,7 @@ export class OrderCouponApi {
         const response = await this.apiClient.get(
             `/v2/orders/${orderId}/coupons`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

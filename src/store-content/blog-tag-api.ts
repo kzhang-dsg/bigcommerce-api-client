@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { blogTags } from "../model/generated/store_content.v2";
 
 export class BlogTagApi {
@@ -8,7 +9,11 @@ export class BlogTagApi {
         page?: number,
         limit?: number
     ): Promise<T[]> {
-        const response = await this.apiClient.get("/v2/blog/tags", page, limit);
+        const response = await this.apiClient.get(
+            "/v2/blog/tags",
+            page,
+            limit || Limit.DEFAULT
+        );
         return response.data;
     }
 }

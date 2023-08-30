@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import {
     customsInformation,
     customsInformation_request,
@@ -26,7 +26,7 @@ export class CustomsInformationApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

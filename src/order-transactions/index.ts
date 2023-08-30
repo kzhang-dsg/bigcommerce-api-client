@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { MetafieldApi } from "../metafield";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import { Transaction } from "../model/generated/orders.v3";
 import { OrderSettingsApi } from "./order-settings-api";
 import { PaymentActionApi } from "./payment-action-api";
@@ -20,7 +20,7 @@ export class OrderTransactionsApi {
         const response = await this.apiClient.get(
             `/v3/orders/${orderId}/transactions`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

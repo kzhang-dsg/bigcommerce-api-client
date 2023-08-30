@@ -1,8 +1,13 @@
 import { ApiClient } from "../api-client";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
 import {
-    bulkPricingRuleFull_Response,
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
+import {
     bulkPricingRule_Full,
+    bulkPricingRuleFull_Response,
 } from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
@@ -24,7 +29,7 @@ export class ProductBuckPricingRuleApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

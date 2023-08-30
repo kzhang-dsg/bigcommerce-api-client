@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data } from "../model/common";
+import { Data, Limit } from "../model/common";
 import { CustomTemplate } from "../model/generated/themes.v3";
 
 export class ThemeCustomTemplateApi {
@@ -13,7 +13,7 @@ export class ThemeCustomTemplateApi {
         const response = await this.apiClient.get(
             `/v3/themes/custom-templates/${versionUuid}`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

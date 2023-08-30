@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
+import { Count, Limit } from "../model/common";
 import {
     customerAddress_Base,
     customerAddress_Full,
@@ -16,7 +16,7 @@ export class CustomerAddressApi {
         const response = await this.apiClient.get(
             `/v2/customers/${customerId}/addresses`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

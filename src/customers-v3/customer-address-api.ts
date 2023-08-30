@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { IdInQueryParams, PaginatedData } from "../model/common";
+import { IdInQueryParams, Limit, PaginatedData } from "../model/common";
 import {
     address_Full,
     address_Post,
@@ -24,7 +24,7 @@ export class CustomerAddressApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/customers/addresses", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

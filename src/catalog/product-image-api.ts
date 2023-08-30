@@ -1,13 +1,19 @@
-import { ApiClient } from "../api-client";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
 import FormData from "form-data";
 import { ReadStream } from "fs";
+
+import { ApiClient } from "../api-client";
+import {
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import {
     productImage_Full,
     productImage_Post,
     productImage_Put,
 } from "../model/generated/catalog.v3";
+import { appendQueryString } from "../util";
 
 export class ProductImageApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -27,7 +33,7 @@ export class ProductImageApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

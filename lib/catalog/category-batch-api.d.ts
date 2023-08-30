@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
-import { CategoriesQueryParams, DeleteCategoriesBatchQueryParams } from "../model/query/catalog";
 import { PaginatedData } from "../model/common";
 import { Category, CreateCategories, UpdateCategories } from "../model/generated/catalog.v3";
+import { CategoriesQueryParams, DeleteCategoriesBatchQueryParams } from "../model/query/catalog";
 export declare class CategoryBatchApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

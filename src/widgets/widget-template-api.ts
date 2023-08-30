@@ -1,11 +1,10 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, Data } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
-    WidgetTemplatePreview,
-    WidgetTemplatePreviewResponse,
     widgetTemplate_Full,
     widgetTemplate_Post,
     widgetTemplate_Put,
+    WidgetTemplatePreviewResponse,
 } from "../model/generated/widgets.v3";
 import { WidgetTemplatesQueryParams } from "../model/query/widget";
 import { appendQueryString } from "../util";
@@ -35,7 +34,7 @@ export class WidgetTemplateApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/content/widget-templates", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

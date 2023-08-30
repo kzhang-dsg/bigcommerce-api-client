@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     CurrencyNotRequiredWithChannelId,
     CurrencyRequiredWithoutChannelId,
@@ -17,7 +17,7 @@ export class ChannelCurrencyAssignmentApi {
         const response = await this.apiClient.get(
             "/v3/channels/currency-assignments",
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

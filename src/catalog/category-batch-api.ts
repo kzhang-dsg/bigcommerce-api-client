@@ -1,15 +1,15 @@
 import { ApiClient } from "../api-client";
-import {
-    CategoriesQueryParams,
-    DeleteCategoriesBatchQueryParams,
-} from "../model/query/catalog";
-import { PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
+import { Limit, PaginatedData } from "../model/common";
 import {
     Category,
     CreateCategories,
     UpdateCategories,
 } from "../model/generated/catalog.v3";
+import {
+    CategoriesQueryParams,
+    DeleteCategoriesBatchQueryParams,
+} from "../model/query/catalog";
+import { appendQueryString } from "../util";
 
 export class CategoryBatchApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -25,7 +25,7 @@ export class CategoryBatchApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/catalog/trees/categories", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

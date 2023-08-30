@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
+import { Count, Limit } from "../model/common";
 import {
     banner_Base,
     banner_Full,
@@ -18,7 +18,7 @@ export class BannerApi {
         const response = await this.apiClient.get(
             appendQueryString("/v2/banners", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

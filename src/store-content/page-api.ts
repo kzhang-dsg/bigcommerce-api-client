@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { page_Base, page_Full } from "../model/generated/store_content.v2";
 
 export class PageApi {
@@ -8,7 +9,11 @@ export class PageApi {
         page?: number,
         limit?: number
     ): Promise<T[]> {
-        const response = await this.apiClient.get("/v2/pages", page, limit);
+        const response = await this.apiClient.get(
+            "/v2/pages",
+            page,
+            limit || Limit.DEFAULT
+        );
         return response.data;
     }
 

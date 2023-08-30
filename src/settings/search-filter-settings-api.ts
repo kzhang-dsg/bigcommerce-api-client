@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData } from "../model/common";
+import { Limit, PaginatedData } from "../model/common";
 import {
     AvailableFilter,
     ConfiguredFilter,
@@ -18,7 +18,7 @@ export class SearchFilterSettingsApi {
         const response = await this.apiClient.get(
             "/v3/settings/search/filters",
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
@@ -44,7 +44,7 @@ export class SearchFilterSettingsApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/settings/search/filters/available", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
@@ -60,7 +60,7 @@ export class SearchFilterSettingsApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/settings/search/filters/contexts", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

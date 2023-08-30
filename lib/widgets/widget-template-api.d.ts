@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, Data } from "../model/common";
-import { WidgetTemplatePreviewResponse, widgetTemplate_Full, widgetTemplate_Post, widgetTemplate_Put } from "../model/generated/widgets.v3";
+import { Data, PaginatedData } from "../model/common";
+import { widgetTemplate_Full, widgetTemplate_Post, widgetTemplate_Put, WidgetTemplatePreviewResponse } from "../model/generated/widgets.v3";
 import { WidgetTemplatesQueryParams } from "../model/query/widget";
 export declare class WidgetTemplateApi {
     private readonly apiClient;

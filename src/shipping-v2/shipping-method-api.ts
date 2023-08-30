@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import {
     shippingMethod_Base,
     shippingMethod_Full,
@@ -15,7 +16,7 @@ export class ShippingMethodApi {
         const response = await this.apiClient.get(
             `/v2/shipping/zones/${zoneId}/methods`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

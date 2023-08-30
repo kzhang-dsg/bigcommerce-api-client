@@ -1,8 +1,8 @@
 import { ApiClient } from "../api-client";
-import { VariantsQueryParams } from "../model/query/catalog";
-import { PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
+import { Limit, PaginatedData } from "../model/common";
 import { productVariant_Full } from "../model/generated/catalog.v3";
+import { VariantsQueryParams } from "../model/query/catalog";
+import { appendQueryString } from "../util";
 
 const MAX_BATCH_SIZE = 50;
 export class VariantApi {
@@ -19,7 +19,7 @@ export class VariantApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/catalog/variants`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { orderProducts } from "../model/generated/orders.v2.oas2";
 
 export class OrderProductApi {
@@ -12,7 +13,7 @@ export class OrderProductApi {
         const response = await this.apiClient.get(
             `/v2/orders/${orderId}/products`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

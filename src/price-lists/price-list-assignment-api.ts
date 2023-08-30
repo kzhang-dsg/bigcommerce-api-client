@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     AssignmentForGetResponse,
     AssignmentForPutRequest,
@@ -29,7 +29,7 @@ export class PriceListAssignmentApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/pricelists/assignments", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
-import { DeleteBrandsQueryParams, BrandsQueryParams } from "../model/query/catalog";
 import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { brand_Post, brand_Put, brand_Full } from "../model/generated/catalog.v3";
+import { brand_Full, brand_Post, brand_Put } from "../model/generated/catalog.v3";
+import { BrandsQueryParams, DeleteBrandsQueryParams } from "../model/query/catalog";
 export declare class BrandApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

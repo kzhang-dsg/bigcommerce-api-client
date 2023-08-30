@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
-import { ProductCategoryAssignmentsQueryParams } from "../model/query/catalog";
 import { PaginatedData } from "../model/common";
 import { ProductCategoryAssignment } from "../model/generated/catalog.v3";
+import { ProductCategoryAssignmentsQueryParams } from "../model/query/catalog";
 export declare class ProductCategoryAssignmentApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

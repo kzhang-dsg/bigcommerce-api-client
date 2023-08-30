@@ -1,5 +1,10 @@
 import { ApiClient } from "../api-client";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import {
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import { complexRule_Base } from "../model/generated/catalog.v3";
 import { appendQueryString } from "../util";
 
@@ -21,7 +26,7 @@ export class ProductComplexRuleApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

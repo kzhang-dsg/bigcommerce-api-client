@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, Data } from "../model/common";
+import { Data, PaginatedData } from "../model/common";
 import { siteRoute_Base, siteRoute_Full } from "../model/generated/sites.v3";
 import { SiteRoutsQueryParams } from "../model/query/site";
 export declare class SiteRouteApi {

@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import {
     ShippingZone,
     ShippingZonePost,
@@ -15,7 +16,7 @@ export class ShippingZoneApi {
         const response = await this.apiClient.get(
             `/v2/shipping/zones`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,7 +1,7 @@
 import { ApiClient } from "../api-client";
-import { CategoryTreesQueryParams, DeleteCategoryTreesQueryParams, GetCategoryTreeQueryParams } from "../model/query/catalog";
 import { Data, PaginatedData } from "../model/common";
 import { CategoryNode, Tree } from "../model/generated/catalog.v3";
+import { CategoryTreesQueryParams, DeleteCategoryTreesQueryParams, GetCategoryTreeQueryParams } from "../model/query/catalog";
 export declare class CategoryTreeApi {
     private readonly apiClient;
     constructor(apiClient: ApiClient);

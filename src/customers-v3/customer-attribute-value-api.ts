@@ -1,10 +1,9 @@
 import { ApiClient } from "../api-client";
-import { IdInQueryParams, PaginatedData } from "../model/common";
+import { IdInQueryParams, Limit, PaginatedData } from "../model/common";
 import {
     attributeValue_Base,
     attributeValue_Full,
 } from "../model/generated/customers.v3";
-
 import { CustomersV3AttributeValuesQueryParams } from "../model/query/customer";
 import { appendQueryString } from "../util";
 
@@ -24,7 +23,7 @@ export class CustomerAttributeValueApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/customers/attribute-values", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

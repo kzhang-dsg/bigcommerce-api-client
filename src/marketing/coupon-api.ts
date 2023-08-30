@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count, IdInQueryParams } from "../model/common";
+import { Count, IdInQueryParams, Limit } from "../model/common";
 import { coupon_Base, coupon_Full } from "../model/generated/marketing.v2";
 import { CouponsQueryParams } from "../model/query/marketing";
 import { appendQueryString } from "../util";
@@ -14,7 +14,7 @@ export class CouponApi {
         const response = await this.apiClient.get(
             appendQueryString("/v2/coupons", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

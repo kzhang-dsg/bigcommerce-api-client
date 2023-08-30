@@ -1,5 +1,10 @@
 import { ApiClient } from "../api-client";
-import { ChannelIdQueryParams, Data, PaginatedData } from "../model/common";
+import {
+    ChannelIdQueryParams,
+    Data,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import {
     EmailTemplate,
     EmailTemplateUpdate,
@@ -20,7 +25,7 @@ export class EmailTemplatesApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/marketing/email-templates", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

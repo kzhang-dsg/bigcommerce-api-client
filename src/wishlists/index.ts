@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     wishlist_Full,
     wishlist_Post,
@@ -25,7 +25,7 @@ export class WishlistsApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/wishlists", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

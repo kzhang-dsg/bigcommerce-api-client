@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import {
     orderCount,
     orderShipment,
@@ -17,7 +18,7 @@ export class OrderShipmentApi {
         const response = await this.apiClient.get(
             `/v2/orders/${orderId}/shipments`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

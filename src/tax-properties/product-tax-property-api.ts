@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { PaginatedData, IdInQueryParams } from "../model/common";
+import { IdInQueryParams, Limit, PaginatedData } from "../model/common";
 import { ProductTaxProperty } from "../model/generated/tax_properties.v3";
 import { appendQueryString } from "../util";
 
@@ -19,7 +19,7 @@ export class ProductTaxPropertyApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/tax/products/properties", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

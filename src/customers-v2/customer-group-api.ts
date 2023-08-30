@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
+import { Count, Limit } from "../model/common";
 import {
     customerGroup_Full,
     customerGroup_Post,
@@ -17,7 +17,7 @@ export class CustomerGroupApi {
         const response = await this.apiClient.get(
             appendQueryString("/v2/customer_groups", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

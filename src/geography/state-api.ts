@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
+import { Count, Limit } from "../model/common";
 import { countriesState_Full } from "../model/generated/geography.v2";
 import { StatesQueryParams } from "../model/query/geography";
 import { appendQueryString } from "../util";
@@ -19,7 +19,7 @@ export class StateApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v2/countries/${countryId}/states`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
@@ -46,7 +46,7 @@ export class StateApi {
         const response = await this.apiClient.get(
             `/v2/countries/states`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import {
     currency_Full,
     currency_Post,
@@ -37,7 +38,7 @@ export class CurrenciesApi {
         const response = await this.apiClient.get(
             "/v2/currencies",
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

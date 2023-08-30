@@ -1,14 +1,20 @@
-import { ApiClient } from "../api-client";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
-import { appendQueryString } from "../util";
-import { ReadStream } from "fs";
 import FormData from "form-data";
+import { ReadStream } from "fs";
+
+import { ApiClient } from "../api-client";
+import {
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import {
     productVariant_Full,
     productVariant_Post,
     productVariant_Put,
     resourceImage_Full,
 } from "../model/generated/catalog.v3";
+import { appendQueryString } from "../util";
 
 export class ProductVariantApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -28,7 +34,7 @@ export class ProductVariantApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,6 +1,11 @@
 import { ApiClient } from "../api-client";
 import { MetafieldApi } from "../metafield";
-import { Data, IncludeQueryParams, PaginatedData } from "../model/common";
+import {
+    Data,
+    IncludeQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import {
     ChannelWithCurrencies,
     ChannelWithoutCurrencies,
@@ -45,7 +50,7 @@ export class ChannelsApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/channels", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

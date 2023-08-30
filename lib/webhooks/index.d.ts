@@ -1,6 +1,6 @@
 import { ApiClient } from "../api-client";
 import { Data, PaginatedData } from "../model/common";
-import { webhook_Put, webhook_Base, webhook_Full } from "../model/generated/webhooks.v3";
+import { webhook_Base, webhook_Full, webhook_Put } from "../model/generated/webhooks.v3";
 import { WebhooksQueryParams } from "../model/query/webhook";
 import { WebhookAdminApi } from "./webhook-admin-api";
 import { WebhookEventApi } from "./webhook-event-api";

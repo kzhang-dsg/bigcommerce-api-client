@@ -1,4 +1,5 @@
 import { ApiClient } from "../api-client";
+import { Limit } from "../model/common";
 import { paymentMethod_Full } from "../model/generated/payment_processing";
 import { AcceptedPaymentMethodApi } from "./accepted-payment-method-api";
 import { PaymentAccessTokenApi } from "./payment-access-token-api";
@@ -18,7 +19,7 @@ export class PaymentProcessingApi {
         const response = await this.apiClient.get(
             "/v2/payments/methods",
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { IdInQueryParams, PaginatedData } from "../model/common";
+import { IdInQueryParams, Limit, PaginatedData } from "../model/common";
 import {
     Tax_Zone,
     Tax_ZonePOST,
@@ -20,7 +20,7 @@ export class TaxZoneApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/tax/zones", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

@@ -1,5 +1,10 @@
 import { ApiClient } from "../api-client";
-import { ChannelIdQueryParams, Data, PaginatedData } from "../model/common";
+import {
+    ChannelIdQueryParams,
+    Data,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import {
     AbandondedCartEmail,
     AbandondedCartEmailPayload,
@@ -24,7 +29,7 @@ export class AbandonedCartEmailsApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/marketing/abandoned-cart-emails", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

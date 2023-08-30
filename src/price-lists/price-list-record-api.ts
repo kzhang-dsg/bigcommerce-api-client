@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Data, PaginatedData } from "../model/common";
+import { Data, Limit, PaginatedData } from "../model/common";
 import {
     PriceRecord,
     PriceRecordCollectionPut,
@@ -28,7 +28,7 @@ export class PriceListRecordApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/pricelists/${priceListId}/records`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
@@ -66,7 +66,7 @@ export class PriceListRecordApi {
         const response = await this.apiClient.get(
             `/v3/pricelists/${priceListId}/records/${variantId}`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
@@ -81,7 +81,7 @@ export class PriceListRecordApi {
         const response = await this.apiClient.get(
             `/v3/pricelists/${priceListId}/records/${variantId}/${currencyCode}`,
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

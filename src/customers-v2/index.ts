@@ -1,5 +1,5 @@
 import { ApiClient } from "../api-client";
-import { Count } from "../model/common";
+import { Count, Limit } from "../model/common";
 import {
     customer_Base,
     customer_Full,
@@ -25,7 +25,7 @@ export class CustomersV2Api {
         const response = await this.apiClient.get(
             appendQueryString("/v2/customers", params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

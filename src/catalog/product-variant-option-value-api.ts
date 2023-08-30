@@ -1,5 +1,10 @@
 import { ApiClient } from "../api-client";
-import { Data, FieldAwareQueryParams, PaginatedData } from "../model/common";
+import {
+    Data,
+    FieldAwareQueryParams,
+    Limit,
+    PaginatedData,
+} from "../model/common";
 import {
     productOptionOptionValue_Base,
     productOptionOptionValue_Full,
@@ -25,7 +30,7 @@ export class ProductVariantOptionValueApi {
                 params
             ),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }

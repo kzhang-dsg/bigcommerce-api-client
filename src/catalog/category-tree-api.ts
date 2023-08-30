@@ -1,12 +1,12 @@
 import { ApiClient } from "../api-client";
+import { Data, Limit, PaginatedData } from "../model/common";
+import { CategoryNode, Tree } from "../model/generated/catalog.v3";
 import {
     CategoryTreesQueryParams,
     DeleteCategoryTreesQueryParams,
     GetCategoryTreeQueryParams,
 } from "../model/query/catalog";
-import { Data, PaginatedData } from "../model/common";
 import { appendQueryString } from "../util";
-import { CategoryNode, Tree } from "../model/generated/catalog.v3";
 
 export class CategoryTreeApi {
     constructor(private readonly apiClient: ApiClient) {}
@@ -22,7 +22,7 @@ export class CategoryTreeApi {
         const response = await this.apiClient.get(
             appendQueryString(`/v3/catalog/trees`, params),
             page,
-            limit
+            limit || Limit.DEFAULT
         );
         return response.data;
     }
