@@ -34,7 +34,10 @@ export class WebhooksApi {
         const response = await this.apiClient.get(
             appendQueryString("/v3/hooks", params),
             page,
-            limit || Limit.DEFAULT
+            limit || Limit.DEFAULT,
+            {
+                cache: false, // Never cache because the result is associated to the access_token.
+            }
         );
         return response.data;
     }

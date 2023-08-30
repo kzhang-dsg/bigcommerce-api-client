@@ -159,7 +159,10 @@ export class ApiClient {
                 "get",
                 appendQueryString(url, {
                     page,
-                    limit: limit === Limit.DEFAULT ? this.config.defaultLimit : limit,
+                    limit:
+                        limit === Limit.DEFAULT
+                            ? this.config.defaultLimit
+                            : limit,
                 }),
                 undefined,
                 config
@@ -277,7 +280,7 @@ export class ApiClient {
 
                     if (request && response) {
                         throw new Error(
-                            `Failed to call BigCommerce API ${
+                            `Failed to call BigCommerce API ${request.method} ${
                                 request.protocol
                             }://${request.host}${
                                 request.path
@@ -295,13 +298,13 @@ export class ApiClient {
                     if (request) {
                         if (error.code === "ECONNABORTED") {
                             throw new Error(
-                                `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}. Timeout after ${this.config.timeout} ms. Retries: ${retries}. Error: ${error.message}.`,
+                                `Failed to call BigCommerce API ${request.method} ${request.protocol}://${request.host}${request.path}. Timeout after ${this.config.timeout} ms. Retries: ${retries}. Error: ${error.message}.`,
                                 { cause: error }
                             );
                         }
 
                         throw new Error(
-                            `Failed to call BigCommerce API ${request.protocol}://${request.host}${request.path}. Retries: ${retries}. Error: ${error.message}.`,
+                            `Failed to call BigCommerce API ${request.method} ${request.protocol}://${request.host}${request.path}. Retries: ${retries}. Error: ${error.message}.`,
                             { cause: error }
                         );
                     }
