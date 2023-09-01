@@ -50,7 +50,7 @@ export function toQueryString(
 }
 
 export function getCacheRegion(storeHash = "", url = "") {
-    url && (url = url.replace(/^https?:\/\/|^\//, ""));
+    url && (url = url.replace(/^https?:\/\/|^\//, "").replace(/\?.*/, ""));
     const urlParts = url.split("/");
     let modelName = urlParts[1];
 
