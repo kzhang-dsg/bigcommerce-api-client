@@ -76,6 +76,10 @@ export type productVariant_Base = {
      */
     bin_picking_number?: string | null;
     /**
+     * Publicly available image url
+     */
+    image_url?: string | null;
+    /**
      * The Manufacturer Part Number (MPN) for the variant.
      */
     mpn?: string;
