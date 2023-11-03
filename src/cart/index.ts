@@ -11,7 +11,7 @@ export class CartsApi {
     constructor(private readonly apiClient: ApiClient) {}
 
     readonly items = new CartLineItemApi(this.apiClient);
-    readonly metafields = new MetafieldApi(this.apiClient, "/v3/catalog/carts");
+    readonly metafields = new MetafieldApi(this.apiClient, "/v3/carts");
     readonly redirects = new CartRedirectUrlApi(this.apiClient);
     readonly settings = new CartSettingsApi(this.apiClient);
 

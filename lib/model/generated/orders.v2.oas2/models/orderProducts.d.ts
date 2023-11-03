@@ -107,6 +107,10 @@ export type orderProducts = {
      */
     is_refunded?: boolean;
     /**
+     * The total quantity of product refunded from this transaction.
+     */
+    quantity_refunded?: number;
+    /**
      * The amount refunded from this transaction; always returns `0`. (Float, Float-As-String, Integer)
      * @deprecated
      */
